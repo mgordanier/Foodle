@@ -24,8 +24,9 @@ class AllRestaurants extends Component {
               <h3>Name: {restaurant.name}</h3>
               {restaurant.vicinity}
               <p />
-              Open Now: {restaurant.opening_hours.open_now ? 'Yes' : 'No'}
+              {/* Open Now: {restaurant.opening_hours.open_now ? 'Yes' : 'No'} */}
               <p />
+              <p>{restaurant.formatted_address}</p>
               <img src={restaurant.icon} />
             </div>
           ))}
