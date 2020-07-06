@@ -20,7 +20,7 @@ class AllRestaurants extends Component {
         <h1>Restaurants</h1>
         {allRestaurants.results &&
           allRestaurants.results.map(restaurant => (
-            <div key={restaurant.id}>
+            <div key={restaurant.id} className="box">
               <h3>Name: {restaurant.name}</h3>
               {restaurant.vicinity}
               <p />
