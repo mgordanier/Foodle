@@ -1,40 +1,12 @@
 import React, {Component} from 'react'
 
 export default class InputPollForm extends Component {
-  // const [form, setForm] = useState("")
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  // }
-
-  // componentDidMount() {
-  //   const calendars = bulmaCalendar.attach('[type="date"]', options);
-  //   calendars.forEach(calendar => {
-  //     calendar.on('date:selected', date => {
-  //       console.log(date);
-  //     });
-  //   });
-
-  //   const element = document.querySelector('#my-element');
-  //   if (element) {
-  //     element.bulmaCalendar.on('select', datepicker => {
-  //       console.log(datepicker.data.value());
-  //     });
-  //   }
-  // }
-
   render() {
     return (
       <section className="section">
         <div className="hero-body">
           <div className="columns is-centered">
             <div className="column is-half">
-              {/* <div className="field">
-          <label className="label">Event Name </label>
-          <div className="control">
-            <input className="input" type="text" placeholder="Text input"/>
-          </div>
-        </div> */}
-
               <div className="field">
                 <label className="label">Participant's Name</label>
                 <div className="control">
@@ -92,17 +64,7 @@ export default class InputPollForm extends Component {
               <div className="field">
                 <label className="label">Date & Time</label>
                 <input
-                  type="date"
-                  data-display-mode="inline"
-                  data-is-range="true"
-                  data-close-on-select="false"
-                />
-              </div>
-
-              <div className="field">
-                <label className="label">Date & Time</label>
-                <input
-                  type="time"
+                  type="datetime-local"
                   data-display-mode="inline"
                   data-is-range="true"
                   data-close-on-select="false"
