@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import * as d3 from 'd3'
 
 const Pie = props => {
+  //useRef replicates React.createRed and provides us a way to access DOM nodes
+  //targets <g> in our useEffect
   const ref = useRef(null)
   const createPie = d3
     .pie()
@@ -11,9 +13,11 @@ const Pie = props => {
     .arc()
     .innerRadius(props.innerRadius)
     .outerRadius(props.outerRadius)
-  const colors = d3.scaleOrdinal(d3.schemeCategory10)
+  const colors = d3.scaleOrdinal(d3.schemeSet2)
   const format = d3.format('.2f')
 
+  //side effects & componentDidMount
+  //when props.data changes, run createPie
   useEffect(
     () => {
       const data = createPie(props.data)
@@ -35,6 +39,8 @@ const Pie = props => {
         .attr('class', 'arc')
         .attr('d', createArc)
         .attr('fill', (d, i) => colors(i))
+        .attr('stroke', 'white')
+        .style('stroke-width', '2px')
 
       const text = groupWithUpdate
         .append('text')
@@ -45,8 +51,29 @@ const Pie = props => {
         .attr('alignment-baseline', 'middle')
         .attr('transform', d => `translate(${createArc.centroid(d)})`)
         .style('fill', 'white')
-        .style('font-size', 10)
-        .text(d => format(d.value))
+        .style('font-size', 16)
+        .join('text')
+        .call(text =>
+          text
+            .append('tspan')
+            .attr('y', '-0.4em')
+            .attr('font-weight', 'bold')
+            .text(d => d.data.type)
+        )
+        .call(text =>
+          text
+            .filter(d => d.endAngle - d.startAngle > 0.25)
+            .append('tspan')
+            .attr('x', 0)
+            .attr('y', '0.7em')
+            .attr('fill-opacity', 0.7)
+            .text(d => d.data.value.toLocaleString())
+        )
+      // .text(d => {
+      //   let string = d.data.type + " " + d.value
+      //   return string
+      //   // return format(d.value)
+      // })
     },
     [props.data]
   )
