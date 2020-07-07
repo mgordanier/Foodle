@@ -69,11 +69,6 @@ const Pie = props => {
             .attr('fill-opacity', 0.7)
             .text(d => d.data.value.toLocaleString())
         )
-      // .text(d => {
-      //   let string = d.data.type + " " + d.value
-      //   return string
-      //   // return format(d.value)
-      // })
     },
     [props.data]
   )
