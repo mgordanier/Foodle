@@ -100,6 +100,16 @@ export default class InputPollForm extends Component {
               </div>
 
               <div className="field">
+                <label className="label">Date & Time</label>
+                <input
+                  type="time"
+                  data-display-mode="inline"
+                  data-is-range="true"
+                  data-close-on-select="false"
+                />
+              </div>
+
+              <div className="field">
                 <label className="label">Message</label>
                 <div className="control">
                   <textarea className="textarea" placeholder="Textarea" />
