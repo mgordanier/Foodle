@@ -16,8 +16,8 @@ class AllRestaurants extends Component {
     console.log('here', allRestaurants.results)
 
     return (
-      <div>
-        <h1>Restaurants</h1>
+      <div className="container">
+        <h1 className="is-size-5 my-6">Restaurants</h1>
         {allRestaurants.results &&
           allRestaurants.results.map(restaurant => (
             <div key={restaurant.id} className="box">
