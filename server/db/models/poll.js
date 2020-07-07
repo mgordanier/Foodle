@@ -10,8 +10,11 @@ const Poll = db.define('poll', {
       'activity type'
     )
   },
-  options: {
-    type: Sequelize.ARRAY
+  dateOptions: {
+    type: Sequelize.ARRAY(Sequelize.RANGE(Sequelize.DATE))
+  },
+  textOptions: {
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   }
 })
 
