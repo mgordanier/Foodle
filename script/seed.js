@@ -1,15 +1,43 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Event, UserEvent, Activity} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({name: 'Mary', email: 'mary@email.com', password: '123'}),
+    User.create({
+      name: 'Jennifer',
+      email: 'jennifer@email.com',
+      password: '123'
+    }),
+    User.create({name: 'Yang', email: 'yang@email.com', password: '123'}),
+    User.create({name: 'Lilly', email: 'lilly@email.com', password: '123'})
+  ])
+
+  const events = await Promise.all([
+    Event.create({
+      name: 'Saturday Brunch',
+      startsAt: Date.now(),
+      endsAt: Date.now(),
+      allowSuggestions: false,
+      initialDueDate: Date.now()
+    })
+  ])
+
+  const userEvent = await Promise.all([
+    UserEvent.create({isOrganizer: true, userId: 1, eventId: 1}),
+    UserEvent.create({isOrganizer: false, userId: 2, eventId: 1})
+  ])
+
+  const activities = await Promise.all([
+    Activity.create({
+      displayName: 'American',
+      type: 'restaurant'
+    })
   ])
 
   console.log(`seeded ${users.length} users`)
