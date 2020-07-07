@@ -7,7 +7,8 @@ import {
   Signup,
   UserHome,
   AllRestaurants,
-  PieChartData
+  PieChartData,
+  InputPollForm
 } from './components'
 import {me} from './store'
 
@@ -29,6 +30,8 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/restaurants" component={AllRestaurants} />
         <Route path="/piechart" component={PieChartData} />
+        <Route path="/inputpollform" component={InputPollForm} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
