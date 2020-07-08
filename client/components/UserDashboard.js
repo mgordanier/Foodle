@@ -2,6 +2,7 @@ import React from 'react'
 import CreateEventForm from './CreateEventForm'
 import UpcomingEventCard from './UpcomingEventCard'
 import {connect} from 'react-redux'
+import {fetchEvents} from '../store/events'
 
 class UserDashboard extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class UserDashboard extends React.Component {
   render() {
     const {isFormOpen} = this.state
     const {userId} = this.props
+    console.log(this.props)
     return (
       <div className="container">
         <h1 className="is-size-2 my-5">Upcoming Events</h1>
@@ -61,6 +63,10 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = () => {}
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchEvents: userId => dispatch(fetchEvents(userId))
+  }
+}
 
-export default connect(mapStateToProps, null)(UserDashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(UserDashboard)
