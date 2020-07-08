@@ -1,10 +1,11 @@
 import React from 'react'
 import CreateEventForm from './CreateEventForm'
 import UpcomingEventCard from './UpcomingEventCard'
+import {connect} from 'react-redux'
 
-export default class UserDashboard extends React.Component {
-  constructor() {
-    super()
+class UserDashboard extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
       isFormOpen: false
     }
@@ -16,6 +17,7 @@ export default class UserDashboard extends React.Component {
 
   render() {
     const {isFormOpen} = this.state
+    const {userId} = this.props
     return (
       <div className="container">
         <h1 className="is-size-2 my-5">Upcoming Events</h1>
@@ -37,7 +39,11 @@ export default class UserDashboard extends React.Component {
           <h1 className="is-size-2 my-5">Create Event</h1>
 
           {isFormOpen === false ? (
-            <button className="button is-info" onClick={this.handleClick}>
+            <button
+              type="button"
+              className="button is-info"
+              onClick={this.handleClick}
+            >
               Get Started
             </button>
           ) : null}
@@ -48,3 +54,13 @@ export default class UserDashboard extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    userId: state.user.id
+  }
+}
+
+const mapDispatchToProps = () => {}
+
+export default connect(mapStateToProps, null)(UserDashboard)
