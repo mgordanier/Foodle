@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class Home extends Component {
   constructor() {
@@ -22,6 +23,9 @@ class Home extends Component {
         <div className="container has-text-centered">
           <h1 className="title">Title</h1>
           <h2 className="subtitle">Subtitle</h2>
+          <Link to="/userdashboard">
+            <button className="button is-info">Get Started</button>
+          </Link>
         </div>
       </div>
     )
