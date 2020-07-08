@@ -8,8 +8,15 @@ class UserDashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isFormOpen: false
+      isFormOpen: false,
+      events: []
     }
+  }
+
+  componentDidMount() {
+    const {userId} = this.props
+    const events = this.props.fetchEvents(userId)
+    this.setState({events: events})
   }
 
   handleClick = e => {
@@ -18,7 +25,6 @@ class UserDashboard extends React.Component {
 
   render() {
     const {isFormOpen} = this.state
-    const {userId} = this.props
     console.log(this.props)
     return (
       <div className="container">
@@ -38,7 +44,7 @@ class UserDashboard extends React.Component {
         </div>
 
         <div>
-          <h1 className="is-size-2 my-5">Create Event</h1>
+          <h1 className="is-size-2 my-5">Create a New Event</h1>
 
           {isFormOpen === false ? (
             <button
