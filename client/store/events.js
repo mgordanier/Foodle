@@ -4,9 +4,9 @@ import axios from 'axios'
 const GET_EVENTS = 'GET_EVENTS'
 
 //ACTION CREATOR
-const getEvents = userId => ({
+const getEvents = events => ({
   type: GET_EVENTS,
-  userId
+  events
 })
 
 //THUNK CREATORS
@@ -14,7 +14,6 @@ export const fetchEvents = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/events')
-      console.log(data)
       dispatch(getEvents(data))
     } catch (error) {
       console.log(error)

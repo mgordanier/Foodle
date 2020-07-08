@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function UpcomingEventCard() {
+const EventCard = props => {
   return (
     <div className="card">
       <div className="card-image">
@@ -15,7 +15,7 @@ export default function UpcomingEventCard() {
       <div className="card-content">
         <div className="media">
           <div className="media-content">
-            <p className="title is-4">Brunch</p>
+            <p className="title is-4">{props.name}</p>
             <p className="subtitle is-6">Paul's Burgers</p>
             <p className="subtitle is-6">Monday, July 6 @ 3:00 PM</p>
           </div>
@@ -36,3 +36,5 @@ export default function UpcomingEventCard() {
     </div>
   )
 }
+
+export default EventCard

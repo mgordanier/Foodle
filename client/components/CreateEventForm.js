@@ -1,31 +1,16 @@
 import React from 'react'
-import Accordions from './Accordions'
-import DatePicker from './DatePicker'
 
 export default class CreateEventForm extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      isHidden: true
-    }
-    // this.toggleHidden=this.toggleHidden.bind(this)
+  handleSubmit = e => {
+    e.preventDefault()
+    // thunk to create new event instance in the backend
+    // generate event link that user can send to friends
   }
-  toggleHidden() {
-    this.setState({
-      isHidden: !this.state.isHidden
-    })
-  }
+
   render() {
     return (
       <div className="container is-centered">
-        <form className="form">
-          <button
-            className="button is-large"
-            onClick={this.toggleHidden.bind(this)}
-          >
-            CREATE A NEW EVENT
-          </button>
-          {!this.state.isHidden && 'TESTTTTTT'}
+        <form className="form" onSubmit={this.handleSubmit}>
           <div className="field column">
             <div className="control">
               <input className="input" type="text" placeholder="Event Name" />
@@ -60,16 +45,7 @@ export default class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <button className="button is-large column">Submit</button>
-
-          <div max-width="50%" className="accordions are-large">
-            <div className="accordion">
-              <Accordions title="Time" content="Pick A Time" />
-              <DatePicker />
-            </div>
-            <Accordions title="Location" content="Pick A Location" />
-            <Accordions title="Cuisine Type" content="Pick A Cuisine" />
-          </div>
+          <button className="button is-large">Create Event</button>
         </form>
       </div>
     )
