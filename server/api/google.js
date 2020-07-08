@@ -22,7 +22,6 @@ router.get('/restaurants', async (req, res, next) => {
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${borough}+${city}&type=restaurant&key=${key}`
     )
 
-    console.log('ROUTESSSS', data.results)
     res.json(data)
   } catch (err) {
     next(err)
