@@ -50,6 +50,7 @@ export default class CreateEventForm extends React.Component {
               <input className="input" type="text" placeholder="Due Date" />
             </div>
           </div>
+
           <div className="field column">
             <div className="control">
               <input

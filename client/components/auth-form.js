@@ -12,6 +12,14 @@ const AuthForm = props => {
   return (
     <div className="section">
       <form onSubmit={handleSubmit} name={name}>
+        {displayName !== 'Login' ? (
+          <div className="field">
+            <label htmlFor="name" className="label">
+              <small>Name</small>
+            </label>
+            <input name="name" type="text" className="input" />
+          </div>
+        ) : null}
         <div className="field">
           <label htmlFor="email" className="label">
             <small>Email</small>
