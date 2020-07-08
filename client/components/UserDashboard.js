@@ -36,9 +36,11 @@ export default class UserDashboard extends React.Component {
         <div>
           <h1 className="is-size-2 my-5">Create Event</h1>
 
-          <button className="button is-info" onClick={this.handleClick}>
-            Get Started
-          </button>
+          {isFormOpen === false ? (
+            <button className="button is-info" onClick={this.handleClick}>
+              Get Started
+            </button>
+          ) : null}
         </div>
 
         {isFormOpen ? <CreateEventForm /> : null}
