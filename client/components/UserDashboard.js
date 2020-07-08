@@ -4,6 +4,7 @@ import UpcomingEventCard from './UpcomingEventCard'
 import {connect} from 'react-redux'
 import {fetchEvents} from '../store/events'
 
+
 class UserDashboard extends React.Component {
   constructor(props) {
     super(props)
