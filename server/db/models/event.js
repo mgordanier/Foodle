@@ -9,11 +9,8 @@ const Event = db.define('event', {
       notEmpty: true
     }
   },
-  startsAt: {
-    type: Sequelize.DATE
-  },
-  endsAt: {
-    type: Sequelize.DATE
+  time: {
+    type: Sequelize.RANGE(Sequelize.DATE)
   },
   location: {
     type: Sequelize.STRING
@@ -22,8 +19,7 @@ const Event = db.define('event', {
     type: Sequelize.BOOLEAN
   },
   initialDueDate: {
-    type: Sequelize.DATE,
-    allowNull: false
+    type: Sequelize.DATE
   }
 })
 
