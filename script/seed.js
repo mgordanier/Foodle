@@ -12,10 +12,10 @@ async function seed() {
     User.create({
       name: 'Jennifer',
       email: 'jennifer@email.com',
-      password: '123'
+      password: '123',
     }),
     User.create({name: 'Yang', email: 'yang@email.com', password: '123'}),
-    User.create({name: 'Lilly', email: 'lilly@email.com', password: '123'})
+    User.create({name: 'Lilly', email: 'lilly@email.com', password: '123'}),
   ])
 
   console.log(`seeded ${users.length} users`)
@@ -26,15 +26,15 @@ async function seed() {
       startsAt: Date.now(),
       endsAt: Date.now(),
       allowSuggestions: false,
-      initialDueDate: Date.now()
-    })
+      initialDueDate: Date.now(),
+    }),
   ])
 
   console.log(`seeded ${events.length} events`)
 
   const userEvent = await Promise.all([
     UserEvent.create({isOrganizer: true, userId: 1, eventId: 1}),
-    UserEvent.create({isOrganizer: false, userId: 2, eventId: 1})
+    UserEvent.create({isOrganizer: false, userId: 2, eventId: 1}),
   ])
 
   console.log(`seeded ${userEvent.length} userEvents`)
