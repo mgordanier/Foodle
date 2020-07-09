@@ -24,48 +24,54 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//create an event for organizer or admin
+//create an event as a user
 router.post('/', async (req, res, next) => {
   try {
-    // const organizer = await UserEvent.findAll({where:{isOrganizer:true}})
-    if (req.user && isAdmin(req.user)) {
-      const event = await Event.create(req.body)
+    const {name, time, location, allowSuggestions, initialDueDate} = req.body
+    const event = await Event.create({
+      name,
+      time,
+      location,
+      allowSuggestions,
+      initialDueDate,
+    })
+    if (event) {
       res.json(event)
     } else {
-      res.status(401).send('Unauthorized to create events')
+      res.status(401).send('can not create events')
     }
   } catch (error) {
     next(error)
   }
 })
 
-router.put('/:id', async (req, res, next) => {
-  try {
-    if (req.user && isAdmin(req.user)) {
-      const updatedEvent = await Event.updateEvent(req.params.id, req.body)
-      res.json(updatedEvent)
-    } else {
-      res.status(401).send('Unauthorized to edit events')
-    }
-  } catch (error) {
-    next(error)
-  }
-})
+// router.put('/:id', async (req, res, next) => {
+//   try {
+//     if (req.user && isAdmin(req.user)) {
+//       const updatedEvent = await Event.updateEvent(req.params.id, req.body)
+//       res.json(updatedEvent)
+//     } else {
+//       res.status(401).send('Unauthorized to edit events')
+//     }
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
-router.delete('/:id', async (req, res, next) => {
-  try {
-    if (req.user && isAdmin(req.user)) {
-      const deletedCount = await Event.destroy({
-        where: {
-          id: req.params.id,
-        },
-      })
-      if (deletedCount) res.status(200).send(`Event ${req.params.id} deleted`)
-      else res.status(404).send(`Event ${req.params.id} not found`)
-    } else {
-      res.status(401).send('Unauthorized to delete event')
-    }
-  } catch (error) {
-    next(error)
-  }
-})
+// router.delete('/:id', async (req, res, next) => {
+//   try {
+//     if (req.user && isAdmin(req.user)) {
+//       const deletedCount = await Event.destroy({
+//         where: {
+//           id: req.params.id,
+//         },
+//       })
+//       if (deletedCount) res.status(200).send(`Event ${req.params.id} deleted`)
+//       else res.status(404).send(`Event ${req.params.id} not found`)
+//     } else {
+//       res.status(401).send('Unauthorized to delete event')
+//     }
+//   } catch (error) {
+//     next(error)
+//   }
+// })

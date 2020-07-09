@@ -1,52 +1,100 @@
 import React from 'react'
+import {createEvent} from '../store/events'
 
 export default class CreateEventForm extends React.Component {
+  constructor(props) {
+    super()
+    this.state = {
+      name: '',
+      location: '',
+      time: '',
+      allowSuggestions: true,
+      initialDueDate: '',
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    // thunk to create new event instance in the backend
-    // generate event link that user can send to friends
+    let newEvent = {}
+    newEvent.name = this.state.name
+    newEvent.location = this.state.location
+    newEvent.time = this.state.time
+    newEvent.allowSuggestions = this.state.allowSuggestions
+    newEvent.initialDueDate = this.state.initialDueDate
+    console.log('NEW EVENT', newEvent)
+    createEvent(newEvent)
   }
 
   render() {
     return (
-      <div className="container is-centered">
-        <form className="form" onSubmit={this.handleSubmit}>
+      <div className="my-6 card">
+        <form className="container" onSubmit={this.handleSubmit}>
           <div className="field column">
-            <div className="control">
-              <input className="input" type="text" placeholder="Event Name" />
-            </div>
-          </div>
-          <div className="field column">
+            <label className="label">Event Name</label>
             <div className="control">
               <input
                 className="input"
+                name="name"
                 type="text"
-                placeholder="Event Description"
+                placeholder="Event Name"
+                onChange={this.handleChange}
               />
             </div>
           </div>
           <div className="field column">
-            <div className="control">
-              <input className="input" type="text" placeholder="Time" />
-            </div>
-          </div>
-          <div className="field column">
-            <div className="control">
-              <input className="input" type="text" placeholder="Due Date" />
-            </div>
-          </div>
-
-          <div className="field column">
+            <label className="label">Location</label>
             <div className="control">
               <input
                 className="input"
                 type="text"
-                placeholder="Choose A Cuisine"
+                placeholder="Location"
+                onChange={this.handleChange}
               />
             </div>
           </div>
-
-          <button className="button is-large">Create Event</button>
+          <div className="field column">
+            <label className="label">Date & Time</label>
+            <input
+              name="time"
+              type="datetime-local"
+              data-display-mode="inline"
+              data-is-range="true"
+              data-close-on-select="false"
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="field column">
+            <label className="label">Categories</label>
+            <div className="control">
+              <input
+                name="allowSuggestions"
+                className="input"
+                type="text"
+                placeholder="Food Categories"
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div className="field column">
+            <label className="label">Poll Due Date</label>
+            <input
+              name="dueDate"
+              type="datetime-local"
+              data-display-mode="inline"
+              data-is-range="true"
+              data-close-on-select="false"
+              onChange={this.handleChange}
+            />
+          </div>
+          <button className="button is-info is-centered is-large">
+            Create Event
+          </button>
         </form>
       </div>
     )
