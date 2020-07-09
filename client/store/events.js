@@ -4,17 +4,16 @@ import axios from 'axios'
 const GET_EVENTS = 'GET_EVENTS'
 
 //ACTION CREATOR
-const getEvents = userId => ({
+const getEvents = (events) => ({
   type: GET_EVENTS,
-  userId
+  events,
 })
 
 //THUNK CREATORS
 export const fetchEvents = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const {data} = await axios.get('/api/events')
-      console.log(data)
       dispatch(getEvents(data))
     } catch (error) {
       console.log(error)
@@ -23,7 +22,7 @@ export const fetchEvents = () => {
 }
 
 const initialState = {
-  events: {}
+  events: {},
 }
 
 //REDUCER
@@ -32,7 +31,7 @@ export default function events(state = initialState, action) {
     case GET_EVENTS:
       return {
         ...state,
-        events: action.events
+        events: action.events,
       }
     default:
       return state
