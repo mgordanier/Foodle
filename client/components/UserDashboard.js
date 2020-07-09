@@ -7,11 +7,11 @@ class UserDashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isFormOpen: false
+      isFormOpen: false,
     }
   }
 
-  handleClick = e => {
+  handleClick = (e) => {
     this.setState({isFormOpen: !this.state.isFormOpen})
   }
 

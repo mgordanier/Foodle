@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default class CreateEventForm extends React.Component {
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault()
     // thunk to create new event instance in the backend
     // generate event link that user can send to friends

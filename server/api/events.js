@@ -10,10 +10,10 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           where: {
-            id: req.user.dataValues.id
-          }
-        }
-      ]
+            id: req.user.dataValues.id,
+          },
+        },
+      ],
     })
     if (events) {
       res.json(events)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EventCard = props => {
+const EventCard = (props) => {
   return (
     <div className="card">
       <div className="card-image">
