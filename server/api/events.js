@@ -11,10 +11,10 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           where: {
-            id: req.user.dataValues.id
-          }
-        }
-      ]
+            id: req.user.dataValues.id,
+          },
+        },
+      ],
     })
     if (events) {
       res.json(events)
@@ -24,8 +24,10 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//create an event for organizer or admin
 router.post('/', async (req, res, next) => {
   try {
+    // const organizer = await UserEvent.findAll({where:{isOrganizer:true}})
     if (req.user && isAdmin(req.user)) {
       const event = await Event.create(req.body)
       res.json(event)
@@ -55,8 +57,8 @@ router.delete('/:id', async (req, res, next) => {
     if (req.user && isAdmin(req.user)) {
       const deletedCount = await Event.destroy({
         where: {
-          id: req.params.id
-        }
+          id: req.params.id,
+        },
       })
       if (deletedCount) res.status(200).send(`Event ${req.params.id} deleted`)
       else res.status(404).send(`Event ${req.params.id} not found`)

@@ -14,8 +14,8 @@ function Main(to, order) {
     requireTLS: true,
     auth: {
       user: address,
-      pass: password
-    }
+      pass: password,
+    },
   })
 
   const mailOptions = {
@@ -23,10 +23,10 @@ function Main(to, order) {
     to: to,
     subject: 'Sending Email using Node.js',
     text: 'That was easy!',
-    html: generateEmail(order)
+    html: generateEmail(order),
   }
 
-  transporter.sendMail(mailOptions, function(error, info) {
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error)
     } else {
@@ -35,22 +35,21 @@ function Main(to, order) {
   })
 }
 
-const generateEmail = event => html`<!DOCTYPE html>
-<html>
-<h1>Event Created!</h1>
-<h2>Your event link is ${event.link}</h2>
+const generateEmail = (event) => html`<!DOCTYPE html>
+  <html>
+    <h1>Event Created!</h1>
+    <h2>Your event link is ${event.link}</h2>
 
-
-<h3>Event Summary:</h3>
-<table>
-  <tr>
-    
-  </tr>
-</table>
-</html>`
+    <h3>Event Summary</h3>
+    <table>
+      <tr>
+        Have Brunch in Central Park!
+      </tr>
+    </table>
+  </html>`
 
 if (module === require.main) {
-  Main('gayle.ortiz@ethereal.email', testOrder)
+  Main('yg2349@gmail.com', testEvent)
 }
 
 module.exports = Main
