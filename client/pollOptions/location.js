@@ -10,239 +10,239 @@ export default {
           'mott+haven': {
             displayName: 'Mott Haven',
             searchStr: 'mott+haven',
-            geoId: '343204',
+            geoId: '343204'
           },
           'westchester+heights': {
             displayName: 'Westchester Heights',
             searchStr: 'westchester+heights',
-            geoId: '403111',
+            geoId: '403111'
           },
           'west+farms': {
             displayName: 'West Farms',
             searchStr: 'west+farms',
-            geoId: '48417',
+            geoId: '48417'
           },
           'throggs+neck': {
             displayName: 'Throggs Neck',
             searchStr: 'throggs+neck',
-            geoId: '343210',
+            geoId: '343210'
           },
           williamsbridge: {
             displayName: 'Williamsbridge',
             searchStr: 'williamsbridge',
-            geoId: '343222',
+            geoId: '343222'
           },
           fieldston: {
             displayName: 'Fieldston',
             searchStr: 'fieldston',
-            geoId: '270834',
+            geoId: '270834'
           },
           riverdale: {
             displayName: 'Riverdale',
             searchStr: 'riverdale',
-            geoId: '343219',
+            geoId: '343219'
           },
           melrose: {
             displayName: 'Melrose',
             searchStr: 'melrose',
-            geoId: '403210',
+            geoId: '403210'
           },
           'south+bronx': {
             displayName: 'South Bronx',
             searchStr: 'south+bronx',
-            geoId: '343217',
+            geoId: '343217'
           },
           wakefield: {
             displayName: 'Wakefield',
             searchStr: 'wakefield',
-            geoId: '343225',
+            geoId: '343225'
           },
           fordham: {
             displayName: 'Fordham',
             searchStr: 'fordham',
-            geoId: '343214',
+            geoId: '343214'
           },
           'city+island': {
             displayName: 'City Island',
             searchStr: 'city+island',
-            geoId: '343207',
+            geoId: '343207'
           },
           'castle+hill': {
             displayName: 'Castle Hill',
             searchStr: 'castle+hill',
-            geoId: '270812',
+            geoId: '270812'
           },
           'morris+heights': {
             displayName: 'Morris Heights',
             searchStr: 'morris+heights',
-            geoId: '343216',
+            geoId: '343216'
           },
           'pelham+bay': {
             displayName: 'Pelham Bay',
             searchStr: 'pelham+bay',
-            geoId: '270907',
+            geoId: '270907'
           },
           'port+morris': {
             displayName: 'Port Morris',
             searchStr: 'port+morris',
-            geoId: '197300',
+            geoId: '197300'
           },
           longwood: {
             displayName: 'Longwood',
             searchStr: 'longwood',
-            geoId: '403211',
+            geoId: '403211'
           },
           'spuyten+duyvil': {
             displayName: 'Spuyten Duyvil',
             searchStr: 'spuyten+duyvil',
-            geoId: '343218',
+            geoId: '343218'
           },
           'pelham+gardens': {
             displayName: 'Pelham Gardens',
             searchStr: 'pelham+gardens',
-            geoId: '270908',
+            geoId: '270908'
           },
           'marble+hill': {
             displayName: 'Marble Hill',
             searchStr: 'marble+hill',
-            geoId: '270880',
+            geoId: '270880'
           },
           'van+cortlandt+park': {
             displayName: 'Van Cortlandt Park',
             searchStr: 'van+cortlandt+park',
-            geoId: '403208',
+            geoId: '403208'
           },
           'north+riverdale': {
             displayName: 'North Riverdale',
             searchStr: 'north+riverdale',
-            geoId: '270900',
+            geoId: '270900'
           },
           'bronx+park': {
             displayName: 'Bronx Park',
             searchStr: 'bronx+park',
-            geoId: '403214',
+            geoId: '403214'
           },
           concourse: {
             displayName: 'Concourse',
             searchStr: 'concourse',
-            geoId: '270817',
+            geoId: '270817'
           },
           norwood: {
             displayName: 'Norwood',
             searchStr: 'norwood',
-            geoId: '403213',
+            geoId: '403213'
           },
           'pelham+bay+park': {
             displayName: 'Pelham Bay Park',
             searchStr: 'pelham+bay+park',
-            geoId: '403212',
+            geoId: '403212'
           },
           belmont: {
             displayName: 'Belmont',
             searchStr: 'belmont',
-            geoId: '403209',
+            geoId: '403209'
           },
           'van+nest': {
             displayName: 'Van Nest',
             searchStr: 'van+nest',
-            geoId: '198587',
+            geoId: '198587'
           },
           baychester: {
             displayName: 'Baychester',
             searchStr: 'baychester',
-            geoId: '343223',
+            geoId: '343223'
           },
           tremont: {
             displayName: 'Tremont',
             searchStr: 'tremont',
-            geoId: '343215',
+            geoId: '343215'
           },
           kingsbridge: {
             displayName: 'Kingsbridge',
             searchStr: 'kingsbridge',
-            geoId: '343220',
+            geoId: '343220'
           },
           'morris+park': {
             displayName: 'Morris Park',
             searchStr: 'morris+park',
-            geoId: '343212',
+            geoId: '343212'
           },
           unionport: {
             displayName: 'Unionport',
             searchStr: 'unionport',
-            geoId: '343209',
+            geoId: '343209'
           },
           'clason+point': {
             displayName: 'Clason Point',
             searchStr: 'clason+point',
-            geoId: '193861',
+            geoId: '193861'
           },
           'university+heights': {
             displayName: 'University Heights',
             searchStr: 'university+heights',
-            geoId: '343213',
+            geoId: '343213'
           },
           eastchester: {
             displayName: 'Eastchester',
             searchStr: 'eastchester',
-            geoId: '343224',
+            geoId: '343224'
           },
           'country+club': {
             displayName: 'Country Club',
             searchStr: 'country+club',
-            geoId: '343226',
+            geoId: '343226'
           },
           'high+bridge': {
             displayName: 'High Bridge',
             searchStr: 'high+bridge',
-            geoId: '343208',
+            geoId: '343208'
           },
           'east+tremont': {
             displayName: 'East Tremont',
             searchStr: 'east+tremont',
-            geoId: '194474',
+            geoId: '194474'
           },
           soundview: {
             displayName: 'Soundview',
             searchStr: 'soundview',
-            geoId: '343205',
+            geoId: '343205'
           },
           parkchester: {
             displayName: 'Parkchester',
             searchStr: 'parkchester',
-            geoId: '343211',
+            geoId: '343211'
           },
           'hunts+point': {
             displayName: 'Hunts Point',
             searchStr: 'hunts+point',
-            geoId: '343203',
+            geoId: '343203'
           },
           'co-op+city': {
             displayName: 'Co-op City',
             searchStr: 'co-op+city',
-            geoId: '270819',
+            geoId: '270819'
           },
           'rikers+island': {
             displayName: 'Rikers Island',
             searchStr: 'rikers+island',
-            geoId: '270922',
+            geoId: '270922'
           },
           'bedford+park': {
             displayName: 'Bedford Park',
             searchStr: 'bedford+park',
-            geoId: '343221',
+            geoId: '343221'
           },
           'hart+island': {
             displayName: 'Hart Island',
             searchStr: 'hart+island',
-            geoId: '270852',
+            geoId: '270852'
           },
           woodlawn: {
             displayName: 'Woodlawn',
             searchStr: 'woodlawn',
-            geoId: '343206',
-          },
-        },
+            geoId: '343206'
+          }
+        }
       },
       kings: {
         displayName: 'Brooklyn',
@@ -251,285 +251,285 @@ export default {
           'ocean+hill': {
             displayName: 'Ocean Hill',
             searchStr: 'ocean+hill',
-            geoId: '270902',
+            geoId: '270902'
           },
           'coney+island': {
             displayName: 'Coney Island',
             searchStr: 'coney+island',
-            geoId: '193974',
+            geoId: '193974'
           },
           kensington: {
             displayName: 'Kensington',
             searchStr: 'kensington',
-            geoId: '403217',
+            geoId: '403217'
           },
           homecrest: {
             displayName: 'Homecrest',
             searchStr: 'homecrest',
-            geoId: '270855',
+            geoId: '270855'
           },
           'carroll+gardens': {
             displayName: 'Carroll Gardens',
             searchStr: 'carroll+gardens',
-            geoId: '270811',
+            geoId: '270811'
           },
           'sunset+park': {
             displayName: 'Sunset Park',
             searchStr: 'sunset+park',
-            geoId: '270945',
+            geoId: '270945'
           },
           'borough+park': {
             displayName: 'Borough Park',
             searchStr: 'borough+park',
-            geoId: '193406',
+            geoId: '193406'
           },
           'west+jamaica+bay+islands': {
             displayName: 'West Jamaica Bay Islands',
             searchStr: 'west+jamaica+bay+islands',
-            geoId: '403186',
+            geoId: '403186'
           },
           'prospect+heights': {
             displayName: 'Prospect Heights',
             searchStr: 'prospect+heights',
-            geoId: '403220',
+            geoId: '403220'
           },
           wingate: {
             displayName: 'Wingate',
             searchStr: 'wingate',
-            geoId: '270969',
+            geoId: '270969'
           },
           gravesend: {
             displayName: 'Gravesend',
             searchStr: 'gravesend',
-            geoId: '403215',
+            geoId: '403215'
           },
           'fort+greene': {
             displayName: 'Fort Greene',
             searchStr: 'fort+greene',
-            geoId: '273766',
+            geoId: '273766'
           },
           'mill+basin': {
             displayName: 'Mill Basin',
             searchStr: 'mill+basin',
-            geoId: '270888',
+            geoId: '270888'
           },
           midwood: {
             displayName: 'Midwood',
             searchStr: 'midwood',
-            geoId: '270886',
+            geoId: '270886'
           },
           'manhattan+beach': {
             displayName: 'Manhattan Beach',
             searchStr: 'manhattan+beach',
-            geoId: '196156',
+            geoId: '196156'
           },
           'ocean+parkway': {
             displayName: 'Ocean Parkway',
             searchStr: 'ocean+parkway',
-            geoId: '270903',
+            geoId: '270903'
           },
           'brighton+beach': {
             displayName: 'Brighton Beach',
             searchStr: 'brighton+beach',
-            geoId: '193476',
+            geoId: '193476'
           },
           greenpoint: {
             displayName: 'Greenpoint',
             searchStr: 'greenpoint',
-            geoId: '270848',
+            geoId: '270848'
           },
           'vinegar+hill': {
             displayName: 'Vinegar Hill',
             searchStr: 'vinegar+hill',
-            geoId: '270960',
+            geoId: '270960'
           },
           'marine+park': {
             displayName: 'Marine Park',
             searchStr: 'marine+park',
-            geoId: '270881',
+            geoId: '270881'
           },
           'sheepshead+bay': {
             displayName: 'Sheepshead Bay',
             searchStr: 'sheepshead+bay',
-            geoId: '403131',
+            geoId: '403131'
           },
           flatlands: {
             displayName: 'Flatlands',
             searchStr: 'flatlands',
-            geoId: '274415',
+            geoId: '274415'
           },
           'park+slope': {
             displayName: 'Park Slope',
             searchStr: 'park+slope',
-            geoId: '197044',
+            geoId: '197044'
           },
           flatbush: {
             displayName: 'Flatbush',
             searchStr: 'flatbush',
-            geoId: '194737',
+            geoId: '194737'
           },
           'bergen+beach': {
             displayName: 'Bergen Beach',
             searchStr: 'bergen+beach',
-            geoId: '193292',
+            geoId: '193292'
           },
           bensonhurst: {
             displayName: 'Bensonhurst',
             searchStr: 'bensonhurst',
-            geoId: '193285',
+            geoId: '193285'
           },
           gowanus: {
             displayName: 'Gowanus',
             searchStr: 'gowanus',
-            geoId: '270846',
+            geoId: '270846'
           },
           'floyd+bennett+field': {
             displayName: 'Floyd Bennett Field',
             searchStr: 'floyd+bennett+field',
-            geoId: '403216',
+            geoId: '403216'
           },
           'bedford+stuyvesant': {
             displayName: 'Bedford Stuyvesant',
             searchStr: 'bedford+stuyvesant',
-            geoId: '272902',
+            geoId: '272902'
           },
           'crown+heights': {
             displayName: 'Crown Heights',
             searchStr: 'crown+heights',
-            geoId: '403222',
+            geoId: '403222'
           },
           'east+flatbush': {
             displayName: 'East Flatbush',
             searchStr: 'east+flatbush',
-            geoId: '194379',
+            geoId: '194379'
           },
           williamsburg: {
             displayName: 'Williamsburg',
             searchStr: 'williamsburg',
-            geoId: '199001',
+            geoId: '199001'
           },
           downtown: {
             displayName: 'Downtown',
             searchStr: 'downtown',
-            geoId: '270825',
+            geoId: '270825'
           },
           'prospect+lefferts+gardens': {
             displayName: 'Prospect Lefferts Gardens',
             searchStr: 'prospect+lefferts+gardens',
-            geoId: '403221',
+            geoId: '403221'
           },
           'bath+beach': {
             displayName: 'Bath Beach',
             searchStr: 'bath+beach',
-            geoId: '193182',
+            geoId: '193182'
           },
           'columbia+street+waterfront+district': {
             displayName: 'Columbia Street Waterfront District',
             searchStr: 'columbia+street+waterfront+district',
-            geoId: '403219',
+            geoId: '403219'
           },
           greenwood: {
             displayName: 'Greenwood',
             searchStr: 'greenwood',
-            geoId: '273903',
+            geoId: '273903'
           },
           'prospect+park+south': {
             displayName: 'Prospect Park South',
             searchStr: 'prospect+park+south',
-            geoId: '270914',
+            geoId: '270914'
           },
           'prospect+park': {
             displayName: 'Prospect Park',
             searchStr: 'prospect+park',
-            geoId: '403161',
+            geoId: '403161'
           },
           bushwick: {
             displayName: 'Bushwick',
             searchStr: 'bushwick',
-            geoId: '193587',
+            geoId: '193587'
           },
           'dyker+heights': {
             displayName: 'Dyker Heights',
             searchStr: 'dyker+heights',
-            geoId: '194318',
+            geoId: '194318'
           },
           'navy+yard': {
             displayName: 'Navy Yard',
             searchStr: 'navy+yard',
-            geoId: '270893',
+            geoId: '270893'
           },
           'clinton+hill': {
             displayName: 'Clinton Hill',
             searchStr: 'clinton+hill',
-            geoId: '270815',
+            geoId: '270815'
           },
           dumbo: {displayName: 'DUMBO', searchStr: 'dumbo', geoId: '270841'},
           'new+utrecht': {
             displayName: 'New Utrecht',
             searchStr: 'new+utrecht',
-            geoId: '196623',
+            geoId: '196623'
           },
           'red+hook': {
             displayName: 'Red Hook',
             searchStr: 'red+hook',
-            geoId: '197427',
+            geoId: '197427'
           },
           georgetown: {
             displayName: 'Georgetown',
             searchStr: 'georgetown',
-            geoId: '403218',
+            geoId: '403218'
           },
           'east+new+york': {
             displayName: 'East New York',
             searchStr: 'east+new+york',
-            geoId: '194430',
+            geoId: '194430'
           },
           'fort+hamilton': {
             displayName: 'Fort Hamilton',
             searchStr: 'fort+hamilton',
-            geoId: '8731',
+            geoId: '8731'
           },
           canarsie: {
             displayName: 'Canarsie',
             searchStr: 'canarsie',
-            geoId: '193640',
+            geoId: '193640'
           },
           'cobble+hill': {
             displayName: 'Cobble Hill',
             searchStr: 'cobble+hill',
-            geoId: '270816',
+            geoId: '270816'
           },
           'boerum+hill': {
             displayName: 'Boerum Hill',
             searchStr: 'boerum+hill',
-            geoId: '272994',
+            geoId: '272994'
           },
           brownsville: {
             displayName: 'Brownsville',
             searchStr: 'brownsville',
-            geoId: '193526',
+            geoId: '193526'
           },
           'gerritsen+beach': {
             displayName: 'Gerritsen Beach',
             searchStr: 'gerritsen+beach',
-            geoId: '270844',
+            geoId: '270844'
           },
           'brooklyn+heights': {
             displayName: 'Brooklyn Heights',
             searchStr: 'brooklyn+heights',
-            geoId: '403122',
+            geoId: '403122'
           },
           'bay+ridge': {
             displayName: 'Bay Ridge',
             searchStr: 'bay+ridge',
-            geoId: '193189',
+            geoId: '193189'
           },
           'windsor+terrace': {
             displayName: 'Windsor Terrace',
             searchStr: 'windsor+terrace',
-            geoId: '270968',
-          },
-        },
+            geoId: '270968'
+          }
+        }
       },
       queens: {
         displayName: 'Queens',
@@ -538,338 +538,338 @@ export default {
           woodside: {
             displayName: 'Woodside',
             searchStr: 'woodside',
-            geoId: '199091',
+            geoId: '199091'
           },
           'east+jamaica+bay+islands': {
             displayName: 'East Jamaica Bay Islands',
             searchStr: 'east+jamaica+bay+islands',
-            geoId: '417961',
+            geoId: '417961'
           },
           'middle+village': {
             displayName: 'Middle Village',
             searchStr: 'middle+village',
-            geoId: '196338',
+            geoId: '196338'
           },
           'springfield+gardens': {
             displayName: 'Springfield Gardens',
             searchStr: 'springfield+gardens',
-            geoId: '275518',
+            geoId: '275518'
           },
           'kew+gardens+hills': {
             displayName: 'Kew Gardens Hills',
             searchStr: 'kew+gardens+hills',
-            geoId: '57348',
+            geoId: '57348'
           },
           'richmond+hill': {
             displayName: 'Richmond Hill',
             searchStr: 'richmond+hill',
-            geoId: '276128',
+            geoId: '276128'
           },
           'rockaway+beach': {
             displayName: 'Rockaway Beach',
             searchStr: 'rockaway+beach',
-            geoId: '56273',
+            geoId: '56273'
           },
           'forest+hills': {
             displayName: 'Forest Hills',
             searchStr: 'forest+hills',
-            geoId: '273757',
+            geoId: '273757'
           },
           'bay+terrace': {
             displayName: 'Bay Terrace',
             searchStr: 'bay+terrace',
-            geoId: '270800',
+            geoId: '270800'
           },
           'jamaica+hills': {
             displayName: 'Jamaica Hills',
             searchStr: 'jamaica+hills',
-            geoId: '270861',
+            geoId: '270861'
           },
           'st.+albans': {
             displayName: 'St. Albans',
             searchStr: 'st.+albans',
-            geoId: '275552',
+            geoId: '275552'
           },
           neponsit: {
             displayName: 'Neponsit',
             searchStr: 'neponsit',
-            geoId: '42662',
+            geoId: '42662'
           },
           'south+ozone+park': {
             displayName: 'South Ozone Park',
             searchStr: 'south+ozone+park',
-            geoId: '27182',
+            geoId: '27182'
           },
           hillcrest: {
             displayName: 'Hillcrest',
             searchStr: 'hillcrest',
-            geoId: '403228',
+            geoId: '403228'
           },
           maspeth: {
             displayName: 'Maspeth',
             searchStr: 'maspeth',
-            geoId: '5837',
+            geoId: '5837'
           },
           glendale: {
             displayName: 'Glendale',
             searchStr: 'glendale',
-            geoId: '276345',
+            geoId: '276345'
           },
           'kew+gardens': {
             displayName: 'Kew Gardens',
             searchStr: 'kew+gardens',
-            geoId: '274676',
+            geoId: '274676'
           },
           'astoria+heights': {
             displayName: 'Astoria Heights',
             searchStr: 'astoria+heights',
-            geoId: '270796',
+            geoId: '270796'
           },
           'far+rockaway': {
             displayName: 'Far Rockaway',
             searchStr: 'far+rockaway',
-            geoId: '18071',
+            geoId: '18071'
           },
           'murray+hill': {
             displayName: 'Murray Hill',
             searchStr: 'murray+hill',
-            geoId: '196538',
+            geoId: '196538'
           },
           'belle+harbor': {
             displayName: 'Belle Harbor',
             searchStr: 'belle+harbor',
-            geoId: '10329',
+            geoId: '10329'
           },
           'rego+park': {
             displayName: 'Rego Park',
             searchStr: 'rego+park',
-            geoId: '6719',
+            geoId: '6719'
           },
           'glen+oaks': {
             displayName: 'Glen Oaks',
             searchStr: 'glen+oaks',
-            geoId: '55801',
+            geoId: '55801'
           },
           'forest+hills+gardens': {
             displayName: 'Forest Hills Gardens',
             searchStr: 'forest+hills+gardens',
-            geoId: '270838',
+            geoId: '270838'
           },
           'oakland+gardens': {
             displayName: 'Oakland Gardens',
             searchStr: 'oakland+gardens',
-            geoId: '26254',
+            geoId: '26254'
           },
           blissville: {
             displayName: 'Blissville',
             searchStr: 'blissville',
-            geoId: '270802',
+            geoId: '270802'
           },
           'rockaway+park': {
             displayName: 'Rockaway Park',
             searchStr: 'rockaway+park',
-            geoId: '35961',
+            geoId: '35961'
           },
           'jacob+riis+park': {
             displayName: 'Jacob Riis Park',
             searchStr: 'jacob+riis+park',
-            geoId: '403229',
+            geoId: '403229'
           },
           'fresh+meadows': {
             displayName: 'Fresh Meadows',
             searchStr: 'fresh+meadows',
-            geoId: '4819',
+            geoId: '4819'
           },
           briarwood: {
             displayName: 'Briarwood',
             searchStr: 'briarwood',
-            geoId: '44302',
+            geoId: '44302'
           },
           auburndale: {
             displayName: 'Auburndale',
             searchStr: 'auburndale',
-            geoId: '270797',
+            geoId: '270797'
           },
           whitestone: {
             displayName: 'Whitestone',
             searchStr: 'whitestone',
-            geoId: '276060',
+            geoId: '276060'
           },
           holliswood: {
             displayName: 'Holliswood',
             searchStr: 'holliswood',
-            geoId: '270854',
+            geoId: '270854'
           },
           rochdale: {
             displayName: 'Rochdale',
             searchStr: 'rochdale',
-            geoId: '403110',
+            geoId: '403110'
           },
           jamaica: {
             displayName: 'Jamaica',
             searchStr: 'jamaica',
-            geoId: '25294',
+            geoId: '25294'
           },
           'douglaston-little+neck': {
             displayName: 'Douglaston-Little Neck',
             searchStr: 'douglaston-little+neck',
-            geoId: '273478',
+            geoId: '273478'
           },
           'queens+village': {
             displayName: 'Queens Village',
             searchStr: 'queens+village',
-            geoId: '275115',
+            geoId: '275115'
           },
           'flushing+meadows+corona+park': {
             displayName: 'Flushing Meadows Corona Park',
             searchStr: 'flushing+meadows+corona+park',
-            geoId: '403227',
+            geoId: '403227'
           },
           'breezy+point': {
             displayName: 'Breezy Point',
             searchStr: 'breezy+point',
-            geoId: '37557',
+            geoId: '37557'
           },
           'east+elmhurst': {
             displayName: 'East Elmhurst',
             searchStr: 'east+elmhurst',
-            geoId: '45032',
+            geoId: '45032'
           },
           sunnyside: {
             displayName: 'Sunnyside',
             searchStr: 'sunnyside',
-            geoId: '275620',
+            geoId: '275620'
           },
           'broad+channel': {
             displayName: 'Broad Channel',
             searchStr: 'broad+channel',
-            geoId: '10562',
+            geoId: '10562'
           },
           hollis: {displayName: 'Hollis', searchStr: 'hollis', geoId: '25160'},
           bellerose: {
             displayName: 'Bellerose',
             searchStr: 'bellerose',
-            geoId: '403226',
+            geoId: '403226'
           },
           laurelton: {
             displayName: 'Laurelton',
             searchStr: 'laurelton',
-            geoId: '274285',
+            geoId: '274285'
           },
           corona: {displayName: 'Corona', searchStr: 'corona', geoId: '10957'},
           'howard+beach': {
             displayName: 'Howard Beach',
             searchStr: 'howard+beach',
-            geoId: '21970',
+            geoId: '21970'
           },
           'floral+park': {
             displayName: 'Floral park',
             searchStr: 'floral+park',
-            geoId: '403225',
+            geoId: '403225'
           },
           'ozone+park': {
             displayName: 'Ozone Park',
             searchStr: 'ozone+park',
-            geoId: '26352',
+            geoId: '26352'
           },
           'rikers+island': {
             displayName: 'Rikers Island',
             searchStr: 'rikers+island',
-            geoId: '270922',
+            geoId: '270922'
           },
           'hunters+point': {
             displayName: 'Hunters Point',
             searchStr: 'hunters+point',
-            geoId: '270857',
+            geoId: '270857'
           },
           elmhurst: {
             displayName: 'Elmhurst',
             searchStr: 'elmhurst',
-            geoId: '403223',
+            geoId: '403223'
           },
           rosedale: {
             displayName: 'Rosedale',
             searchStr: 'rosedale',
-            geoId: '275247',
+            geoId: '275247'
           },
           arverne: {
             displayName: 'Arverne',
             searchStr: 'arverne',
-            geoId: '10007',
+            geoId: '10007'
           },
           astoria: {
             displayName: 'Astoria',
             searchStr: 'astoria',
-            geoId: '272816',
+            geoId: '272816'
           },
           'john+f.+kennedy+international+airport': {
             displayName: 'John F. Kennedy International Airport',
             searchStr: 'john+f.+kennedy+international+airport',
-            geoId: '403107',
+            geoId: '403107'
           },
           'la+guardia+airport': {
             displayName: 'La Guardia Airport',
             searchStr: 'la+guardia+airport',
-            geoId: '39299',
+            geoId: '39299'
           },
           flushing: {
             displayName: 'Flushing',
             searchStr: 'flushing',
-            geoId: '18131',
+            geoId: '18131'
           },
           pomonok: {
             displayName: 'Pomonok',
             searchStr: 'pomonok',
-            geoId: '13356',
+            geoId: '13356'
           },
           'college+point': {
             displayName: 'College Point',
             searchStr: 'college+point',
-            geoId: '8349',
+            geoId: '8349'
           },
           'jamaica+estates': {
             displayName: 'Jamaica Estates',
             searchStr: 'jamaica+estates',
-            geoId: '32192',
+            geoId: '32192'
           },
           'cambria+heights': {
             displayName: 'Cambria Heights',
             searchStr: 'cambria+heights',
-            geoId: '50348',
+            geoId: '50348'
           },
           woodhaven: {
             displayName: 'Woodhaven',
             searchStr: 'woodhaven',
-            geoId: '49994',
+            geoId: '49994'
           },
           'jackson+heights': {
             displayName: 'Jackson Heights',
             searchStr: 'jackson+heights',
-            geoId: '274117',
+            geoId: '274117'
           },
           bayside: {
             displayName: 'Bayside',
             searchStr: 'bayside',
-            geoId: '37309',
+            geoId: '37309'
           },
           malba: {displayName: 'Malba', searchStr: 'malba', geoId: '35830'},
           utopia: {displayName: 'Utopia', searchStr: 'utopia', geoId: '276623'},
           'fort+tilden': {
             displayName: 'Fort Tilden',
             searchStr: 'fort+tilden',
-            geoId: '31619',
+            geoId: '31619'
           },
           roxbury: {
             displayName: 'Roxbury',
             searchStr: 'roxbury',
-            geoId: '54234',
+            geoId: '54234'
           },
           ridgewood: {
             displayName: 'Ridgewood',
             searchStr: 'ridgewood',
-            geoId: '275173',
-          },
-        },
+            geoId: '275173'
+          }
+        }
       },
       richmond: {
         displayName: 'Staten Island',
@@ -878,309 +878,309 @@ export default {
           'grant+city': {
             displayName: 'Grant City',
             searchStr: 'grant+city',
-            geoId: '195069',
+            geoId: '195069'
           },
           'st.+george': {
             displayName: 'St. George',
             searchStr: 'st.+george',
-            geoId: '403202',
+            geoId: '403202'
           },
           huguenot: {
             displayName: 'Huguenot',
             searchStr: 'huguenot',
-            geoId: '195511',
+            geoId: '195511'
           },
           'old+town': {
             displayName: 'Old Town',
             searchStr: 'old+town',
-            geoId: '270904',
+            geoId: '270904'
           },
           'bay+terrace': {
             displayName: 'Bay Terrace',
             searchStr: 'bay+terrace',
-            geoId: '16920',
+            geoId: '16920'
           },
           'fresh+kills+park': {
             displayName: 'Fresh Kills Park',
             searchStr: 'fresh+kills+park',
-            geoId: '403174',
+            geoId: '403174'
           },
           'meiers+corners': {
             displayName: 'Meiers Corners',
             searchStr: 'meiers+corners',
-            geoId: '403125',
+            geoId: '403125'
           },
           'midland+beach': {
             displayName: 'Midland Beach',
             searchStr: 'midland+beach',
-            geoId: '196350',
+            geoId: '196350'
           },
           'fresh+kills': {
             displayName: 'Fresh Kills',
             searchStr: 'fresh+kills',
-            geoId: '194861',
+            geoId: '194861'
           },
           'park+hill': {
             displayName: 'Park Hill',
             searchStr: 'park+hill',
-            geoId: '197042',
+            geoId: '197042'
           },
           bloomfield: {
             displayName: 'Bloomfield',
             searchStr: 'bloomfield',
-            geoId: '403130',
+            geoId: '403130'
           },
           'todt+hill': {
             displayName: 'Todt Hill',
             searchStr: 'todt+hill',
-            geoId: '270950',
+            geoId: '270950'
           },
           woodrow: {
             displayName: 'Woodrow',
             searchStr: 'woodrow',
-            geoId: '199080',
+            geoId: '199080'
           },
           'shore+acres': {
             displayName: 'Shore Acres',
             searchStr: 'shore+acres',
-            geoId: '197877',
+            geoId: '197877'
           },
           clifton: {
             displayName: 'Clifton',
             searchStr: 'clifton',
-            geoId: '193879',
+            geoId: '193879'
           },
           'richmond+valley': {
             displayName: 'Richmond Valley',
             searchStr: 'richmond+valley',
-            geoId: '403198',
+            geoId: '403198'
           },
           willowbrook: {
             displayName: 'Willowbrook',
             searchStr: 'willowbrook',
-            geoId: '199023',
+            geoId: '199023'
           },
           graniteville: {
             displayName: 'Graniteville',
             searchStr: 'graniteville',
-            geoId: '195067',
+            geoId: '195067'
           },
           'arden+heights': {
             displayName: 'Arden Heights',
             searchStr: 'arden+heights',
-            geoId: '272785',
+            geoId: '272785'
           },
           'new+dorp+beach': {
             displayName: 'New Dorp Beach',
             searchStr: 'new+dorp+beach',
-            geoId: '196592',
+            geoId: '196592'
           },
           eltingville: {
             displayName: 'Eltingville',
             searchStr: 'eltingville',
-            geoId: '273653',
+            geoId: '273653'
           },
           sunnyside: {
             displayName: 'Sunnyside',
             searchStr: 'sunnyside',
-            geoId: '198296',
+            geoId: '198296'
           },
           'dongan+hills': {
             displayName: 'Dongan Hills',
             searchStr: 'dongan+hills',
-            geoId: '194257',
+            geoId: '194257'
           },
           'chelsea-travis': {
             displayName: 'Chelsea-Travis',
             searchStr: 'chelsea-travis',
-            geoId: '272982',
+            geoId: '272982'
           },
           arrochar: {
             displayName: 'Arrochar',
             searchStr: 'arrochar',
-            geoId: '193043',
+            geoId: '193043'
           },
           'elm+park': {
             displayName: 'Elm Park',
             searchStr: 'elm+park',
-            geoId: '194566',
+            geoId: '194566'
           },
           'randall+manor': {
             displayName: 'Randall Manor',
             searchStr: 'randall+manor',
-            geoId: '270917',
+            geoId: '270917'
           },
           'silver+lake': {
             displayName: 'Silver Lake',
             searchStr: 'silver+lake',
-            geoId: '403200',
+            geoId: '403200'
           },
           oakwood: {
             displayName: 'Oakwood',
             searchStr: 'oakwood',
-            geoId: '196875',
+            geoId: '196875'
           },
           'west+brighton': {
             displayName: 'West Brighton',
             searchStr: 'west+brighton',
-            geoId: '403203',
+            geoId: '403203'
           },
           'south+beach': {
             displayName: 'South Beach',
             searchStr: 'south+beach',
-            geoId: '197995',
+            geoId: '197995'
           },
           'heartland+village': {
             displayName: 'Heartland Village',
             searchStr: 'heartland+village',
-            geoId: '270853',
+            geoId: '270853'
           },
           'great+kills': {
             displayName: 'Great Kills',
             searchStr: 'great+kills',
-            geoId: '195087',
+            geoId: '195087'
           },
           "prince's+bay": {
             displayName: "Prince's Bay",
             searchStr: "prince's+bay",
-            geoId: '270912',
+            geoId: '270912'
           },
           annadale: {
             displayName: 'Annadale',
             searchStr: 'annadale',
-            geoId: '272771',
+            geoId: '272771'
           },
           'grasmere+-+concord': {
             displayName: 'Grasmere - Concord',
             searchStr: 'grasmere+-+concord',
-            geoId: '403199',
+            geoId: '403199'
           },
           rossville: {
             displayName: 'Rossville',
             searchStr: 'rossville',
-            geoId: '197623',
+            geoId: '197623'
           },
           stapleton: {
             displayName: 'Stapleton',
             searchStr: 'stapleton',
-            geoId: '198184',
+            geoId: '198184'
           },
           'grymes+hill': {
             displayName: 'Grymes Hill',
             searchStr: 'grymes+hill',
-            geoId: '195167',
+            geoId: '195167'
           },
           'port+richmond': {
             displayName: 'Port Richmond',
             searchStr: 'port+richmond',
-            geoId: '197303',
+            geoId: '197303'
           },
           tottenville: {
             displayName: 'Tottenville',
             searchStr: 'tottenville',
-            geoId: '275754',
+            geoId: '275754'
           },
           'port+ivory': {
             displayName: 'Port Ivory',
             searchStr: 'port+ivory',
-            geoId: '197294',
+            geoId: '197294'
           },
           rosebank: {
             displayName: 'Rosebank',
             searchStr: 'rosebank',
-            geoId: '197599',
+            geoId: '197599'
           },
           charleston: {
             displayName: 'Charleston',
             searchStr: 'charleston',
-            geoId: '273219',
+            geoId: '273219'
           },
           'la+tourette+park': {
             displayName: 'La Tourette Park',
             searchStr: 'la+tourette+park',
-            geoId: '403185',
+            geoId: '403185'
           },
           westerleigh: {
             displayName: 'Westerleigh',
             searchStr: 'westerleigh',
-            geoId: '276006',
+            geoId: '276006'
           },
           'new+springville': {
             displayName: 'New Springville',
             searchStr: 'new+springville',
-            geoId: '196620',
+            geoId: '196620'
           },
           'castleton+corners': {
             displayName: 'Castleton Corners',
             searchStr: 'castleton+corners',
-            geoId: '403204',
+            geoId: '403204'
           },
           'lighthouse+hill': {
             displayName: 'Lighthouse Hill',
             searchStr: 'lighthouse+hill',
-            geoId: '270870',
+            geoId: '270870'
           },
           'emerson+hill': {
             displayName: 'Emerson Hill',
             searchStr: 'emerson+hill',
-            geoId: '403136',
+            geoId: '403136'
           },
           "mariner's+harbor": {
             displayName: "Mariner's Harbor",
             searchStr: "mariner's+harbor",
-            geoId: '196213',
+            geoId: '196213'
           },
           'new+brighton': {
             displayName: 'New Brighton',
             searchStr: 'new+brighton',
-            geoId: '196583',
+            geoId: '196583'
           },
           tompkinsville: {
             displayName: 'Tompkinsville',
             searchStr: 'tompkinsville',
-            geoId: '198432',
+            geoId: '198432'
           },
           'fort+wadsworth': {
             displayName: 'Fort Wadsworth',
             searchStr: 'fort+wadsworth',
-            geoId: '194810',
+            geoId: '194810'
           },
           'butler+manor': {
             displayName: 'Butler Manor',
             searchStr: 'butler+manor',
-            geoId: '270809',
+            geoId: '270809'
           },
           'new+dorp': {
             displayName: 'New Dorp',
             searchStr: 'new+dorp',
-            geoId: '196591',
+            geoId: '196591'
           },
           'richmond+town': {
             displayName: 'Richmond Town',
             searchStr: 'richmond+town',
-            geoId: '275164',
+            geoId: '275164'
           },
           'pleasant+plains': {
             displayName: 'Pleasant Plains',
             searchStr: 'pleasant+plains',
-            geoId: '197231',
+            geoId: '197231'
           },
           'clove+lake': {
             displayName: 'Clove Lake',
             searchStr: 'clove+lake',
-            geoId: '403201',
+            geoId: '403201'
           },
           greenridge: {
             displayName: 'Greenridge',
             searchStr: 'greenridge',
-            geoId: '195119',
+            geoId: '195119'
           },
           'bulls+head': {
             displayName: 'Bulls Head',
             searchStr: 'bulls+head',
-            geoId: '193555',
-          },
-        },
+            geoId: '193555'
+          }
+        }
       },
       'new+york': {
         displayName: 'Manhattan',
@@ -1190,203 +1190,203 @@ export default {
           'west+village': {
             displayName: 'West Village',
             searchStr: 'west+village',
-            geoId: '270964',
+            geoId: '270964'
           },
           'murray+hill': {
             displayName: 'Murray Hill',
             searchStr: 'murray+hill',
-            geoId: '274627',
+            geoId: '274627'
           },
           'hamilton+heights': {
             displayName: 'Hamilton Heights',
             searchStr: 'hamilton+heights',
-            geoId: '270850',
+            geoId: '270850'
           },
           chelsea: {
             displayName: 'Chelsea',
             searchStr: 'chelsea',
-            geoId: '276254',
+            geoId: '276254'
           },
           'ellis+island': {
             displayName: 'Ellis Island',
             searchStr: 'ellis+island',
-            geoId: '35472',
+            geoId: '35472'
           },
           'financial+district': {
             displayName: 'Financial District',
             searchStr: 'financial+district',
-            geoId: '270835',
+            geoId: '270835'
           },
           'east+harlem': {
             displayName: 'East Harlem',
             searchStr: 'east+harlem',
-            geoId: '270828',
+            geoId: '270828'
           },
           'little+italy': {
             displayName: 'Little Italy',
             searchStr: 'little+italy',
-            geoId: '270873',
+            geoId: '270873'
           },
           'liberty+island': {
             displayName: 'Liberty Island',
             searchStr: 'liberty+island',
-            geoId: '403157',
+            geoId: '403157'
           },
           'east+village': {
             displayName: 'East Village',
             searchStr: 'east+village',
-            geoId: '270829',
+            geoId: '270829'
           },
           'upper+east+side': {
             displayName: 'Upper East Side',
             searchStr: 'upper+east+side',
-            geoId: '270957',
+            geoId: '270957'
           },
           tribeca: {
             displayName: 'Tribeca',
             searchStr: 'tribeca',
-            geoId: '270951',
+            geoId: '270951'
           },
           harlem: {displayName: 'Harlem', searchStr: 'harlem', geoId: '195267'},
           'stuyvesant+town': {
             displayName: 'Stuyvesant Town',
             searchStr: 'stuyvesant+town',
-            geoId: '403205',
+            geoId: '403205'
           },
           'washington+heights': {
             displayName: 'Washington Heights',
             searchStr: 'washington+heights',
-            geoId: '198687',
+            geoId: '198687'
           },
           'columbus+circle': {
             displayName: 'Columbus Circle',
             searchStr: 'columbus+circle',
-            geoId: '403207',
+            geoId: '403207'
           },
           'tudor+city': {
             displayName: 'Tudor City',
             searchStr: 'tudor+city',
-            geoId: '270952',
+            geoId: '270952'
           },
           manhattanville: {
             displayName: 'Manhattanville',
             searchStr: 'manhattanville',
-            geoId: '270879',
+            geoId: '270879'
           },
           chinatown: {
             displayName: 'Chinatown',
             searchStr: 'chinatown',
-            geoId: '193821',
+            geoId: '193821'
           },
           'brooklyn+heights': {
             displayName: 'Brooklyn Heights',
             searchStr: 'brooklyn+heights',
-            geoId: '403122',
+            geoId: '403122'
           },
           'turtle+bay': {
             displayName: 'Turtle Bay',
             searchStr: 'turtle+bay',
-            geoId: '270953',
+            geoId: '270953'
           },
           'sutton+place': {
             displayName: 'Sutton Place',
             searchStr: 'sutton+place',
-            geoId: '270946',
+            geoId: '270946'
           },
           midtown: {
             displayName: 'Midtown',
             searchStr: 'midtown',
-            geoId: '270885',
+            geoId: '270885'
           },
           'flatiron+district': {
             displayName: 'Flatiron District',
             searchStr: 'flatiron+district',
-            geoId: '403206',
+            geoId: '403206'
           },
           'randals-wards+island': {
             displayName: 'Randals-Wards Island',
             searchStr: 'randals-wards+island',
-            geoId: '403143',
+            geoId: '403143'
           },
           'marble+hill': {
             displayName: 'Marble Hill',
             searchStr: 'marble+hill',
-            geoId: '270880',
+            geoId: '270880'
           },
           'greenwich+village': {
             displayName: 'Greenwich Village',
             searchStr: 'greenwich+village',
-            geoId: '195133',
+            geoId: '195133'
           },
           'upper+west+side': {
             displayName: 'Upper West Side',
             searchStr: 'upper+west+side',
-            geoId: '270958',
+            geoId: '270958'
           },
           gramercy: {
             displayName: 'Gramercy',
             searchStr: 'gramercy',
-            geoId: '273860',
+            geoId: '273860'
           },
           soho: {displayName: 'SoHo', searchStr: 'soho', geoId: '270928'},
           'battery+park': {
             displayName: 'Battery Park',
             searchStr: 'battery+park',
-            geoId: '272869',
+            geoId: '272869'
           },
           'vinegar+hill': {
             displayName: 'Vinegar Hill',
             searchStr: 'vinegar+hill',
-            geoId: '270960',
+            geoId: '270960'
           },
           'roosevelt+island': {
             displayName: 'Roosevelt Island',
             searchStr: 'roosevelt+island',
-            geoId: '20239',
+            geoId: '20239'
           },
           'garment+district': {
             displayName: 'Garment District',
             searchStr: 'garment+district',
-            geoId: '270842',
+            geoId: '270842'
           },
           'lower+east+side': {
             displayName: 'Lower East Side',
             searchStr: 'lower+east+side',
-            geoId: '270875',
+            geoId: '270875'
           },
           noho: {displayName: 'NoHo', searchStr: 'noho', geoId: '270895'},
           'central+park': {
             displayName: 'Central Park',
             searchStr: 'central+park',
-            geoId: '273205',
+            geoId: '273205'
           },
           clinton: {
             displayName: 'Clinton',
             searchStr: 'clinton',
-            geoId: '273289',
+            geoId: '273289'
           },
           'morningside+heights': {
             displayName: 'Morningside Heights',
             searchStr: 'morningside+heights',
-            geoId: '270891',
+            geoId: '270891'
           },
           'mill+rock+park': {
             displayName: 'Mill Rock Park',
             searchStr: 'mill+rock+park',
-            geoId: '403164',
+            geoId: '403164'
           },
           'governors+island': {
             displayName: 'Governors Island',
             searchStr: 'governors+island',
-            geoId: '403106',
+            geoId: '403106'
           },
           'carnegie+hill': {
             displayName: 'Carnegie Hill',
             searchStr: 'carnegie+hill',
-            geoId: '270810',
-          },
-        },
-      },
-    },
-  },
+            geoId: '270810'
+          }
+        }
+      }
+    }
+  }
 }

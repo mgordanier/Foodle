@@ -15,3 +15,40 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id, {
+      attributes: ['id', 'email']
+    })
+    user
+      ? res.json(user)
+      : res.status(404).send(`User ${req.params.id} not found`)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newUser = await User.create(req.body)
+    res.status(201).send(newUser)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const [updatedCount, updatedUsers] = await User.update(req.body, {
+      where: {
+        id: req.params.id
+      },
+      returning: true
+    })
+    if (updatedCount) res.status(201).send(updatedUsers[0])
+    else res.status(404).send(`User ${req.params.id} not found`)
+  } catch (error) {
+    next(error)
+  }
+})

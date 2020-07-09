@@ -1,17 +1,17 @@
 import React from 'react'
 import CreateEventForm from './CreateEventForm'
-import EventCard from './EventCard'
 import UpcomingEvents from './UpcomingEvents'
+import {Link} from 'react-router-dom'
 
 class UserDashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isFormOpen: false,
+      isFormOpen: true
     }
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     this.setState({isFormOpen: !this.state.isFormOpen})
   }
 
@@ -21,26 +21,19 @@ class UserDashboard extends React.Component {
       <div className="container">
         <h1 className="is-size-2 my-5">Upcoming Events</h1>
         <UpcomingEvents />
-
         <div>
           <h1 className="is-size-2 my-5">Voting In Process</h1>
-
           <UpcomingEvents />
         </div>
+
         <div>
           <h1 className="is-size-2 my-5">Create a New Event</h1>
-          {isFormOpen === false ? (
-            <button
-              type="button"
-              className="button is-info"
-              onClick={this.handleClick}
-            >
+          <Link to="/newevent">
+            <button type="button" className="button is-large">
               Get Started
             </button>
-          ) : null}
+          </Link>
         </div>
-
-        {isFormOpen ? <CreateEventForm /> : null}
       </div>
     )
   }

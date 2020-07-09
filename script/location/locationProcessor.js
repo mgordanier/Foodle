@@ -9,7 +9,7 @@ const zillowNeighborhoodsJSON = require('./zillow-neighborhoods.json')
 //HELPER FUNCTIONS
 
 //convert county to borough for nyc
-const boroughFrom = (county) => {
+const boroughFrom = county => {
   switch (county) {
     case 'Kings':
       return 'Brooklyn'
@@ -27,15 +27,18 @@ const boroughFrom = (county) => {
 }
 
 // convert name string from Zillow API to format compatible with Google Places API search-by-text
-const searchStr = (string) => {
-  return string.toLowerCase().split(' ').join('+')
+const searchStr = string => {
+  return string
+    .toLowerCase()
+    .split(' ')
+    .join('+')
 }
 
 // create new object in desired format using info from Zillow API output object
-const buildLocationObj = (neighborhoods) => {
+const buildLocationObj = neighborhoods => {
   const location = {}
 
-  neighborhoods.forEach((hood) => {
+  neighborhoods.forEach(hood => {
     const {name, regionid, county, city} = hood.fields
     const countyKey = searchStr(county)
     const cityKey = searchStr(city)
@@ -45,20 +48,20 @@ const buildLocationObj = (neighborhoods) => {
       location[cityKey] = {
         displayName: city,
         searchStr: cityKey,
-        county: {},
+        county: {}
       }
     }
     if (!location[cityKey].county[countyKey]) {
       location[cityKey].county[countyKey] = {
         displayName: boroughFrom(county),
         searchStr: searchStr(boroughFrom(county)),
-        neighborhood: {},
+        neighborhood: {}
       }
     }
     location[cityKey].county[countyKey].neighborhood[hoodKey] = {
       displayName: name,
       searchStr: searchStr(name),
-      geoId: regionid,
+      geoId: regionid
     }
   })
   return location
@@ -75,7 +78,7 @@ function generateLocationFile() {
   )
   const location = buildLocationObj(zillowNeighborhoodsJSON)
 
-  fs.writeFile(filepath, JSON.stringify(location), (err) => {
+  fs.writeFile(filepath, JSON.stringify(location), err => {
     if (err) throw err
     console.log('location file saved!')
   })
