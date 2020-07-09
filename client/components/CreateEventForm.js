@@ -1,6 +1,7 @@
 import React from 'react'
 import {createEvent} from '../store/events'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -29,14 +30,17 @@ class CreateEventForm extends React.Component {
       activitySubtype: this.state.activitySubtype,
       initialDueDate: this.state.initialDueDate
     }
-    console.log('NEW EVENT', newEvent)
+
     this.props.createEvent(newEvent)
+    this.props.history.push('/invitelink')
   }
 
   render() {
-    console.log(this.state)
+    console.log('thisprops', this.props)
+
     return (
       <div className="my-6 card">
+        <h1 className="is-size-2 my-5">Create a New Event</h1>
         <form className="container" onSubmit={this.handleSubmit}>
           <div className="field column">
             <label className="label">Event Name</label>
@@ -47,6 +51,7 @@ class CreateEventForm extends React.Component {
                 type="text"
                 placeholder="Event Name"
                 onChange={this.handleChange}
+                required
               />
             </div>
           </div>
@@ -55,8 +60,11 @@ class CreateEventForm extends React.Component {
             <label className="label">Neighborhood</label>
             <div className="control">
               <div className="select">
-                <select name="neighborhood" onChange={this.handleChange}>
-                  <option>Select A Neighborhood</option>
+                <select
+                  name="neighborhood"
+                  onChange={this.handleChange}
+                  required
+                >
                   <option>Lower East Side</option>
                   <option>Soho</option>
                   <option>Chinatown</option>
@@ -77,6 +85,7 @@ class CreateEventForm extends React.Component {
               data-is-range="true"
               data-close-on-select="false"
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -84,8 +93,11 @@ class CreateEventForm extends React.Component {
             <label className="label">Categories</label>
             <div className="control">
               <div className="select">
-                <select name="activitySubtype" onChange={this.handleChange}>
-                  <option>Select A Category</option>
+                <select
+                  name="activitySubtype"
+                  onChange={this.handleChange}
+                  required
+                >
                   <option>Burgers</option>
                   <option>Pizza</option>
                   <option>Chinese</option>
@@ -103,8 +115,10 @@ class CreateEventForm extends React.Component {
               data-is-range="true"
               data-close-on-select="false"
               onChange={this.handleChange}
+              required
             />
           </div>
+
           <button className="button is-info is-centered is-large">
             Create Event
           </button>
