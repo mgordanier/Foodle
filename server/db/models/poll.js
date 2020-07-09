@@ -3,19 +3,11 @@ const db = require('../db')
 
 const Poll = db.define('poll', {
   name: {
-    type: Sequelize.ENUM(
-      'suggestions',
-      'location',
-      'availability',
-      'activity type'
-    )
+    type: Sequelize.ENUM('suggestions', 'location', 'availability', 'activity'),
   },
-  dateOptions: {
-    type: Sequelize.ARRAY(Sequelize.RANGE(Sequelize.DATE))
+  options: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
   },
-  textOptions: {
-    type: Sequelize.ARRAY(Sequelize.TEXT)
-  }
 })
 
 module.exports = Poll
