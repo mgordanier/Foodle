@@ -11,13 +11,15 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           where: {
-            id: req.user.dataValues.id,
-          },
-        },
-      ],
+            id: req.user.dataValues.id
+          }
+        }
+      ]
     })
     if (events) {
       res.json(events)
+    } else {
+      res.status(401).send('cannot get events')
     }
   } catch (err) {
     next(err)
@@ -27,18 +29,20 @@ router.get('/', async (req, res, next) => {
 //create an event as a user
 router.post('/', async (req, res, next) => {
   try {
-    const {name, time, location, allowSuggestions, initialDueDate} = req.body
     const event = await Event.create({
-      name,
-      time,
-      location,
-      allowSuggestions,
-      initialDueDate,
+      name: req.body.name,
+      neighborhood: req.body.neighborhood,
+      time: req.body.time,
+      initialDueDate: req.body.initialDueDate,
+      activitySubtype: req.body.activitySubtype
     })
+
+    // need to add magic method to update through table with isOrganizer
+
     if (event) {
       res.json(event)
     } else {
-      res.status(401).send('can not create events')
+      res.status(401).send('cannot create a new event')
     }
   } catch (error) {
     next(error)

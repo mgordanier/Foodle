@@ -1,37 +1,40 @@
 import React from 'react'
 import {createEvent} from '../store/events'
+import {connect} from 'react-redux'
 
-export default class CreateEventForm extends React.Component {
+class CreateEventForm extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       name: '',
       neighborhood: '',
       time: '',
-      allowSuggestions: false,
-      initialDueDate: '',
+      activitySubtype: '',
+      initialDueDate: ''
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault()
-    let newEvent = {}
-    newEvent.name = this.state.name
-    newEvent.neighborhood = this.state.neighborhood
-    newEvent.time = this.state.time
-    newEvent.allowSuggestions = this.state.allowSuggestions
-    newEvent.initialDueDate = this.state.initialDueDate
+    let newEvent = {
+      name: this.state.name,
+      neighborhood: this.state.neighborhood,
+      time: this.state.time,
+      activitySubtype: this.state.activitySubtype,
+      initialDueDate: this.state.initialDueDate
+    }
     console.log('NEW EVENT', newEvent)
-    createEvent(newEvent)
+    this.props.createEvent(newEvent)
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="my-6 card">
         <form className="container" onSubmit={this.handleSubmit}>
@@ -47,17 +50,24 @@ export default class CreateEventForm extends React.Component {
               />
             </div>
           </div>
-          <div className="field column">
-            <label className="label">Location</label>
+
+          <div className="field">
+            <label className="label">Neighborhood</label>
             <div className="control">
-              <input
-                className="input"
-                type="text"
-                placeholder="Location"
-                onChange={this.handleChange}
-              />
+              <div className="select">
+                <select name="neighborhood" onChange={this.handleChange}>
+                  <option>Select A Neighborhood</option>
+                  <option>Lower East Side</option>
+                  <option>Soho</option>
+                  <option>Chinatown</option>
+                  <option>East Village</option>
+                  <option>West Village</option>
+                  <option>Union Square</option>
+                </select>
+              </div>
             </div>
           </div>
+
           <div className="field column">
             <label className="label">Date & Time</label>
             <input
@@ -69,18 +79,21 @@ export default class CreateEventForm extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="field column">
+
+          <div className="field">
             <label className="label">Categories</label>
             <div className="control">
-              <input
-                name="allowSuggestions"
-                className="input"
-                type="text"
-                placeholder="Food Categories"
-                onChange={this.handleChange}
-              />
+              <div className="select">
+                <select name="activitySubtype" onChange={this.handleChange}>
+                  <option>Select A Category</option>
+                  <option>Burgers</option>
+                  <option>Pizza</option>
+                  <option>Chinese</option>
+                </select>
+              </div>
             </div>
           </div>
+
           <div className="field column">
             <label className="label">Poll Due Date</label>
             <input
@@ -100,3 +113,11 @@ export default class CreateEventForm extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createEvent: newEvent => dispatch(createEvent(newEvent))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CreateEventForm)
