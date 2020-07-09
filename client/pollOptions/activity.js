@@ -87,7 +87,7 @@ export default {
     hotpot: {searchStr: 'hotpot', displayName: 'Hot Pot'},
     hungarian: {searchStr: 'hungarian', displayName: 'Hungarian'},
     iberian: {searchStr: 'iberian', displayName: 'Iberian'},
-    indpak: {searchStr: 'indpak', displayName: 'Indian'},
+    indian: {searchStr: 'indian', displayName: 'Indian'},
     indonesian: {searchStr: 'indonesian', displayName: 'Indonesian'},
     irish: {searchStr: 'irish', displayName: 'Irish'},
     italian: {searchStr: 'italian', displayName: 'Italian'},

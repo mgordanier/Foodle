@@ -10,6 +10,7 @@ class UpcomingEvents extends React.Component {
 
   render() {
     const {events} = this.props
+    console.log('props', this.props)
     return (
       <>
         <div className="columns">

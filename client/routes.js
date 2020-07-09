@@ -13,6 +13,7 @@ import {
   UserDashboard,
   InviteLink,
   Suggestions,
+  CreateEventForm,
 } from './components'
 import {me} from './store'
 
@@ -38,7 +39,7 @@ class Routes extends Component {
         <Route path="/inputpollform" component={InputPollForm} />
         <Route path="/invitelink" component={InviteLink} />
         <Route path="/suggestions" component={Suggestions} />
-
+        <Route path="/newevent" component={CreateEventForm} />
         <Route path="/userdashboard" component={UserDashboard} />
         {isLoggedIn && (
           <Switch>

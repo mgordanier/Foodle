@@ -16,13 +16,46 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/responses', async (req, res, next) => {
+// router.post('/responses', async (req, res, next) => {
+//   try {
+//     const pollResponses = await Response.create({
+//       selections: req.body.selections,
+//       userId: req.body.userId,
+//     })
+//     res.json(pollResponses)
+
+router.get('/:id', async (req, res, next) => {
   try {
-    const pollResponses = await Response.create({
-      selections: req.body.selections,
-      userId: req.body.userId,
+    const user = await User.findByPk(req.params.id, {
+      attributes: ['id', 'email'],
     })
-    res.json(pollResponses)
+    user
+      ? res.json(user)
+      : res.status(404).send(`User ${req.params.id} not found`)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newUser = await User.create(req.body)
+    res.status(201).send(newUser)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const [updatedCount, updatedUsers] = await User.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      returning: true,
+    })
+    if (updatedCount) res.status(201).send(updatedUsers[0])
+    else res.status(404).send(`User ${req.params.id} not found`)
   } catch (error) {
     next(error)
   }

@@ -28,7 +28,9 @@ class Home extends Component {
 
           <h2 className="subtitle">Create an event and Invite your friends</h2>
           <Link to="/userdashboard">
-            <button className="button is-info is-large">Get Started</button>
+            <button type="button" className="button is-info is-large">
+              Get Started
+            </button>
           </Link>
         </div>
       </div>
