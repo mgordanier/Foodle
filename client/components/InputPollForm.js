@@ -93,10 +93,14 @@ export default class InputPollForm extends Component {
 
               <div className="field is-grouped">
                 <div className="control">
-                  <button className="button is-primary">Submit</button>
+                  <button type="button" className="button is-primary">
+                    Submit
+                  </button>
                 </div>
                 <div className="control">
-                  <button className="button is-link is-light">Cancel</button>
+                  <button type="button" className="button is-link is-light">
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>
