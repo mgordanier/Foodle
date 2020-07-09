@@ -1,16 +1,23 @@
 const router = require('express').Router()
-const {User, Event} = require('../db/models')
+const {Event, UserEvent, User} = require('../db/models')
 module.exports = router
 
-// Get upcoming events for the user
-
+// Get events for a user
 router.get('/', async (req, res, next) => {
   try {
     const events = await Event.findAll({
-      where: {
-        userId: req.params.userId
-      }
+      include: [
+        {
+          model: User,
+          where: {
+            id: req.user.dataValues.id,
+          },
+        },
+      ],
     })
+    if (events) {
+      res.json(events)
+    }
   } catch (err) {
     next(err)
   }
