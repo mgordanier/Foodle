@@ -2,7 +2,7 @@ import React from 'react'
 
 export const ChoiceModal = (props) => {
   const {closeModal, modalState, oneRestaurant} = props
-  console.log('oneRestaurant', oneRestaurant)
+  // console.log('oneRestaurant', oneRestaurant)
 
   if (!modalState || !oneRestaurant.result) {
     return null
@@ -31,10 +31,11 @@ export const ChoiceModal = (props) => {
           <p>{oneRestaurant.result.website}</p>
         </section>
         <footer className="modal-card-foot">
-          <button className="button is-success">Save changes</button>
-          <button className="button" onClick={closeModal}>
-            Cancel
-          </button>
+          <div>
+            <button className="button" onClick={closeModal}>
+              Close
+            </button>
+          </div>
         </footer>
       </div>
     </div>

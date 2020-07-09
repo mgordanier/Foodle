@@ -1,5 +1,6 @@
 const axios = require('axios')
 const router = require('express').Router()
+const {Poll} = require('../db/models')
 
 module.exports = router
 
@@ -14,15 +15,22 @@ router.get('/restaurants', async (req, res, next) => {
     // )
 
     const neighborhood = 'east+village'
-    const borough = 'manhattan'
+    // const borough = 'manhattan'
     const city = 'new+york+city'
-    const category = 'burgers'
+    const category = 'pizza'
 
     const {data} = await axios.get(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${borough}+${city}&type=restaurant&key=${key}`
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
     )
+    // console.log("GOOGLE API ROUTEEEE", data.results)
+    let firstThree = data.results.slice(0, 3)
+    const textOptions = firstThree.map((el) => el.place_id)
 
-    res.json(data)
+    await Poll.create({name: 'activity type', textOptions: textOptions})
+
+    res.json({
+      results: firstThree,
+    })
   } catch (err) {
     next(err)
   }
@@ -33,8 +41,9 @@ router.get('/randomRestaurant/:restaurantId', async (req, res, next) => {
   try {
     const placeId = req.params.restaurantId
     const {data} = await axios.get(
-      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,url,vicinity,website,price_level,review,formatted_phone_number&key=${key}`
+      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,url,vicinity,website,photo,price_level,review,formatted_phone_number&key=${key}`
     )
+    console.log(data)
     res.json(data)
   } catch (error) {
     next(error)

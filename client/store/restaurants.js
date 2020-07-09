@@ -3,6 +3,7 @@ import Axios from 'axios'
 //ACTION TYPES
 const GET_ALL_RESTAURANTS = 'GET_ALL_RESTAURANTS'
 const GET_ONE_RESTAURANT = 'GET_ONE_RESTAURANT'
+// const VOTE_FOR_RESTAURANT = "VOTE_FOR_RESTAURANT"
 
 //ACTION CREATORS
 const getAllRestaurants = (restaurants) => {
@@ -19,12 +20,18 @@ const getOneRestaurant = (restaurant) => {
   }
 }
 
+// const votedRestaurant = restaurant => {
+//   return {
+//     type: VOTE_FOR_RESTAURANT,
+//     restaurant
+//   }
+// }
+
 //THUNK CREATORS
 export const fetchRestaurants = () => {
   return async (dispatch) => {
     try {
       const {data} = await Axios.get('/api/google/restaurants')
-      console.log(data)
       dispatch(getAllRestaurants(data))
     } catch (error) {
       console.log(error)
@@ -45,9 +52,24 @@ export const fetchOneRestaurant = (restaurantId) => {
   }
 }
 
+export const voteForRestaurant = (restaurants) => {
+  return async (dispatch, getState) => {
+    const userId = getState().user.id
+    try {
+      const {data} = await Axios.post('/api/user/responses', {
+        restaurants,
+        userId,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 const initialState = {
   allRestaurants: {},
   oneRestaurant: {},
+  // votedRestaurant: {}
 }
 
 //REDUCER

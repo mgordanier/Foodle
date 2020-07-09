@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Event, UserEvent, User} = require('../db/models')
+const {Event, UserEvent, User, Poll} = require('../db/models')
 module.exports = router
 
 // Get events for a user

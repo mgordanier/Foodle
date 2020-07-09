@@ -9,7 +9,7 @@ export function PieChartData() {
       {type: 'mexican', value: 1},
       {type: 'japanese', value: 5},
       {type: 'american', value: 1},
-      {type: 'chinese', value: 1}
+      {type: 'chinese', value: 1},
     ]
   }
 
@@ -22,11 +22,9 @@ export function PieChartData() {
   //   ]
   // }
 
-  //current state value & function that lets you update it
   const [data, setData] = useState(generateData())
   // const [location, setLocation] = useState(generateLocation())
 
-  //on button click, runs changedata where it changes value of data through setdata function
   const changeData = () => {
     setData(generateData())
     // setLocation(generateLocation())
@@ -34,11 +32,11 @@ export function PieChartData() {
 
   return (
     <div className="Piechart">
-      <div>
+      {/* <div>
         <button onClick={changeData}>Transform</button>
-      </div>
+      </div> */}
       <div>
-        <span className="label">Hooks</span>
+        <h1 className="title">Current Results: </h1>
         <Pie
           data={data}
           width={600}
