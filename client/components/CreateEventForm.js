@@ -6,9 +6,9 @@ export default class CreateEventForm extends React.Component {
     super()
     this.state = {
       name: '',
-      location: '',
+      neighborhood: '',
       time: '',
-      allowSuggestions: true,
+      allowSuggestions: false,
       initialDueDate: '',
     }
   }
@@ -23,7 +23,7 @@ export default class CreateEventForm extends React.Component {
     e.preventDefault()
     let newEvent = {}
     newEvent.name = this.state.name
-    newEvent.location = this.state.location
+    newEvent.neighborhood = this.state.neighborhood
     newEvent.time = this.state.time
     newEvent.allowSuggestions = this.state.allowSuggestions
     newEvent.initialDueDate = this.state.initialDueDate
@@ -84,7 +84,7 @@ export default class CreateEventForm extends React.Component {
           <div className="field column">
             <label className="label">Poll Due Date</label>
             <input
-              name="dueDate"
+              name="initialDueDate"
               type="datetime-local"
               data-display-mode="inline"
               data-is-range="true"
