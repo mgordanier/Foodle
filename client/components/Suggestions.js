@@ -1,80 +1,87 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {SuggestionChoices} from './SuggestionChoices'
+import {connect} from 'react-redux'
+import {fetchRestaurants, fetchOneRestaurant} from '../store/restaurants'
 
-export const Suggestions = () => {
-  return (
-    <div className="container">
-      <h1 className="title">Based on your votes</h1>
-      <h2 className="subtitle is-centered">We suggest ...</h2>
+class Suggestions extends Component {
+  constructor() {
+    super()
+    this.state = {
+      currIdx: 0,
+    }
+    this.getRestaurantInfo = this.getRestaurantInfo.bind(this)
+    this.generateMoreRestaurants = this.generateMoreRestaurants.bind(this)
+  }
 
-      <div className="card">
-        <div className="card-image">
-          <figure className="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-        <div className="card-content">
-          <div className="media">
-            <div className="media-left">
-              <figure className="image is-48x48">
-                <img
-                  src="https://bulma.io/images/placeholders/96x96.png"
-                  alt="Placeholder image"
-                />
-              </figure>
-            </div>
-            <div className="media-content">
-              <p className="title is-4">John Smith</p>
-              <p className="subtitle is-6">@johnsmith</p>
-            </div>
+  componentDidMount() {
+    this.props.fetchRestaurants()
+  }
+
+  generateMoreRestaurants() {
+    this.setState({
+      currIdx: this.state.currIdx + 3,
+    })
+  }
+
+  getRestaurantInfo(restaurantId) {
+    const restaurantInfo = this.props.fetchOneRestaurant(restaurantId)
+  }
+
+  render() {
+    const {allRestaurants} = this.props
+    const availableRestaurants = allRestaurants.results || []
+    const restaurantsToShow = availableRestaurants.slice(
+      this.state.currIdx,
+      this.state.currIdx + 3
+    )
+
+    return (
+      <section className="section">
+        <div className="container">
+          <h1 className="title">Based on your votes</h1>
+          <h2 className="subtitle is-centered">We suggest ...</h2>
+
+          <div className="columns">
+            {restaurantsToShow.map((restaurant) => {
+              return (
+                <div className="column is-one-third" key={restaurant.id}>
+                  <SuggestionChoices
+                    randomRestaurant={restaurant}
+                    getRestaurantInfo={this.getRestaurantInfo}
+                    oneRestaurant={this.props.oneRestaurant}
+                  />
+                </div>
+              )
+            })}
           </div>
 
-          <div className="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            nec iaculis mauris. <a>@bulmaio</a>.<a href="#">#css</a>{' '}
-            <a href="#">#responsive</a>
-            <br />
-            <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <div className="buttons">
+            <button
+              className="button is-primary is-light is-centered"
+              onClick={() => this.generateMoreRestaurants()}
+            >
+              GENERATE MORE OPTIONS
+            </button>
           </div>
         </div>
-      </div>
-
-      <div className="card">
-        <div className="card-image">
-          <figure className="image is-4by3">
-            <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
-        <div className="card-content">
-          <div className="media">
-            <div className="media-left">
-              <figure className="image is-48x48">
-                <img
-                  src="https://bulma.io/images/placeholders/96x96.png"
-                  alt="Placeholder image"
-                />
-              </figure>
-            </div>
-            <div className="media-content">
-              <p className="title is-4">John Smith</p>
-              <p className="subtitle is-6">@johnsmith</p>
-            </div>
-          </div>
-
-          <div className="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            nec iaculis mauris. <a>@bulmaio</a>.<a href="#">#css</a>{' '}
-            <a href="#">#responsive</a>
-            <br />
-            <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+      </section>
+    )
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    allRestaurants: state.restaurants.allRestaurants,
+    oneRestaurant: state.restaurants.oneRestaurant,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchRestaurants: () => dispatch(fetchRestaurants()),
+    fetchOneRestaurant: (restaurantId) =>
+      dispatch(fetchOneRestaurant(restaurantId)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Suggestions)
