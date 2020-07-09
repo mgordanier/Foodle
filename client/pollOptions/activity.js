@@ -4,11 +4,11 @@ export default {
     run: {searchStr: 'run', displayName: 'Go for a Run'},
     walk: {searchStr: 'walk', displayName: 'Take a Walk'},
     yoga: {searchStr: 'yoga', displayName: 'Do Yoga'},
-    class: {searchStr: 'class', displayName: 'Take a Workout Class'}
+    class: {searchStr: 'class', displayName: 'Take a Workout Class'},
   },
   chill: {
     park: {searchStr: 'park', displayName: 'Chill in the Park'},
-    movie: {searchStr: 'movie', displayName: 'Watch a Movie'}
+    movie: {searchStr: 'movie', displayName: 'Watch a Movie'},
   },
   restaurant: {
     afghani: {searchStr: 'afghani', displayName: 'Afghan'},
@@ -31,7 +31,7 @@ export default {
     brazilian: {searchStr: 'brazilian', displayName: 'Brazilian'},
     'breakfast+brunch': {
       searchStr: 'breakfast+brunch',
-      displayName: 'Breakfast & Brunch'
+      displayName: 'Breakfast & Brunch',
     },
     pancakes: {searchStr: 'pancakes', displayName: 'Pancakes'},
     british: {searchStr: 'british', displayName: 'British'},
@@ -87,7 +87,7 @@ export default {
     hotpot: {searchStr: 'hotpot', displayName: 'Hot Pot'},
     hungarian: {searchStr: 'hungarian', displayName: 'Hungarian'},
     iberian: {searchStr: 'iberian', displayName: 'Iberian'},
-    indpak: {searchStr: 'indpak', displayName: 'Indian'},
+    indian: {searchStr: 'indian', displayName: 'Indian'},
     indonesian: {searchStr: 'indonesian', displayName: 'Indonesian'},
     irish: {searchStr: 'irish', displayName: 'Irish'},
     italian: {searchStr: 'italian', displayName: 'Italian'},
@@ -99,7 +99,7 @@ export default {
     izakaya: {searchStr: 'izakaya', displayName: 'Izakaya'},
     'japanese+curry': {
       searchStr: 'japanese+curry',
-      displayName: 'Japanese Curry'
+      displayName: 'Japanese Curry',
     },
     ramen: {searchStr: 'ramen', displayName: 'Ramen'},
     teppanyaki: {searchStr: 'teppanyaki', displayName: 'Teppanyaki'},
@@ -119,19 +119,19 @@ export default {
     tacos: {searchStr: 'tacos', displayName: 'Tacos'},
     'middle+eastern': {
       searchStr: 'middle+eastern',
-      displayName: 'Middle Eastern'
+      displayName: 'Middle Eastern',
     },
     egyptian: {searchStr: 'egyptian', displayName: 'Egyptian'},
     lebanese: {searchStr: 'lebanese', displayName: 'Lebanese'},
     'modern+european': {
       searchStr: 'modern+european',
-      displayName: 'Modern European'
+      displayName: 'Modern European',
     },
     mongolian: {searchStr: 'mongolian', displayName: 'Mongolian'},
     moroccan: {searchStr: 'moroccan', displayName: 'Moroccan'},
     'new+mexican': {
       searchStr: 'new+mexican',
-      displayName: 'New Mexican Cuisine'
+      displayName: 'New Mexican Cuisine',
     },
     nicaraguan: {searchStr: 'nicaraguan', displayName: 'Nicaraguan'},
     noodles: {searchStr: 'noodles', displayName: 'Noodles'},
@@ -172,6 +172,6 @@ export default {
     vegetarian: {searchStr: 'vegetarian', displayName: 'Vegetarian'},
     vietnamese: {searchStr: 'vietnamese', displayName: 'Vietnamese'},
     waffles: {searchStr: 'waffles', displayName: 'Waffles'},
-    wraps: {searchStr: 'wraps', displayName: 'Wraps'}
-  }
+    wraps: {searchStr: 'wraps', displayName: 'Wraps'},
+  },
 }

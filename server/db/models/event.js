@@ -11,26 +11,50 @@ const Event = db.define('event', {
     },
   },
   time: {
-    type: Sequelize.RANGE(Sequelize.DATE),
+    type: Sequelize.DATE,
   },
-  location: {
+  googlePlacesId: {
     type: Sequelize.STRING,
   },
-  allowSuggestions: {
-    type: Sequelize.BOOLEAN,
+  activitySubtype: {
+    type: Sequelize.STRING,
+  },
+  neighborhood: {
+    type: Sequelize.STRING,
   },
   initialDueDate: {
     type: Sequelize.DATE,
   },
+  activityType: {
+    type: Sequelize.STRING,
+    defaultValue: 'restaurant',
+  },
+
+  city: {
+    type: Sequelize.STRING,
+    defaultValue: 'new+york',
+  },
+  allowSuggestions: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  urlKey: {
+    type: Sequelize.STRING,
+  },
+  finalized: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 })
 
 //method to create random confirmation number
-Event.prototype.createConfirmationNumber = () => {
-  let confirmationNum =
+Event.beforeCreate((event) => {
+  let key =
     Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
-  return confirmationNum
-}
+
+  event.urlKey = key
+})
 
 // Event.sendConfirmation = async function (id) {
 //   const event = await Event.findByPk(id, {
