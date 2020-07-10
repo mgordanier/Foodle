@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import activity from '../pollOptions/activity'
 import {locationFlattener} from '../pollOptions/pollUtils'
+import InviteLink from './InviteLink'
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -13,28 +14,46 @@ class CreateEventForm extends React.Component {
       neighborhood: '',
       time: '',
       activitySubtype: '',
-      initialDueDate: '',
+      initialDueDate: ''
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault()
+
+    let urlKey =
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15)
+
     let newEvent = {
       name: this.state.name,
       neighborhood: this.state.neighborhood,
       time: this.state.time,
       activitySubtype: this.state.activitySubtype,
       initialDueDate: this.state.initialDueDate,
+      urlKey: urlKey
     }
 
     this.props.createEvent(newEvent)
-    this.props.history.push('/invitelink')
+
+    this.props.history.push({
+      pathname: `/invitelink`,
+      state: {
+        urlKey: `${urlKey}`,
+        name: `${this.state.name}`,
+        time: `${this.state.time}`
+      }
+    })
   }
 
   render() {
@@ -69,7 +88,7 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {locationArray.map((n) => (
+                  {locationArray.map(n => (
                     <option
                       key={n.searchStr}
                       value={n.searchStr}
@@ -105,7 +124,7 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {restaurantArray.map((r) => (
+                  {restaurantArray.map(r => (
                     <option key={r.searchStr} value={r.searchStr}>
                       {r.displayName}
                     </option>
@@ -129,7 +148,7 @@ class CreateEventForm extends React.Component {
           </div>
 
           <button className="button is-info is-centered is-large">
-            Create Event
+            Generate Event Invitation Link
           </button>
         </form>
       </div>
@@ -137,9 +156,9 @@ class CreateEventForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    createEvent: (newEvent) => dispatch(createEvent(newEvent)),
+    createEvent: newEvent => dispatch(createEvent(newEvent))
   }
 }
 

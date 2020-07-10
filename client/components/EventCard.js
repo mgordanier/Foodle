@@ -1,30 +1,42 @@
 import React from 'react'
 
-const EventCard = (props) => {
+const EventCard = props => {
   return (
     <div className="card">
-      <div className="card-image">
+      {/* <div className="card-image">
         <figure className="image is-4by3">
           <img
             src="https://bulma.io/images/placeholders/1280x960.png"
             alt="Placeholder image"
           />
         </figure>
-      </div>
+      </div> */}
 
       <div className="card-content">
         <div className="media">
           <div className="media-content">
             <p className="title is-4">{props.name}</p>
-            <p className="subtitle is-6">Paul's Burgers</p>
-            <p className="subtitle is-6">Monday, July 6 @ 3:00 PM</p>
+            {props.finalized ? (
+              <div>
+                <p className="has-text-info has-text-weight-semibold">
+                  Confirmed!
+                </p>
+                <p>Location: {props.neighborhood}</p>
+                <p>Time: {props.time}</p>
+              </div>
+            ) : (
+              <div>
+                <p className="has-text-danger has-text-weight-semibold">
+                  Voting still in process!
+                </p>
+                <p>Location: TBD</p>
+                <p>Time: TBD</p>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          <br />
-          <a href="#">paulsburgers.com</a>
           <br />
         </div>
         <footer className="card-footer">

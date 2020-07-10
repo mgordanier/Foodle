@@ -3,23 +3,23 @@ import Axios from 'axios'
 const SET_POLL = 'SET_POLL'
 const FETCH_POLL_RESULTS = 'FETCH_POLL_RESULTS'
 
-export const setPoll = (poll) => {
+export const setPoll = poll => {
   return {
     type: SET_POLL,
-    poll,
+    poll
   }
 }
 
-const fetchedPollResults = (responses) => {
+const fetchedPollResults = responses => {
   return {
     type: FETCH_POLL_RESULTS,
-    responses,
+    responses
   }
 }
 
 //CHANGE IDS HERE!!!
 export const fetchPollResults = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const {data} = await Axios.get('/api/events/3/polls/4/responses')
       dispatch(fetchedPollResults(data))
@@ -31,7 +31,7 @@ export const fetchPollResults = () => {
 
 const initialState = {
   poll: '',
-  pollResponses: [],
+  pollResponses: []
 }
 
 export default function poll(state = initialState, action) {
@@ -39,12 +39,12 @@ export default function poll(state = initialState, action) {
     case SET_POLL:
       return {
         ...state,
-        poll: action.poll,
+        poll: action.poll
       }
     case FETCH_POLL_RESULTS:
       return {
         ...state,
-        pollResponses: action.responses,
+        pollResponses: action.responses
       }
     default:
       return state

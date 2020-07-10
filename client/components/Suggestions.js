@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {
   fetchRestaurants,
   fetchOneRestaurant,
-  voteForRestaurant,
+  voteForRestaurant
 } from '../store/restaurants'
 
 class Suggestions extends Component {
@@ -12,7 +12,7 @@ class Suggestions extends Component {
     super()
     this.state = {
       // currIdx: 0,
-      selectedRestaurants: {},
+      selectedRestaurants: {}
     }
     this.getRestaurantInfo = this.getRestaurantInfo.bind(this)
     this.generateMoreRestaurants = this.generateMoreRestaurants.bind(this)
@@ -31,7 +31,7 @@ class Suggestions extends Component {
 
   generateMoreRestaurants() {
     this.setState({
-      currIdx: this.state.currIdx + 3,
+      currIdx: this.state.currIdx + 3
     })
   }
 
@@ -77,7 +77,7 @@ class Suggestions extends Component {
           </div>
 
           <div className="columns">
-            {availableRestaurants.map((restaurant) => {
+            {availableRestaurants.map(restaurant => {
               return (
                 <div className="column is-one-third" key={restaurant.id}>
                   <SuggestionChoices
@@ -121,21 +121,20 @@ class Suggestions extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     allRestaurants: state.restaurants.allRestaurants,
-    oneRestaurant: state.restaurants.oneRestaurant,
+    oneRestaurant: state.restaurants.oneRestaurant
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchRestaurants: (neighborhood, borough, city, category) =>
       dispatch(fetchRestaurants(neighborhood, borough, city, category)),
-    fetchOneRestaurant: (restaurantId) =>
+    fetchOneRestaurant: restaurantId =>
       dispatch(fetchOneRestaurant(restaurantId)),
-    voteForRestaurant: (restaurants) =>
-      dispatch(voteForRestaurant(restaurants)),
+    voteForRestaurant: restaurants => dispatch(voteForRestaurant(restaurants))
   }
 }
 

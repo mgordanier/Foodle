@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ChoiceModal = (props) => {
+export const ChoiceModal = props => {
   const {closeModal, modalState, oneRestaurant} = props
   // console.log('oneRestaurant', oneRestaurant)
 
@@ -10,15 +10,11 @@ export const ChoiceModal = (props) => {
 
   return (
     <div className="modal is-active">
-      <div className="modal-background" onClick={closeModal}></div>
+      <div className="modal-background" onClick={closeModal} />
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">{oneRestaurant.result.name}</p>
-          <button
-            className="delete"
-            aria-label="close"
-            onClick={closeModal}
-          ></button>
+          <button className="delete" aria-label="close" onClick={closeModal} />
         </header>
 
         <button className="button is-danger is-light">

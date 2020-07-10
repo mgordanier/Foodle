@@ -15,7 +15,7 @@ class UpcomingEvents extends React.Component {
       <>
         <div className="columns">
           {events.length ? (
-            events.map((event) => (
+            events.map(event => (
               <div key={event.id} className="column is-one-third">
                 <EventCard {...event} />
               </div>
@@ -29,15 +29,15 @@ class UpcomingEvents extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    events: state.events.events,
+    events: state.events.events
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    fetchEvents: () => dispatch(fetchEvents()),
+    fetchEvents: () => dispatch(fetchEvents())
   }
 }
 

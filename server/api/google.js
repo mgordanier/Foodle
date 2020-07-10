@@ -18,13 +18,13 @@ router.put('/restaurants', async (req, res, next) => {
     )
 
     let firstThree = data.results.slice(0, 3)
-    const options = firstThree.map((el) => el.place_id)
+    const options = firstThree.map(el => el.place_id)
 
     const poll = await Poll.create({name: 'suggestions', options: options})
 
     res.json({
       results: firstThree,
-      poll: poll,
+      poll: poll
     })
   } catch (err) {
     next(err)

@@ -5,13 +5,13 @@ export class SuggestionChoices extends Component {
   constructor() {
     super()
     this.state = {
-      modalState: false,
+      modalState: false
     }
     this.toggleModal = this.toggleModal.bind(this)
   }
 
   toggleModal() {
-    this.setState((prev) => {
+    this.setState(prev => {
       const newState = !prev.modalState
       return {modalState: newState}
     })
@@ -22,7 +22,7 @@ export class SuggestionChoices extends Component {
       randomRestaurant,
       getRestaurantInfo,
       oneRestaurant,
-      handleCheckboxChange,
+      handleCheckboxChange
     } = this.props
 
     return (
@@ -75,7 +75,7 @@ export class SuggestionChoices extends Component {
               type="checkbox"
               name="selectedRestaurant"
               className="margin-right"
-              onChange={(event) =>
+              onChange={event =>
                 handleCheckboxChange(randomRestaurant.name, event)
               }
             />

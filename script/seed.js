@@ -12,10 +12,10 @@ async function seed() {
     User.create({
       name: 'Jennifer',
       email: 'jennifer@email.com',
-      password: '123',
+      password: '123'
     }),
     User.create({name: 'Yang', email: 'yang@email.com', password: '123'}),
-    User.create({name: 'Lilly', email: 'lilly@email.com', password: '123'}),
+    User.create({name: 'Lilly', email: 'lilly@email.com', password: '123'})
   ])
 
   console.log(`seeded ${users.length} users`)
@@ -27,14 +27,14 @@ async function seed() {
       activityType: 'restaurant',
       city: 'new+york',
       neighborhood: 'soho',
-      initialDueDate: new Date('2020-07-11 12:00'),
+      initialDueDate: new Date('2020-07-11 12:00')
     }),
     Event.create({
       name: 'Girlz Night',
       time: new Date('2020-07-17 18:00'),
       activityType: 'restaurant',
       city: 'new+york',
-      neighborhood: 'east+village',
+      neighborhood: 'east+village'
     }),
     Event.create({
       name: 'Pizza Night',
@@ -42,7 +42,8 @@ async function seed() {
       activityType: 'restaurant',
       city: 'new+york',
       neighborhood: 'east+village',
-    }),
+      finalized: true
+    })
   ])
 
   console.log(`seeded ${events.length} events`)
@@ -58,7 +59,7 @@ async function seed() {
     UserEvent.create({isOrganizer: true, userId: 1, eventId: 3}),
     UserEvent.create({isOrganizer: false, userId: 2, eventId: 3}),
     UserEvent.create({isOrganizer: false, userId: 3, eventId: 3}),
-    UserEvent.create({isOrganizer: false, userId: 4, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 4, eventId: 3})
   ])
 
   console.log(`seeded ${userEvent.length} userEvents`)
@@ -67,7 +68,7 @@ async function seed() {
     Poll.create({
       name: 'activity',
       options: ['breakfast+brunch', 'dimsum', 'creperies', 'new+american'],
-      eventId: 1,
+      eventId: 1
     }),
     Poll.create({
       name: 'activity',
@@ -171,24 +172,24 @@ async function seed() {
         'mediterranean',
         'falafel',
         'mexican',
-        'tacos',
+        'tacos'
       ],
-      eventId: 2,
+      eventId: 2
     }),
     Poll.create({
       name: 'suggestions',
       options: [
         'e47007f66cdc681f24c19060fbacd85d743045e7',
         'ChIJ5WwRiJxZwokRqwn5bsM15ek',
-        'ChIJ8UwiNndZwokRdRVevqF6DWw',
+        'ChIJ8UwiNndZwokRdRVevqF6DWw'
       ],
-      eventId: 2,
+      eventId: 2
     }),
     Poll.create({
       name: 'suggestions',
       options: ["Joe's+pizza", 'Motorino', "Baker's+Pizza"],
-      eventId: 3,
-    }),
+      eventId: 3
+    })
   ])
 
   console.log(`seeded ${poll.length} polls`)
@@ -197,17 +198,17 @@ async function seed() {
     Response.create({
       selections: ['dimsum'],
       pollId: 1,
-      userId: 1,
+      userId: 1
     }),
     Response.create({
       selections: ['breakfast+brunch', 'dimsum', 'creperies'],
       pollId: 1,
-      userId: 2,
+      userId: 2
     }),
     Response.create({
       selections: ['dimsum', 'creperies', 'new+american'],
       pollId: 1,
-      userId: 3,
+      userId: 3
     }),
     Response.create({
       selections: [
@@ -310,41 +311,41 @@ async function seed() {
         'mediterranean',
         'falafel',
         'mexican',
-        'tacos',
+        'tacos'
       ],
       pollId: 2,
-      userId: 1,
+      userId: 1
     }),
     Response.create({
       selections: ['tacos', 'colombian', 'french'],
       pollId: 2,
-      userId: 2,
+      userId: 2
     }),
     Response.create({
       selections: ['bbq', 'tacos', 'mediterranean', 'falafel'],
       pollId: 2,
-      userId: 3,
+      userId: 3
     }),
     Response.create({
       selections: ["Joe's Pizza"],
       pollId: 4,
-      userId: 1,
+      userId: 1
     }),
     Response.create({
       selections: ['Motorino', 'Gnocco', "Joe's Pizza"],
       pollId: 4,
-      userId: 2,
+      userId: 2
     }),
     Response.create({
       selections: ['Motorino', 'Gnocco'],
       pollId: 4,
-      userId: 3,
+      userId: 3
     }),
     Response.create({
       selections: ['None Of These'],
       pollId: 4,
-      userId: 4,
-    }),
+      userId: 4
+    })
   ])
 
   console.log(`seeded ${response.length} responses`)
