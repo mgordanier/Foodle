@@ -1,7 +1,7 @@
 import React from 'react'
 import activity from '../pollOptions/activity'
 
-const ActivityPoll = (props) => {
+const ActivityPoll = props => {
   const {handleChange, handleSubmit, options} = props
   const typeNames = Object.keys(activity)
   let selectedType = activity[typeNames[0]]
@@ -11,11 +11,11 @@ const ActivityPoll = (props) => {
     <div>
       <div className="tabs is-toggle">
         <ul>
-          {typeNames.map((typeName) => {
+          {typeNames.map(typeName => {
             return (
               <li
                 key="type"
-                onClick={(event) => {
+                onClick={event => {
                   event.target.classList.add('is-active')
                 }}
               >
