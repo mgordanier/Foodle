@@ -69,13 +69,6 @@ class CreateEventForm extends React.Component {
                   required
                 >
                   {Object.keys(flatLocation).map(key => <option>{key}</option>)}
-
-                  {/* <option>Lower East Side</option>
-                  <option>Soho</option>
-                  <option>Chinatown</option>
-                  <option>East Village</option>
-                  <option>West Village</option>
-                  <option>Union Square</option> */}
                 </select>
               </div>
             </div>
