@@ -11,15 +11,32 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           where: {
-            id: req.user.dataValues.id
-          }
-        }
-      ]
+            id: req.user.dataValues.id,
+          },
+        },
+      ],
     })
     if (events) {
       res.json(events)
     } else {
       res.status(401).send('cannot get events')
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/key/:urlKey', async (req, res, next) => {
+  try {
+    const event = await Event.findOne({
+      where: {
+        urlKey: req.params.urlKey,
+      },
+    })
+    if (event) {
+      res.json(event)
+    } else {
+      res.status(401).send('urkKey not valid')
     }
   } catch (err) {
     next(err)
@@ -35,13 +52,13 @@ router.post('/', async (req, res, next) => {
       time: req.body.time,
       initialDueDate: req.body.initialDueDate,
       activitySubtype: req.body.activitySubtype,
-      urlKey: req.body.urlKey
+      urlKey: req.body.urlKey,
     })
 
     await UserEvent.create({
       userId: req.user.dataValues.id,
       eventId: event.id,
-      isOrganizer: true
+      isOrganizer: true,
     })
 
     if (event) {
@@ -132,7 +149,7 @@ router.get('/:id/polls/:pollId', async (req, res, next) => {
 router.get('/:id/polls/:pollId/responses', async (req, res, next) => {
   try {
     const responses = await Response.findAll({
-      where: {pollId: req.params.pollId}
+      where: {pollId: req.params.pollId},
     })
     res.send(responses)
   } catch (error) {
@@ -151,7 +168,7 @@ router.post(
       const response = await Response.create({
         selections,
         pollId: req.params.pollId,
-        userId: req.params.userId
+        userId: req.params.userId,
       })
       res.send(response)
     } catch (error) {
@@ -167,7 +184,7 @@ router.put(
     try {
       const {selections} = req.body
       let response = await Response.findOne({
-        where: {userId: req.params.userId, pollId: req.params.pollId}
+        where: {userId: req.params.userId, pollId: req.params.pollId},
       })
       response = await response.update({selections})
       res.send(response)
@@ -183,7 +200,7 @@ router.get(
   async (req, res, next) => {
     try {
       const response = await Response.findOne({
-        where: {userId: req.params.userId, pollId: req.params.pollId}
+        where: {userId: req.params.userId, pollId: req.params.pollId},
       })
       res.send(response)
     } catch (error) {

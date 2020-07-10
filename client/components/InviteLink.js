@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-const InviteLink = props => {
+const InviteLink = (props) => {
   const urlKey = props.history.location.state.urlKey
   return (
     <section className="section">
@@ -12,9 +13,11 @@ const InviteLink = props => {
               <div className="message-header">
                 <p>Copy and paste your event link</p>
               </div>
-              <div className="message-body">
-                {`http://www.foodle.com/event/${urlKey}`}
-              </div>
+              <Link to={`/event/${urlKey}`}>
+                <div className="message-body">
+                  {`http://www.foodle.com/event/${urlKey}`}
+                </div>
+              </Link>
             </article>
 
             <section className="section">
@@ -35,9 +38,9 @@ const InviteLink = props => {
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
   }
 }
 

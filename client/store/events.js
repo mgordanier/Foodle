@@ -6,24 +6,24 @@ const ADD_EVENT = 'ADD_EVENT'
 const GET_ONE_EVENT = 'GET_ONE_EVENT'
 
 //ACTION CREATOR
-const getEvents = events => ({
+const getEvents = (events) => ({
   type: GET_EVENTS,
-  events
+  events,
 })
 
-const addEvent = event => ({
+const addEvent = (event) => ({
   type: ADD_EVENT,
-  event
+  event,
 })
 
-const getOneEvent = event => ({
-  type: GET_ONE_EVENT,
-  event
-})
+// const getOneEvent = event => ({
+//   type: GET_ONE_EVENT,
+//   event
+// })
 
 //THUNK CREATORS
 export const fetchEvents = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const {data} = await axios.get('/api/events')
       dispatch(getEvents(data))
@@ -33,19 +33,20 @@ export const fetchEvents = () => {
   }
 }
 
-export const fetchOneEvent = () => {
-  return async dispatch => {
+//urlKey
+export const fetchOneEvent = (urlKey) => {
+  return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/events/:id')
-      dispatch(getOneEvent(data))
+      const {data} = await axios.get(`/api/events/key/${urlKey}`)
+      dispatch(addEvent(data))
     } catch (error) {
       console.log('Error with fetching one event')
     }
   }
 }
 
-export const createEvent = event => {
-  return async dispatch => {
+export const createEvent = (event) => {
+  return async (dispatch) => {
     try {
       console.log('event', event)
       const {data} = await axios.post('/api/events', event)
@@ -58,7 +59,7 @@ export const createEvent = event => {
 
 const initialState = {
   event: {},
-  events: {}
+  events: {},
 }
 
 //REDUCER
@@ -67,16 +68,16 @@ export default function events(state = initialState, action) {
     case GET_EVENTS:
       return {
         ...state,
-        events: action.events
+        events: action.events,
       }
     case ADD_EVENT:
       return {
-        event: action.event
+        event: action.event,
       }
     case GET_ONE_EVENT:
       return {
         ...state,
-        event: action.event
+        event: action.event,
       }
     default:
       return state
