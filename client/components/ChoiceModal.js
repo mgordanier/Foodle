@@ -28,7 +28,11 @@ export const ChoiceModal = (props) => {
         <section className="modal-card-body">
           <h3>Price Level: {oneRestaurant.result.price_level}</h3>
           <p>{oneRestaurant.result.formatted_phone_number}</p>
-          <p>{oneRestaurant.result.website}</p>
+          <p>
+            <a href={oneRestaurant.result.website}>
+              {oneRestaurant.result.website}
+            </a>
+          </p>
         </section>
         <footer className="modal-card-foot">
           <div>

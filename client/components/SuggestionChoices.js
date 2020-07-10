@@ -30,8 +30,9 @@ export class SuggestionChoices extends Component {
         <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
+              src="food2.jpg"
               alt="Placeholder image"
+              className="cursor"
               onClick={() => {
                 this.toggleModal()
                 getRestaurantInfo(randomRestaurant.place_id)

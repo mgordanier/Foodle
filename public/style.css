@@ -80,3 +80,7 @@ form div {
 .labelName {
   font-size: 20px;
 }
+
+.cursor {
+  cursor: pointer;
+}

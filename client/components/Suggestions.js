@@ -63,14 +63,11 @@ class Suggestions extends Component {
     return (
       <section className="section">
         <div className="container">
-          <h1 className="title">Based on your votes</h1>
-          <h2 className="subtitle is-centered">We suggest ...</h2>
+          <h1 className="title">Based on your votes, we suggest ...</h1>
 
-          <div>
-            <p>
-              Directions: Select up to 3 choices then submit selected votes OR
-              choose no preference
-            </p>
+          <div className="content is-medium">
+            Directions: Select up to 3 choices then submit selected votes OR
+            choose no preference
             <p>Click the image for more Information!</p>
           </div>
 
@@ -91,14 +88,14 @@ class Suggestions extends Component {
 
           <div className="buttons">
             <button
-              className="button is-primary is-centered"
+              className="button is-primary is-centered is-large"
               onClick={() => this.voteRestaurant()}
             >
               SUBMIT SELECTED VOTES
             </button>
 
             <button
-              className="button is-warning is-centered"
+              className="button is-warning is-centered is-large"
               onClick={() => this.props.voteForRestaurant([])}
             >
               NO PREFERENCE
