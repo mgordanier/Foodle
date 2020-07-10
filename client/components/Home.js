@@ -24,7 +24,9 @@ class Home extends Component {
           <h1 className="title">Title</h1>
           <h2 className="subtitle">Subtitle</h2>
           <Link to="/userdashboard">
-            <button className="button is-info">Get Started</button>
+            <button type="button" className="button is-info">
+              Get Started
+            </button>
           </Link>
         </div>
       </div>
