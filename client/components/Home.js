@@ -21,10 +21,10 @@ class Home extends Component {
 
       <div className="hero-body">
         <div className="container has-text-centered">
-          <h1 className="title">Foodle</h1>
+          {/* <h1 className="title">Foodle</h1> */}
 
-          {/* <img src="/food.jpg" />
-          <img src="/foodlelogo.png" /> */}
+          <img src="/food.jpg" />
+          <img src="/foodlelogo.png" />
 
           <h2 className="subtitle">Create an event and Invite your friends</h2>
           <Link to="/userdashboard">

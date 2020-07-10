@@ -7,13 +7,13 @@ import {
   Login,
   Signup,
   UserHome,
-  AllRestaurants,
   PieChartData,
   InputPollForm,
   UserDashboard,
   InviteLink,
   Suggestions,
   CreateEventForm,
+  EventDashboard,
 } from './components'
 import {me} from './store'
 
@@ -34,21 +34,21 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/restaurants" component={AllRestaurants} />
         <Route path="/piechart" component={PieChartData} />
         <Route path="/inputpollform" component={InputPollForm} />
         <Route path="/invitelink" component={InviteLink} />
         <Route path="/suggestions" component={Suggestions} />
         <Route path="/newevent" component={CreateEventForm} />
         <Route path="/userdashboard" component={UserDashboard} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserDashboard} />
+            <Route path="/eventdashboard" component={EventDashboard} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={AllRestaurants} />
       </Switch>
     )
   }

@@ -17,10 +17,11 @@ const fetchedPollResults = (responses) => {
   }
 }
 
+//CHANGE IDS HERE!!!
 export const fetchPollResults = () => {
   return async (dispatch) => {
     try {
-      const {data} = await Axios.get('/api/events/1/polls/5/responses')
+      const {data} = await Axios.get('/api/events/3/polls/4/responses')
       dispatch(fetchedPollResults(data))
     } catch (error) {
       console.log(error)

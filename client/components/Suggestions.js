@@ -22,10 +22,10 @@ class Suggestions extends Component {
 
   componentDidMount() {
     this.props.fetchRestaurants(
-      'williamsburg',
-      'brooklyn',
+      'east+village',
+      'manhattan',
       'new+york+city',
-      'korean'
+      'pizza'
     )
   }
 
