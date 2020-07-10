@@ -11,7 +11,7 @@ class EventDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Event Dashboard</h1>
+        <h1 className="title">Event Dashboard</h1>
         <Suggestions />
       </div>
     )
