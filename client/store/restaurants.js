@@ -22,10 +22,15 @@ const getOneRestaurant = (restaurant) => {
 }
 
 //THUNK CREATORS
-export const fetchRestaurants = () => {
+export const fetchRestaurants = (neighborhood, borough, city, category) => {
   return async (dispatch) => {
     try {
-      const {data} = await Axios.get('/api/google/restaurants')
+      const {data} = await Axios.put('/api/google/restaurants', {
+        neighborhood,
+        borough,
+        city,
+        category,
+      })
       dispatch(getAllRestaurants(data))
       dispatch(setPoll(data.poll))
     } catch (error) {

@@ -21,7 +21,12 @@ class Suggestions extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRestaurants()
+    this.props.fetchRestaurants(
+      'williamsburg',
+      'brooklyn',
+      'new+york+city',
+      'korean'
+    )
   }
 
   generateMoreRestaurants() {
@@ -125,7 +130,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchRestaurants: () => dispatch(fetchRestaurants()),
+    fetchRestaurants: (neighborhood, borough, city, category) =>
+      dispatch(fetchRestaurants(neighborhood, borough, city, category)),
     fetchOneRestaurant: (restaurantId) =>
       dispatch(fetchOneRestaurant(restaurantId)),
     voteForRestaurant: (restaurants) =>
