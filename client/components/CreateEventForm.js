@@ -3,7 +3,7 @@ import {createEvent} from '../store/events'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import activity from '../pollOptions/activity'
-import {flattenLocation} from '../pollOptions/pollUtils'
+import {locationFlattener} from '../pollOptions/pollUtils'
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class CreateEventForm extends React.Component {
 
   render() {
     console.log('activity', activity)
-    const flatLocation = flattenLocation()
+    const flatLocation = locationFlattener()
     console.log(flatLocation)
     return (
       <div className="my-6 card">
@@ -68,12 +68,14 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  <option>Lower East Side</option>
+                  {Object.keys(flatLocation).map(key => <option>{key}</option>)}
+
+                  {/* <option>Lower East Side</option>
                   <option>Soho</option>
                   <option>Chinatown</option>
                   <option>East Village</option>
                   <option>West Village</option>
-                  <option>Union Square</option>
+                  <option>Union Square</option> */}
                 </select>
               </div>
             </div>
@@ -102,7 +104,7 @@ class CreateEventForm extends React.Component {
                   required
                 >
                   {Object.keys(activity.restaurant).map(key => (
-                    <option>{key}</option>
+                    <option key={key}>{key}</option>
                   ))}
                 </select>
               </div>
