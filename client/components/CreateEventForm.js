@@ -69,8 +69,14 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {locationArray.map(n => (
-                    <option key={n.searchStr}>{n.displayName}</option>
+                  {locationArray.map((n) => (
+                    <option
+                      key={n.searchStr}
+                      value={n.searchStr}
+                      className={n.searchStr}
+                    >
+                      {n.displayName}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -99,8 +105,10 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {restaurantArray.map(r => (
-                    <option key={r.searchStr}>{r.displayName}</option>
+                  {restaurantArray.map((r) => (
+                    <option key={r.searchStr} value={r.searchStr}>
+                      {r.displayName}
+                    </option>
                   ))}
                 </select>
               </div>
