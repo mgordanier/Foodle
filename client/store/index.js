@@ -5,8 +5,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import restaurants from './restaurants'
 import events from './events'
+import poll from './poll'
 
-const reducer = combineReducers({user, restaurants, events})
+const reducer = combineReducers({user, restaurants, events, poll})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

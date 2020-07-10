@@ -22,14 +22,15 @@ router.get('/restaurants', async (req, res, next) => {
     const {data} = await axios.get(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
     )
-    // console.log("GOOGLE API ROUTEEEE", data.results)
-    let firstThree = data.results.slice(0, 3)
-    const textOptions = firstThree.map((el) => el.place_id)
 
-    await Poll.create({name: 'activity type', textOptions: textOptions})
+    let firstThree = data.results.slice(0, 3)
+    const options = firstThree.map((el) => el.place_id)
+
+    const poll = await Poll.create({name: 'activity', options: options})
 
     res.json({
       results: firstThree,
+      poll: poll,
     })
   } catch (err) {
     next(err)

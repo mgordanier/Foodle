@@ -12,11 +12,12 @@ class Suggestions extends Component {
     super()
     this.state = {
       // currIdx: 0,
-      selectedRestaurant: {},
+      selectedRestaurants: {},
     }
     this.getRestaurantInfo = this.getRestaurantInfo.bind(this)
     this.generateMoreRestaurants = this.generateMoreRestaurants.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    this.voteRestaurant = this.voteRestaurant.bind(this)
   }
 
   componentDidMount() {
@@ -34,13 +35,19 @@ class Suggestions extends Component {
   }
 
   handleCheckboxChange(restaurantId, event) {
-    let selectedRestaurant = this.state.selectedRestaurant
-    selectedRestaurant[restaurantId] = event.target.checked
-    this.setState({selectedRestaurant})
+    let selectedRestaurants = this.state.selectedRestaurants
+    selectedRestaurants[restaurantId] = event.target.checked
+    this.setState({selectedRestaurants})
   }
 
   voteRestaurant() {
-    this.props.voteForRestaurant(this.state.selectedRestaurants)
+    const selected = []
+    for (let key in this.state.selectedRestaurants) {
+      if (this.state.selectedRestaurants[key] === true) {
+        selected.push(key)
+      }
+    }
+    this.props.voteForRestaurant(selected)
   }
 
   render() {
@@ -50,7 +57,8 @@ class Suggestions extends Component {
     //   this.state.currIdx,
     //   this.state.currIdx + 3
     // )
-    console.log('STATEEEE', this.state.selectedRestaurant)
+    console.log('STATEEEE', this.state.selectedRestaurants)
+    console.log('ALL RESTAURANTS', allRestaurants)
 
     return (
       <section className="section">
@@ -89,7 +97,10 @@ class Suggestions extends Component {
               SUBMIT SELECTED VOTES
             </button>
 
-            <button className="button is-warning is-centered">
+            <button
+              className="button is-warning is-centered"
+              onClick={() => this.props.voteForRestaurant([])}
+            >
               NO PREFERENCE
             </button>
           </div>

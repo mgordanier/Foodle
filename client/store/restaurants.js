@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import {setPoll} from './poll'
 
 //ACTION TYPES
 const GET_ALL_RESTAURANTS = 'GET_ALL_RESTAURANTS'
@@ -20,19 +21,13 @@ const getOneRestaurant = (restaurant) => {
   }
 }
 
-// const votedRestaurant = restaurant => {
-//   return {
-//     type: VOTE_FOR_RESTAURANT,
-//     restaurant
-//   }
-// }
-
 //THUNK CREATORS
 export const fetchRestaurants = () => {
   return async (dispatch) => {
     try {
       const {data} = await Axios.get('/api/google/restaurants')
       dispatch(getAllRestaurants(data))
+      dispatch(setPoll(data.poll))
     } catch (error) {
       console.log(error)
     }
@@ -55,10 +50,12 @@ export const fetchOneRestaurant = (restaurantId) => {
 export const voteForRestaurant = (restaurants) => {
   return async (dispatch, getState) => {
     const userId = getState().user.id
+    const pollId = getState().poll.poll.id
     try {
-      const {data} = await Axios.post('/api/user/responses', {
+      const {data} = await Axios.post('/api/users/responses', {
         restaurants,
         userId,
+        pollId,
       })
     } catch (error) {
       console.log(error)
@@ -69,7 +66,6 @@ export const voteForRestaurant = (restaurants) => {
 const initialState = {
   allRestaurants: {},
   oneRestaurant: {},
-  // votedRestaurant: {}
 }
 
 //REDUCER

@@ -13,28 +13,14 @@ export function PieChartData() {
     ]
   }
 
-  // PIE 2 LOCATION
-  // const generateLocation = () => {
-  //   return [
-  //     {type: 'Brookyln',  value:'NYC'},
-  //     {type: 'Soho', value: 'NYC'},
-  //     {type: 'East Village', value: 'NYC'}
-  //   ]
-  // }
-
   const [data, setData] = useState(generateData())
-  // const [location, setLocation] = useState(generateLocation())
 
   const changeData = () => {
     setData(generateData())
-    // setLocation(generateLocation())
   }
 
   return (
     <div className="Piechart">
-      {/* <div>
-        <button onClick={changeData}>Transform</button>
-      </div> */}
       <div>
         <h1 className="title">Current Results: </h1>
         <Pie
