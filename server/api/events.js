@@ -11,10 +11,10 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           where: {
-            id: req.user.dataValues.id,
-          },
-        },
-      ],
+            id: req.user.dataValues.id
+          }
+        }
+      ]
     })
     if (events) {
       res.json(events)
@@ -34,11 +34,14 @@ router.post('/', async (req, res, next) => {
       neighborhood: req.body.neighborhood,
       time: req.body.time,
       initialDueDate: req.body.initialDueDate,
-      activitySubtype: req.body.activitySubtype,
+      activitySubtype: req.body.activitySubtype
     })
 
-    // need to add isOrganizer on the through table
-    // need to add userId to the event so the instance is saved on the through table userevents
+    await UserEvent.create({
+      userId: req.user.dataValues.id,
+      eventId: event.id,
+      isOrganizer: true
+    })
 
     if (event) {
       res.json(event)
@@ -128,7 +131,7 @@ router.get('/:id/polls/:pollId', async (req, res, next) => {
 router.get('/:id/polls/:pollId/responses', async (req, res, next) => {
   try {
     const responses = await Response.findAll({
-      where: {pollId: req.params.pollId},
+      where: {pollId: req.params.pollId}
     })
     res.send(responses)
   } catch (error) {
@@ -147,7 +150,7 @@ router.post(
       const response = await Response.create({
         selections,
         pollId: req.params.pollId,
-        userId: req.params.userId,
+        userId: req.params.userId
       })
       res.send(response)
     } catch (error) {
@@ -163,7 +166,7 @@ router.put(
     try {
       const {selections} = req.body
       let response = await Response.findOne({
-        where: {userId: req.params.userId, pollId: req.params.pollId},
+        where: {userId: req.params.userId, pollId: req.params.pollId}
       })
       response = await response.update({selections})
       res.send(response)
@@ -179,7 +182,7 @@ router.get(
   async (req, res, next) => {
     try {
       const response = await Response.findOne({
-        where: {userId: req.params.userId, pollId: req.params.pollId},
+        where: {userId: req.params.userId, pollId: req.params.pollId}
       })
       res.send(response)
     } catch (error) {

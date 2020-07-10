@@ -3,13 +3,13 @@ import location from './location'
 
 // filter activity object based on contents of a selections array
 // selectionsArr contains the search strings (keys) of selected activity sub-types in the activity object
-export const activityFilter = (selectionsArr) => {
+export const activityFilter = selectionsArr => {
   // TBD
 }
 
 // filter location object based on contents of a selections array
 // selectionsArr contains the search strings (keys) of selected neighborhoods in the location object
-export const locationFilter = (selectionsArr) => {
+export const locationFilter = selectionsArr => {
   // TBD
 }
 
@@ -18,8 +18,8 @@ export const locationFilter = (selectionsArr) => {
 // and each activity sub-type contains a value indicating its type
 export const activityFlattener = () => {
   const flatActivity = {}
-  Object.keys(activity).forEach((type) => {
-    Object.keys(activity[type]).forEach((subtype) => {
+  Object.keys(activity).forEach(type => {
+    Object.keys(activity[type]).forEach(subtype => {
       flatActivity[subtype] = activity[type][subtype]
       flatActivity[subtype].type = type
     })
@@ -32,18 +32,18 @@ export const activityFlattener = () => {
 // and each neighborhood object contains keys for its borough and city
 export const locationFlattener = () => {
   const flatLocation = {}
-  Object.keys(location).forEach((city) => {
+  Object.keys(location).forEach(city => {
     const cityObj = {
       displayName: location[city].displayName,
-      searchStr: location[city].searchStr,
+      searchStr: location[city].searchStr
     }
-    Object.keys(location[city].county).forEach((county) => {
+    Object.keys(location[city].county).forEach(county => {
       const countyObj = {
         displayName: location[city].county[county].displayName,
-        searchStr: location[city].county[county].searchStr,
+        searchStr: location[city].county[county].searchStr
       }
       Object.keys(location[city].county[county].neighborhood).forEach(
-        (neighborhood) => {
+        neighborhood => {
           const neighborhoodObj =
             location[city].county[county].neighborhood[neighborhood]
           neighborhoodObj.city = cityObj
