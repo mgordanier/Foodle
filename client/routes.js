@@ -7,7 +7,6 @@ import {
   Login,
   Signup,
   UserHome,
-  AllRestaurants,
   PieChartData,
   InputPollForm,
   UserDashboard,
@@ -35,7 +34,6 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/restaurants" component={AllRestaurants} />
         <Route path="/piechart" component={PieChartData} />
         <Route path="/inputpollform" component={InputPollForm} />
         <Route path="/invitelink" component={InviteLink} />
@@ -51,7 +49,6 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={AllRestaurants} />
       </Switch>
     )
   }

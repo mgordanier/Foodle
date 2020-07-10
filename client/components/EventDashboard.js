@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Suggestions from './Suggestions'
-import {PieChartData} from './PieChartData'
 
 class EventDashboard extends Component {
   constructor() {

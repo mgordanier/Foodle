@@ -6,7 +6,6 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
-export {default as AllRestaurants} from './AllRestaurants'
 export {default as Pie} from './Pie'
 export {default as PieChartData} from './PieChartData'
 export {default as InputPollForm} from './InputPollForm'
