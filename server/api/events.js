@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           where: {
-            id: req.user.dataValues.id
+            id: 4
           }
         }
       ]
@@ -37,8 +37,11 @@ router.post('/', async (req, res, next) => {
       activitySubtype: req.body.activitySubtype
     })
 
-    // need to add isOrganizer on the through table
-    // need to add userId to the event so the instance is saved on the through table userevents
+    await UserEvent.create({
+      userId: req.user.dataValues.id,
+      eventId: event.id,
+      isOrganizer: true
+    })
 
     if (event) {
       res.json(event)

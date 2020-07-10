@@ -2,6 +2,8 @@ import React from 'react'
 import {createEvent} from '../store/events'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import activity from '../pollOptions/activity'
+import {flattenLocation} from '../pollOptions/pollUtils'
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -36,8 +38,9 @@ class CreateEventForm extends React.Component {
   }
 
   render() {
-    console.log('thisprops', this.props)
-
+    console.log('activity', activity)
+    const flatLocation = flattenLocation()
+    console.log(flatLocation)
     return (
       <div className="my-6 card">
         <h1 className="is-size-2 my-5">Create a New Event</h1>
@@ -98,9 +101,9 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  <option>Burgers</option>
-                  <option>Pizza</option>
-                  <option>Chinese</option>
+                  {Object.keys(activity.restaurant).map(key => (
+                    <option>{key}</option>
+                  ))}
                 </select>
               </div>
             </div>
