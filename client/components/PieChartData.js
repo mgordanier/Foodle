@@ -1,44 +1,52 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import * as d3 from 'd3'
 import {Pie} from './index'
+import {fetchPollResults} from '../store/poll'
+import {connect} from 'react-redux'
 
-export function PieChartData() {
+function PieChartData(props) {
   const generateData = () => {
-    return [
-      {type: 'korean', value: 2},
-      {type: 'mexican', value: 1},
-      {type: 'japanese', value: 5},
-      {type: 'american', value: 1},
-      {type: 'chinese', value: 1}
-    ]
+    let responseArray = []
+    let responseObj = {}
+    if (props.responses) {
+      let selections = props.responses.map((response) => response.selections)
+      const array = []
+      for (let i = 0; i < selections.length; i++) {
+        array.push(...selections[i])
+      }
+      for (let i = 0; i < array.length; i++) {
+        if (responseObj[array[i]]) {
+          responseObj[array[i]] += 1
+        } else {
+          responseObj[array[i]] = 1
+        }
+      }
+
+      for (let key in responseObj) {
+        let restaurantObj = {}
+        restaurantObj.type = key
+        restaurantObj.value = responseObj[key]
+        responseArray.push(restaurantObj)
+      }
+      return responseArray
+    }
   }
 
-  // PIE 2 LOCATION
-  // const generateLocation = () => {
-  //   return [
-  //     {type: 'Brookyln',  value:'NYC'},
-  //     {type: 'Soho', value: 'NYC'},
-  //     {type: 'East Village', value: 'NYC'}
-  //   ]
-  // }
+  // return [
+  //   {type: 'korean', value: 2},
+  //   {type: 'mexican', value: 1},
+  // ]
 
-  //current state value & function that lets you update it
-  const [data, setData] = useState(generateData())
-  // const [location, setLocation] = useState(generateLocation())
+  const data = generateData()
 
-  //on button click, runs changedata where it changes value of data through setdata function
-  const changeData = () => {
-    setData(generateData())
-    // setLocation(generateLocation())
-  }
+  useEffect(() => {
+    props.fetchPollResults()
+  }, [])
 
   return (
     <div className="Piechart">
       <div>
-        <button onClick={changeData}>Transform</button>
-      </div>
-      <div>
-        <span className="label">Hooks</span>
+        <h1 className="title">Current Results: </h1>
         <Pie
           data={data}
           width={600}
@@ -50,3 +58,17 @@ export function PieChartData() {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    responses: state.poll.pollResponses,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPollResults: () => dispatch(fetchPollResults()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PieChartData)

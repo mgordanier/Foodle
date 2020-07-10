@@ -7,54 +7,50 @@ const Event = db.define('event', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
-    }
+      notEmpty: true,
+    },
   },
   time: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
   },
   googlePlacesId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   activitySubtype: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   neighborhood: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   initialDueDate: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
   },
   activityType: {
     type: Sequelize.STRING,
-    defaultValue: 'restaurant'
+    defaultValue: 'restaurant',
   },
   city: {
     type: Sequelize.STRING,
-    defaultValue: 'new+york'
+    defaultValue: 'new+york',
   },
   allowSuggestions: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   urlKey: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   finalized: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 })
 
 //method to create random confirmation number
-Event.beforeCreate(event => {
+Event.beforeCreate((event) => {
   let key =
-    Math.random()
-      .toString(36)
-      .substring(2, 15) +
-    Math.random()
-      .toString(36)
-      .substring(2, 15)
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
 
   event.urlKey = key
 })

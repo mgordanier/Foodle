@@ -145,6 +145,8 @@ router.post(
   async (req, res, next) => {
     try {
       const {selections} = req.body
+      console.log('selections', selections)
+      console.log('req.params', req.params.pollId, req.params.userId)
       const response = await Response.create({
         selections,
         pollId: req.params.pollId,

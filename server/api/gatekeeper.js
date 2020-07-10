@@ -3,5 +3,5 @@ function isAdmin(user) {
 }
 
 module.exports = {
-  isAdmin
+  isAdmin,
 }

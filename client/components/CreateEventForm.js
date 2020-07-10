@@ -13,24 +13,24 @@ class CreateEventForm extends React.Component {
       neighborhood: '',
       time: '',
       activitySubtype: '',
-      initialDueDate: ''
+      initialDueDate: '',
     }
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault()
     let newEvent = {
       name: this.state.name,
       neighborhood: this.state.neighborhood,
       time: this.state.time,
       activitySubtype: this.state.activitySubtype,
-      initialDueDate: this.state.initialDueDate
+      initialDueDate: this.state.initialDueDate,
     }
 
     this.props.createEvent(newEvent)
@@ -129,9 +129,9 @@ class CreateEventForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    createEvent: newEvent => dispatch(createEvent(newEvent))
+    createEvent: (newEvent) => dispatch(createEvent(newEvent)),
   }
 }
 
