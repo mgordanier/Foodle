@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import axios from 'axios'
 
 //ACTION TYPES
 const GET_ALL_RESTAURANTS = 'GET_ALL_RESTAURANTS'
@@ -23,7 +23,7 @@ const getOneRestaurant = (restaurant) => {
 export const fetchRestaurants = () => {
   return async (dispatch) => {
     try {
-      const {data} = await Axios.get('/api/google/restaurants')
+      const {data} = await axios.get('/api/google/restaurants')
       console.log(data)
       dispatch(getAllRestaurants(data))
     } catch (error) {
@@ -35,7 +35,7 @@ export const fetchRestaurants = () => {
 export const fetchOneRestaurant = (restaurantId) => {
   return async (dispatch) => {
     try {
-      const {data} = await Axios.get(
+      const {data} = await axios.get(
         `/api/google/randomRestaurant/${restaurantId}`
       )
       dispatch(getOneRestaurant(data))
@@ -51,7 +51,7 @@ const initialState = {
 }
 
 //REDUCER
-export default function restaurants(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_ALL_RESTAURANTS:
       return {

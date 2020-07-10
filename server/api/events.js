@@ -26,6 +26,24 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// get one event by urlKey
+router.get('/key/:urlKey', async (req, res, next) => {
+  try {
+    const event = await Event.findOne({
+      where: {
+        urlKey: req.params.urlKey,
+      },
+    })
+    if (event) {
+      res.json(event)
+    } else {
+      res.status(401).send('urkKey not valid')
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 //create an event as a user
 router.post('/', async (req, res, next) => {
   try {
@@ -37,8 +55,11 @@ router.post('/', async (req, res, next) => {
       activitySubtype: req.body.activitySubtype,
     })
 
-    // need to add isOrganizer on the through table
-    // need to add userId to the event so the instance is saved on the through table userevents
+    await UserEvent.create({
+      userId: req.user.dataValues.id,
+      eventId: event.id,
+      isOrganizer: true,
+    })
 
     if (event) {
       res.json(event)
@@ -81,43 +102,58 @@ router.post('/', async (req, res, next) => {
 //   }
 // })
 
-// get all polls associated with one event
+// get all polls associated with one event, then send them with responses
 router.get('/:id/polls', async (req, res, next) => {
   try {
     const polls = await Poll.findAll({where: {eventId: req.params.id}})
+    for (let i = 0; i < polls.length; i++) {
+      const poll = polls[i]
+      poll.dataValues.responses = await Response.findAll({
+        where: {pollId: poll.id},
+      })
+    }
     res.send(polls)
   } catch (error) {
     next(error)
   }
 })
 
-// create a new poll
+// create a new poll, then send it with responses
 router.post('/:id/polls', async (req, res, next) => {
   try {
     const {name, options} = req.body
     const poll = await Poll.create({name, options, eventId: req.params.id})
+    poll.dataValues.responses = await Response.findAll({
+      where: {pollId: poll.id},
+    })
     res.send(poll)
   } catch (error) {
     next(error)
   }
 })
 
-// update options in one poll
+// update options in one poll, then send it with responses
 router.put('/:id/polls/:pollId', async (req, res, next) => {
   try {
     const {options} = req.body
     let poll = await Poll.findByPk(req.params.pollId)
     poll = await poll.update({options})
+    poll.dataValues.responses = await Response.findAll({
+      where: {pollId: poll.id},
+    })
     res.send(poll)
   } catch (error) {
     next(error)
   }
 })
 
-// get one poll by pollId
+// get one poll by pollId, then send it with responses
 router.get('/:id/polls/:pollId', async (req, res, next) => {
   try {
     const poll = await Poll.findByPk(req.params.pollId)
+    poll.dataValues.responses = await Response.findAll({
+      where: {pollId: poll.id},
+    })
     res.send(poll)
   } catch (error) {
     next(error)
@@ -136,32 +172,17 @@ router.get('/:id/polls/:pollId/responses', async (req, res, next) => {
   }
 })
 
-// create a new response
-router.post(
+// create a new response, or update existing response, if one exists
+router.put(
   '/:id/polls/:pollId/users/:userId/responses',
   async (req, res, next) => {
     try {
       const {selections} = req.body
-      const response = await Response.create({
-        selections,
-        pollId: req.params.pollId,
-        userId: req.params.userId,
-      })
-      res.send(response)
-    } catch (error) {
-      next(error)
-    }
-  }
-)
-
-// update selections in one response
-router.put(
-  '/:id/polls/:pollId/users/:userId/responses/',
-  async (req, res, next) => {
-    try {
-      const {selections} = req.body
-      let response = await Response.findOne({
-        where: {userId: req.params.userId, pollId: req.params.pollId},
+      let [response, wasCreated] = await Response.findOrCreate({
+        where: {
+          pollId: req.params.pollId,
+          userId: req.params.userId,
+        },
       })
       response = await response.update({selections})
       res.send(response)

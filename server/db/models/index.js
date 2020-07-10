@@ -17,5 +17,5 @@ module.exports = {
   Event,
   UserEvent,
   Poll,
-  Response
+  Response,
 }

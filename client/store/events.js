@@ -5,19 +5,19 @@ const GET_EVENTS = 'GET_EVENTS'
 const ADD_EVENT = 'ADD_EVENT'
 
 //ACTION CREATOR
-const getEvents = events => ({
+const getEvents = (events) => ({
   type: GET_EVENTS,
-  events
+  events,
 })
 
-const addEvent = event => ({
+const addEvent = (event) => ({
   type: ADD_EVENT,
-  event
+  event,
 })
 
 //THUNK CREATORS
 export const fetchEvents = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const {data} = await axios.get('/api/events')
       dispatch(getEvents(data))
@@ -27,8 +27,8 @@ export const fetchEvents = () => {
   }
 }
 
-export const createEvent = event => {
-  return async dispatch => {
+export const createEvent = (event) => {
+  return async (dispatch) => {
     try {
       console.log('event', event)
       const {data} = await axios.post('/api/events', event)
@@ -41,20 +41,20 @@ export const createEvent = event => {
 
 const initialState = {
   event: {},
-  events: {}
+  events: {},
 }
 
 //REDUCER
-export default function events(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_EVENTS:
       return {
         ...state,
-        events: action.events
+        events: action.events,
       }
     case ADD_EVENT:
       return {
-        event: action.event
+        event: action.event,
       }
     default:
       return state
