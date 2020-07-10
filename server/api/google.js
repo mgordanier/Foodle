@@ -26,7 +26,7 @@ router.get('/restaurants', async (req, res, next) => {
     let firstThree = data.results.slice(0, 3)
     const options = firstThree.map((el) => el.place_id)
 
-    const poll = await Poll.create({name: 'activity', options: options})
+    const poll = await Poll.create({name: 'suggestions', options: options})
 
     res.json({
       results: firstThree,

@@ -47,16 +47,18 @@ export const fetchOneRestaurant = (restaurantId) => {
   }
 }
 
-export const voteForRestaurant = (restaurants) => {
+//CHANGE EVENT ID !!!
+export const voteForRestaurant = (selections) => {
   return async (dispatch, getState) => {
     const userId = getState().user.id
     const pollId = getState().poll.poll.id
     try {
-      const {data} = await Axios.post('/api/users/responses', {
-        restaurants,
-        userId,
-        pollId,
-      })
+      const {data} = await Axios.post(
+        `/api/events/1/polls/${pollId}/users/${userId}/responses`,
+        {
+          selections,
+        }
+      )
     } catch (error) {
       console.log(error)
     }

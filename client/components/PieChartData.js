@@ -1,23 +1,47 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import * as d3 from 'd3'
 import {Pie} from './index'
+import {fetchPollResults} from '../store/poll'
+import {connect} from 'react-redux'
 
-export function PieChartData() {
+function PieChartData(props) {
   const generateData = () => {
-    return [
-      {type: 'korean', value: 2},
-      {type: 'mexican', value: 1},
-      {type: 'japanese', value: 5},
-      {type: 'american', value: 1},
-      {type: 'chinese', value: 1},
-    ]
+    let responseArray = []
+    let responseObj = {}
+    if (props.responses) {
+      let selections = props.responses.map((response) => response.selections)
+      const array = []
+      for (let i = 0; i < selections.length; i++) {
+        array.push(...selections[i])
+      }
+      for (let i = 0; i < array.length; i++) {
+        if (responseObj[array[i]]) {
+          responseObj[array[i]] += 1
+        } else {
+          responseObj[array[i]] = 1
+        }
+      }
+
+      for (let key in responseObj) {
+        let restaurantObj = {}
+        restaurantObj.type = key
+        restaurantObj.value = responseObj[key]
+        responseArray.push(restaurantObj)
+      }
+      return responseArray
+    }
   }
 
-  const [data, setData] = useState(generateData())
+  // return [
+  //   {type: 'korean', value: 2},
+  //   {type: 'mexican', value: 1},
+  // ]
 
-  const changeData = () => {
-    setData(generateData())
-  }
+  const data = generateData()
+
+  useEffect(() => {
+    props.fetchPollResults()
+  }, [])
 
   return (
     <div className="Piechart">
@@ -34,3 +58,17 @@ export function PieChartData() {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    responses: state.poll.pollResponses,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPollResults: () => dispatch(fetchPollResults()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PieChartData)

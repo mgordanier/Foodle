@@ -34,9 +34,9 @@ class Suggestions extends Component {
     this.props.fetchOneRestaurant(restaurantId)
   }
 
-  handleCheckboxChange(restaurantId, event) {
+  handleCheckboxChange(restaurantName, event) {
     let selectedRestaurants = this.state.selectedRestaurants
-    selectedRestaurants[restaurantId] = event.target.checked
+    selectedRestaurants[restaurantName] = event.target.checked
     this.setState({selectedRestaurants})
   }
 
@@ -96,7 +96,7 @@ class Suggestions extends Component {
 
             <button
               className="button is-warning is-centered is-large"
-              onClick={() => this.props.voteForRestaurant([])}
+              onClick={() => this.props.voteForRestaurant(['None Of These'])}
             >
               NO PREFERENCE
             </button>
