@@ -38,9 +38,10 @@ class CreateEventForm extends React.Component {
   }
 
   render() {
-    console.log('activity', activity)
     const flatLocation = locationFlattener()
-    console.log(flatLocation)
+    const locationArray = Object.values(flatLocation)
+    const restaurantArray = Object.values(activity.restaurant)
+
     return (
       <div className="my-6 card">
         <h1 className="is-size-2 my-5">Create a New Event</h1>
@@ -68,7 +69,9 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {Object.keys(flatLocation).map(key => <option>{key}</option>)}
+                  {locationArray.map(n => (
+                    <option key={n.searchStr}>{n.displayName}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -96,8 +99,8 @@ class CreateEventForm extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {Object.keys(activity.restaurant).map(key => (
-                    <option key={key}>{key}</option>
+                  {restaurantArray.map(r => (
+                    <option key={r.searchStr}>{r.displayName}</option>
                   ))}
                 </select>
               </div>
