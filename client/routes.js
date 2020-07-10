@@ -14,6 +14,7 @@ import {
   InviteLink,
   Suggestions,
   CreateEventForm,
+  EventDashboard,
 } from './components'
 import {me} from './store'
 
@@ -41,10 +42,12 @@ class Routes extends Component {
         <Route path="/suggestions" component={Suggestions} />
         <Route path="/newevent" component={CreateEventForm} />
         <Route path="/userdashboard" component={UserDashboard} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserDashboard} />
+            <Route path="/eventdashboard" component={EventDashboard} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

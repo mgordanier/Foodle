@@ -3,6 +3,7 @@ import axios from 'axios'
 //ACTION TYPE
 const GET_EVENTS = 'GET_EVENTS'
 const ADD_EVENT = 'ADD_EVENT'
+const GET_ONE_EVENT = 'GET_ONE_EVENT'
 
 //ACTION CREATOR
 const getEvents = (events) => ({
@@ -15,6 +16,11 @@ const addEvent = (event) => ({
   event,
 })
 
+const getOneEvent = (event) => ({
+  type: GET_ONE_EVENT,
+  event,
+})
+
 //THUNK CREATORS
 export const fetchEvents = () => {
   return async (dispatch) => {
@@ -23,6 +29,17 @@ export const fetchEvents = () => {
       dispatch(getEvents(data))
     } catch (error) {
       console.log('Error with fetching events')
+    }
+  }
+}
+
+export const fetchOneEvent = () => {
+  return async (dispatch) => {
+    try {
+      const {data} = await axios.get('/api/events/:id')
+      dispatch(getOneEvent(data))
+    } catch (error) {
+      console.log('Error with fetching one event')
     }
   }
 }
@@ -54,6 +71,11 @@ export default function events(state = initialState, action) {
       }
     case ADD_EVENT:
       return {
+        event: action.event,
+      }
+    case GET_ONE_EVENT:
+      return {
+        ...state,
         event: action.event,
       }
     default:
