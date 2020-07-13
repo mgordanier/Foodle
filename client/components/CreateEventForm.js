@@ -1,10 +1,8 @@
 import React from 'react'
 import {createEvent} from '../store/events'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import activity from '../pollOptions/activity'
 import {locationFlattener} from '../pollOptions/pollUtils'
-import InviteLink from './InviteLink'
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -13,7 +11,7 @@ class CreateEventForm extends React.Component {
       name: '',
       neighborhood: '',
       time: '',
-      activitySubtype: '',
+      activitySubtype: new Map(),
       initialDueDate: ''
     }
   }
@@ -22,6 +20,14 @@ class CreateEventForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+  }
+
+  handleCheckboxChange = e => {
+    const activitySubtype = e.target.name
+    const isChecked = e.target.checked
+    this.setState(prevState => ({
+      activitySubtype: prevState.activitySubtype.set(activitySubtype, isChecked)
+    }))
   }
 
   handleSubmit = e => {
@@ -35,11 +41,13 @@ class CreateEventForm extends React.Component {
         .toString(36)
         .substring(2, 15)
 
+    const selectedRestaurants = Array.from(this.state.activitySubtype.keys())
+
     let newEvent = {
       name: this.state.name,
       neighborhood: this.state.neighborhood,
       time: this.state.time,
-      activitySubtype: this.state.activitySubtype,
+      activitySubtype: selectedRestaurants,
       initialDueDate: this.state.initialDueDate,
       urlKey: urlKey
     }
@@ -57,6 +65,8 @@ class CreateEventForm extends React.Component {
   }
 
   render() {
+    console.log('state', this.state)
+
     const flatLocation = locationFlattener()
     const locationArray = Object.values(flatLocation)
     const restaurantArray = Object.values(activity.restaurant)
@@ -118,19 +128,28 @@ class CreateEventForm extends React.Component {
           <div className="field">
             <label className="label">Categories</label>
             <div className="control">
-              <div className="select">
-                <select
-                  name="activitySubtype"
-                  onChange={this.handleChange}
-                  required
-                >
-                  {restaurantArray.map(r => (
-                    <option key={r.searchStr} value={r.searchStr}>
-                      {r.displayName}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {restaurantArray.map(r => (
+                <label key={r.searchstr}>
+                  {r.displayName}
+                  <input
+                    type="checkbox"
+                    name={r.displayName}
+                    checked={this.state.activitySubtype.get(r.displayName)}
+                    onChange={this.handleCheckboxChange}
+                  />
+                </label>
+
+                // <div className="field" key={r.searchStr}>
+                //   <input
+                //     value={r.searchStr}
+                //     className="is-checkradio"
+                //     name="activitySubtype"
+                //     type="checkbox"
+                //     onChange={this.handleChange}
+                //     />
+                //   <label htmlFor="activitySubtype">{r.displayName}</label>
+                // </div>
+              ))}
             </div>
           </div>
 

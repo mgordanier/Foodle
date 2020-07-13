@@ -17,7 +17,7 @@ const Event = db.define('event', {
     type: Sequelize.STRING
   },
   activitySubtype: {
-    type: Sequelize.STRING
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   },
   neighborhood: {
     type: Sequelize.STRING
