@@ -4,19 +4,20 @@ import {connect} from 'react-redux'
 import {fetchEvents} from '../store/events'
 
 class UpcomingEvents extends React.Component {
-  async componentDidMount() {
-    await this.props.fetchEvents()
+  async componentDidMount(props) {
+    await this.props.fetchEvents(props)
   }
 
   render() {
     const {events} = this.props
     console.log('props', this.props)
+
     return (
       <>
-        <div className="columns">
-          {events.length ? (
-            events.map(event => (
-              <div key={event.id} className="column is-one-third">
+        <div className="columns is-multiline">
+          {events && events.length ? (
+            events.map((event) => (
+              <div key={event.id} className="column is-one-third ">
                 <EventCard {...event} />
               </div>
             ))
@@ -29,15 +30,15 @@ class UpcomingEvents extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    events: state.events.events
+    events: state.events.events,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchEvents: () => dispatch(fetchEvents())
+    fetchEvents: () => dispatch(fetchEvents()),
   }
 }
 

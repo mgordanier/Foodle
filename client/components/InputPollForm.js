@@ -1,61 +1,69 @@
 import React, {Component} from 'react'
+import {activityFlattener} from '../pollOptions/pollUtils'
 
 export default class InputPollForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      time: '',
+      foodPreference: '',
+      message: '',
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+  }
+
   render() {
+    const restaurants = activityFlattener()
+    let displayCategory = []
+    for (let category in restaurants) {
+      displayCategory.push(restaurants[category].displayName)
+    }
+    let restaurantTypes = displayCategory.slice(7)
+
+    console.log('change', this.state)
+
     return (
       <section className="section">
         <div className="hero-body">
           <div className="columns is-centered">
             <div className="column is-half">
+              <h2 className="title">Participant's Poll:</h2>
+
               <div className="field">
                 <label className="label">Participant's Name</label>
                 <div className="control">
                   <input
                     className="input"
                     type="text"
+                    name="name"
                     placeholder="Text input"
+                    onChange={this.handleChange}
+                    required
                   />
                 </div>
               </div>
 
-              <div className="field">
-                <label className="label">Location</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="New York City"
-                  />
-                </div>
-              </div>
+              <label className="label">Location: New York City</label>
 
               <div className="field">
-                <label className="label">Food Preferences</label>
+                <label className="label">Food Preferences:</label>
                 <div className="control">
                   <div className="select">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>African</option>
-                      <option>American</option>
-                      <option>Asian</option>
-                      <option>Caribbean</option>
-                      <option>Chinese</option>
-                      <option>Greek</option>
-                      <option>Mexican</option>
-                      <option>Indian</option>
-                      <option>Indonesian</option>
-                      <option>Italian</option>
-                      <option>Japanese</option>
-                      <option>Jamaican</option>
-                      <option>Korean</option>
-                      <option>Laotian</option>
-                      <option>Lebanese</option>
-                      <option>Malaysian</option>
-                      <option>Taiwanese</option>
-                      <option>Thai</option>
-                      <option>Turkish</option>
-                      <option>Portuguese</option>
-                      <option>Vietnamese</option>
+                    <select name="foodPreference" onChange={this.handleChange}>
+                      <option>No Preference</option>
+                      {restaurantTypes.map((type, index) => (
+                        <option key={index}>{type}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -64,21 +72,29 @@ export default class InputPollForm extends Component {
               <div className="field">
                 <label className="label">Date & Time</label>
                 <input
+                  name="time"
                   type="datetime-local"
                   data-display-mode="inline"
                   data-is-range="true"
                   data-close-on-select="false"
+                  onChange={this.handleChange}
+                  required
                 />
               </div>
 
               <div className="field">
                 <label className="label">Message</label>
                 <div className="control">
-                  <textarea className="textarea" placeholder="Textarea" />
+                  <textarea
+                    className="textarea"
+                    placeholder="Textarea"
+                    name="message"
+                    onChange={this.handleChange}
+                  />
                 </div>
               </div>
 
-              <div className="field">
+              {/* <div className="field">
                 <div className="control">
                   <label className="radio">
                     <input type="radio" name="question" />
@@ -89,11 +105,15 @@ export default class InputPollForm extends Component {
                     No
                   </label>
                 </div>
-              </div>
+              </div> */}
 
               <div className="field is-grouped">
                 <div className="control">
-                  <button type="button" className="button is-primary">
+                  <button
+                    type="button"
+                    className="button is-primary"
+                    onClick={this.handleSubmit}
+                  >
                     Submit
                   </button>
                 </div>

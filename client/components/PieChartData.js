@@ -9,7 +9,7 @@ function PieChartData(props) {
     let responseArray = []
     let responseObj = {}
     if (props.responses) {
-      let selections = props.responses.map(response => response.selections)
+      let selections = props.responses.map((response) => response.selections)
       const array = []
       for (let i = 0; i < selections.length; i++) {
         array.push(...selections[i])
@@ -44,7 +44,7 @@ function PieChartData(props) {
   }, [])
 
   return (
-    <div className="Piechart">
+    <div className="container">
       <div>
         <h1 className="title">Current Results: </h1>
         <Pie
@@ -59,15 +59,15 @@ function PieChartData(props) {
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    responses: state.poll.pollResponses
+    responses: state.poll.pollResponses,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPollResults: () => dispatch(fetchPollResults())
+    fetchPollResults: () => dispatch(fetchPollResults()),
   }
 }
 
