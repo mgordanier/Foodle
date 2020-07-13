@@ -32,6 +32,10 @@ function PieChartData(props) {
     }
   }
 
+  // get selected poll
+  // map selected poll to props
+  // extract results
+  // helper function to turn results into this:
   // return [
   //   {type: 'korean', value: 2},
   //   {type: 'mexican', value: 1},
