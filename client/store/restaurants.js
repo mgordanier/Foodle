@@ -1,8 +1,10 @@
-import axios from 'axios'
+import Axios from 'axios'
+import {setPoll} from './poll'
 
 //ACTION TYPES
 const GET_ALL_RESTAURANTS = 'GET_ALL_RESTAURANTS'
 const GET_ONE_RESTAURANT = 'GET_ONE_RESTAURANT'
+// const VOTE_FOR_RESTAURANT = "VOTE_FOR_RESTAURANT"
 
 //ACTION CREATORS
 const getAllRestaurants = (restaurants) => {
@@ -20,12 +22,17 @@ const getOneRestaurant = (restaurant) => {
 }
 
 //THUNK CREATORS
-export const fetchRestaurants = () => {
+export const fetchRestaurants = (neighborhood, borough, city, category) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/google/restaurants')
-      console.log(data)
+      const {data} = await Axios.put('/api/google/restaurants', {
+        neighborhood,
+        borough,
+        city,
+        category,
+      })
       dispatch(getAllRestaurants(data))
+      dispatch(setPoll(data.poll))
     } catch (error) {
       console.log(error)
     }
@@ -39,6 +46,24 @@ export const fetchOneRestaurant = (restaurantId) => {
         `/api/google/randomRestaurant/${restaurantId}`
       )
       dispatch(getOneRestaurant(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+//CHANGE EVENT ID !!!
+export const voteForRestaurant = (selections) => {
+  return async (dispatch, getState) => {
+    const userId = getState().user.id
+    const pollId = getState().poll.poll.id
+    try {
+      const {data} = await Axios.post(
+        `/api/events/1/polls/${pollId}/users/${userId}/responses`,
+        {
+          selections,
+        }
+      )
     } catch (error) {
       console.log(error)
     }

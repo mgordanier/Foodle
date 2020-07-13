@@ -36,6 +36,14 @@ async function seed() {
       city: 'new+york',
       neighborhood: 'east+village',
     }),
+    Event.create({
+      name: 'Pizza Night',
+      time: new Date('2020-07-10 18:00'),
+      activityType: 'restaurant',
+      city: 'new+york',
+      neighborhood: 'east+village',
+      finalized: true,
+    }),
   ])
 
   console.log(`seeded ${events.length} events`)
@@ -48,6 +56,10 @@ async function seed() {
     UserEvent.create({isOrganizer: false, userId: 2, eventId: 2}),
     UserEvent.create({isOrganizer: false, userId: 3, eventId: 2}),
     UserEvent.create({isOrganizer: false, userId: 4, eventId: 2}),
+    UserEvent.create({isOrganizer: true, userId: 1, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 2, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 3, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 4, eventId: 3}),
   ])
 
   console.log(`seeded ${userEvent.length} userEvents`)
@@ -172,6 +184,11 @@ async function seed() {
         'ChIJ8UwiNndZwokRdRVevqF6DWw',
       ],
       eventId: 2,
+    }),
+    Poll.create({
+      name: 'suggestions',
+      options: ["Joe's+pizza", 'Motorino', "Baker's+Pizza"],
+      eventId: 3,
     }),
   ])
 
@@ -308,6 +325,26 @@ async function seed() {
       selections: ['bbq', 'tacos', 'mediterranean', 'falafel'],
       pollId: 2,
       userId: 3,
+    }),
+    Response.create({
+      selections: ["Joe's Pizza"],
+      pollId: 4,
+      userId: 1,
+    }),
+    Response.create({
+      selections: ['Motorino', 'Gnocco', "Joe's Pizza"],
+      pollId: 4,
+      userId: 2,
+    }),
+    Response.create({
+      selections: ['Motorino', 'Gnocco'],
+      pollId: 4,
+      userId: 3,
+    }),
+    Response.create({
+      selections: ['None Of These'],
+      pollId: 4,
+      userId: 4,
     }),
   ])
 

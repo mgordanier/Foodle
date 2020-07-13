@@ -1,6 +1,8 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-export const InviteLink = () => {
+const InviteLink = (props) => {
+  const urlKey = props.history.location.state.urlKey
   return (
     <section className="section">
       <div className="hero-body">
@@ -11,7 +13,7 @@ export const InviteLink = () => {
                 <p>Copy and paste your event link</p>
               </div>
               <div className="message-body">
-                http://www.foodle.com/event/123456
+                {`http://www.foodle.com/event/${urlKey}`}
               </div>
             </article>
 
@@ -32,3 +34,17 @@ export const InviteLink = () => {
     </section>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchSingleEvent: (name, time) => dispatch(fetchSingleEvent(name, time))
+//   }
+// }
+
+export default connect(mapStateToProps)(InviteLink)

@@ -18,15 +18,21 @@ export class SuggestionChoices extends Component {
   }
 
   render() {
-    const {randomRestaurant, getRestaurantInfo, oneRestaurant} = this.props
+    const {
+      randomRestaurant,
+      getRestaurantInfo,
+      oneRestaurant,
+      handleCheckboxChange,
+    } = this.props
 
     return (
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
+              src="food2.jpg"
               alt="Placeholder image"
+              className="cursor"
               onClick={() => {
                 this.toggleModal()
                 getRestaurantInfo(randomRestaurant.place_id)
@@ -36,14 +42,14 @@ export class SuggestionChoices extends Component {
         </div>
         <div className="card-content">
           <div className="media">
-            <div className="media-left">
+            {/* <div className="media-left">
               <figure className="image is-48x48">
                 <img
                   src="https://bulma.io/images/placeholders/96x96.png"
                   alt="Placeholder image"
                 />
               </figure>
-            </div>
+            </div> */}
             <div className="media-content">
               <p className="title is-4">{randomRestaurant.name}</p>
               <p className="subtitle is-6">
@@ -64,9 +70,17 @@ export class SuggestionChoices extends Component {
             oneRestaurant={oneRestaurant}
           />
 
-          <div className="buttons is-centered">
-            <button className="button is-warning is-large">Vote</button>
-          </div>
+          <label className="checkbox labelName">
+            <input
+              type="checkbox"
+              name="selectedRestaurant"
+              className="margin-right"
+              onChange={(event) =>
+                handleCheckboxChange(randomRestaurant.name, event)
+              }
+            />
+            Select To Vote
+          </label>
         </div>
       </div>
     )

@@ -7,13 +7,13 @@ import {
   Login,
   Signup,
   UserHome,
-  AllRestaurants,
   PieChartData,
   InputPollForm,
   UserDashboard,
   InviteLink,
   Suggestions,
-  CreateEventForm
+  CreateEventForm,
+  EventDashboard,
 } from './components'
 import {me} from './store'
 
@@ -34,21 +34,21 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/restaurants" component={AllRestaurants} />
         <Route path="/piechart" component={PieChartData} />
         <Route path="/inputpollform" component={InputPollForm} />
         <Route path="/invitelink" component={InviteLink} />
         <Route path="/suggestions" component={Suggestions} />
         <Route path="/newevent" component={CreateEventForm} />
         <Route path="/userdashboard" component={UserDashboard} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserDashboard} />
+            <Route path="/eventdashboard" component={EventDashboard} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={AllRestaurants} />
       </Switch>
     )
   }
@@ -57,19 +57,19 @@ class Routes extends Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(me())
-    }
+    },
   }
 }
 
@@ -82,5 +82,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 }

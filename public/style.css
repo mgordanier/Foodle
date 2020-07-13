@@ -72,3 +72,15 @@ form div {
   font-size: 18px;
   padding: 18px;
 }
+
+.margin-right {
+  margin-right: 6px;
+}
+
+.labelName {
+  font-size: 20px;
+}
+
+.cursor {
+  cursor: pointer;
+}
