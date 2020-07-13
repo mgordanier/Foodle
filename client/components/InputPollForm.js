@@ -1,24 +1,33 @@
 import React, {Component} from 'react'
 import {activityFlattener} from '../pollOptions/pollUtils'
+import ActivityPoll from './ActivityPoll'
+import {fetchOneEvent} from '../store/events'
 
-export default class InputPollForm extends Component {
+import {connect} from 'react-redux'
+
+class InputPollForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
       time: '',
-      foodPreference: '',
-      message: '',
+      foodPreferences: '',
+      message: ''
     }
   }
 
-  handleChange = (event) => {
+  componentDidMount() {
+    const urlKey = 'oozv6jic9pzjizg146k7o'
+    this.props.fetchOneEvent(urlKey)
+  }
+
+  handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
   }
 
@@ -30,7 +39,10 @@ export default class InputPollForm extends Component {
     }
     let restaurantTypes = displayCategory.slice(7)
 
-    console.log('change', this.state)
+    let time = this.props.event.time
+    time = new Date(time)
+    const date = time.toLocaleDateString()
+    const hour = time.toLocaleTimeString()
 
     return (
       <section className="section">
@@ -53,11 +65,21 @@ export default class InputPollForm extends Component {
                 </div>
               </div>
 
+              <div className="field">
+                <label className="label">Date & Time</label>
+                <p>
+                  {date} {hour}
+                </p>
+              </div>
+
               <label className="label">Location: New York City</label>
 
               <div className="field">
-                <label className="label">Food Preferences:</label>
-                <div className="control">
+                <label className="label">Select Food Preferences:</label>
+
+                <ActivityPoll />
+
+                {/* <div className="control">
                   <div className="select">
                     <select name="foodPreference" onChange={this.handleChange}>
                       <option>No Preference</option>
@@ -66,20 +88,7 @@ export default class InputPollForm extends Component {
                       ))}
                     </select>
                   </div>
-                </div>
-              </div>
-
-              <div className="field">
-                <label className="label">Date & Time</label>
-                <input
-                  name="time"
-                  type="datetime-local"
-                  data-display-mode="inline"
-                  data-is-range="true"
-                  data-close-on-select="false"
-                  onChange={this.handleChange}
-                  required
-                />
+                </div> */}
               </div>
 
               <div className="field">
@@ -130,3 +139,17 @@ export default class InputPollForm extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    event: state.events.event
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchOneEvent: urlKey => dispatch(fetchOneEvent(urlKey))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputPollForm)

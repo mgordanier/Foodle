@@ -43,6 +43,8 @@ class CreateEventForm extends React.Component {
 
     const selectedRestaurants = Array.from(this.state.activitySubtype.keys())
 
+    console.log('selectedRestaurantsArray', selectedRestaurants)
+
     let newEvent = {
       name: this.state.name,
       neighborhood: this.state.neighborhood,
@@ -54,14 +56,14 @@ class CreateEventForm extends React.Component {
 
     this.props.createEvent(newEvent)
 
-    this.props.history.push({
-      pathname: `/invitelink`,
-      state: {
-        urlKey: `${urlKey}`,
-        name: `${this.state.name}`,
-        time: `${this.state.time}`
-      }
-    })
+    // this.props.history.push({
+    //   pathname: `/invitelink`,
+    //   state: {
+    //     urlKey: `${urlKey}`,
+    //     name: `${this.state.name}`,
+    //     time: `${this.state.time}`
+    //   }
+    // })
   }
 
   render() {
