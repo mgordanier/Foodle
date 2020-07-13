@@ -4,7 +4,6 @@ import {setPoll} from './poll'
 //ACTION TYPES
 const GET_ALL_RESTAURANTS = 'GET_ALL_RESTAURANTS'
 const GET_ONE_RESTAURANT = 'GET_ONE_RESTAURANT'
-// const VOTE_FOR_RESTAURANT = "VOTE_FOR_RESTAURANT"
 
 //ACTION CREATORS
 const getAllRestaurants = (restaurants) => {

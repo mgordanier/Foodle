@@ -39,13 +39,13 @@ class Routes extends Component {
         <Route path="/invitelink" component={InviteLink} />
         <Route path="/suggestions" component={Suggestions} />
         <Route path="/newevent" component={CreateEventForm} />
-        <Route path="/userdashboard" component={UserDashboard} />
+        <Route path="/event/:urlKey" component={EventDashboard} />
 
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserDashboard} />
-            <Route path="/eventdashboard" component={EventDashboard} />
+            {/* <Route path="/userdashboard" component={UserDashboard} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

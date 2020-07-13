@@ -30,7 +30,7 @@ export class SuggestionChoices extends Component {
         <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src="food2.jpg"
+              src="https://comps.canstockphoto.com/coloring-cartoon-illustration-of-ramen-eps-vector_csp62947381.jpg"
               alt="Placeholder image"
               className="cursor"
               onClick={() => {

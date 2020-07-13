@@ -28,6 +28,7 @@ async function seed() {
       city: 'new+york',
       neighborhood: 'soho',
       initialDueDate: new Date('2020-07-11 12:00'),
+      urlKey: 'c92pv929nm6456zli0sqt',
     }),
     Event.create({
       name: 'Girlz Night',
@@ -35,6 +36,7 @@ async function seed() {
       activityType: 'restaurant',
       city: 'new+york',
       neighborhood: 'east+village',
+      urlKey: 'cbug6n45dd7s9o45kzz4i9',
     }),
     Event.create({
       name: 'Pizza Night',
@@ -42,6 +44,7 @@ async function seed() {
       activityType: 'restaurant',
       city: 'new+york',
       neighborhood: 'east+village',
+      urlKey: 'c70evaiduqimyqd4vzjjl8',
       finalized: true,
     }),
   ])
@@ -56,8 +59,8 @@ async function seed() {
     UserEvent.create({isOrganizer: false, userId: 2, eventId: 2}),
     UserEvent.create({isOrganizer: false, userId: 3, eventId: 2}),
     UserEvent.create({isOrganizer: false, userId: 4, eventId: 2}),
-    UserEvent.create({isOrganizer: true, userId: 1, eventId: 3}),
-    UserEvent.create({isOrganizer: false, userId: 2, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 1, eventId: 3}),
+    UserEvent.create({isOrganizer: true, userId: 2, eventId: 3}),
     UserEvent.create({isOrganizer: false, userId: 3, eventId: 3}),
     UserEvent.create({isOrganizer: false, userId: 4, eventId: 3}),
   ])

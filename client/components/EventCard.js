@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const EventCard = (props) => {
   return (
@@ -40,9 +41,9 @@ const EventCard = (props) => {
           <br />
         </div>
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">
+          <Link className="card-footer-item" to={`/event/${props.urlKey}`}>
             See Event Details
-          </a>
+          </Link>
         </footer>
       </div>
     </div>

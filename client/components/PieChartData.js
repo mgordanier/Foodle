@@ -48,7 +48,7 @@ function PieChartData(props) {
   }, [])
 
   return (
-    <div className="Piechart">
+    <div className="container">
       <div>
         <h1 className="title">Current Results: </h1>
         <Pie

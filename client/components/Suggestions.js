@@ -11,7 +11,6 @@ class Suggestions extends Component {
   constructor() {
     super()
     this.state = {
-      // currIdx: 0,
       selectedRestaurants: {},
     }
     this.getRestaurantInfo = this.getRestaurantInfo.bind(this)
@@ -58,10 +57,6 @@ class Suggestions extends Component {
   render() {
     const {allRestaurants} = this.props
     const availableRestaurants = allRestaurants.results || []
-    // const restaurantsToShow = availableRestaurants.slice(
-    //   this.state.currIdx,
-    //   this.state.currIdx + 3
-    // )
     console.log('STATEEEE', this.state.selectedRestaurants)
     console.log('ALL RESTAURANTS', allRestaurants)
 

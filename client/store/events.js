@@ -16,10 +16,10 @@ const addEvent = (event) => ({
   event,
 })
 
-const getOneEvent = (event) => ({
-  type: GET_ONE_EVENT,
-  event,
-})
+// const getOneEvent = event => ({
+//   type: GET_ONE_EVENT,
+//   event
+// })
 
 //THUNK CREATORS
 export const fetchEvents = () => {
@@ -33,11 +33,12 @@ export const fetchEvents = () => {
   }
 }
 
-export const fetchOneEvent = () => {
+//urlKey
+export const fetchOneEvent = (urlKey) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/events/:id')
-      dispatch(getOneEvent(data))
+      const {data} = await axios.get(`/api/events/key/${urlKey}`)
+      dispatch(addEvent(data))
     } catch (error) {
       console.log('Error with fetching one event')
     }
