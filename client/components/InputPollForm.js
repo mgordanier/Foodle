@@ -11,7 +11,7 @@ class InputPollForm extends Component {
     this.state = {
       name: '',
       time: '',
-      foodPreferences: '',
+      foodPreferences: [],
       message: '',
     }
   }
@@ -29,10 +29,13 @@ class InputPollForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log('submitted')
   }
 
   eventhandler = (data) => {
-    console.log('parent-child test', data)
+    this.setState({
+      foodPreferences: data,
+    })
   }
 
   render() {
@@ -48,77 +51,78 @@ class InputPollForm extends Component {
     const date = time.toLocaleDateString()
     const hour = time.toLocaleTimeString()
 
+    console.log('input poll form state', this.state)
+
     return (
-      <section className="section">
-        <div className="hero-body">
+      <div className="container">
+        {/* <div className="hero-body">
           <div className="columns is-centered">
-            <div className="column is-half">
-              <h2 className="title">Vote on Event Options</h2>
+            <div className="column is-half"> */}
+        <h2 className="title">Vote on Event Options</h2>
 
-              <div className="field">
-                <label className="label">Your Name</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    name="name"
-                    placeholder="Text input"
-                    onChange={this.handleChange}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="field">
-                <label className="label">Date & Time</label>
-                <p>
-                  {date} {hour}
-                </p>
-              </div>
-
-              <label className="label">Location: New York City</label>
-
-              <div className="field">
-                <label className="label">Select Food Preferences:</label>
-
-                <ActivityPoll
-                  event={this.props.event}
-                  onChange={this.eventhandler}
-                />
-              </div>
-
-              <div className="field">
-                <label className="label">Message</label>
-                <div className="control">
-                  <textarea
-                    className="textarea"
-                    placeholder="Textarea"
-                    name="message"
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-
-              <div className="field is-grouped">
-                <div className="control">
-                  <button
-                    type="button"
-                    className="button is-primary"
-                    onClick={this.handleSubmit}
-                  >
-                    Submit
-                  </button>
-                </div>
-                <div className="control">
-                  <button type="button" className="button is-link is-light">
-                    Cancel
-                  </button>
-                </div>
-              </div>
+        <form className="card" onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label className="label">Your Name</label>
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                name="name"
+                placeholder="Text input"
+                onChange={this.handleChange}
+                required
+              />
             </div>
           </div>
-        </div>
-      </section>
+
+          <div className="field">
+            <label className="label">Date & Time</label>
+            <p>
+              {date} {hour}
+            </p>
+          </div>
+
+          <label className="label">Location: New York City</label>
+
+          <div className="field">
+            <label className="label">Select Food Preferences:</label>
+
+            <ActivityPoll
+              event={this.props.event}
+              onChange={this.eventhandler}
+            />
+          </div>
+
+          <div className="field">
+            <label className="label">Message</label>
+            <div className="control">
+              <textarea
+                className="textarea"
+                placeholder="Textarea"
+                name="message"
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+
+          <div className="field is-grouped">
+            <div className="control">
+              <button type="button" className="button is-primary">
+                Submit
+              </button>
+            </div>
+            <div className="control">
+              <button type="button" className="button is-link is-light">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+
+        {/* </div>
+          </div>
+        </div> */}
+      </div>
     )
   }
 }
