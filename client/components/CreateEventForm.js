@@ -74,49 +74,40 @@ class CreateEventForm extends React.Component {
     const restaurantArray = Object.values(activity.restaurant)
 
     return (
-      <div className="my-6 card">
-        <h1 className="is-size-2 my-5">Create a New Event</h1>
-        <form className="container" onSubmit={this.handleSubmit}>
-          <div className="field column">
+      <div className="my-6 container">
+        <h1 className="title my-6">Create a New Event</h1>
+        <form className="card" onSubmit={this.handleSubmit}>
+          <div className="field column is-half">
             <label className="label">Event Name</label>
-            <div className="control">
-              <input
-                className="input"
-                name="name"
-                type="text"
-                placeholder="Event Name"
-                onChange={this.handleChange}
-                required
-              />
-            </div>
-          </div>
 
-          <div className="field">
-            <label className="label">Neighborhood</label>
-            <div className="control">
-              <div className="select">
-                <select
-                  name="neighborhood"
-                  onChange={this.handleChange}
-                  required
-                >
-                  {locationArray.map(n => (
-                    <option
-                      key={n.searchStr}
-                      value={n.searchStr}
-                      className={n.searchStr}
-                    >
-                      {n.displayName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="field column">
-            <label className="label">Date & Time</label>
             <input
+              className="input"
+              name="name"
+              type="text"
+              placeholder="Event Name"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+
+          <div className="field column is-half">
+            <label className="label">Poll Due Date</label>
+            <input
+              className="input"
+              name="initialDueDate"
+              type="datetime-local"
+              data-display-mode="inline"
+              data-is-range="true"
+              data-close-on-select="false"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+
+          <div className="field column is-half">
+            <label className="label">Event Date & Time</label>
+            <input
+              className="input"
               name="time"
               type="datetime-local"
               data-display-mode="inline"
@@ -127,8 +118,27 @@ class CreateEventForm extends React.Component {
             />
           </div>
 
-          <div className="field">
-            <label className="label">Categories</label>
+          <div className="field column is-half">
+            <label className="label">Neighborhood</label>
+            <div className="select">
+              <select name="neighborhood" onChange={this.handleChange} required>
+                {locationArray.map(n => (
+                  <option
+                    key={n.searchStr}
+                    value={n.searchStr}
+                    className={n.searchStr}
+                  >
+                    {n.displayName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="field column is-half">
+            <label className="label">
+              Select Categories for Participants to Vote On
+            </label>
             <div className="control">
               {restaurantArray.map(r => (
                 <label key={r.searchstr}>
@@ -156,20 +166,7 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field column">
-            <label className="label">Poll Due Date</label>
-            <input
-              name="initialDueDate"
-              type="datetime-local"
-              data-display-mode="inline"
-              data-is-range="true"
-              data-close-on-select="false"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <button className="button is-info is-centered is-large">
+          <button className="button is-info is-centered is-large ml-5 my-5">
             Generate Event Invitation Link
           </button>
         </form>
