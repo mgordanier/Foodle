@@ -1,11 +1,10 @@
 import React from 'react'
-import activity from '../pollOptions/activity'
 import {fetchOneEvent} from '../store/events'
 import {connect} from 'react-redux'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 
-class ActivityPoll extends React.Component {
+class LocationPoll extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -41,18 +40,22 @@ class ActivityPoll extends React.Component {
     // let subtypes = activity[selectedType]
 
     console.log('selections', this.state.selections)
-
-    const {activitySubtype} = this.props.event
+    console.log('this.props.event', this.props.event)
+    const {neighborhood} = this.props.event
     const animatedComponents = makeAnimated()
+    let re = /{"|",/
+    const neighborhoodArray = neighborhood.split(re)
+    console.log('neighborhoodArray', neighborhoodArray)
 
     const options = []
-    activitySubtype.map((item) => {
+    neighborhood.map((item) => {
       let obj = {
         value: item,
         label: item,
       }
       options.push(obj)
     })
+    console.log('options', options)
 
     return (
       <Select
@@ -80,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActivityPoll)
+export default connect(mapStateToProps, mapDispatchToProps)(LocationPoll)
