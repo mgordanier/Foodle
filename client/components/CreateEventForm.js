@@ -151,22 +151,14 @@ class CreateEventForm extends React.Component {
                   />
                   {r.displayName}
                 </label>
-
-                // <div className="field" key={r.searchStr}>
-                //   <input
-                //     value={r.searchStr}
-                //     className="is-checkradio"
-                //     name="activitySubtype"
-                //     type="checkbox"
-                //     onChange={this.handleChange}
-                //     />
-                //   <label htmlFor="activitySubtype">{r.displayName}</label>
-                // </div>
               ))}
             </div>
           </div>
 
-          <button className="button is-info is-centered is-large ml-5 my-5">
+          <button
+            type="button"
+            className="button is-info is-centered is-large ml-5 my-5"
+          >
             Generate Event Invitation Link
           </button>
         </form>

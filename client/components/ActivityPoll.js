@@ -4,11 +4,17 @@ import {fetchOneEvent} from '../store/events'
 import {connect} from 'react-redux'
 
 class ActivityPoll extends React.Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
   componentDidMount() {
     //hard-coding temporarily for testing
     const urlKey = '9rcauibydrpiui2l0ygrqq'
     this.props.fetchOneEvent(urlKey)
   }
+
+  handleClick = e => {}
 
   render() {
     // const {handleChange, handleSubmit, options} = props
@@ -20,26 +26,22 @@ class ActivityPoll extends React.Component {
     const restaurants = event.activitySubtype
 
     return (
-      <div>
-        <div className="tabs is-toggle">
-          <ul>
-            {restaurants
-              ? restaurants.map(typeName => {
-                  return (
-                    <li
-                      key={typeName}
-                      onClick={e => {
-                        e.target.classList.add('is-active')
-                      }}
-                      s
-                    >
-                      <a>{typeName}</a>
-                    </li>
-                  )
-                })
-              : null}
-          </ul>
-        </div>
+      <div className="is-toggle">
+        {restaurants
+          ? restaurants.map(typeName => {
+              return (
+                <button
+                  // style={this.state.selected && style.button}
+                  type="button"
+                  className="mx-2"
+                  key={typeName}
+                  onClick={this.handleClick}
+                >
+                  <a>{typeName}</a>
+                </button>
+              )
+            })
+          : null}
       </div>
     )
   }
