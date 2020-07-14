@@ -43,14 +43,12 @@ class CreateEventForm extends React.Component {
     this.props.createEvent(newEvent)
     console.log('newEvent', newEvent)
 
-    // this.props.history.push({
-    //   pathname: `/invitelink`,
-    //   state: {
-    //     urlKey: `${urlKey}`,
-    //     name: `${this.state.name}`,
-    //     time: `${this.state.time}`,
-    //   },
-    // })
+    this.props.history.push({
+      pathname: `/invitelink`,
+      state: {
+        urlKey: `${urlKey}`,
+      },
+    })
   }
 
   render() {
@@ -119,7 +117,7 @@ class CreateEventForm extends React.Component {
           </div>
 
           <div className="field">
-            <label>Pick a Neighborhood</label>
+            <label className="label">Pick a Neighborhood</label>
             <div className="control">
               <h4>Manhattan</h4>
               <div>
@@ -138,8 +136,56 @@ class CreateEventForm extends React.Component {
               </div>
 
               <p>Brooklyn</p>
-              <div className="column is-one-fourth">
+              <div className="column">
                 {brooklynArray.map((n) => (
+                  <label key={n.searchStr}>
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value={n.searchStr}
+                      name="neighborhood"
+                      onChange={this.handleChange}
+                    />
+                    {n.displayName}
+                  </label>
+                ))}
+              </div>
+
+              <p>Queens</p>
+              <div className="column is-one-fourth">
+                {queensArray.map((n) => (
+                  <label key={n.searchStr}>
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value={n.searchStr}
+                      name="neighborhood"
+                      onChange={this.handleChange}
+                    />
+                    {n.displayName}
+                  </label>
+                ))}
+              </div>
+
+              <p>Bronx</p>
+              <div className="column is-one-fourth">
+                {bronxArray.map((n) => (
+                  <label key={n.searchStr}>
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value={n.searchStr}
+                      name="neighborhood"
+                      onChange={this.handleChange}
+                    />
+                    {n.displayName}
+                  </label>
+                ))}
+              </div>
+
+              <p>Staten Island</p>
+              <div className="column is-one-fourth">
+                {statenIslandArray.map((n) => (
                   <label key={n.searchStr}>
                     <input
                       type="radio"
@@ -185,7 +231,7 @@ class CreateEventForm extends React.Component {
           </div>
 
           <div className="field column is-half">
-            <label className="label">Select One Category</label>
+            <label className="label">Pick a Category</label>
             <div className="control">
               {restaurantArray.map((r) => (
                 <label key={r.searchstr}>
