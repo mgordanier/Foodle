@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import * as d3 from 'd3'
-import {Pie} from './index'
-// import {fetchPollResults} from '../store/poll'
 import {connect} from 'react-redux'
+
+import {Pie} from './index'
+import {tallyVotes} from '../pollOptions/pollUtils'
 
 function PieChartData(props) {
   // const generateData = () => {
@@ -14,7 +15,7 @@ function PieChartData(props) {
   // extract results
   // helper function to turn results into this:
   // return [
-  //   {type: 'korean', value: 2},
+  //   {type: 'afkasjfl;akjfdlj3', value: 2},
   //   {type: 'mexican', value: 1},
   // ]
 
@@ -45,14 +46,8 @@ function PieChartData(props) {
 
 const mapStateToProps = (state) => {
   return {
-    responses: state.poll.pollResponses,
+    polls: state.poll.allByEvent,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // fetchPollResults: () => dispatch(fetchPollResults()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PieChartData)
+export default connect(mapStateToProps)(PieChartData)

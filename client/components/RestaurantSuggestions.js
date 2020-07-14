@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {SuggestionChoices} from './SuggestionChoices'
 import {connect} from 'react-redux'
-import {fetchOneRestaurant} from '../store/restaurants'
 import {addOrUpdateResponse} from '../store/poll'
 
 class RestaurantSuggestions extends Component {
@@ -10,43 +9,48 @@ class RestaurantSuggestions extends Component {
     this.state = {
       selectedRestaurants: [],
     }
-    this.getRestaurantInfo = this.getRestaurantInfo.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.voteRestaurant = this.voteRestaurant.bind(this)
   }
 
-  getRestaurantInfo(restaurantId) {
-    this.props.fetchOneRestaurant(restaurantId)
-  }
-
-  handleCheckboxChange(restaurantPlaceId, event) {
-    let selectedRestaurants = this.state.selectedRestaurants
+  handleCheckboxChange(restaurant, event) {
     if (event.target.checked) {
-      selectedRestaurants.push(restaurantPlaceId)
+      this.setState((prevState) => ({
+        selectedRestaurants: [...prevState.selectedRestaurants, restaurant],
+      }))
     } else {
-      selectedRestaurants.filter((placeId) => placeId !== restaurantPlaceId)
+      this.setState((prevState) => ({
+        selectedRestaurants: [
+          prevState.selectedRestaurants.filter(
+            (resto) => resto.place_id !== restaurant.place_id
+          ),
+        ],
+      }))
     }
-    this.setState(selectedRestaurants)
   }
 
   voteRestaurant() {
+    console.log('SELECTIONS FROM STATE', this.state.selectedRestaurants)
+    const selections = this.state.selectedRestaurants
+    // .map((restaurant) => {return JSON.stringify(restaurant)})
+    // console.log('SELECTIONS STRINGIFIED', selections)
     // create a new response
     this.props.addOrUpdateResponse(
       this.props.event.id,
       this.props.poll.id,
-      this.state.selectedRestaurants
+      selections
     )
+    // WE NEED TO UNCHECK ALL THE CHECK BOXES AFTER SOMEONE VOTES
+    this.setState({selectedRestaurants: []})
   }
 
   render() {
     const {event, poll} = this.props
-    console.log('POLL!!!!', poll)
     if (typeof poll.options[0] === 'string') {
       poll.options = poll.options.map((restaurantJSON) =>
         JSON.parse(restaurantJSON)
       )
     }
-    console.log('EVENT!!!', event)
     return (
       <section className="section">
         <div className="container">
@@ -65,6 +69,7 @@ class RestaurantSuggestions extends Component {
                     <div
                       className="column is-one-third"
                       key={restaurant.place_id}
+                      id={restaurant.place_id}
                     >
                       <SuggestionChoices
                         restaurant={restaurant}
@@ -97,15 +102,6 @@ class RestaurantSuggestions extends Component {
               NONE OF THESE
             </button>
           </div>
-
-          {/* <div className="buttons">
-            <button
-              className="button is-primary is-light is-centered"
-              onClick={() => this.generateMoreRestaurants()}
-            >
-              GENERATE MORE OPTIONS
-            </button>
-          </div> */}
         </div>
       </section>
     )
@@ -123,8 +119,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOneRestaurant: (restaurantId) =>
-      dispatch(fetchOneRestaurant(restaurantId)),
     addOrUpdateResponse: (eventId, pollId, selections) =>
       dispatch(addOrUpdateResponse(eventId, pollId, selections)),
   }

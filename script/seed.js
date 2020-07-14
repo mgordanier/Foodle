@@ -46,7 +46,6 @@ async function seed() {
       city: 'new+york',
       neighborhood: 'east+village',
       urlKey: 'c70evaiduqimyqd4vzjjl8',
-      finalized: true,
     }),
   ])
 

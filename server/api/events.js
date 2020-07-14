@@ -185,6 +185,7 @@ router.put(
   async (req, res, next) => {
     try {
       const {selections} = req.body
+      console.log('SELECTIONS', selections)
       let [response, wasCreated] = await Response.findOrCreate({
         where: {
           pollId: req.params.pollId,
@@ -192,6 +193,12 @@ router.put(
         },
       })
       response = await response.update({selections})
+      console.log('RESPONSE', response)
+      console.log('!!typeof selections!!', typeof response.selections)
+      console.log(
+        '!!is selections an array?!!',
+        Array.isArray(response.selections)
+      )
       res.send(response)
     } catch (error) {
       next(error)

@@ -67,9 +67,7 @@ export class SuggestionChoices extends Component {
               type="checkbox"
               name="selectedRestaurant"
               className="margin-right"
-              onChange={(event) =>
-                handleCheckboxChange(restaurant.place_id, event)
-              }
+              onChange={(event) => handleCheckboxChange(restaurant, event)}
             />
             Select To Vote
           </label>

@@ -3,7 +3,7 @@ import {fetchPollsByEvent} from './poll'
 
 //ACTION TYPES
 const GET_ALL_RESTAURANTS = 'GET_ALL_RESTAURANTS'
-const GET_ONE_RESTAURANT = 'GET_ONE_RESTAURANT'
+// const GET_ONE_RESTAURANT = 'GET_ONE_RESTAURANT'
 
 //ACTION CREATORS
 const getAllRestaurants = (restaurants) => {
@@ -13,12 +13,12 @@ const getAllRestaurants = (restaurants) => {
   }
 }
 
-const getOneRestaurant = (restaurant) => {
-  return {
-    type: GET_ONE_RESTAURANT,
-    restaurant,
-  }
-}
+// const getOneRestaurant = (restaurant) => {
+//   return {
+//     type: GET_ONE_RESTAURANT,
+//     restaurant,
+//   }
+// }
 
 //THUNK CREATORS
 export const fetchRestaurants = (neighborhood, city, category) => {
@@ -31,7 +31,7 @@ export const fetchRestaurants = (neighborhood, city, category) => {
         category,
         eventId,
       })
-      dispatch(getAllRestaurants(data))
+      // dispatch(getAllRestaurants(data))
       dispatch(fetchPollsByEvent(eventId))
     } catch (error) {
       console.log(error)
@@ -39,22 +39,22 @@ export const fetchRestaurants = (neighborhood, city, category) => {
   }
 }
 
-export const fetchOneRestaurant = (restaurantId) => {
-  return async (dispatch) => {
-    try {
-      const {data} = await Axios.get(
-        `/api/google/randomRestaurant/${restaurantId}`
-      )
-      dispatch(getOneRestaurant(data))
-    } catch (error) {
-      console.log(error)
-    }
-  }
-}
+// export const fetchOneRestaurant = (restaurantId) => {
+//   return async (dispatch) => {
+//     try {
+//       const {data} = await Axios.get(
+//         `/api/google/randomRestaurant/${restaurantId}`
+//       )
+//       dispatch(getOneRestaurant(data))
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+// }
 
 const initialState = {
   allRestaurants: {},
-  oneRestaurant: {},
+  // oneRestaurant: {},
 }
 
 //REDUCER
@@ -65,11 +65,11 @@ export default function (state = initialState, action) {
         ...state,
         allRestaurants: action.restaurants,
       }
-    case GET_ONE_RESTAURANT:
-      return {
-        ...state,
-        oneRestaurant: action.restaurant,
-      }
+    // case GET_ONE_RESTAURANT:
+    //   return {
+    //     ...state,
+    //     oneRestaurant: action.restaurant,
+    //   }
     default:
       return state
   }

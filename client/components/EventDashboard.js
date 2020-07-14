@@ -4,6 +4,7 @@ import SuggestionPoll from './SuggestionPoll'
 import {fetchOneEvent} from '../store/events'
 import {fetchPollsByEvent} from '../store/poll'
 import {locationFlattener} from '../pollOptions/pollUtils'
+import PieChartData from './PieChartData'
 
 // if there is a suggestions poll, then we need allRestaurants in the store
 // to be populated with the google API details from the 3 restos in
@@ -42,6 +43,7 @@ class EventDashboard extends Component {
             {' '}
             {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
           </h2>
+          {/* <PieChartData /> */}
           <SuggestionPoll />
         </div>
       )
