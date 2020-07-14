@@ -17,7 +17,8 @@ class InputPollForm extends Component {
   }
 
   componentDidMount() {
-    const urlKey = 'oozv6jic9pzjizg146k7o'
+    //hard-coding temporarily for testing
+    const urlKey = '9rcauibydrpiui2l0ygrqq'
     this.props.fetchOneEvent(urlKey)
   }
 

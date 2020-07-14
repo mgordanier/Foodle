@@ -56,14 +56,14 @@ class CreateEventForm extends React.Component {
 
     this.props.createEvent(newEvent)
 
-    // this.props.history.push({
-    //   pathname: `/invitelink`,
-    //   state: {
-    //     urlKey: `${urlKey}`,
-    //     name: `${this.state.name}`,
-    //     time: `${this.state.time}`
-    //   }
-    // })
+    this.props.history.push({
+      pathname: `/invitelink`,
+      state: {
+        urlKey: `${urlKey}`,
+        name: `${this.state.name}`,
+        time: `${this.state.time}`
+      }
+    })
   }
 
   render() {
@@ -132,13 +132,14 @@ class CreateEventForm extends React.Component {
             <div className="control">
               {restaurantArray.map(r => (
                 <label key={r.searchstr}>
-                  {r.displayName}
                   <input
+                    className="mr-2"
                     type="checkbox"
                     name={r.displayName}
                     checked={this.state.activitySubtype.get(r.displayName)}
                     onChange={this.handleCheckboxChange}
                   />
+                  {r.displayName}
                 </label>
 
                 // <div className="field" key={r.searchStr}>

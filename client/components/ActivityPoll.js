@@ -5,7 +5,8 @@ import {connect} from 'react-redux'
 
 class ActivityPoll extends React.Component {
   componentDidMount() {
-    const urlKey = 'lpcr92gdqz99z2qnnuzj6'
+    //hard-coding temporarily for testing
+    const urlKey = '9rcauibydrpiui2l0ygrqq'
     this.props.fetchOneEvent(urlKey)
   }
 
