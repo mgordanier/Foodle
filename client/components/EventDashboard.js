@@ -26,15 +26,15 @@ class EventDashboard extends Component {
       const date = time.toLocaleDateString()
       const hour = time.toLocaleTimeString()
       const location = locationFlattener()
-      console.log('location', location)
-      console.log('neighborhood', neighborhood)
+      console.log('LOCATIONNNNN', location)
+      console.log('NEIGHBORHOOOOD', neighborhood)
 
       return (
         <div>
           <h1 className="title">Event Dashboard for {name}</h1>
           <h2>
             {' '}
-            {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
+            {`You are going to meet on ${date} at ${hour} in ${location.neighborhood} for ${activitySubtype}`}
           </h2>
           <Suggestions />
           <PieChart />

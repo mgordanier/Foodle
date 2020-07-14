@@ -3,53 +3,74 @@ import {createEvent} from '../store/events'
 import {connect} from 'react-redux'
 import activity from '../pollOptions/activity'
 import {locationFlattener} from '../pollOptions/pollUtils'
+import location from '../pollOptions/location'
 
 class CreateEventForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      neighborhood: '',
+      neighborhood: new Map(),
       time: '',
       activitySubtype: new Map(),
-      initialDueDate: ''
+      initialDueDate: '',
+      isTabVisible: false,
     }
   }
 
-  handleChange = e => {
+  // isToggle = () => {
+  //   this.setState = () => {
+  //     !isTabVisible
+  //   }
+  // }
+
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
-  handleCheckboxChange = e => {
+  handleCheckboxChange = (e) => {
     const activitySubtype = e.target.name
     const isChecked = e.target.checked
-    this.setState(prevState => ({
-      activitySubtype: prevState.activitySubtype.set(activitySubtype, isChecked)
+    this.setState((prevState) => ({
+      activitySubtype: prevState.activitySubtype.set(
+        activitySubtype,
+        isChecked
+      ),
     }))
   }
 
-  handleSubmit = e => {
+  handleLocationCheckboxChange = (e) => {
+    const neighborhood = e.target.name
+    const isChecked = e.target.checked
+    this.setState((prevState) => ({
+      neighborhood: prevState.neighborhood.set(neighborhood, isChecked),
+    }))
+  }
+
+  // handleClick = (array) => {
+  //     array.map(n => (
+  //     Object.keys(n)=n.displayName
+  //   ))}
+
+  handleSubmit = (e) => {
     e.preventDefault()
 
     let urlKey =
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
 
     const selectedRestaurants = Array.from(this.state.activitySubtype.keys())
+    const selectedNeighborhood = Array.from(this.state.neighborhood.keys())
 
     let newEvent = {
       name: this.state.name,
-      neighborhood: this.state.neighborhood,
+      neighborhood: selectedNeighborhood,
       time: this.state.time,
       activitySubtype: selectedRestaurants,
       initialDueDate: this.state.initialDueDate,
-      urlKey: urlKey
+      urlKey: urlKey,
     }
 
     this.props.createEvent(newEvent)
@@ -59,16 +80,25 @@ class CreateEventForm extends React.Component {
       state: {
         urlKey: `${urlKey}`,
         name: `${this.state.name}`,
-        time: `${this.state.time}`
-      }
+        time: `${this.state.time}`,
+      },
     })
   }
 
   render() {
-    console.log('state', this.state)
+    console.log('state', this.state.isTabVisible)
 
     const flatLocation = locationFlattener()
     const locationArray = Object.values(flatLocation)
+
+    const allCountyObj = Object.values(location)[0].county
+    const bronxArray = Object.values(allCountyObj.bronx.neighborhood)
+    const brooklynArray = Object.values(allCountyObj.kings.neighborhood)
+    const manhattanArray = Object.values(allCountyObj['new+york'].neighborhood)
+    const queensArray = Object.values(allCountyObj.queens.neighborhood)
+    const statenIslandArray = Object.values(allCountyObj.richmond.neighborhood)
+    console.log('manhattanArray', manhattanArray)
+
     const restaurantArray = Object.values(activity.restaurant)
 
     return (
@@ -92,23 +122,54 @@ class CreateEventForm extends React.Component {
           <div className="field">
             <label className="label">Neighborhood</label>
             <div className="control">
-              <div className="select">
-                <select
-                  name="neighborhood"
-                  onChange={this.handleChange}
-                  required
-                >
-                  {locationArray.map(n => (
-                    <option
-                      key={n.searchStr}
-                      value={n.searchStr}
-                      className={n.searchStr}
-                    >
-                      {n.displayName}
-                    </option>
-                  ))}
-                </select>
+              <div className="tabs is-toggle" name="neighborhood" required>
+                <ul>
+                  <li
+                    className={`${this.state.isTabVisible ? 'is-active' : ''}`}
+                    onClick={() => this.isToggle()}
+                  >
+                    <a>Manhattan</a>
+                  </li>
+                  <div>
+                    {manhattanArray.map((n) => (
+                      <label key={n.searchStr}>
+                        {n.displayName}
+                        <input
+                          type="checkbox"
+                          name={n.displayName}
+                          checked={this.state.neighborhood.get(n.displayName)}
+                          onChange={this.handleLocationCheckboxChange}
+                        />
+                      </label>
+                    ))}
+                  </div>
+
+                  <li>
+                    <a>Brooklyn</a>
+                  </li>
+                  <li>
+                    <a>Queens</a>
+                  </li>
+                  <li>
+                    <a>Bronx</a>
+                  </li>
+                  <li>
+                    <a>Staten Island</a>
+                  </li>
+                </ul>
               </div>
+
+              {/* {locationArray.map(n => (
+                    <label key={n.searchStr}>
+                    {n.displayName}
+                    <input
+                    type="checkbox"
+                    name={n.displayName}
+                    checked={this.state.neighborhood.get(n.displayName)}
+                    onChange={this.handleLocationCheckboxChange}
+                    />
+                    </label>
+                  ))} */}
             </div>
           </div>
 
@@ -128,7 +189,7 @@ class CreateEventForm extends React.Component {
           <div className="field">
             <label className="label">Categories</label>
             <div className="control">
-              {restaurantArray.map(r => (
+              {restaurantArray.map((r) => (
                 <label key={r.searchstr}>
                   {r.displayName}
                   <input
@@ -175,9 +236,9 @@ class CreateEventForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    createEvent: newEvent => dispatch(createEvent(newEvent))
+    createEvent: (newEvent) => dispatch(createEvent(newEvent)),
   }
 }
 
