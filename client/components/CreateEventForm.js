@@ -21,6 +21,7 @@ class CreateEventForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
+    console.log('state', this.state)
   }
 
   handleSubmit = (e) => {
@@ -53,8 +54,6 @@ class CreateEventForm extends React.Component {
   }
 
   render() {
-    console.log('state', this.state.isTabVisible)
-
     const flatLocation = locationFlattener()
     const locationArray = Object.values(flatLocation)
 
@@ -121,18 +120,8 @@ class CreateEventForm extends React.Component {
 
           <div className="field">
             <label>Pick a Neighborhood</label>
-
-            <label className="label column is-one-fourth">Manhattan</label>
             <div className="control">
-              {/* <div className="tabs is-toggle" name="neighborhood" required>
-                <ul>
-                  <li
-                    className={`${this.state.isTabVisible ? 'is-active' : ''}`}
-                    onClick={() => this.isToggle()}
-                  >
-                    <a>Manhattan</a>
-                  </li> */}
-
+              <h4>Manhattan</h4>
               <div>
                 {manhattanArray.map((n) => (
                   <label key={n.searchStr}>
@@ -140,7 +129,7 @@ class CreateEventForm extends React.Component {
                       type="radio"
                       className="mr-2"
                       value={n.searchStr}
-                      name={n.displayName}
+                      name="neighborhood"
                       onChange={this.handleChange}
                     />
                     {n.displayName}
@@ -148,7 +137,7 @@ class CreateEventForm extends React.Component {
                 ))}
               </div>
 
-              <label className="label">Brooklyn</label>
+              <p>Brooklyn</p>
               <div className="column is-one-fourth">
                 {brooklynArray.map((n) => (
                   <label key={n.searchStr}>
@@ -156,7 +145,7 @@ class CreateEventForm extends React.Component {
                       type="radio"
                       className="mr-2"
                       value={n.searchStr}
-                      name={n.displayName}
+                      name="neighborhood"
                       onChange={this.handleChange}
                     />
                     {n.displayName}
