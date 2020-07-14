@@ -18,9 +18,16 @@ class ActivityPoll extends React.Component {
 
   handleChange = (e) => {
     const values = e.map((item) => item.value)
-    this.setState({
-      selections: values,
-    })
+    this.setState(
+      {
+        selections: values,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state)
+        }
+      }
+    )
   }
 
   handleSubmit = (e) => {

@@ -31,13 +31,17 @@ class InputPollForm extends Component {
     event.preventDefault()
   }
 
+  eventhandler = (data) => {
+    console.log('parent-child test', data)
+  }
+
   render() {
-    const restaurants = activityFlattener()
-    let displayCategory = []
-    for (let category in restaurants) {
-      displayCategory.push(restaurants[category].displayName)
-    }
-    let restaurantTypes = displayCategory.slice(7)
+    // const restaurants = activityFlattener()
+    // let displayCategory = []
+    // for (let category in restaurants) {
+    //   displayCategory.push(restaurants[category].displayName)
+    // }
+    // let restaurantTypes = displayCategory.slice(7)
 
     let time = this.props.event.time
     time = new Date(time)
@@ -77,7 +81,10 @@ class InputPollForm extends Component {
               <div className="field">
                 <label className="label">Select Food Preferences:</label>
 
-                <ActivityPoll event={this.props.event} />
+                <ActivityPoll
+                  event={this.props.event}
+                  onChange={this.eventhandler}
+                />
               </div>
 
               <div className="field">
