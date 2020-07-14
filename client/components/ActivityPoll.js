@@ -2,19 +2,30 @@ import React from 'react'
 import activity from '../pollOptions/activity'
 import {fetchOneEvent} from '../store/events'
 import {connect} from 'react-redux'
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
 
 class ActivityPoll extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      selections: [],
+    }
   }
   componentDidMount() {
-    //hard-coding temporarily for testing
-    const urlKey = '9rcauibydrpiui2l0ygrqq'
-    this.props.fetchOneEvent(urlKey)
+    this.props.fetchOneEvent(this.props.event.urlKey)
   }
 
-  handleClick = e => {}
+  handleChange = (e) => {
+    const values = e.map((item) => item.value)
+    this.setState({
+      selections: values,
+    })
+  }
+
+  handleSubmit = (e) => {
+    // save the poll response
+  }
 
   render() {
     // const {handleChange, handleSubmit, options} = props
@@ -22,40 +33,43 @@ class ActivityPoll extends React.Component {
     // let selectedType = activity[typeNames[0]]
     // let subtypes = activity[selectedType]
 
-    const {event} = this.props
-    const restaurants = event.activitySubtype
+    console.log('selections', this.state.selections)
+
+    const {activitySubtype} = this.props.event
+    const animatedComponents = makeAnimated()
+
+    const options = []
+    activitySubtype.map((item) => {
+      let obj = {
+        value: item,
+        label: item,
+      }
+      options.push(obj)
+    })
 
     return (
-      <div className="is-toggle">
-        {restaurants
-          ? restaurants.map(typeName => {
-              return (
-                <button
-                  // style={this.state.selected && style.button}
-                  type="button"
-                  className="mx-2"
-                  key={typeName}
-                  onClick={this.handleClick}
-                >
-                  <a>{typeName}</a>
-                </button>
-              )
-            })
-          : null}
-      </div>
+      <Select
+        name="selections"
+        closeMenuOnSelect={false}
+        components={animatedComponents}
+        defaultValue={[options[0]]}
+        isMulti
+        options={options}
+        onChange={this.handleChange}
+      />
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    event: state.events.event
+    event: state.events.event,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOneEvent: urlKey => dispatch(fetchOneEvent(urlKey))
+    fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
   }
 }
 

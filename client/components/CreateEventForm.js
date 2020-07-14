@@ -12,34 +12,33 @@ class CreateEventForm extends React.Component {
       neighborhood: '',
       time: '',
       activitySubtype: new Map(),
-      initialDueDate: ''
+      initialDueDate: '',
     }
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
-  handleCheckboxChange = e => {
+  handleCheckboxChange = (e) => {
     const activitySubtype = e.target.name
     const isChecked = e.target.checked
-    this.setState(prevState => ({
-      activitySubtype: prevState.activitySubtype.set(activitySubtype, isChecked)
+    this.setState((prevState) => ({
+      activitySubtype: prevState.activitySubtype.set(
+        activitySubtype,
+        isChecked
+      ),
     }))
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault()
 
     let urlKey =
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
 
     const selectedRestaurants = Array.from(this.state.activitySubtype.keys())
 
@@ -51,7 +50,7 @@ class CreateEventForm extends React.Component {
       time: this.state.time,
       activitySubtype: selectedRestaurants,
       initialDueDate: this.state.initialDueDate,
-      urlKey: urlKey
+      urlKey: urlKey,
     }
 
     this.props.createEvent(newEvent)
@@ -61,8 +60,8 @@ class CreateEventForm extends React.Component {
       state: {
         urlKey: `${urlKey}`,
         name: `${this.state.name}`,
-        time: `${this.state.time}`
-      }
+        time: `${this.state.time}`,
+      },
     })
   }
 
@@ -79,59 +78,70 @@ class CreateEventForm extends React.Component {
         <form className="card" onSubmit={this.handleSubmit}>
           <div className="field column is-half">
             <label className="label">Event Name</label>
-
-            <input
-              className="input"
-              name="name"
-              type="text"
-              placeholder="Event Name"
-              onChange={this.handleChange}
-              required
-            />
+            <div className="control">
+              <input
+                className="input"
+                name="name"
+                type="text"
+                placeholder="Event Name"
+                onChange={this.handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="field column is-half">
             <label className="label">Poll Due Date</label>
-            <input
-              className="input"
-              name="initialDueDate"
-              type="datetime-local"
-              data-display-mode="inline"
-              data-is-range="true"
-              data-close-on-select="false"
-              onChange={this.handleChange}
-              required
-            />
+            <div className="control">
+              <input
+                className="input"
+                name="initialDueDate"
+                type="datetime-local"
+                data-display-mode="inline"
+                data-is-range="true"
+                data-close-on-select="false"
+                onChange={this.handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="field column is-half">
             <label className="label">Event Date & Time</label>
-            <input
-              className="input"
-              name="time"
-              type="datetime-local"
-              data-display-mode="inline"
-              data-is-range="true"
-              data-close-on-select="false"
-              onChange={this.handleChange}
-              required
-            />
+            <div className="control">
+              <input
+                className="input"
+                name="time"
+                type="datetime-local"
+                data-display-mode="inline"
+                data-is-range="true"
+                data-close-on-select="false"
+                onChange={this.handleChange}
+                required
+              />
+            </div>
           </div>
 
           <div className="field column is-half">
             <label className="label">Neighborhood</label>
-            <div className="select">
-              <select name="neighborhood" onChange={this.handleChange} required>
-                {locationArray.map(n => (
-                  <option
-                    key={n.searchStr}
-                    value={n.searchStr}
-                    className={n.searchStr}
-                  >
-                    {n.displayName}
-                  </option>
-                ))}
-              </select>
+            <div className="control">
+              <div className="select">
+                <select
+                  name="neighborhood"
+                  onChange={this.handleChange}
+                  required
+                >
+                  {locationArray.map((n) => (
+                    <option
+                      key={n.searchStr}
+                      value={n.searchStr}
+                      className={n.searchStr}
+                    >
+                      {n.displayName}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 
@@ -140,7 +150,7 @@ class CreateEventForm extends React.Component {
               Select Categories for Participants to Vote On
             </label>
             <div className="control">
-              {restaurantArray.map(r => (
+              {restaurantArray.map((r) => (
                 <label key={r.searchstr}>
                   <input
                     className="mr-2"
@@ -151,14 +161,22 @@ class CreateEventForm extends React.Component {
                   />
                   {r.displayName}
                 </label>
+
+                // <div className="field" key={r.searchStr}>
+                //   <input
+                //     value={r.searchStr}
+                //     className="is-checkradio"
+                //     name="activitySubtype"
+                //     type="checkbox"
+                //     onChange={this.handleChange}
+                //     />
+                //   <label htmlFor="activitySubtype">{r.displayName}</label>
+                // </div>
               ))}
             </div>
           </div>
 
-          <button
-            type="button"
-            className="button is-info is-centered is-large ml-5 my-5"
-          >
+          <button className="button is-info is-centered is-large ml-5 my-5">
             Generate Event Invitation Link
           </button>
         </form>
@@ -167,9 +185,9 @@ class CreateEventForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    createEvent: newEvent => dispatch(createEvent(newEvent))
+    createEvent: (newEvent) => dispatch(createEvent(newEvent)),
   }
 }
 

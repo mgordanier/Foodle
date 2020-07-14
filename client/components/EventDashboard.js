@@ -4,10 +4,11 @@ import Suggestions from './Suggestions'
 import PieChart from './PieChartData'
 import {fetchOneEvent} from '../store/events'
 import {locationFlattener} from '../pollOptions/pollUtils'
+import InputPollForm from './InputPollForm'
 
 class EventDashboard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {}
   }
 
@@ -17,7 +18,8 @@ class EventDashboard extends Component {
   }
 
   render() {
-    //work on display
+    const urlKey = this.props.match.params.urlKey
+
     if (this.props.event && this.props.event.id) {
       let {neighborhood, time, name, activitySubtype} = this.props.event
       time = new Date(time)
@@ -26,16 +28,17 @@ class EventDashboard extends Component {
       const location = locationFlattener()
 
       return (
-        <div>
+        <div className="container mt-6">
           <h1 className="title">Event Dashboard for {name}</h1>
+
+          <InputPollForm urlKey={urlKey} />
+
           <h2>
             {' '}
-            {`You are going to meet on ${date} at ${hour} in ${
-              location[neighborhood].displayName
-            } for ${activitySubtype}`}
+            {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
           </h2>
-          <Suggestions />
-          <PieChart />
+          {/* <Suggestions />
+          <PieChart /> */}
         </div>
       )
     } else {
@@ -44,15 +47,15 @@ class EventDashboard extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    event: state.events.event
+    event: state.events.event,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOneEvent: urlKey => dispatch(fetchOneEvent(urlKey))
+    fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
     // createPoll
   }
 }

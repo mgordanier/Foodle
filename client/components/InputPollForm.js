@@ -12,23 +12,22 @@ class InputPollForm extends Component {
       name: '',
       time: '',
       foodPreferences: '',
-      message: ''
+      message: '',
     }
   }
 
   componentDidMount() {
-    //hard-coding temporarily for testing
-    const urlKey = '9rcauibydrpiui2l0ygrqq'
+    const urlKey = this.props.urlKey
     this.props.fetchOneEvent(urlKey)
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault()
   }
 
@@ -50,10 +49,10 @@ class InputPollForm extends Component {
         <div className="hero-body">
           <div className="columns is-centered">
             <div className="column is-half">
-              <h2 className="title">Participant's Poll:</h2>
+              <h2 className="title">Vote on Event Options</h2>
 
               <div className="field">
-                <label className="label">Participant's Name</label>
+                <label className="label">Your Name</label>
                 <div className="control">
                   <input
                     className="input"
@@ -78,18 +77,7 @@ class InputPollForm extends Component {
               <div className="field">
                 <label className="label">Select Food Preferences:</label>
 
-                <ActivityPoll />
-
-                {/* <div className="control">
-                  <div className="select">
-                    <select name="foodPreference" onChange={this.handleChange}>
-                      <option>No Preference</option>
-                      {restaurantTypes.map((type, index) => (
-                        <option key={index}>{type}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div> */}
+                <ActivityPoll event={this.props.event} />
               </div>
 
               <div className="field">
@@ -103,19 +91,6 @@ class InputPollForm extends Component {
                   />
                 </div>
               </div>
-
-              {/* <div className="field">
-                <div className="control">
-                  <label className="radio">
-                    <input type="radio" name="question" />
-                    Yes
-                  </label>
-                  <label className="radio">
-                    <input type="radio" name="question" />
-                    No
-                  </label>
-                </div>
-              </div> */}
 
               <div className="field is-grouped">
                 <div className="control">
@@ -141,15 +116,15 @@ class InputPollForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    event: state.events.event
+    event: state.events.event,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOneEvent: urlKey => dispatch(fetchOneEvent(urlKey))
+    fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
   }
 }
 
