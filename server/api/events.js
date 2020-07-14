@@ -34,6 +34,10 @@ router.get('/key/:urlKey', async (req, res, next) => {
         urlKey: req.params.urlKey,
       },
     })
+    const userEvent = await UserEvent.findOne({
+      where: {eventId: event.id, isOrganizer: true},
+    })
+    event.dataValues.organizerId = userEvent.userId
     if (event) {
       res.json(event)
     } else {
@@ -56,11 +60,13 @@ router.post('/', async (req, res, next) => {
       urlKey: req.body.urlKey,
     })
 
-    await UserEvent.create({
+    const userEvent = await UserEvent.create({
       userId: req.user.dataValues.id,
       eventId: event.id,
       isOrganizer: true,
     })
+
+    event.dataValues.organizerId = userEvent.userId
 
     if (event) {
       res.json(event)

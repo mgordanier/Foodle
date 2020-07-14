@@ -56,3 +56,45 @@ export const locationFlattener = () => {
   })
   return flatLocation
 }
+
+// convert poll results into votes array with objects key = name, value = number of votes
+// INPUT pollResponsesArr: [{selections:['french', 'thai']}, {selections:['korean']}, {selections:['korean', 'french', 'thai']}]
+// OUTPUT votes: [{type:french, value: 2}]
+export const tallyVotes = (pollResponsesArr) => {
+  let votes = []
+  let voteObj = {}
+  let selections = pollResponsesArr.map((response) => response.selections)
+  const array = []
+  for (let i = 0; i < selections.length; i++) {
+    array.push(...selections[i])
+  }
+  for (let i = 0; i < array.length; i++) {
+    if (voteObj[array[i]]) {
+      voteObj[array[i]] += 1
+    } else {
+      voteObj[array[i]] = 1
+    }
+  }
+  for (let key in voteObj) {
+    let restaurantObj = {}
+    restaurantObj.type = key
+    restaurantObj.value = voteObj[key]
+    votes.push(restaurantObj)
+  }
+  return votes
+}
+
+// takes votes object and determines what distribution of suggestions to return
+// find the highest vote value and return the type
+// if there is a tie, doesn't matter, just return a random one
+// INPUT votes: const votes = [{type:'french', value: 2}, {type:'korean', value: 3}, {type:'thai', value: 1}]
+// OUTPUT most votes: 'korean'
+export const selectMostVoted = (votes) => {
+  let mostVotes = 0
+  votes.forEach((voteObj) => {
+    if (voteObj.value > mostVotes) mostVotes = voteObj.value
+  })
+  votes = votes.filter((voteObj) => voteObj.value === mostVotes)
+  const randomIdx = Math.floor(Math.random() * votes.length)
+  return votes[randomIdx].type
+}

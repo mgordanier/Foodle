@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Suggestions from './Suggestions'
-import PieChart from './PieChartData'
+import SuggestionPoll from './SuggestionPoll'
 import {fetchOneEvent} from '../store/events'
+import {fetchPollsByEvent} from '../store/poll'
 import {locationFlattener} from '../pollOptions/pollUtils'
+
+// if there is a suggestions poll, then we need allRestaurants in the store
+// to be populated with the google API details from the 3 restos in
+// the poll options
+// OR those detail have to be saved inside the poll optionsnp
 
 class EventDashboard extends Component {
   constructor() {
@@ -11,9 +16,10 @@ class EventDashboard extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const urlKey = this.props.match.params.urlKey
-    this.props.fetchOneEvent(urlKey)
+    await this.props.fetchOneEvent(urlKey)
+    await this.props.fetchPollsByEvent(this.props.event.id)
   }
 
   render() {
@@ -36,8 +42,7 @@ class EventDashboard extends Component {
             {' '}
             {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
           </h2>
-          <Suggestions />
-          <PieChart />
+          <SuggestionPoll />
         </div>
       )
     } else {
@@ -55,6 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
+    fetchPollsByEvent: (eventId) => dispatch(fetchPollsByEvent(eventId)),
   }
 }
 

@@ -12,12 +12,12 @@ const gotPollsByEvent = (polls) => {
   }
 }
 
-export const gotPoll = (poll) => {
-  return {
-    type: GOT_POLL,
-    poll,
-  }
-}
+// export const gotPoll = (poll) => {
+//   return {
+//     type: GOT_POLL,
+//     poll,
+//   }
+// }
 
 // THUNKS
 export const fetchPollsByEvent = (eventId) => {
@@ -31,16 +31,16 @@ export const fetchPollsByEvent = (eventId) => {
   }
 }
 
-export const fetchPoll = (eventId, pollId) => {
-  return async (dispatch) => {
-    try {
-      const {data} = await axios.get(`/api/events/${eventId}/polls/${pollId}`)
-      dispatch(gotPoll(data))
-    } catch (error) {
-      console.log(error)
-    }
-  }
-}
+// export const fetchPoll = (eventId, pollId) => {
+//   return async (dispatch) => {
+//     try {
+//       const {data} = await axios.get(`/api/events/${eventId}/polls/${pollId}`)
+//       dispatch(gotPoll(data))
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+// }
 
 export const addPoll = (eventId, options) => {
   return async (dispatch) => {
@@ -48,7 +48,7 @@ export const addPoll = (eventId, options) => {
       const {data} = await axios.post(`/api/events/${eventId}/polls/`, {
         options,
       })
-      dispatch(gotPoll(data))
+      dispatch(fetchPollsByEvent(eventId))
     } catch (error) {
       console.log(error)
     }
@@ -60,10 +60,10 @@ export const addOrUpdateResponse = (eventId, pollId, selections) => {
     try {
       const userId = getState().user.id
       await axios.put(
-        `/api/events/${eventId}/polls/${pollId}/user/${userId}/responses`,
+        `/api/events/${eventId}/polls/${pollId}/users/${userId}/responses`,
         {selections}
       )
-      dispatch(fetchPoll(eventId, pollId))
+      dispatch(fetchPollsByEvent(eventId))
     } catch (error) {
       console.log(error)
     }
@@ -73,17 +73,16 @@ export const addOrUpdateResponse = (eventId, pollId, selections) => {
 // INITIAL STATE
 const initialState = {
   allByEvent: [],
-  selected: {},
 }
 
 // REDUCER
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GOT_POLL:
-      return {
-        ...state,
-        selected: action.poll,
-      }
+    // case GOT_POLL:
+    //   return {
+    //     ...state,
+    //     selected: action.poll,
+    //   }
     case GOT_POLLS_BY_EVENT:
       return {
         ...state,

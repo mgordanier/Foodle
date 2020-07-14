@@ -7,11 +7,11 @@ import {
   Login,
   Signup,
   UserHome,
+  RestaurantSuggestions,
   PieChartData,
   InputPollForm,
   UserDashboard,
   InviteLink,
-  Suggestions,
   CreateEventForm,
   EventDashboard,
 } from './components'
@@ -37,7 +37,7 @@ class Routes extends Component {
         <Route path="/piechart" component={PieChartData} />
         <Route path="/inputpollform" component={InputPollForm} />
         <Route path="/invitelink" component={InviteLink} />
-        <Route path="/suggestions" component={Suggestions} />
+        <Route path="/suggestions" component={RestaurantSuggestions} />
         <Route path="/newevent" component={CreateEventForm} />
         <Route path="/event/:urlKey" component={EventDashboard} />
 

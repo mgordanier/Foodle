@@ -8,19 +8,20 @@ const key = process.env.GOOGLE_API_KEY
 
 router.put('/restaurants', async (req, res, next) => {
   try {
-    const neighborhood = req.body.neighborhood
-    const borough = req.body.borough
-    const city = req.body.city
-    const category = req.body.category
+    const {neighborhood, city, category, eventId} = req.body
 
     const {data} = await axios.get(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${borough}+${city}&type=restaurant&key=${key}`
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
     )
 
     let firstThree = data.results.slice(0, 3)
     const options = firstThree.map((el) => el.place_id)
 
-    const poll = await Poll.create({name: 'suggestions', options: options})
+    const poll = await Poll.create({
+      name: 'suggestions',
+      options: options,
+      eventId,
+    })
 
     res.json({
       results: firstThree,

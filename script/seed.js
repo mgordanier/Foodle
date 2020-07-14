@@ -42,6 +42,7 @@ async function seed() {
       name: 'Pizza Night',
       time: new Date('2020-07-10 18:00'),
       activityType: 'restaurant',
+      activitySubtype: 'pizza',
       city: 'new+york',
       neighborhood: 'east+village',
       urlKey: 'c70evaiduqimyqd4vzjjl8',
