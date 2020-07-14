@@ -78,11 +78,11 @@ const initialState = {
 // REDUCER
 export default function (state = initialState, action) {
   switch (action.type) {
-    // case GOT_POLL:
-    //   return {
-    //     ...state,
-    //     selected: action.poll,
-    //   }
+    case GOT_POLL:
+      return {
+        ...state,
+        selected: action.poll,
+      }
     case GOT_POLLS_BY_EVENT:
       return {
         ...state,

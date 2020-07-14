@@ -39,12 +39,14 @@ class RestaurantSuggestions extends Component {
   }
 
   render() {
-    const {allRestaurants, event, poll} = this.props
-    const availableRestaurants = allRestaurants.results
-    console.log('EVENT!!!', event)
+    const {event, poll} = this.props
     console.log('POLL!!!!', poll)
-    console.log('ALL RESTAURANTS', allRestaurants)
-    console.log('AVAILABLE RESTAURANTS!!!!', availableRestaurants)
+    if (typeof poll.options[0] === 'string') {
+      poll.options = poll.options.map((restaurantJSON) =>
+        JSON.parse(restaurantJSON)
+      )
+    }
+    console.log('EVENT!!!', event)
     return (
       <section className="section">
         <div className="container">
@@ -57,14 +59,15 @@ class RestaurantSuggestions extends Component {
           </div>
 
           <div className="columns">
-            {availableRestaurants
-              ? availableRestaurants.map((restaurant) => {
+            {poll
+              ? poll.options.map((restaurant) => {
                   return (
-                    <div className="column is-one-third" key={restaurant.id}>
+                    <div
+                      className="column is-one-third"
+                      key={restaurant.place_id}
+                    >
                       <SuggestionChoices
-                        randomRestaurant={restaurant}
-                        getRestaurantInfo={this.getRestaurantInfo}
-                        oneRestaurant={this.props.oneRestaurant}
+                        restaurant={restaurant}
                         handleCheckboxChange={this.handleCheckboxChange}
                       />
                     </div>

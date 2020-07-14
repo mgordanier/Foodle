@@ -18,12 +18,7 @@ export class SuggestionChoices extends Component {
   }
 
   render() {
-    const {
-      randomRestaurant,
-      getRestaurantInfo,
-      oneRestaurant,
-      handleCheckboxChange,
-    } = this.props
+    const {restaurant, handleCheckboxChange} = this.props
 
     return (
       <div className="card">
@@ -35,7 +30,6 @@ export class SuggestionChoices extends Component {
               className="cursor"
               onClick={() => {
                 this.toggleModal()
-                getRestaurantInfo(randomRestaurant.place_id)
               }}
             />
           </figure>
@@ -51,23 +45,21 @@ export class SuggestionChoices extends Component {
               </figure>
             </div> */}
             <div className="media-content">
-              <p className="title is-4">{randomRestaurant.name}</p>
-              <p className="subtitle is-6">
-                {randomRestaurant.formatted_address}
-              </p>
+              <p className="title is-4">{restaurant.name}</p>
+              <p className="subtitle is-6">{restaurant.vicinity}</p>
             </div>
           </div>
 
           <div className="content">
             {/* Description of restaurant here */}
-            <p className="subtitle is-6">Rating: {randomRestaurant.rating}</p>
+            <p className="subtitle is-6">Rating: {restaurant.rating}</p>
             <br />
           </div>
 
           <ChoiceModal
             closeModal={this.toggleModal}
             modalState={this.state.modalState}
-            oneRestaurant={oneRestaurant}
+            restaurant={restaurant}
           />
 
           <label className="checkbox labelName">
@@ -76,7 +68,7 @@ export class SuggestionChoices extends Component {
               name="selectedRestaurant"
               className="margin-right"
               onChange={(event) =>
-                handleCheckboxChange(randomRestaurant.place_id, event)
+                handleCheckboxChange(restaurant.place_id, event)
               }
             />
             Select To Vote
