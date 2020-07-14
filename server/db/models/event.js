@@ -17,10 +17,10 @@ const Event = db.define('event', {
     type: Sequelize.STRING,
   },
   activitySubtype: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
+    type: Sequelize.STRING,
   },
   neighborhood: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
+    type: Sequelize.STRING,
   },
 
   initialDueDate: {

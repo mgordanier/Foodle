@@ -10,49 +10,18 @@ class CreateEventForm extends React.Component {
     super(props)
     this.state = {
       name: '',
-      neighborhood: new Map(),
+      neighborhood: '',
       time: '',
-      activitySubtype: new Map(),
+      activitySubtype: '',
       initialDueDate: '',
-      isTabVisible: false,
     }
   }
-
-  // isToggle = () => {
-  //   this.setState = () => {
-  //     !isTabVisible
-  //   }
-  // }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     })
   }
-
-  handleCheckboxChange = (e) => {
-    const activitySubtype = e.target.name
-    const isChecked = e.target.checked
-    this.setState((prevState) => ({
-      activitySubtype: prevState.activitySubtype.set(
-        activitySubtype,
-        isChecked
-      ),
-    }))
-  }
-
-  handleLocationCheckboxChange = (e) => {
-    const neighborhood = e.target.name
-    const isChecked = e.target.checked
-    this.setState((prevState) => ({
-      neighborhood: prevState.neighborhood.set(neighborhood, isChecked),
-    }))
-  }
-
-  // handleClick = (array) => {
-  //     array.map(n => (
-  //     Object.keys(n)=n.displayName
-  //   ))}
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -61,30 +30,26 @@ class CreateEventForm extends React.Component {
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15)
 
-    const selectedRestaurants = Array.from(this.state.activitySubtype.keys())
-    const selectedNeighborhood = Array.from(this.state.neighborhood.keys())
-
-    console.log('selectedRestaurantsArray', selectedRestaurants)
-
     let newEvent = {
       name: this.state.name,
-      neighborhood: selectedNeighborhood,
+      neighborhood: this.state.neighborhood,
       time: this.state.time,
-      activitySubtype: selectedRestaurants,
+      activitySubtype: this.state.activitySubtype,
       initialDueDate: this.state.initialDueDate,
       urlKey: urlKey,
     }
 
     this.props.createEvent(newEvent)
+    console.log('newEvent', newEvent)
 
-    this.props.history.push({
-      pathname: `/invitelink`,
-      state: {
-        urlKey: `${urlKey}`,
-        name: `${this.state.name}`,
-        time: `${this.state.time}`,
-      },
-    })
+    // this.props.history.push({
+    //   pathname: `/invitelink`,
+    //   state: {
+    //     urlKey: `${urlKey}`,
+    //     name: `${this.state.name}`,
+    //     time: `${this.state.time}`,
+    //   },
+    // })
   }
 
   render() {
@@ -99,13 +64,14 @@ class CreateEventForm extends React.Component {
     const manhattanArray = Object.values(allCountyObj['new+york'].neighborhood)
     const queensArray = Object.values(allCountyObj.queens.neighborhood)
     const statenIslandArray = Object.values(allCountyObj.richmond.neighborhood)
-    console.log('manhattanArray', manhattanArray)
+    // console.log('manhattanArray', manhattanArray)
 
     const restaurantArray = Object.values(activity.restaurant)
 
     return (
       <div className="my-6 container">
         <h1 className="title my-6">Create a New Event</h1>
+
         <form className="card" onSubmit={this.handleSubmit}>
           <div className="field column is-half">
             <label className="label">Event Name</label>
@@ -153,32 +119,52 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field column is-half">
-            <label className="label">Neighborhood</label>
+          <div className="field">
+            <label>Pick a Neighborhood</label>
+
+            <label className="label column is-one-fourth">Manhattan</label>
             <div className="control">
-              <div className="tabs is-toggle" name="neighborhood" required>
+              {/* <div className="tabs is-toggle" name="neighborhood" required>
                 <ul>
                   <li
                     className={`${this.state.isTabVisible ? 'is-active' : ''}`}
                     onClick={() => this.isToggle()}
                   >
                     <a>Manhattan</a>
-                  </li>
+                  </li> */}
 
-                  <div>
-                    {manhattanArray.map((n) => (
-                      <label key={n.searchStr}>
-                        {n.displayName}
-                        <input
-                          type="checkbox"
-                          name={n.displayName}
-                          checked={this.state.neighborhood.get(n.displayName)}
-                          onChange={this.handleLocationCheckboxChange}
-                        />
-                      </label>
-                    ))}
-                  </div>
+              <div>
+                {manhattanArray.map((n) => (
+                  <label key={n.searchStr}>
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value={n.searchStr}
+                      name={n.displayName}
+                      onChange={this.handleChange}
+                    />
+                    {n.displayName}
+                  </label>
+                ))}
+              </div>
 
+              <label className="label">Brooklyn</label>
+              <div className="column is-one-fourth">
+                {brooklynArray.map((n) => (
+                  <label key={n.searchStr}>
+                    <input
+                      type="radio"
+                      className="mr-2"
+                      value={n.searchStr}
+                      name={n.displayName}
+                      onChange={this.handleChange}
+                    />
+                    {n.displayName}
+                  </label>
+                ))}
+              </div>
+
+              {/*
                   <li>
                     <a>Brooklyn</a>
                   </li>
@@ -192,49 +178,37 @@ class CreateEventForm extends React.Component {
                     <a>Staten Island</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
 
-              {/* {locationArray.map(n => (
-                    <label key={n.searchStr}>
-                    {n.displayName}
-                    <input
-                    type="checkbox"
-                    name={n.displayName}
-                    checked={this.state.neighborhood.get(n.displayName)}
-                    onChange={this.handleLocationCheckboxChange}
-                    />
-                    </label>
-                  ))} */}
+              {/* {locationArray.map((n) => (
+                <label key={n.searchStr}>
+                  <input
+                    value={n.searchStr}
+                    className="mr-2"
+                    name="neighborhood"
+                    type="radio"
+                    onChange={this.handleChange}
+                  />
+                  {n.displayName}
+                </label>
+              ))} */}
             </div>
           </div>
 
           <div className="field column is-half">
-            <label className="label">
-              Select Categories for Participants to Vote On
-            </label>
+            <label className="label">Select One Category</label>
             <div className="control">
               {restaurantArray.map((r) => (
                 <label key={r.searchstr}>
                   <input
+                    value={r.searchStr}
                     className="mr-2"
-                    type="checkbox"
-                    name={r.displayName}
-                    checked={this.state.activitySubtype.get(r.displayName)}
-                    onChange={this.handleCheckboxChange}
+                    name="activitySubtype"
+                    type="radio"
+                    onChange={this.handleChange}
                   />
                   {r.displayName}
                 </label>
-
-                // <div className="field" key={r.searchStr}>
-                //   <input
-                //     value={r.searchStr}
-                //     className="is-checkradio"
-                //     name="activitySubtype"
-                //     type="checkbox"
-                //     onChange={this.handleChange}
-                //     />
-                //   <label htmlFor="activitySubtype">{r.displayName}</label>
-                // </div>
               ))}
             </div>
           </div>
