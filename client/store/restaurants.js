@@ -31,7 +31,7 @@ export const fetchRestaurants = (neighborhood, city, category) => {
         category,
         eventId,
       })
-      dispatch(getAllRestaurants(data))
+      // dispatch(getAllRestaurants(data))
       dispatch(fetchPollsByEvent(eventId))
     } catch (error) {
       console.log(error)

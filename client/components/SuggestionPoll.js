@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import RestaurantSuggestions from './RestaurantSuggestions'
 import {connect} from 'react-redux'
-import {fetchRestaurants} from '../store/restaurants'
+import {fetchRestaurants, fetchOneRestaurant} from '../store/restaurants'
 import {tallyVotes, selectMostVoted} from '../pollOptions/pollUtils'
 
 class SuggestionPoll extends Component {
@@ -63,6 +63,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getRestaurants: (neighborhood, city, category) =>
       dispatch(fetchRestaurants(neighborhood, city, category)),
+    fetchOneRestaurant: (restaurantId) =>
+      dispatch(fetchOneRestaurant(restaurantId)),
   }
 }
 
