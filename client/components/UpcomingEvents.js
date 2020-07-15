@@ -17,7 +17,7 @@ class UpcomingEvents extends React.Component {
         <div className="columns is-multiline">
           {events && events.length ? (
             events.map((event) => (
-              <div key={event.id} className="column is-one-third ">
+              <div key={event.id} className="column is-one-third">
                 <EventCard {...event} />
               </div>
             ))
