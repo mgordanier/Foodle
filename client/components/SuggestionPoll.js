@@ -33,15 +33,17 @@ class SuggestionPoll extends Component {
     getRestaurants(neighborhood, city, activitySubtype)
 
     if (!this.state.generateButtonClicked) {
-      this.setState({
-        generateButtonClicked: true,
-      })
+      setTimeout(() => {
+        this.setState({
+          generateButtonClicked: true,
+        })
+      }, 2000)
     }
 
     if (this.state.generateButtonClicked) {
       if (
         window.confirm(
-          'This will overwrite the previous suggestions - are you sure?'
+          'This will reset restaurant suggestions and any poll responses - are you sure?'
         )
       ) {
         if (!activitySubtype) {
