@@ -14,7 +14,42 @@ class CreateEventForm extends React.Component {
       time: '',
       activitySubtype: '',
       initialDueDate: '',
+      openManhattan: false,
+      openBrooklyn: false,
+      openQueens: false,
+      openBronx: false,
+      openStatenIsland: false,
     }
+  }
+
+  toggleManhattan = () => {
+    this.setState({
+      openManhattan: !this.state.openManhattan,
+    })
+  }
+
+  toggleBrooklyn = () => {
+    this.setState({
+      openBrooklyn: !this.state.openBrooklyn,
+    })
+  }
+
+  toggleBronx = () => {
+    this.setState({
+      openBronx: !this.state.openBronx,
+    })
+  }
+
+  toggleQueens = () => {
+    this.setState({
+      openQueens: !this.state.openQueens,
+    })
+  }
+
+  toggleStatenIsland = () => {
+    this.setState({
+      openStatenIsland: !this.state.openStatenIsland,
+    })
   }
 
   handleChange = (e) => {
@@ -127,87 +162,135 @@ class CreateEventForm extends React.Component {
           <div className="field my-6">
             <label className="title is-5">Pick a Neighborhood</label>
             <div className="control mt-3">
-              <h5 className="mt-5 mb-3 has-text-weight-semibold">Manhattan</h5>
-              <div className="grid">
-                {manhattanArray.map((n) => (
-                  <label key={n.searchStr} className="is-size-7">
-                    <input
-                      type="radio"
-                      className="mr-2"
-                      value={n.searchStr}
-                      name="neighborhood"
-                      onChange={this.handleChange}
-                    />
-                    {n.displayName}
-                  </label>
-                ))}
-              </div>
-
-              <h5 className="mt-5 mb-3 has-text-weight-semibold">Brooklyn</h5>
-              <div className="grid">
-                {brooklynArray.map((n) => (
-                  <label key={n.searchStr} className="is-size-7">
-                    <input
-                      type="radio"
-                      className="mr-2"
-                      value={n.searchStr}
-                      name="neighborhood"
-                      onChange={this.handleChange}
-                    />
-                    {n.displayName}
-                  </label>
-                ))}
-              </div>
-
-              <h5 className="mt-5 mb-3 has-text-weight-semibold">Queens</h5>
-              <div className="grid">
-                {queensArray.map((n) => (
-                  <label key={n.searchStr} className="is-size-7">
-                    <input
-                      type="radio"
-                      className="mr-2"
-                      value={n.searchStr}
-                      name="neighborhood"
-                      onChange={this.handleChange}
-                    />
-                    {n.displayName}
-                  </label>
-                ))}
-              </div>
-
-              <h5 className="mt-5 mb-3 has-text-weight-semibold">Bronx</h5>
-              <div className="grid">
-                {bronxArray.map((n) => (
-                  <label key={n.searchStr} className="is-size-7">
-                    <input
-                      type="radio"
-                      className="mr-2"
-                      value={n.searchStr}
-                      name="neighborhood"
-                      onChange={this.handleChange}
-                    />
-                    {n.displayName}
-                  </label>
-                ))}
-              </div>
-
-              <h5 className="mt-5 mb-3 has-text-weight-semibold">
-                Staten Island
+              <h5
+                type="button"
+                className="mt-5 mb-3 has-text-weight-semibold "
+                onClick={this.toggleManhattan}
+              >
+                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Manhattan
+                </span>
               </h5>
-              <div className="grid">
-                {statenIslandArray.map((n) => (
-                  <label key={n.searchStr} className="is-size-7">
-                    <input
-                      type="radio"
-                      className="mr-2"
-                      value={n.searchStr}
-                      name="neighborhood"
-                      onChange={this.handleChange}
-                    />
-                    {n.displayName}
-                  </label>
-                ))}
-              </div>
+
+              {this.state.openManhattan ? (
+                <div className="grid">
+                  {manhattanArray.map((n) => (
+                    <label key={n.searchStr} className="is-size-7">
+                      <input
+                        type="radio"
+                        className="mr-2"
+                        value={n.searchStr}
+                        name="neighborhood"
+                        onChange={this.handleChange}
+                      />
+                      {n.displayName}
+                    </label>
+                  ))}
+                </div>
+              ) : null}
+
+              <h5
+                className="mt-5 mb-3 has-text-weight-semibold"
+                onClick={this.toggleBrooklyn}
+              >
+                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Brooklyn
+                </span>
+              </h5>
+
+              {this.state.openBrooklyn ? (
+                <div className="grid">
+                  {brooklynArray.map((n) => (
+                    <label key={n.searchStr} className="is-size-7">
+                      <input
+                        type="radio"
+                        className="mr-2"
+                        value={n.searchStr}
+                        name="neighborhood"
+                        onChange={this.handleChange}
+                      />
+                      {n.displayName}
+                    </label>
+                  ))}
+                </div>
+              ) : null}
+
+              <h5
+                className="mt-5 mb-3 has-text-weight-semibold"
+                onClick={this.toggleQueens}
+              >
+                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Queens
+                </span>
+              </h5>
+
+              {this.state.openQueens ? (
+                <div className="grid">
+                  {queensArray.map((n) => (
+                    <label key={n.searchStr} className="is-size-7">
+                      <input
+                        type="radio"
+                        className="mr-2"
+                        value={n.searchStr}
+                        name="neighborhood"
+                        onChange={this.handleChange}
+                      />
+                      {n.displayName}
+                    </label>
+                  ))}
+                </div>
+              ) : null}
+
+              <h5
+                className="mt-5 mb-3 has-text-weight-semibold"
+                onClick={this.toggleBronx}
+              >
+                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Bronx
+                </span>
+              </h5>
+
+              {this.state.openBronx ? (
+                <div className="grid">
+                  {bronxArray.map((n) => (
+                    <label key={n.searchStr} className="is-size-7">
+                      <input
+                        type="radio"
+                        className="mr-2"
+                        value={n.searchStr}
+                        name="neighborhood"
+                        onChange={this.handleChange}
+                      />
+                      {n.displayName}
+                    </label>
+                  ))}
+                </div>
+              ) : null}
+
+              <h5
+                className="mt-5 mb-3 has-text-weight-semibold"
+                onClick={this.toggleStatenIsland}
+              >
+                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Staten Island
+                </span>
+              </h5>
+              {this.state.openStatenIsland ? (
+                <div className="grid">
+                  {statenIslandArray.map((n) => (
+                    <label key={n.searchStr} className="is-size-7">
+                      <input
+                        type="radio"
+                        className="mr-2"
+                        value={n.searchStr}
+                        name="neighborhood"
+                        onChange={this.handleChange}
+                      />
+                      {n.displayName}
+                    </label>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </div>
 
