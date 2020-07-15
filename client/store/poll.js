@@ -12,13 +12,6 @@ export const gotPollsByEvent = (polls) => {
   }
 }
 
-// export const gotPoll = (poll) => {
-//   return {
-//     type: GOT_POLL,
-//     poll,
-//   }
-// }
-
 // THUNKS
 export const fetchPollsByEvent = (eventId) => {
   return async (dispatch) => {
@@ -30,17 +23,6 @@ export const fetchPollsByEvent = (eventId) => {
     }
   }
 }
-
-// export const fetchPoll = (eventId, pollId) => {
-//   return async (dispatch) => {
-//     try {
-//       const {data} = await axios.get(`/api/events/${eventId}/polls/${pollId}`)
-//       dispatch(gotPoll(data))
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-// }
 
 export const addPoll = (eventId, options) => {
   return async (dispatch) => {

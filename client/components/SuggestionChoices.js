@@ -27,7 +27,7 @@ export class SuggestionChoices extends Component {
 
     return (
       <div className="card">
-        <div className="card-image">
+        {/* <div className="card-image">
           <figure className="image is-4by3">
             <img
               src="https://comps.canstockphoto.com/coloring-cartoon-illustration-of-ramen-eps-vector_csp62947381.jpg"
@@ -38,7 +38,7 @@ export class SuggestionChoices extends Component {
               }}
             />
           </figure>
-        </div>
+        </div> */}
         <div className="card-content">
           <div className="media">
             <div className="media-content">
@@ -49,6 +49,17 @@ export class SuggestionChoices extends Component {
                 {restaurant.name}
               </a>
               <p className="subtitle is-6">{restaurant.vicinity}</p>
+
+              <div className="buttons">
+                <button
+                  className="button is-primary is-light"
+                  onClick={() => {
+                    this.toggleModal()
+                  }}
+                >
+                  More Info
+                </button>
+              </div>
             </div>
           </div>
 

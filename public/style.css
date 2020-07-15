@@ -16065,7 +16065,6 @@ a.navbar-item.is-active,
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 5fr);
+.modal {
+  position: fixed !important;
 }

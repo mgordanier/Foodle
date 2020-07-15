@@ -38,11 +38,11 @@ class EventDashboard extends Component {
 
       return (
         <div className="container mt-6">
-          <h1 className="title">Event Dashboard for {name}</h1>
+          <h1 className="title">Event Dashboard: {name}</h1>
 
-          <h2>
+          <h2 className="subtitle">
             {' '}
-            {`You are going to meet on ${date} at ${hour} in ${location.neighborhood} for ${activitySubtype}`}
+            {`You are going to meet on ${date} at ${hour} in ${neighborhood} for ${activitySubtype}`}
           </h2>
 
           <div className="section columns is-centered">

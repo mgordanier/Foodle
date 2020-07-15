@@ -125,12 +125,14 @@ async function seed() {
         },
 
         {
-          name: 'Pizza',
-          place_id: 'ChIJwwFUcCFZwokRGUMoIm_u5Os',
-          url: 'https://maps.google.com/?cid=16997973054684939033',
-          vicinity: '596 Broadway, New York',
+          formatted_phone_number: '(917) 639-3571',
+          name: "Emmett's",
+          place_id: 'ChIJqxBUkY1ZwokRM-YtSwwhy1E',
+          price_level: 2,
+          rating: 4.5,
+          url: 'https://maps.google.com/?cid=5893840874029049395',
+          vicinity: '50 MacDougal Street, New York',
         },
-
         {
           formatted_phone_number: '(212) 966-4494',
           name: "Famous Ben's Pizza",
@@ -280,10 +282,13 @@ async function seed() {
         },
 
         {
-          name: 'Pizza',
-          place_id: 'ChIJwwFUcCFZwokRGUMoIm_u5Os',
-          url: 'https://maps.google.com/?cid=16997973054684939033',
-          vicinity: '596 Broadway, New York',
+          formatted_phone_number: '(917) 639-3571',
+          name: "Emmett's",
+          place_id: 'ChIJqxBUkY1ZwokRM-YtSwwhy1E',
+          price_level: 2,
+          rating: 4.5,
+          url: 'https://maps.google.com/?cid=5893840874029049395',
+          vicinity: '50 MacDougal Street, New York',
         },
       ],
       pollId: 3,
@@ -303,10 +308,13 @@ async function seed() {
         },
 
         {
-          name: 'Pizza',
-          place_id: 'ChIJwwFUcCFZwokRGUMoIm_u5Os',
-          url: 'https://maps.google.com/?cid=16997973054684939033',
-          vicinity: '596 Broadway, New York',
+          formatted_phone_number: '(917) 639-3571',
+          name: "Emmett's",
+          place_id: 'ChIJqxBUkY1ZwokRM-YtSwwhy1E',
+          price_level: 2,
+          rating: 4.5,
+          url: 'https://maps.google.com/?cid=5893840874029049395',
+          vicinity: '50 MacDougal Street, New York',
         },
 
         {

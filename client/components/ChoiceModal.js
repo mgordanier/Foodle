@@ -2,7 +2,6 @@ import React from 'react'
 
 export const ChoiceModal = (props) => {
   const {closeModal, modalState, restaurant} = props
-  console.log('restaurant', restaurant)
 
   if (!modalState || !restaurant) {
     return null
@@ -25,13 +24,13 @@ export const ChoiceModal = (props) => {
           />
         </header>
 
-        <button type="button" className="button is-danger is-light">
+        <button type="button" className="button is-success is-light">
           <a href={restaurant.url}>Google Maps</a>
         </button>
 
         <section className="modal-card-body">
-          <h2>{priceLevel}</h2>
-          <p>Rating: {restaurant.rating}</p>
+          <h1>{priceLevel}</h1>
+          {restaurant.rating && <p>Rating: {restaurant.rating}</p>}
           <p>{restaurant.formatted_phone_number}</p>
           <p>{restaurant.vicinity}</p>
 
