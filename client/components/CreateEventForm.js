@@ -26,9 +26,9 @@ class CreateEventForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    let urlKey = '123'
-    // Math.random().toString(36).substring(2, 15) +
-    // Math.random().toString(36).substring(2, 15)
+    let urlKey =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
 
     let newEvent = {
       name: this.state.name,
@@ -44,9 +44,6 @@ class CreateEventForm extends React.Component {
 
     this.props.history.push({
       pathname: `/invitelink`,
-      state: {
-        urlKey: `${urlKey}`,
-      },
     })
   }
 

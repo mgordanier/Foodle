@@ -47,6 +47,8 @@ const Event = db.define('event', {
   },
 })
 
+// Check if urlKey is unique
+
 Event.beforeCreate(async (event) => {
   const foundKey = await Event.findOne({
     where: {

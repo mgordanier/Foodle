@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 const InviteLink = (props) => {
-  const urlKey = props.history.location.state.urlKey
+  const urlKey = props.event.urlKey
   return (
     <section className="section">
       <div className="hero-body">
@@ -41,13 +41,8 @@ const InviteLink = (props) => {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    event: state.events.event,
   }
 }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchSingleEvent: (name, time) => dispatch(fetchSingleEvent(name, time))
-//   }
-// }
 
 export default connect(mapStateToProps)(InviteLink)
