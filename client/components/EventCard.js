@@ -31,7 +31,10 @@ class EventCard extends React.Component {
                   <p className="has-text-info has-text-weight-semibold">
                     Confirmed
                   </p>
-                  <p>Where: {this.locationString(this.props.neighborhood)}</p>
+                  <p>
+                    Where: RESTAURANT in{' '}
+                    {this.locationString(this.props.neighborhood)}
+                  </p>
                   <p>
                     When: {date} {hour}
                   </p>
