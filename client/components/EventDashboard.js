@@ -33,14 +33,12 @@ class EventDashboard extends Component {
         <div className="container mt-6">
           <h1 className="title">Event Dashboard for {name}</h1>
 
-          <InputPollForm urlKey={urlKey} />
-
           <h2>
             {' '}
             {`You are going to meet on ${date} at ${hour} in ${location.neighborhood} for ${activitySubtype}`}
           </h2>
-          {/* <Suggestions />
-          <PieChart /> */}
+          <Suggestions />
+          <PieChart />
         </div>
       )
     } else {

@@ -84,3 +84,8 @@ form div {
 .cursor {
   cursor: pointer;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 5fr);
+}

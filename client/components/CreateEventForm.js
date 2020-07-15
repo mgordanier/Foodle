@@ -69,9 +69,9 @@ class CreateEventForm extends React.Component {
       <div className="my-6 container">
         <h1 className="title my-6">Create a New Event</h1>
 
-        <form className="card" onSubmit={this.handleSubmit}>
-          <div className="field column is-half">
-            <label className="label">Event Name</label>
+        <form className="card py-5 px-5" onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label className="title is-5">Event Name</label>
             <div className="control">
               <input
                 className="input"
@@ -84,8 +84,8 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field column is-half">
-            <label className="label">Poll Due Date</label>
+          <div className="field">
+            <label className="title is-5">Poll Due Date</label>
             <div className="control">
               <input
                 className="input"
@@ -100,8 +100,8 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field column is-half">
-            <label className="label">Event Date & Time</label>
+          <div className="field">
+            <label className="title is-5">Event Date & Time</label>
             <div className="control">
               <input
                 className="input"
@@ -117,10 +117,10 @@ class CreateEventForm extends React.Component {
           </div>
 
           <div className="field">
-            <label className="label">Pick a Neighborhood</label>
+            <label className="title is-5">Pick a Neighborhood</label>
             <div className="control">
-              <h4>Manhattan</h4>
-              <div>
+              <p>Manhattan</p>
+              <div className="grid">
                 {manhattanArray.map((n) => (
                   <label key={n.searchStr}>
                     <input
@@ -136,7 +136,7 @@ class CreateEventForm extends React.Component {
               </div>
 
               <p>Brooklyn</p>
-              <div className="column">
+              <div className="grid">
                 {brooklynArray.map((n) => (
                   <label key={n.searchStr}>
                     <input
@@ -152,7 +152,7 @@ class CreateEventForm extends React.Component {
               </div>
 
               <p>Queens</p>
-              <div className="column is-one-fourth">
+              <div className="grid">
                 {queensArray.map((n) => (
                   <label key={n.searchStr}>
                     <input
@@ -167,8 +167,8 @@ class CreateEventForm extends React.Component {
                 ))}
               </div>
 
-              <p>Bronx</p>
-              <div className="column is-one-fourth">
+              <h5>Bronx</h5>
+              <div className="grid">
                 {bronxArray.map((n) => (
                   <label key={n.searchStr}>
                     <input
@@ -184,7 +184,7 @@ class CreateEventForm extends React.Component {
               </div>
 
               <p>Staten Island</p>
-              <div className="column is-one-fourth">
+              <div className="grid">
                 {statenIslandArray.map((n) => (
                   <label key={n.searchStr}>
                     <input
@@ -198,41 +198,12 @@ class CreateEventForm extends React.Component {
                   </label>
                 ))}
               </div>
-
-              {/*
-                  <li>
-                    <a>Brooklyn</a>
-                  </li>
-                  <li>
-                    <a>Queens</a>
-                  </li>
-                  <li>
-                    <a>Bronx</a>
-                  </li>
-                  <li>
-                    <a>Staten Island</a>
-                  </li>
-                </ul>
-              </div> */}
-
-              {/* {locationArray.map((n) => (
-                <label key={n.searchStr}>
-                  <input
-                    value={n.searchStr}
-                    className="mr-2"
-                    name="neighborhood"
-                    type="radio"
-                    onChange={this.handleChange}
-                  />
-                  {n.displayName}
-                </label>
-              ))} */}
             </div>
           </div>
 
-          <div className="field column is-half">
-            <label className="label">Pick a Category</label>
-            <div className="control">
+          <div className="field column">
+            <label className="title is-5">Pick a Category</label>
+            <div className="control grid">
               {restaurantArray.map((r) => (
                 <label key={r.searchstr}>
                   <input
