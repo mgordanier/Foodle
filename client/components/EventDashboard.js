@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import SuggestionPoll from './SuggestionPoll'
 import {fetchOneEvent} from '../store/events'
 import {fetchPollsByEvent} from '../store/poll'
-import {locationFlattener} from '../pollOptions/pollUtils'
 import PieChartData from './PieChartData'
 
 // if there is a suggestions poll, then we need allRestaurants in the store
@@ -23,6 +22,16 @@ class EventDashboard extends Component {
     await this.props.fetchPollsByEvent(this.props.event.id)
   }
 
+  locationString = (string) => {
+    let wordsArray = string.split('+')
+    let displayName = []
+    wordsArray.forEach(function (word) {
+      word = word[0].toUpperCase() + word.slice(1)
+      displayName.push(word)
+    })
+    return displayName.join(' ')
+  }
+
   render() {
     const urlKey = this.props.match.params.urlKey
 
@@ -34,21 +43,48 @@ class EventDashboard extends Component {
         hour: '2-digit',
         minute: '2-digit',
       })
-      const location = locationFlattener()
+
+      const location = this.locationString(neighborhood)
 
       return (
         <div className="container mt-6">
           <h1 className="title">Event Dashboard for {name}</h1>
 
-          <h2>
-            {' '}
-            {`You are going to meet on ${date} at ${hour} in ${location.neighborhood} for ${activitySubtype}`}
+          <h2 className="is-size-4 has-text-weight-semibold ">
+            Here are your event details
           </h2>
 
-          <div className="section columns is-centered">
-            <PieChartData polls={this.props.polls} />
-          </div>
+          <p className="my-2">
+            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+              Date
+            </span>{' '}
+            {date}
+          </p>
+          <p className="my-2">
+            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+              Time
+            </span>{' '}
+            {hour}
+          </p>
+          <p className="my-2">
+            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+              Neighborhood
+            </span>{' '}
+            {location}
+          </p>
+          <p className="my-2">
+            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+              Cuisine
+            </span>{' '}
+            {activitySubtype}
+          </p>
+
           <SuggestionPoll />
+          <div className="section columns is-centered">
+            {this.props.polls ? (
+              <PieChartData polls={this.props.polls} />
+            ) : null}
+          </div>
         </div>
       )
     } else {

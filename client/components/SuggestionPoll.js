@@ -7,6 +7,10 @@ import {tallyVotes, selectMostVoted} from '../pollOptions/pollUtils'
 class SuggestionPoll extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      generateButtonClicked: false,
+    }
+
     this.generateSuggestionsPoll = this.generateSuggestionsPoll.bind(this)
   }
   componentDidMount() {}
@@ -27,18 +31,27 @@ class SuggestionPoll extends Component {
     }
 
     getRestaurants(neighborhood, city, activitySubtype)
+
+    this.setState({
+      generateButtonClicked: true,
+    })
   }
 
   render() {
     const {user, event, polls} = this.props
     const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
+
     return (
       <div>
         {user.id === event.organizerId ? (
           <div className="buttons">
             <button
               type="button"
-              className="button is-primary"
+              className={
+                this.state.generateButtonClicked
+                  ? 'hide-button'
+                  : 'button is-primary'
+              }
               onClick={this.generateSuggestionsPoll}
             >
               Generate Restaurant Suggestions
