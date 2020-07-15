@@ -29,8 +29,6 @@ class EventDashboard extends Component {
         minute: '2-digit',
       })
       const location = locationFlattener()
-      console.log('LOCATIONNNNN', location)
-      console.log('NEIGHBORHOOOOD', neighborhood)
 
       return (
         <div className="container mt-6">

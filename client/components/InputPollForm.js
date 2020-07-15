@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {activityFlattener} from '../pollOptions/pollUtils'
 import ActivityPoll from './ActivityPoll'
-// import LocationPoll from './LocationPoll'
 import {fetchOneEvent} from '../store/events'
 
 import {connect} from 'react-redux'
@@ -41,13 +40,6 @@ class InputPollForm extends Component {
   }
 
   render() {
-    // const restaurants = activityFlattener()
-    // let displayCategory = []
-    // for (let category in restaurants) {
-    //   displayCategory.push(restaurants[category].displayName)
-    // }
-    // let restaurantTypes = displayCategory.slice(7)
-
     let time = this.props.event.time
     time = new Date(time)
     const date = time.toLocaleDateString()
@@ -60,9 +52,6 @@ class InputPollForm extends Component {
 
     return (
       <div className="container">
-        {/* <div className="hero-body">
-          <div className="columns is-centered">
-            <div className="column is-half"> */}
         <h2 className="title">Vote on Event Options</h2>
 
         <form className="card" onSubmit={this.handleSubmit}>
@@ -88,10 +77,6 @@ class InputPollForm extends Component {
           </div>
           <div className="field">
             <label className="label">Neighborhood:New York</label>
-            {/* <LocationPoll
-              event={this.props.event}
-              onChange={this.eventhandler}
-            /> */}
           </div>
           <div className="field">
             <label className="label">Select Food Preferences:</label>
@@ -127,10 +112,6 @@ class InputPollForm extends Component {
             </div>
           </div>
         </form>
-
-        {/* </div>
-          </div>
-        </div> */}
       </div>
     )
   }

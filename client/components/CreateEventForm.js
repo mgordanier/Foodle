@@ -56,14 +56,26 @@ class CreateEventForm extends React.Component {
     const locationArray = Object.values(flatLocation)
 
     const allCountyObj = Object.values(location)[0].county
-    const bronxArray = Object.values(allCountyObj.bronx.neighborhood)
-    const brooklynArray = Object.values(allCountyObj.kings.neighborhood)
-    const manhattanArray = Object.values(allCountyObj['new+york'].neighborhood)
-    const queensArray = Object.values(allCountyObj.queens.neighborhood)
-    const statenIslandArray = Object.values(allCountyObj.richmond.neighborhood)
-    // console.log('manhattanArray', manhattanArray)
 
-    const restaurantArray = Object.values(activity.restaurant)
+    const bronxArray = Object.values(
+      allCountyObj.bronx.neighborhood
+    ).sort((a, b) => (a.displayName > b.displayName ? 1 : -1))
+    const brooklynArray = Object.values(
+      allCountyObj.kings.neighborhood
+    ).sort((a, b) => (a.displayName > b.displayName ? 1 : -1))
+    const manhattanArray = Object.values(
+      allCountyObj['new+york'].neighborhood
+    ).sort((a, b) => (a.displayName > b.displayName ? 1 : -1))
+    const queensArray = Object.values(
+      allCountyObj.queens.neighborhood
+    ).sort((a, b) => (a.displayName > b.displayName ? 1 : -1))
+    const statenIslandArray = Object.values(
+      allCountyObj.richmond.neighborhood
+    ).sort((a, b) => (a.displayName > b.displayName ? 1 : -1))
+
+    const restaurantArray = Object.values(activity.restaurant).sort((a, b) =>
+      a.displayName > b.displayName ? 1 : -1
+    )
 
     return (
       <div className="my-6 container">
