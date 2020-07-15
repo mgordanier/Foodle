@@ -67,12 +67,12 @@ class CreateEventForm extends React.Component {
 
     return (
       <div className="my-6 container">
-        <h1 className="title my-6">Create a New Event</h1>
+        <h1 className="title my-6 has-text-centered">Create a New Event</h1>
 
         <form className="card py-5 px-5" onSubmit={this.handleSubmit}>
-          <div className="field">
+          <div className="field my-6">
             <label className="title is-5">Event Name</label>
-            <div className="control">
+            <div className="control mt-3">
               <input
                 className="input"
                 name="name"
@@ -84,9 +84,9 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field">
+          <div className="field my-6">
             <label className="title is-5">Poll Due Date</label>
-            <div className="control">
+            <div className="control mt-3">
               <input
                 className="input"
                 name="initialDueDate"
@@ -100,9 +100,9 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field">
+          <div className="field my-6">
             <label className="title is-5">Event Date & Time</label>
-            <div className="control">
+            <div className="control mt-3">
               <input
                 className="input"
                 name="time"
@@ -116,10 +116,10 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field">
+          <div className="field my-6">
             <label className="title is-5">Pick a Neighborhood</label>
-            <div className="control">
-              <p>Manhattan</p>
+            <div className="control mt-3">
+              <h5 className="mt-5 mb-3 has-text-weight-semibold">Manhattan</h5>
               <div className="grid">
                 {manhattanArray.map((n) => (
                   <label key={n.searchStr}>
@@ -135,7 +135,7 @@ class CreateEventForm extends React.Component {
                 ))}
               </div>
 
-              <p>Brooklyn</p>
+              <h5 className="mt-5 mb-3 has-text-weight-semibold">Brooklyn</h5>
               <div className="grid">
                 {brooklynArray.map((n) => (
                   <label key={n.searchStr}>
@@ -151,7 +151,7 @@ class CreateEventForm extends React.Component {
                 ))}
               </div>
 
-              <p>Queens</p>
+              <h5 className="mt-5 mb-3 has-text-weight-semibold">Queens</h5>
               <div className="grid">
                 {queensArray.map((n) => (
                   <label key={n.searchStr}>
@@ -167,7 +167,7 @@ class CreateEventForm extends React.Component {
                 ))}
               </div>
 
-              <h5>Bronx</h5>
+              <h5 className="mt-5 mb-3 has-text-weight-semibold">Bronx</h5>
               <div className="grid">
                 {bronxArray.map((n) => (
                   <label key={n.searchStr}>
@@ -183,7 +183,9 @@ class CreateEventForm extends React.Component {
                 ))}
               </div>
 
-              <p>Staten Island</p>
+              <h5 className="mt-5 mb-3 has-text-weight-semibold">
+                Staten Island
+              </h5>
               <div className="grid">
                 {statenIslandArray.map((n) => (
                   <label key={n.searchStr}>
@@ -201,9 +203,9 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field column">
+          <div className="field my-6">
             <label className="title is-5">Pick a Category</label>
-            <div className="control grid">
+            <div className="control grid mt-3">
               {restaurantArray.map((r) => (
                 <label key={r.searchstr}>
                   <input
@@ -219,8 +221,8 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <button className="button is-info is-centered is-large ml-5 my-5">
-            Generate Event Invitation Link
+          <button className="button is-info is-centered is-large my-5">
+            Generate Event Poll
           </button>
         </form>
       </div>

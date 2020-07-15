@@ -24,7 +24,10 @@ class EventDashboard extends Component {
       let {neighborhood, time, name, activitySubtype} = this.props.event
       time = new Date(time)
       const date = time.toLocaleDateString()
-      const hour = time.toLocaleTimeString()
+      const hour = time.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
       const location = locationFlattener()
       console.log('LOCATIONNNNN', location)
       console.log('NEIGHBORHOOOOD', neighborhood)

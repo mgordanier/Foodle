@@ -51,7 +51,10 @@ class InputPollForm extends Component {
     let time = this.props.event.time
     time = new Date(time)
     const date = time.toLocaleDateString()
-    const hour = time.toLocaleTimeString()
+    const hour = time.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    })
 
     console.log('input poll form state', this.state)
 

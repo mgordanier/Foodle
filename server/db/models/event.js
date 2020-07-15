@@ -22,7 +22,6 @@ const Event = db.define('event', {
   neighborhood: {
     type: Sequelize.STRING,
   },
-
   initialDueDate: {
     type: Sequelize.DATE,
   },

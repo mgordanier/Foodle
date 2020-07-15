@@ -9,9 +9,11 @@ class Home extends Component {
           <img src="/food.jpg" />
           <img src="/foodlelogo.png" />
 
-          <h2 className="subtitle">Create and plan an event with friends</h2>
+          <h2 className="subtitle class-test">
+            Create and plan an event with friends
+          </h2>
           <Link to="/home">
-            <button type="button" className="button is-info is-large">
+            <button type="button" className="button is-primary is-large">
               Get Started
             </button>
           </Link>
