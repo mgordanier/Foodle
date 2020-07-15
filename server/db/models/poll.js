@@ -7,6 +7,16 @@ const Poll = db.define('poll', {
   },
   options: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
+    get() {
+      const options = this.getDataValue('options')
+      return options.map((option) => JSON.parse(option))
+    },
+    set(options) {
+      this.setDataValue(
+        'options',
+        options.map((elem) => JSON.stringify(elem))
+      )
+    },
   },
 })
 

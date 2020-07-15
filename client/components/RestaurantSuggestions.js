@@ -20,20 +20,18 @@ class RestaurantSuggestions extends Component {
       }))
     } else {
       this.setState((prevState) => ({
-        selectedRestaurants: [
-          prevState.selectedRestaurants.filter(
-            (resto) => resto.place_id !== restaurant.place_id
-          ),
-        ],
+        selectedRestaurants: prevState.selectedRestaurants.filter(
+          (resto) => resto.place_id !== restaurant.place_id
+        ),
       }))
     }
   }
 
   voteRestaurant() {
     console.log('SELECTIONS FROM STATE', this.state.selectedRestaurants)
+
     const selections = this.state.selectedRestaurants
-    // .map((restaurant) => {return JSON.stringify(restaurant)})
-    // console.log('SELECTIONS STRINGIFIED', selections)
+
     // create a new response
     this.props.addOrUpdateResponse(
       this.props.event.id,
@@ -45,12 +43,9 @@ class RestaurantSuggestions extends Component {
   }
 
   render() {
+    console.log(this.state.selectedRestaurants)
     const {event, poll} = this.props
-    if (typeof poll.options[0] === 'string') {
-      poll.options = poll.options.map((restaurantJSON) =>
-        JSON.parse(restaurantJSON)
-      )
-    }
+
     return (
       <section className="section">
         <div className="container">
@@ -86,6 +81,7 @@ class RestaurantSuggestions extends Component {
               type="button"
               className="button is-primary is-centered is-large"
               onClick={() => this.voteRestaurant()}
+              disabled={!this.state.selectedRestaurants.length}
             >
               SUBMIT YOUR VOTES
             </button>
@@ -95,7 +91,9 @@ class RestaurantSuggestions extends Component {
               className="button is-warning is-centered is-large"
               onClick={() =>
                 this.props.addOrUpdateResponse(event.id, poll.id, [
-                  'None Of These',
+                  {
+                    name: 'None Of These',
+                  },
                 ])
               }
             >

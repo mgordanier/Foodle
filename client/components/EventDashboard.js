@@ -4,7 +4,12 @@ import SuggestionPoll from './SuggestionPoll'
 import {fetchOneEvent} from '../store/events'
 import {fetchPollsByEvent} from '../store/poll'
 import {locationFlattener} from '../pollOptions/pollUtils'
-import InputPollForm from './InputPollForm'
+import PieChartData from './PieChartData'
+
+// if there is a suggestions poll, then we need allRestaurants in the store
+// to be populated with the google API details from the 3 restos in
+// the poll options
+// OR those detail have to be saved inside the poll optionsnp
 
 class EventDashboard extends Component {
   constructor(props) {
@@ -39,7 +44,10 @@ class EventDashboard extends Component {
             {' '}
             {`You are going to meet on ${date} at ${hour} in ${location.neighborhood} for ${activitySubtype}`}
           </h2>
-          {/* <PieChartData /> */}
+
+          <div className="section columns is-centered">
+            <PieChartData polls={this.props.polls} />
+          </div>
           <SuggestionPoll />
         </div>
       )
@@ -52,13 +60,14 @@ class EventDashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     event: state.events.event,
+    polls: state.poll.allByEvent,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
-    // createPoll
+    fetchPollsByEvent: (eventId) => dispatch(fetchPollsByEvent(eventId)),
   }
 }
 
