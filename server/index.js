@@ -104,7 +104,14 @@ const startListening = () => {
 
   // set up our socket control center
   const io = socketio(server)
+  app.set('io', io)
+  // app.use((req, res, next) => {
+  //   console.log('start socket')
+  //   req.io = io;
+  //   next();
+  // })
   require('./socket')(io)
+  // return io;
 }
 
 const syncDb = () => db.sync()

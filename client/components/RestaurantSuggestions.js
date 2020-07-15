@@ -28,8 +28,6 @@ class RestaurantSuggestions extends Component {
   }
 
   voteRestaurant() {
-    console.log('SELECTIONS FROM STATE', this.state.selectedRestaurants)
-
     const selections = this.state.selectedRestaurants
 
     // create a new response
@@ -54,7 +52,8 @@ class RestaurantSuggestions extends Component {
           <div className="content is-medium">
             Directions: Select up to 3 choices then submit selected votes OR
             choose no preference
-            <p>Click the image for more Information!</p>
+            <p>Click the Restaurant's name for Google Map</p>
+            <p>Click the image for more information</p>
           </div>
 
           <div className="columns">

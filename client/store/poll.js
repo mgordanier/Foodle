@@ -5,7 +5,7 @@ const GOT_POLL = 'GOT_POLL'
 const GOT_POLLS_BY_EVENT = 'GOT_POLLS_BY_EVENT'
 
 // ACTION CREATORS
-const gotPollsByEvent = (polls) => {
+export const gotPollsByEvent = (polls) => {
   return {
     type: GOT_POLLS_BY_EVENT,
     polls,
