@@ -19,6 +19,10 @@ export class SuggestionChoices extends Component {
 
   render() {
     const {restaurant, handleCheckboxChange} = this.props
+    const restaurantPlace = `https://www.google.com/maps/search/?api=1&query=${restaurant.name.replace(
+      / /g,
+      '+'
+    )}`
 
     return (
       <div className="card">
@@ -36,25 +40,22 @@ export class SuggestionChoices extends Component {
         </div>
         <div className="card-content">
           <div className="media">
-            {/* <div className="media-left">
-              <figure className="image is-48x48">
-                <img
-                  src="https://bulma.io/images/placeholders/96x96.png"
-                  alt="Placeholder image"
-                />
-              </figure>
-            </div> */}
             <div className="media-content">
-              <p className="title is-4">{restaurant.name}</p>
+              <a
+                href={restaurantPlace}
+                className="has-text-link is-spaced title is-4"
+              >
+                {restaurant.name}
+              </a>
               <p className="subtitle is-6">{restaurant.vicinity}</p>
             </div>
           </div>
 
-          <div className="content">
-            {/* Description of restaurant here */}
+          {/* <div className="content">
+            Description of restaurant here
             <p className="subtitle is-6">Rating: {restaurant.rating}</p>
             <br />
-          </div>
+          </div> */}
 
           <ChoiceModal
             closeModal={this.toggleModal}
