@@ -85,7 +85,6 @@ class Suggestions extends Component {
               )
             })}
           </div>
-
           <div className="buttons">
             <button
               className="button is-primary is-centered is-large"

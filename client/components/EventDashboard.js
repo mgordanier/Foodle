@@ -4,10 +4,11 @@ import Suggestions from './Suggestions'
 import PieChart from './PieChartData'
 import {fetchOneEvent} from '../store/events'
 import {locationFlattener} from '../pollOptions/pollUtils'
+import InputPollForm from './InputPollForm'
 
 class EventDashboard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {}
   }
 
@@ -17,24 +18,25 @@ class EventDashboard extends Component {
   }
 
   render() {
-    //work on display
-    if (this.props.event && this.props.event.id) {
-      console.log('this.props.eventtttttt', this.props.event)
+    const urlKey = this.props.match.params.urlKey
 
+    if (this.props.event && this.props.event.id) {
       let {neighborhood, time, name, activitySubtype} = this.props.event
       time = new Date(time)
       const date = time.toLocaleDateString()
-      const hour = time.toLocaleTimeString()
+      const hour = time.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
       const location = locationFlattener()
-      console.log('location', location)
-      console.log('neighborhood', neighborhood)
 
       return (
-        <div>
+        <div className="container mt-6">
           <h1 className="title">Event Dashboard for {name}</h1>
+
           <h2>
             {' '}
-            {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
+            {`You are going to meet on ${date} at ${hour} in ${location.neighborhood} for ${activitySubtype}`}
           </h2>
           <Suggestions />
           <PieChart />
@@ -55,6 +57,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
+    // createPoll
   }
 }
 
