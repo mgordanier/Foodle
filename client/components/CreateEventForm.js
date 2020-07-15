@@ -81,7 +81,7 @@ class CreateEventForm extends React.Component {
       <div className="my-6 container">
         <h1 className="title my-6 has-text-centered">Create a New Event</h1>
 
-        <form className="card py-5 px-5" onSubmit={this.handleSubmit}>
+        <form className="card py-6 px-6" onSubmit={this.handleSubmit}>
           <div className="field my-6">
             <label className="title is-5">Event Name</label>
             <div className="control mt-3">
@@ -134,7 +134,7 @@ class CreateEventForm extends React.Component {
               <h5 className="mt-5 mb-3 has-text-weight-semibold">Manhattan</h5>
               <div className="grid">
                 {manhattanArray.map((n) => (
-                  <label key={n.searchStr}>
+                  <label key={n.searchStr} className="is-size-7">
                     <input
                       type="radio"
                       className="mr-2"
@@ -150,7 +150,7 @@ class CreateEventForm extends React.Component {
               <h5 className="mt-5 mb-3 has-text-weight-semibold">Brooklyn</h5>
               <div className="grid">
                 {brooklynArray.map((n) => (
-                  <label key={n.searchStr}>
+                  <label key={n.searchStr} className="is-size-7">
                     <input
                       type="radio"
                       className="mr-2"
@@ -166,7 +166,7 @@ class CreateEventForm extends React.Component {
               <h5 className="mt-5 mb-3 has-text-weight-semibold">Queens</h5>
               <div className="grid">
                 {queensArray.map((n) => (
-                  <label key={n.searchStr}>
+                  <label key={n.searchStr} className="is-size-7">
                     <input
                       type="radio"
                       className="mr-2"
@@ -182,7 +182,7 @@ class CreateEventForm extends React.Component {
               <h5 className="mt-5 mb-3 has-text-weight-semibold">Bronx</h5>
               <div className="grid">
                 {bronxArray.map((n) => (
-                  <label key={n.searchStr}>
+                  <label key={n.searchStr} className="is-size-7">
                     <input
                       type="radio"
                       className="mr-2"
@@ -200,7 +200,7 @@ class CreateEventForm extends React.Component {
               </h5>
               <div className="grid">
                 {statenIslandArray.map((n) => (
-                  <label key={n.searchStr}>
+                  <label key={n.searchStr} className="is-size-7">
                     <input
                       type="radio"
                       className="mr-2"
@@ -219,7 +219,7 @@ class CreateEventForm extends React.Component {
             <label className="title is-5">Pick a Category</label>
             <div className="control grid mt-3">
               {restaurantArray.map((r) => (
-                <label key={r.searchstr}>
+                <label key={r.searchstr} className="is-size-7">
                   <input
                     value={r.searchStr}
                     className="mr-2"
