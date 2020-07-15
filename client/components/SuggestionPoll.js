@@ -32,14 +32,40 @@ class SuggestionPoll extends Component {
 
     getRestaurants(neighborhood, city, activitySubtype)
 
-    this.setState({
-      generateButtonClicked: true,
-    })
+    if (!this.state.generateButtonClicked) {
+      this.setState({
+        generateButtonClicked: true,
+      })
+    }
+
+    if (this.state.generateButtonClicked) {
+      if (
+        window.confirm(
+          'This will overwrite the previous suggestions - are you sure?'
+        )
+      ) {
+        if (!activitySubtype) {
+          const activityPoll = polls.find((poll) => poll.name === 'activity')
+          const responses = activityPoll.responses
+          activitySubtype = selectMostVoted(tallyVotes(responses))
+        }
+        if (!neighborhood) {
+          const locationPoll = polls.find((poll) => poll.name === 'location')
+          const responses = locationPoll.responses
+          neighborhood = selectMostVoted(tallyVotes(responses))
+        }
+        getRestaurants(neighborhood, city, activitySubtype)
+      }
+    }
   }
 
   render() {
     const {user, event, polls} = this.props
     const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
+
+    const displayName = !this.state.generateButtonClicked
+      ? 'Generate Restaurant Suggestions'
+      : 'Generate New Suggestions'
 
     return (
       <div>
@@ -47,14 +73,10 @@ class SuggestionPoll extends Component {
           <div className="buttons">
             <button
               type="button"
-              className={
-                this.state.generateButtonClicked
-                  ? 'hide-button'
-                  : 'button is-primary'
-              }
+              className="button is-primary"
               onClick={this.generateSuggestionsPoll}
             >
-              Generate Restaurant Suggestions
+              {displayName}
             </button>
           </div>
         ) : null}

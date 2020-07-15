@@ -47,45 +47,52 @@ class EventDashboard extends Component {
       const location = this.locationString(neighborhood)
 
       return (
-        <div className="container mt-6">
-          <h1 className="title">Event Dashboard for {name}</h1>
+        <section className="section">
+          <div className="container mt-6">
+            <h1 className="title">{name}</h1>
 
-          <h2 className="is-size-4 has-text-weight-semibold ">
-            Here are your event details
-          </h2>
+            <h2 className="is-size-4 has-text-weight-semibold ">
+              Here are your event details
+            </h2>
 
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Date
-            </span>{' '}
-            {date}
-          </p>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Time
-            </span>{' '}
-            {hour}
-          </p>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Neighborhood
-            </span>{' '}
-            {location}
-          </p>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Cuisine
-            </span>{' '}
-            {activitySubtype}
-          </p>
+            <p className="my-2">
+              <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                Date
+              </span>{' '}
+              {date}
+            </p>
+            <p className="my-2">
+              <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                Time
+              </span>{' '}
+              {hour}
+            </p>
+            <p className="my-2">
+              <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                Neighborhood
+              </span>{' '}
+              {location}
+            </p>
+            <p className="my-2">
+              <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                Cuisine
+              </span>{' '}
+              {activitySubtype}
+            </p>
 
-          <SuggestionPoll />
-          <div className="section columns is-centered">
-            {this.props.polls ? (
-              <PieChartData polls={this.props.polls} />
-            ) : null}
+            <div className="mt-6">
+              <SuggestionPoll />
+            </div>
+
+            <div className="section columns is-centered">
+              {this.props.polls ? (
+                <>
+                  <PieChartData polls={this.props.polls} />
+                </>
+              ) : null}
+            </div>
           </div>
-        </div>
+        </section>
       )
     } else {
       return null
