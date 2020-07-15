@@ -38,8 +38,8 @@ export default function PieChartData(props) {
           data={data}
           width={600}
           height={600}
-          innerRadius={50}
-          outerRadius={250}
+          innerRadius={30}
+          outerRadius={225}
         />
       </div>
     </div>

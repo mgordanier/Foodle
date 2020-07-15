@@ -26,11 +26,16 @@ export class SuggestionChoices extends Component {
     )}`
 
     return (
-      <div className="card">
+      <div
+        className="card cursor"
+        onClick={() => {
+          this.toggleModal()
+        }}
+      >
         {/* <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src="https://comps.canstockphoto.com/coloring-cartoon-illustration-of-ramen-eps-vector_csp62947381.jpg"
+              src="/corgi.jpg"
               alt="Placeholder image"
               className="cursor"
               onClick={() => {
@@ -44,22 +49,11 @@ export class SuggestionChoices extends Component {
             <div className="media-content">
               <a
                 href={restaurantPlace}
-                className="has-text-link is-spaced title is-4"
+                className="cursor has-text-link is-spaced title is-4"
               >
                 {restaurant.name}
               </a>
               <p className="subtitle is-6">{restaurant.vicinity}</p>
-
-              <div className="buttons">
-                <button
-                  className="button is-primary is-light"
-                  onClick={() => {
-                    this.toggleModal()
-                  }}
-                >
-                  More Info
-                </button>
-              </div>
             </div>
           </div>
 

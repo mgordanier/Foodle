@@ -14,6 +14,7 @@ export const gotPollsByEvent = (polls) => {
 
 // THUNKS
 export const fetchPollsByEvent = (eventId) => {
+  console.log('eventId ==================', eventId)
   return async (dispatch) => {
     try {
       const {data} = await axios.get(`/api/events/${eventId}/polls/`)

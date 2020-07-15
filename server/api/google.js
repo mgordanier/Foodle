@@ -67,3 +67,33 @@ router.put('/restaurants', async (req, res, next) => {
 //     next(error)
 //   }
 // })
+// {
+//   formatted_phone_number: '(917) 722-3778',
+//   name: 'Champion Pizza',
+//   place_id: 'ChIJaeOQ3IhZwokRtTqgShbnjZE',
+//   price_level: 1,
+//   rating: 4.6,
+//   url: 'https://maps.google.com/?cid=10488293190143064757',
+//   vicinity: '17 Cleveland Place, New York',
+//   website: 'https://www.championpizzaofnewyork.com/',
+// },
+
+// {
+//   formatted_phone_number: '(917) 639-3571',
+//   name: "Emmett's",
+//   place_id: 'ChIJqxBUkY1ZwokRM-YtSwwhy1E',
+//   price_level: 2,
+//   rating: 4.5,
+//   url: 'https://maps.google.com/?cid=5893840874029049395',
+//   vicinity: '50 MacDougal Street, New York',
+// },
+// {
+//   formatted_phone_number: '(212) 966-4494',
+//   name: "Famous Ben's Pizza",
+//   place_id: 'ChIJSQFeRoxZwokRtd_PeFDrtO0',
+//   price_level: 1,
+//   rating: 4.2,
+//   url: 'https://maps.google.com/?cid=17128574013653639093',
+//   vicinity: '177 Spring Street, New York',
+//   website: 'http://www.famousbenspizzanyc.com/',
+// },
