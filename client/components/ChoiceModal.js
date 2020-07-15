@@ -2,11 +2,14 @@ import React from 'react'
 
 export const ChoiceModal = (props) => {
   const {closeModal, modalState, restaurant} = props
-  // console.log('oneRestaurant', oneRestaurant)
+  console.log('restaurant', restaurant)
 
   if (!modalState || !restaurant) {
     return null
   }
+
+  let priceNumber = restaurant.price_level
+  let priceLevel = '$'.repeat(priceNumber)
 
   return (
     <div className="modal is-active">
@@ -27,8 +30,11 @@ export const ChoiceModal = (props) => {
         </button>
 
         <section className="modal-card-body">
-          <h3>Price Level: {restaurant.price_level}</h3>
+          <h2>{priceLevel}</h2>
+          <p>Rating: {restaurant.rating}</p>
           <p>{restaurant.formatted_phone_number}</p>
+          <p>{restaurant.vicinity}</p>
+
           <p>
             <a href={restaurant.website}>{restaurant.website}</a>
           </p>

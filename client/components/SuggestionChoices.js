@@ -19,6 +19,7 @@ export class SuggestionChoices extends Component {
 
   render() {
     const {restaurant, handleCheckboxChange} = this.props
+
     const restaurantPlace = `https://www.google.com/maps/search/?api=1&query=${restaurant.name.replace(
       / /g,
       '+'
@@ -50,12 +51,6 @@ export class SuggestionChoices extends Component {
               <p className="subtitle is-6">{restaurant.vicinity}</p>
             </div>
           </div>
-
-          {/* <div className="content">
-            Description of restaurant here
-            <p className="subtitle is-6">Rating: {restaurant.rating}</p>
-            <br />
-          </div> */}
 
           <ChoiceModal
             closeModal={this.toggleModal}

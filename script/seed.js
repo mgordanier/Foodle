@@ -44,7 +44,7 @@ async function seed() {
       activityType: 'restaurant',
       activitySubtype: 'pizza',
       city: 'new+york',
-      neighborhood: 'east+village',
+      neighborhood: 'soho',
       urlKey: 'c70evaiduqimyqd4vzjjl8',
     }),
   ])
@@ -190,7 +190,36 @@ async function seed() {
     }),
     Poll.create({
       name: 'suggestions',
-      options: ["Joe's+pizza", 'Motorino', "Baker's+Pizza"],
+      options: [
+        {
+          formatted_phone_number: '(917) 722-3778',
+          name: 'Champion Pizza',
+          place_id: 'ChIJaeOQ3IhZwokRtTqgShbnjZE',
+          price_level: 1,
+          rating: 4.6,
+          url: 'https://maps.google.com/?cid=10488293190143064757',
+          vicinity: '17 Cleveland Place, New York',
+          website: 'https://www.championpizzaofnewyork.com/',
+        },
+
+        {
+          name: 'Pizza',
+          place_id: 'ChIJwwFUcCFZwokRGUMoIm_u5Os',
+          url: 'https://maps.google.com/?cid=16997973054684939033',
+          vicinity: '596 Broadway, New York',
+        },
+
+        {
+          formatted_phone_number: '(212) 966-4494',
+          name: "Famous Ben's Pizza",
+          place_id: 'ChIJSQFeRoxZwokRtd_PeFDrtO0',
+          price_level: 1,
+          rating: 4.2,
+          url: 'https://maps.google.com/?cid=17128574013653639093',
+          vicinity: '177 Spring Street, New York',
+          website: 'http://www.famousbenspizzanyc.com/',
+        },
+      ],
       eventId: 3,
     }),
   ])
@@ -330,22 +359,91 @@ async function seed() {
       userId: 3,
     }),
     Response.create({
-      selections: ["Joe's Pizza"],
+      selections: [
+        {
+          formatted_phone_number: '(917) 722-3778',
+          name: 'Champion Pizza',
+          place_id: 'ChIJaeOQ3IhZwokRtTqgShbnjZE',
+          price_level: 1,
+          rating: 4.6,
+          url: 'https://maps.google.com/?cid=10488293190143064757',
+          vicinity: '17 Cleveland Place, New York',
+          website: 'https://www.championpizzaofnewyork.com/',
+        },
+
+        {
+          formatted_phone_number: '(212) 966-4494',
+          name: "Famous Ben's Pizza",
+          place_id: 'ChIJSQFeRoxZwokRtd_PeFDrtO0',
+          price_level: 1,
+          rating: 4.2,
+          url: 'https://maps.google.com/?cid=17128574013653639093',
+          vicinity: '177 Spring Street, New York',
+          website: 'http://www.famousbenspizzanyc.com/',
+        },
+      ],
       pollId: 4,
       userId: 1,
     }),
     Response.create({
-      selections: ['Motorino', 'Gnocco', "Joe's Pizza"],
+      selections: [
+        {
+          formatted_phone_number: '(917) 722-3778',
+          name: 'Champion Pizza',
+          place_id: 'ChIJaeOQ3IhZwokRtTqgShbnjZE',
+          price_level: 1,
+          rating: 4.6,
+          url: 'https://maps.google.com/?cid=10488293190143064757',
+          vicinity: '17 Cleveland Place, New York',
+          website: 'https://www.championpizzaofnewyork.com/',
+        },
+
+        {
+          name: 'Pizza',
+          place_id: 'ChIJwwFUcCFZwokRGUMoIm_u5Os',
+          url: 'https://maps.google.com/?cid=16997973054684939033',
+          vicinity: '596 Broadway, New York',
+        },
+      ],
       pollId: 4,
       userId: 2,
     }),
     Response.create({
-      selections: ['Motorino', 'Gnocco'],
+      selections: [
+        {
+          formatted_phone_number: '(917) 722-3778',
+          name: 'Champion Pizza',
+          place_id: 'ChIJaeOQ3IhZwokRtTqgShbnjZE',
+          price_level: 1,
+          rating: 4.6,
+          url: 'https://maps.google.com/?cid=10488293190143064757',
+          vicinity: '17 Cleveland Place, New York',
+          website: 'https://www.championpizzaofnewyork.com/',
+        },
+
+        {
+          name: 'Pizza',
+          place_id: 'ChIJwwFUcCFZwokRGUMoIm_u5Os',
+          url: 'https://maps.google.com/?cid=16997973054684939033',
+          vicinity: '596 Broadway, New York',
+        },
+
+        {
+          formatted_phone_number: '(212) 966-4494',
+          name: "Famous Ben's Pizza",
+          place_id: 'ChIJSQFeRoxZwokRtd_PeFDrtO0',
+          price_level: 1,
+          rating: 4.2,
+          url: 'https://maps.google.com/?cid=17128574013653639093',
+          vicinity: '177 Spring Street, New York',
+          website: 'http://www.famousbenspizzanyc.com/',
+        },
+      ],
       pollId: 4,
       userId: 3,
     }),
     Response.create({
-      selections: ['None Of These'],
+      selections: [{name: 'None Of These'}],
       pollId: 4,
       userId: 4,
     }),
