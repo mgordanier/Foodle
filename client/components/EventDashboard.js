@@ -84,7 +84,7 @@ class EventDashboard extends Component {
               <SuggestionPoll />
             </div>
 
-            <div className="section columns is-centered">
+            <div className="mt-6">
               {this.props.polls ? (
                 <>
                   <PieChartData polls={this.props.polls} />
