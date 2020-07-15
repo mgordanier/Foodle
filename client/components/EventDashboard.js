@@ -5,6 +5,7 @@ import {fetchOneEvent} from '../store/events'
 import {fetchPollsByEvent} from '../store/poll'
 import {locationFlattener} from '../pollOptions/pollUtils'
 import PieChartData from './PieChartData'
+import OrganizerFinalEventForm from './OrganizerFinalEventForm'
 
 // if there is a suggestions poll, then we need allRestaurants in the store
 // to be populated with the google API details from the 3 restos in
@@ -49,6 +50,9 @@ class EventDashboard extends Component {
             <PieChartData polls={this.props.polls} />
           </div>
           <SuggestionPoll />
+          <div>
+            <OrganizerFinalEventForm polls={this.props.polls} />
+          </div>
         </div>
       )
     } else {
