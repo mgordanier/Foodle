@@ -39,6 +39,7 @@ const Event = db.define('event', {
   },
   urlKey: {
     type: Sequelize.STRING,
+    unique: true,
   },
   finalized: {
     type: Sequelize.BOOLEAN,
@@ -46,18 +47,20 @@ const Event = db.define('event', {
   },
 })
 
-//method to create random confirmation number
-// Event.beforeCreate(event => {
-//   let key =
-//     Math.random()
-//       .toString(36)
-//       .substring(2, 15) +
-//     Math.random()
-//       .toString(36)
-//       .substring(2, 15)
+Event.beforeCreate(async (event) => {
+  const foundKey = await Event.findOne({
+    where: {
+      urlKey: event.urlKey,
+    },
+  })
+  if (foundKey) {
+    let newKey =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
 
-//   event.urlKey = key
-// })
+    event.urlKey = newKey
+  }
+})
 
 // Event.sendConfirmation = async function (id) {
 //   const event = await Event.findByPk(id, {
