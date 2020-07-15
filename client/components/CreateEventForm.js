@@ -21,7 +21,6 @@ class CreateEventForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
-    console.log('state', this.state)
   }
 
   handleSubmit = (e) => {
@@ -45,9 +44,6 @@ class CreateEventForm extends React.Component {
 
     this.props.history.push({
       pathname: `/invitelink`,
-      state: {
-        urlKey: `${urlKey}`,
-      },
     })
   }
 

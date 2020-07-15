@@ -3,7 +3,7 @@ const {User, Event, UserEvent, Poll, Response} = require('../db/models')
 const {isAdmin} = require('./gatekeeper')
 module.exports = router
 
-// Get upcoming events for the user
+// get upcoming events for the user
 router.get('/', async (req, res, next) => {
   try {
     const events = await Event.findAll({
@@ -25,6 +25,8 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+// get one event
 
 // get one event by urlKey
 router.get('/key/:urlKey', async (req, res, next) => {
@@ -77,37 +79,6 @@ router.post('/', async (req, res, next) => {
     next(error)
   }
 })
-
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     if (req.user && isAdmin(req.user)) {
-//       const updatedEvent = await Event.updateEvent(req.params.id, req.body)
-//       res.json(updatedEvent)
-//     } else {
-//       res.status(401).send('Unauthorized to edit events')
-//     }
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
-// router.delete('/:id', async (req, res, next) => {
-//   try {
-//     if (req.user && isAdmin(req.user)) {
-//       const deletedCount = await Event.destroy({
-//         where: {
-//           id: req.params.id,
-//         },
-//       })
-//       if (deletedCount) res.status(200).send(`Event ${req.params.id} deleted`)
-//       else res.status(404).send(`Event ${req.params.id} not found`)
-//     } else {
-//       res.status(401).send('Unauthorized to delete event')
-//     }
-//   } catch (error) {
-//     next(error)
-//   }
-// })
 
 // get all polls associated with one event, then send them with responses
 router.get('/:id/polls', async (req, res, next) => {
