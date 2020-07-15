@@ -91,7 +91,9 @@ class RestaurantSuggestions extends Component {
               className="button is-warning is-centered is-large"
               onClick={() =>
                 this.props.addOrUpdateResponse(event.id, poll.id, [
-                  'None Of These',
+                  {
+                    name: 'None Of These',
+                  },
                 ])
               }
             >

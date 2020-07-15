@@ -30,12 +30,8 @@ export default function PieChartData(props) {
   //   {type: 'mexican', value: 1},
   // ]
 
-  // useEffect(() => {
-  //   props.fetchPollResults()
-  // }, [])
-  // }
   return (
-    <div className="container">
+    <div className="">
       <div>
         <h1 className="title">Current Results: </h1>
         <Pie

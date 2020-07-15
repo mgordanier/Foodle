@@ -45,6 +45,7 @@ class SuggestionPoll extends Component {
             </button>
           </div>
         ) : null}
+
         {suggestionsPoll ? <RestaurantSuggestions /> : null}
       </div>
     )

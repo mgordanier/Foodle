@@ -44,7 +44,9 @@ class EventDashboard extends Component {
             {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
           </h2>
 
-          <PieChartData polls={this.props.polls} />
+          <div className="section columns is-centered">
+            <PieChartData polls={this.props.polls} />
+          </div>
           <SuggestionPoll />
         </div>
       )
