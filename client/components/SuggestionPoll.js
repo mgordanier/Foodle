@@ -77,7 +77,7 @@ class SuggestionPoll extends Component {
           <div className="buttons">
             <button
               type="button"
-              className="button is-primary"
+              className="button is-warning is-centered is-large mt-4"
               onClick={this.generateSuggestionsPoll}
             >
               {displayName}
