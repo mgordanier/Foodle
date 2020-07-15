@@ -71,6 +71,8 @@ class SuggestionPoll extends Component {
 
     return (
       <div>
+        {suggestionsPoll ? <RestaurantSuggestions /> : null}
+
         {user.id === event.organizerId ? (
           <div className="buttons">
             <button
@@ -82,8 +84,6 @@ class SuggestionPoll extends Component {
             </button>
           </div>
         ) : null}
-
-        {suggestionsPoll ? <RestaurantSuggestions /> : null}
       </div>
     )
   }
