@@ -22,7 +22,7 @@ router.put('/restaurants', async (req, res, next) => {
     if (existingSuggestionsPoll) {
       //filter google places API results to NOT include ids from the exisiting suggestions poll (no repeats)
       const usedPlaceIds = existingSuggestionsPoll.options.map(
-        (option) => JSON.parse(option).place_id
+        (option) => option.place_id
       )
       googleResults = googleResults.filter(
         (placeId) => !usedPlaceIds.includes(placeId)
@@ -41,8 +41,7 @@ router.put('/restaurants', async (req, res, next) => {
       const {data} = await axios.get(
         `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=place_id,name,rating,url,vicinity,website,price_level,formatted_phone_number&key=${key}`
       )
-      const restaurantJSON = JSON.stringify(data.result)
-      options.push(restaurantJSON)
+      options.push(data.result)
     }
     // make a new poll with options (stingified objects of restaurant details)
     const poll = await Poll.create({

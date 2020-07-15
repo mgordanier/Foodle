@@ -1,28 +1,34 @@
 import React, {useState, useEffect} from 'react'
 import * as d3 from 'd3'
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 
 import {Pie} from './index'
 import {tallyVotes} from '../pollOptions/pollUtils'
 
-function PieChartData(props) {
-  // const generateData = () => {
-  // let responseArray = []
-  // let responseObj = {}
+export default function PieChartData(props) {
+  //if poll is not defined, does not render piechart
+  if (!props.polls || (props.polls && !props.polls.length)) {
+    return null
+  }
 
-  // get selected poll
-  // map selected poll to props
-  // extract results
-  // helper function to turn results into this:
-  // return [
-  //   {type: 'afkasjfl;akjfdlj3', value: 2},
+  let pollResponsesArr = []
+  const suggestionPoll = props.polls.find((poll) => poll.name === 'suggestions')
+  const responses = suggestionPoll.responses
+
+  for (let i = 0; i < responses.length; i++) {
+    let obj = {}
+    let selections = responses[i].selections
+    selections = selections.map((selection) => selection.name)
+    obj.selections = selections
+    pollResponsesArr.push(obj)
+  }
+
+  const data = tallyVotes(pollResponsesArr)
+
+  // const data = [
+  //   {type: 'korean', value: 2},
   //   {type: 'mexican', value: 1},
   // ]
-
-  const data = [
-    {type: 'korean', value: 2},
-    {type: 'mexican', value: 1},
-  ]
 
   // useEffect(() => {
   //   props.fetchPollResults()
@@ -44,10 +50,10 @@ function PieChartData(props) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    polls: state.poll.allByEvent,
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     polls: state.poll.allByEvent
+//   }
+// }
 
-export default connect(mapStateToProps)(PieChartData)
+// export default connect(mapStateToProps)(PieChartData)

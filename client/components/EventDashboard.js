@@ -43,7 +43,8 @@ class EventDashboard extends Component {
             {' '}
             {`You are going to meet on ${date} at ${hour} in ${location[neighborhood].displayName} for ${activitySubtype}`}
           </h2>
-          {/* <PieChartData /> */}
+
+          <PieChartData polls={this.props.polls} />
           <SuggestionPoll />
         </div>
       )
@@ -56,6 +57,7 @@ class EventDashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     event: state.events.event,
+    polls: state.poll.allByEvent,
   }
 }
 

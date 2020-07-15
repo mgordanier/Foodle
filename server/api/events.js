@@ -119,7 +119,7 @@ router.get('/:id/polls', async (req, res, next) => {
         where: {pollId: poll.id},
       })
     }
-    res.send(polls)
+    res.json(polls)
   } catch (error) {
     next(error)
   }
@@ -193,12 +193,7 @@ router.put(
         },
       })
       response = await response.update({selections})
-      console.log('RESPONSE', response)
-      console.log('!!typeof selections!!', typeof response.selections)
-      console.log(
-        '!!is selections an array?!!',
-        Array.isArray(response.selections)
-      )
+
       res.send(response)
     } catch (error) {
       next(error)
