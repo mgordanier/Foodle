@@ -14,6 +14,8 @@ const Pie = (props) => {
     .innerRadius(props.innerRadius)
     .outerRadius(props.outerRadius)
   const colors = d3.scaleOrdinal(d3.schemeSet2)
+  //green, pink, blue, purple
+  // const colors = d3.scaleOrdinal().range(["#82C4B5", "#DD98D6", "#6FAFEC", "#FEC672"])
   const format = d3.format('.2f')
 
   //side effects & componentDidMount
@@ -28,6 +30,12 @@ const Pie = (props) => {
       .append('g')
       .attr('class', 'arc')
 
+    const div = d3
+      .select('body')
+      .append('div')
+      .attr('class', 'tooltip-donut')
+      .style('opacity', 0)
+
     const path = groupWithUpdate
       .append('path')
       .merge(groupWithData.select('path.arc'))
@@ -38,6 +46,19 @@ const Pie = (props) => {
       .attr('fill', (d, i) => colors(i))
       .attr('stroke', 'white')
       .style('stroke-width', '2px')
+      .on('mouseover', function (d, i) {
+        d3.select(this).transition().duration('50').attr('opacity', '.85')
+        div.transition().duration(50).style('opacity', 1)
+        div
+          .html(`Total: ${d.value}`)
+          .style('left', d3.event.pageX + 10 + 'px')
+          .style('top', d3.event.pageY - 15 + 'px')
+      })
+      .on('mouseout', function (d, i) {
+        d3.select(this).transition().duration('50').attr('opacity', '1')
+        //Makes the new div disappear:
+        div.transition().duration('50').style('opacity', 0)
+      })
 
     const text = groupWithUpdate
       .append('text')
@@ -50,25 +71,10 @@ const Pie = (props) => {
       .attr('transform', (d) => `translate(${createArc.centroid(d)})`)
       .style('fill', 'white')
       .style('font-size', 16)
-      // .text(d => format(d.value))
       .join('text')
-      // .call((text) =>
-      //   text
-      // .append('tspan')
-      // .append('text')
       .attr('y', '-0.4em')
       .attr('font-weight', 'bold')
       .text((d) => `${d.data.type} (${d.data.value.toLocaleString()})`)
-    // )
-    // .call((text) =>
-    //   text
-    //     .filter((d) => d.endAngle - d.startAngle > 0.25)
-    //     .append('tspan')
-    //     .attr('x', 0)
-    //     .attr('y', '0.7em')
-    //     .attr('fill-opacity', 0.7)
-    //     .text((d) => d.data.value.toLocaleString())
-    // )
   }, [props.data])
 
   return (
