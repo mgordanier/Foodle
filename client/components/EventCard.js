@@ -32,7 +32,7 @@ class EventCard extends React.Component {
                     Confirmed
                   </p>
                   <p>
-                    Where: RESTAURANT in{' '}
+                    Where: {this.props.googlePlacesId} in{' '}
                     {this.locationString(this.props.neighborhood)}
                   </p>
                   <p>

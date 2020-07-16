@@ -14,6 +14,7 @@ import {
   InviteLink,
   CreateEventForm,
   EventDashboard,
+  EventConfirmation,
 } from './components'
 import {me} from './store'
 
@@ -39,7 +40,12 @@ class Routes extends Component {
         <Route path="/invitelink" component={InviteLink} />
         <Route path="/suggestions" component={RestaurantSuggestions} />
         <Route path="/newevent" component={CreateEventForm} />
-        <Route path="/event/:urlKey" component={EventDashboard} />
+        <Route exact path="/event/:urlKey" component={EventDashboard} />
+        <Route
+          exact
+          path="/event/:urlKey/confirmation"
+          component={EventConfirmation}
+        />
 
         {isLoggedIn && (
           <Switch>
