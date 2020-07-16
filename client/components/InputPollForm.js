@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {activityFlattener} from '../pollOptions/pollUtils'
 import ActivityPoll from './ActivityPoll'
 import {fetchOneEvent} from '../store/events'
 

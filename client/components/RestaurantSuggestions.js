@@ -1,3 +1,6 @@
+// RestaurantSuggestions displays a poll of restaurant suggestions by rendering SuggestionChoices
+// and contains button and logic to generate a new Response to the suggestions poll
+
 import React, {Component} from 'react'
 import {SuggestionChoices} from './SuggestionChoices'
 import {connect} from 'react-redux'
@@ -41,17 +44,23 @@ class RestaurantSuggestions extends Component {
   }
 
   render() {
-    const {event, poll} = this.props
+    const {event, poll, user} = this.props
+
+    const userHasVoted = poll.responses.some(
+      (response) => response.userId === user.id
+    )
 
     return (
       <div className="container">
-        <h1 className="title">Based on your votes, we suggest ...</h1>
+        <h2 className="is-size-4 has-text-weight-semibold">
+          {poll && userHasVoted
+            ? 'Want to update your vote?'
+            : 'Where do you want to go?'}
+        </h2>
 
         <div className="content is-medium">
-          Directions: Select up to 3 choices then submit selected votes OR
-          choose no preference
-          {/* <p>Click the Restaurant's name for Google Map</p>
-          <p>Click for more information</p> */}
+          Select up to 3 choices then submit selected votes OR choose no
+          preference
         </div>
 
         <div className="columns">
@@ -105,8 +114,7 @@ class RestaurantSuggestions extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    allRestaurants: state.restaurants.allRestaurants,
-    oneRestaurant: state.restaurants.oneRestaurant,
+    user: state.user,
     event: state.events.event,
     poll: state.poll.allByEvent.find((poll) => poll.name === 'suggestions'),
   }

@@ -24,9 +24,14 @@ export const ChoiceModal = (props) => {
           />
         </header>
 
-        <button type="button" className="button is-danger is-light">
-          <a href={restaurant.url}>Google Maps</a>
-        </button>
+        <a
+          href={restaurant.url}
+          target="_blank"
+          rel="noopener noreferrer "
+          className="button is-primary is-light is-fullwidth"
+        >
+          Open in Google Maps
+        </a>
 
         <section className="modal-card-body">
           <h1>{priceLevel}</h1>
@@ -35,7 +40,13 @@ export const ChoiceModal = (props) => {
           <p>{restaurant.vicinity}</p>
 
           <p>
-            <a href={restaurant.website}>{restaurant.website}</a>
+            <a
+              href={restaurant.website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {restaurant.website}
+            </a>
           </p>
         </section>
         <footer className="modal-card-foot">

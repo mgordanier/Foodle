@@ -16,7 +16,7 @@ function Navbar({handleClick, isLoggedIn}) {
   }
 
   return (
-    <nav className="navbar is-info">
+    <nav className="navbar is-primary">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <h1 className="is-size-3">Foodle</h1>
@@ -42,11 +42,11 @@ function Navbar({handleClick, isLoggedIn}) {
         onClick={closeBurger}
       >
         {isLoggedIn ? (
-          <div className="navbar-start">
+          <div className="navbar-end">
             {/* The navbar will show these links after you log in */}
-            <Link className="navbar-item" to="/">
+            {/* <Link className="navbar-item" to="/">
               Home
-            </Link>
+            </Link> */}
             <Link className="navbar-item" to="/home">
               My Events
             </Link>

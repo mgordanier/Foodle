@@ -2,7 +2,7 @@ import React from 'react'
 import {createEvent} from '../store/events'
 import {connect} from 'react-redux'
 import activity from '../pollOptions/activity'
-import {locationFlattener} from '../pollOptions/pollUtils'
+import {flatLocation} from '../pollOptions/pollUtils'
 import location from '../pollOptions/location'
 
 class CreateEventForm extends React.Component {
@@ -83,7 +83,6 @@ class CreateEventForm extends React.Component {
   }
 
   render() {
-    const flatLocation = locationFlattener()
     const locationArray = Object.values(flatLocation)
 
     const allCountyObj = Object.values(location)[0].county

@@ -40,8 +40,6 @@
 //     // let selectedType = activity[typeNames[0]]
 //     // let subtypes = activity[selectedType]
 
-//     console.log('selections', this.state.selections)
-
 //     const {activitySubtype} = this.props.event
 //     const animatedComponents = makeAnimated()
 
