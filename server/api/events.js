@@ -3,7 +3,7 @@ const {User, Event, UserEvent, Poll, Response} = require('../db/models')
 const {isAdmin} = require('./gatekeeper')
 module.exports = router
 
-// Get upcoming events for the user
+// get upcoming events for the user
 router.get('/', async (req, res, next) => {
   try {
     const events = await Event.findAll({
@@ -25,6 +25,8 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+// get one event
 
 // get one event by urlKey
 router.get('/key/:urlKey', async (req, res, next) => {
@@ -186,7 +188,6 @@ router.put(
   async (req, res, next) => {
     try {
       const {selections} = req.body
-      console.log('SELECTIONS', selections)
       let [response, wasCreated] = await Response.findOrCreate({
         where: {
           pollId: req.params.pollId,
@@ -195,6 +196,11 @@ router.put(
       })
       response = await response.update({selections})
 
+      // get io connection
+      const io = req.app.get('io')
+      // emit to all users
+      // need to only emit to some users
+      io.emit('updatingResponses', req.params.id)
       res.send(response)
     } catch (error) {
       next(error)

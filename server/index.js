@@ -104,6 +104,9 @@ const startListening = () => {
 
   // set up our socket control center
   const io = socketio(server)
+  // req.app.get('io') - io comes from socket library
+  // express way of setting a variable to the req.app object
+  app.set('io', io)
   require('./socket')(io)
 }
 
