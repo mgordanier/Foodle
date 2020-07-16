@@ -10,6 +10,10 @@ import {tallyVotes, selectMostVoted} from '../pollOptions/pollUtils'
 class SuggestionPoll extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      generateButtonClicked: false,
+    }
+
     this.generateSuggestionsPoll = this.generateSuggestionsPoll.bind(this)
   }
   componentDidMount() {}
@@ -30,36 +34,70 @@ class SuggestionPoll extends Component {
     }
 
     getRestaurants(neighborhood, city, activitySubtype)
+
+    if (!this.state.generateButtonClicked) {
+      setTimeout(() => {
+        this.setState({
+          generateButtonClicked: true,
+        })
+      }, 2000)
+    }
+
+    if (this.state.generateButtonClicked) {
+      if (
+        window.confirm(
+          'This will reset restaurant suggestions and any poll responses - are you sure?'
+        )
+      ) {
+        if (!activitySubtype) {
+          const activityPoll = polls.find((poll) => poll.name === 'activity')
+          const responses = activityPoll.responses
+          activitySubtype = selectMostVoted(tallyVotes(responses))
+        }
+        if (!neighborhood) {
+          const locationPoll = polls.find((poll) => poll.name === 'location')
+          const responses = locationPoll.responses
+          neighborhood = selectMostVoted(tallyVotes(responses))
+        }
+        getRestaurants(neighborhood, city, activitySubtype)
+      }
+    }
   }
 
   render() {
     const {user, event, polls, loading} = this.props
     const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
+
+    const displayName = !this.state.generateButtonClicked
+      ? 'Generate Restaurant Suggestions'
+      : 'Generate New Suggestions'
+
     return (
       <div>
+        {suggestionsPoll ? <RestaurantSuggestions /> : null}
+
         {user.id === event.organizerId ? (
           <div className="buttons">
             {loading ? (
               <button
                 type="button"
-                className="button is-primary is-loading"
+                className="button is-warning is-centered is-large mt-4 is-loading"
                 onClick={this.generateSuggestionsPoll}
                 disabled
               >
-                Generate Restaurant Suggestions
+                {displayName}
               </button>
             ) : (
               <button
                 type="button"
-                className="button is-primary"
+                className="button is-warning is-centered is-large mt-4"
                 onClick={this.generateSuggestionsPoll}
               >
-                Generate Restaurant Suggestions
+                {displayName}
               </button>
             )}
           </div>
         ) : null}
-        {suggestionsPoll ? <RestaurantSuggestions /> : null}
       </div>
     )
   }

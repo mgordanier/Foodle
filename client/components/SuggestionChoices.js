@@ -65,7 +65,7 @@ export class SuggestionChoices extends Component {
             <input
               type="checkbox"
               name="selectedRestaurant"
-              className="margin-right"
+              className="mr-2"
               onChange={(event) => handleCheckboxChange(restaurant, event)}
             />
             Select To Vote
