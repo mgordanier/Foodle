@@ -26,14 +26,16 @@ export default function PieChartData(props) {
 
   return (
     <div className="">
-      <h1 className="title">Current Results: </h1>
-      <Pie
-        data={data}
-        width={600}
-        height={600}
-        innerRadius={50}
-        outerRadius={250}
-      />
+      <div>
+        <h1 className="title">Current Results: </h1>
+        <Pie
+          data={data}
+          width={600}
+          height={600}
+          innerRadius={30}
+          outerRadius={225}
+        />
+      </div>
     </div>
   )
 }

@@ -12,7 +12,7 @@ export const ChoiceModal = (props) => {
 
   return (
     <div className="modal is-active">
-      <div className="modal-background" onClick={closeModal} />
+      <div className="modal-background" />
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">{restaurant.name}</p>
@@ -29,8 +29,8 @@ export const ChoiceModal = (props) => {
         </button>
 
         <section className="modal-card-body">
-          <h2>{priceLevel}</h2>
-          <p>Rating: {restaurant.rating}</p>
+          <h1>{priceLevel}</h1>
+          {restaurant.rating && <p>Rating: {restaurant.rating}</p>}
           <p>{restaurant.formatted_phone_number}</p>
           <p>{restaurant.vicinity}</p>
 
