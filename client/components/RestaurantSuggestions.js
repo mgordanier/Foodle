@@ -52,7 +52,7 @@ class RestaurantSuggestions extends Component {
           Directions: Select up to 3 choices then submit selected votes OR
           choose no preference
           <p>Click the Restaurant's name for Google Map</p>
-          <p>Click the image for more information</p>
+          <p>Click for more information</p>
         </div>
 
         <div className="columns">
