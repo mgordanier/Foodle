@@ -2,7 +2,6 @@ import React from 'react'
 
 export const ChoiceModal = (props) => {
   const {closeModal, modalState, restaurant} = props
-  console.log('restaurant', restaurant)
 
   if (!modalState || !restaurant) {
     return null

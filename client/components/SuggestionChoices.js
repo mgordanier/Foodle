@@ -1,3 +1,6 @@
+// SuggestionChoices displays the information for one restaurant in a restaurant suggestions poll
+// and a checkbox to select that restaurant for your response to the poll
+
 import React, {Component} from 'react'
 import {ChoiceModal} from './ChoiceModal'
 
