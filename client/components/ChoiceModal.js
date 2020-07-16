@@ -24,7 +24,7 @@ export const ChoiceModal = (props) => {
           />
         </header>
 
-        <button type="button" className="button is-success is-light">
+        <button type="button" className="button is-danger is-light">
           <a href={restaurant.url}>Google Maps</a>
         </button>
 

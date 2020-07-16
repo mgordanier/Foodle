@@ -13,8 +13,8 @@ class RestaurantSuggestions extends Component {
     this.voteRestaurant = this.voteRestaurant.bind(this)
   }
 
-  handleCheckboxChange(restaurant, event) {
-    if (event.target.checked) {
+  handleCheckboxChange(restaurant, isChecked) {
+    if (isChecked) {
       this.setState((prevState) => ({
         selectedRestaurants: [...prevState.selectedRestaurants, restaurant],
       }))
@@ -41,7 +41,6 @@ class RestaurantSuggestions extends Component {
   }
 
   render() {
-    console.log(this.state.selectedRestaurants)
     const {event, poll} = this.props
 
     return (
@@ -51,8 +50,8 @@ class RestaurantSuggestions extends Component {
         <div className="content is-medium">
           Directions: Select up to 3 choices then submit selected votes OR
           choose no preference
-          <p>Click the Restaurant's name for Google Map</p>
-          <p>Click for more information</p>
+          {/* <p>Click the Restaurant's name for Google Map</p>
+          <p>Click for more information</p> */}
         </div>
 
         <div className="columns">
@@ -67,6 +66,7 @@ class RestaurantSuggestions extends Component {
                     <SuggestionChoices
                       restaurant={restaurant}
                       handleCheckboxChange={this.handleCheckboxChange}
+                      selectedRestaurants={this.state.selectedRestaurants}
                     />
                   </div>
                 )
@@ -86,7 +86,7 @@ class RestaurantSuggestions extends Component {
 
           <button
             type="button"
-            className="button is-warning is-centered is-large"
+            className="button is-warning is-light is-centered is-large"
             onClick={() =>
               this.props.addOrUpdateResponse(event.id, poll.id, [
                 {

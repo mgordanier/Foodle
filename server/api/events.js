@@ -168,7 +168,7 @@ router.put(
       const io = req.app.get('io')
       // emit to all users
       // need to only emit to some users
-      io.emit('hello', req.params.id)
+      io.emit('updatingResponses', req.params.id)
       res.send(response)
     } catch (error) {
       next(error)

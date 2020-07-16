@@ -8,6 +8,7 @@ export class SuggestionChoices extends Component {
       modalState: false,
     }
     this.toggleModal = this.toggleModal.bind(this)
+    this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this)
   }
 
   toggleModal(event) {
@@ -18,16 +19,26 @@ export class SuggestionChoices extends Component {
     })
   }
 
+  handleCheckBoxClick(restaurant, isChecked) {
+    this.props.handleCheckboxChange(restaurant, isChecked)
+  }
+
   render() {
-    const {restaurant, handleCheckboxChange} = this.props
+    const {restaurant} = this.props
 
     const restaurantPlace = `https://www.google.com/maps/search/?api=1&query=${restaurant.name.replace(
       / /g,
       '+'
     )}`
 
+    const isChecked = !!this.props.selectedRestaurants.find(
+      (selectedRestaurant) => {
+        return selectedRestaurant.place_id === restaurant.place_id
+      }
+    )
+
     return (
-      <div className="card cursor" onClick={this.toggleModal}>
+      <div className="card cursor">
         {/* <div className="card-image">
           <figure className="image is-4by3">
             <img
@@ -51,7 +62,20 @@ export class SuggestionChoices extends Component {
               </a>
               <p className="subtitle is-6">{restaurant.vicinity}</p>
             </div>
+
+            <div className="buttons">
+              <button
+                className="button is-primary is-light is-small"
+                onClick={this.toggleModal}
+              >
+                More details
+              </button>
+            </div>
           </div>
+
+          {/* <div className="buttons">
+               <button className="button is-primary is-light is-small" onClick={this.toggleModal}>More details</button>
+            </div> */}
 
           <ChoiceModal
             closeModal={this.toggleModal}
@@ -59,15 +83,21 @@ export class SuggestionChoices extends Component {
             restaurant={restaurant}
           />
 
-          <label className="checkbox labelName">
+          <div
+            className="field"
+            onClick={() => {
+              this.handleCheckBoxClick(restaurant, !isChecked)
+            }}
+          >
             <input
+              className="is-checkradio is-large"
               type="checkbox"
               name="selectedRestaurant"
-              className="mr-2"
-              onChange={(event) => handleCheckboxChange(restaurant, event)}
+              checked={isChecked}
+              readOnly
             />
-            Select To Vote
-          </label>
+            <label htmlFor="selectedRestaurant">Select To Vote</label>
+          </div>
         </div>
       </div>
     )

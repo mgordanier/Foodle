@@ -17,7 +17,7 @@ socket.on('connect', () => {
 // there is an io.emit('hello') in the route
 // eventId is the param passed from io.emit('hello', req.params.id) in the second param
 // this is req.params.id
-socket.on('hello', (eventId) => {
+socket.on('updatingResponses', (eventId) => {
   console.log('socket', eventId)
   // on data dispatch to store this response
 

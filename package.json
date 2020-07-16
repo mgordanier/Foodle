@@ -48,6 +48,7 @@
     "@mdi/js": "^5.3.45",
     "@mdi/react": "^1.4.0",
     "axios": "^0.19.0",
+    "bulma-checkradio": "^1.1.1",
     "bulma-start": "0.0.4",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",

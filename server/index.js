@@ -104,14 +104,10 @@ const startListening = () => {
 
   // set up our socket control center
   const io = socketio(server)
+  // req.app.get('io') - io comes from socket library
+  // express way of setting a variable to the req.app object
   app.set('io', io)
-  // app.use((req, res, next) => {
-  //   console.log('start socket')
-  //   req.io = io;
-  //   next();
-  // })
   require('./socket')(io)
-  // return io;
 }
 
 const syncDb = () => db.sync()
