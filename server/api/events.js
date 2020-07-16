@@ -156,7 +156,6 @@ router.put(
   async (req, res, next) => {
     try {
       const {selections} = req.body
-      console.log('SELECTIONS', selections)
       let [response, wasCreated] = await Response.findOrCreate({
         where: {
           pollId: req.params.pollId,
@@ -165,6 +164,11 @@ router.put(
       })
       response = await response.update({selections})
 
+      // get io connection
+      const io = req.app.get('io')
+      // emit to all users
+      // need to only emit to some users
+      io.emit('updatingResponses', req.params.id)
       res.send(response)
     } catch (error) {
       next(error)

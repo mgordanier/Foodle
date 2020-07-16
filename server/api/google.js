@@ -54,16 +54,3 @@ router.put('/restaurants', async (req, res, next) => {
     next(err)
   }
 })
-
-// get individual restaurant with phone number, name, rating, etc
-// router.get('/randomRestaurant/:restaurantId', async (req, res, next) => {
-//   try {
-//     const placeId = req.params.restaurantId
-//     const {data} = await axios.get(
-//       `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,url,vicinity,website,photo,price_level,review,formatted_phone_number&key=${key}`
-//     )
-//     res.json(data)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
