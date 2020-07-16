@@ -80,6 +80,38 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+router.put('/key/:urlKey', async (req, res, next) => {
+  try {
+    const event = await Event.findOne({where: {urlKey: req.params.urlKey}})
+    const updatedEvent = await event.update(req.body)
+    if (updatedEvent) {
+      res.json(updatedEvent)
+    } else {
+      res.status(400).send('cannot update this event')
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
+// router.delete('/:id', async (req, res, next) => {
+//   try {
+//     if (req.user && isAdmin(req.user)) {
+//       const deletedCount = await Event.destroy({
+//         where: {
+//           id: req.params.id,
+//         },
+//       })
+//       if (deletedCount) res.status(200).send(`Event ${req.params.id} deleted`)
+//       else res.status(404).send(`Event ${req.params.id} not found`)
+//     } else {
+//       res.status(401).send('Unauthorized to delete event')
+//     }
+//   } catch (error) {
+//     next(error)
+//   }
+// })
+
 // get all polls associated with one event, then send them with responses
 router.get('/:id/polls', async (req, res, next) => {
   try {

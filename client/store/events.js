@@ -4,6 +4,7 @@ import axios from 'axios'
 const GET_EVENTS = 'GET_EVENTS'
 const ADD_EVENT = 'ADD_EVENT'
 const GET_ONE_EVENT = 'GET_ONE_EVENT'
+// const FINALIZE_EVENT = 'FINALIZE_EVENT'
 
 //ACTION CREATOR
 const getEvents = (events) => ({
@@ -15,6 +16,11 @@ const addEvent = (event) => ({
   type: ADD_EVENT,
   event,
 })
+
+// const finalizeEvent = (event) => ({
+//   type: FINALIZE_EVENT,
+//   event,
+// })
 
 // const getOneEvent = event => ({
 //   type: GET_ONE_EVENT,
@@ -57,6 +63,17 @@ export const createEvent = (event) => {
   }
 }
 
+export const updateEvent = (updatedEvent, urlKey) => {
+  return async (dispatch) => {
+    try {
+      const {data} = await axios.put(`/api/events/key/${urlKey}`, updatedEvent)
+      dispatch(addEvent(data))
+    } catch (error) {
+      console.log('Error with finalizing this event')
+    }
+  }
+}
+
 const initialState = {
   event: {},
   events: {},
@@ -79,6 +96,8 @@ export default function (state = initialState, action) {
         ...state,
         event: action.event,
       }
+    // case FINALIZE_EVENT:
+    //   return action.event
     default:
       return state
   }

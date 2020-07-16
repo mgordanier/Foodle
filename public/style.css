@@ -17592,3 +17592,8 @@ a.navbar-item.is-active,
 .modal {
   position: fixed !important;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 5fr);
+}
