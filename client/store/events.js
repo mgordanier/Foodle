@@ -63,12 +63,10 @@ export const createEvent = (event) => {
   }
 }
 
-export const updateEvent = (googlePlacesId, urlKey) => {
+export const updateEvent = (updatedEvent, urlKey) => {
   return async (dispatch) => {
     try {
-      const data = await axios.put(`/api/events/key/${urlKey}`, googlePlacesId)
-      console.log('googlePlacesIdddddd', googlePlacesId)
-      console.log('data', data.config.data)
+      const {data} = await axios.put(`/api/events/key/${urlKey}`, updatedEvent)
       dispatch(addEvent(data))
     } catch (error) {
       console.log('Error with finalizing this event')

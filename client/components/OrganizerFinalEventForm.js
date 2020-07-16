@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updateEvent} from '../store/events'
+import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router'
 
 class OrganizerFinalEventForm extends Component {
   constructor(props) {
@@ -32,11 +34,12 @@ class OrganizerFinalEventForm extends Component {
       googlePlacesId: this.state.restaurant,
       finalized: true,
     }
-    this.props.updateEvent(this.state.restaurant, this.props.urlKey)
+    this.props.updateEvent(updatedEvent, this.props.urlKey)
+    this.props.history.push(`/event/${this.props.urlKey}/confirmation`)
   }
 
   render() {
-    const {polls} = this.props
+    const {polls, urlKey} = this.props
     console.log('this.props', this.props)
     console.log('STATE', this.state)
     return polls && polls.length ? (
@@ -75,12 +78,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateEvent: (googlePlacesId, urlKey) =>
-      dispatch(updateEvent(googlePlacesId, urlKey)),
+    updateEvent: (updatedEvent, urlKey) =>
+      dispatch(updateEvent(updatedEvent, urlKey)),
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OrganizerFinalEventForm)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(OrganizerFinalEventForm)
+)

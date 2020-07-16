@@ -81,10 +81,7 @@ router.post('/', async (req, res, next) => {
 router.put('/key/:urlKey', async (req, res, next) => {
   try {
     const event = await Event.findOne({where: {urlKey: req.params.urlKey}})
-    const updatedEvent = await event.update({
-      finalized: true,
-      googlePlacesId: req.body.googlePlacesId,
-    })
+    const updatedEvent = await event.update(req.body)
     if (updatedEvent) {
       res.json(updatedEvent)
     } else {
