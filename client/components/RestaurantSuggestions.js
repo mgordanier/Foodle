@@ -48,11 +48,11 @@ class RestaurantSuggestions extends Component {
 
     return (
       <div className="container">
-        <h1 className="title">Based on your votes, we suggest ...</h1>
+        <h1 className="title">Where do you want to go?</h1>
 
         <div className="content is-medium">
-          Directions: Select up to 3 choices then submit selected votes OR
-          choose no preference
+          Select up to 3 choices then submit selected votes OR choose None of
+          These
           <p>Click the image for more Information!</p>
         </div>
 

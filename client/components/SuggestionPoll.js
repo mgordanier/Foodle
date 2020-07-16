@@ -10,9 +10,9 @@ import {tallyVotes, selectMostVoted} from '../pollOptions/pollUtils'
 class SuggestionPoll extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      generateButtonClicked: false,
-    }
+    // this.state = {
+    //   generateButtonClicked: false,
+    // }
 
     this.generateSuggestionsPoll = this.generateSuggestionsPoll.bind(this)
   }
@@ -20,7 +20,15 @@ class SuggestionPoll extends Component {
 
   generateSuggestionsPoll() {
     const {event, polls, getRestaurants} = this.props
+    const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
     let {neighborhood, city, activitySubtype} = event
+
+    if (suggestionsPoll) {
+      const userHasConfirmed = window.confirm(
+        'This will reset restaurant suggestions and clear any poll responses - are you sure?'
+      )
+      if (!userHasConfirmed) return
+    }
 
     if (!activitySubtype) {
       const activityPoll = polls.find((poll) => poll.name === 'activity')
@@ -35,42 +43,44 @@ class SuggestionPoll extends Component {
 
     getRestaurants(neighborhood, city, activitySubtype)
 
-    if (!this.state.generateButtonClicked) {
-      setTimeout(() => {
-        this.setState({
-          generateButtonClicked: true,
-        })
-      }, 2000)
-    }
+    // if (!loading && suggestionsPoll) {
+    //   setTimeout(() => {
+    //     this.setState({
+    //       generateButtonClicked: true,
+    //     })
+    //   }, 2000)
+    // }
 
-    if (this.state.generateButtonClicked) {
-      if (
-        window.confirm(
-          'This will reset restaurant suggestions and any poll responses - are you sure?'
-        )
-      ) {
-        if (!activitySubtype) {
-          const activityPoll = polls.find((poll) => poll.name === 'activity')
-          const responses = activityPoll.responses
-          activitySubtype = selectMostVoted(tallyVotes(responses))
-        }
-        if (!neighborhood) {
-          const locationPoll = polls.find((poll) => poll.name === 'location')
-          const responses = locationPoll.responses
-          neighborhood = selectMostVoted(tallyVotes(responses))
-        }
-        getRestaurants(neighborhood, city, activitySubtype)
-      }
-    }
+    // if (this.state.poll) {
+    //   const userHasConfirmed = window.confirm(
+    //     'This will reset restaurant suggestions and clear any poll responses - are you sure?'
+    //   )
+    //   if (userHasConfirmed) {
+    //     if (!activitySubtype) {
+    //       const activityPoll = polls.find((poll) => poll.name === 'activity')
+    //       const responses = activityPoll.responses
+    //       activitySubtype = selectMostVoted(tallyVotes(responses))
+    //     }
+    //     if (!neighborhood) {
+    //       const locationPoll = polls.find((poll) => poll.name === 'location')
+    //       const responses = locationPoll.responses
+    //       neighborhood = selectMostVoted(tallyVotes(responses))
+    //     }
+    //     getRestaurants(neighborhood, city, activitySubtype)
+    //   }
+    // }
   }
 
   render() {
     const {user, event, polls, loading} = this.props
     const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
 
-    const displayName = !this.state.generateButtonClicked
+    const displayName = suggestionsPoll
       ? 'Generate Restaurant Suggestions'
       : 'Generate New Suggestions'
+    // const displayName = !this.state.generateButtonClicked
+    //   ? 'Generate Restaurant Suggestions'
+    //   : 'Generate New Suggestions'
 
     return (
       <div>
