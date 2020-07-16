@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchOneEvent} from '../store/events'
 import {locationFlattener} from '../pollOptions/pollUtils'
+import {Link} from 'react-router-dom'
 
 class EventConfirmation extends Component {
   componentDidMount() {
@@ -41,6 +42,13 @@ class EventConfirmation extends Component {
                 <button className="button is-link is-large is-fullwidth">
                   E-mail your friends
                 </button>
+              </div>
+              <div className="buttons">
+                <Link to="/home">
+                  <button className="button is-link is-large is-fullwidth">
+                    Go to your events
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

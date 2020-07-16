@@ -82,10 +82,6 @@ class EventDashboard extends Component {
             </p>
 
             <div className="mt-6">
-              <SuggestionPoll />
-            </div>
-
-            <div className="mt-6">
               {this.props.polls ? (
                 <>
                   <PieChartData polls={this.props.polls} />
