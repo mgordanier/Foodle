@@ -16,7 +16,7 @@ export const locationFilter = (selectionsArr) => {
 // returns a flattened version of the activity object
 // where the search string (key) of each activity sub-type is accessible as N object key
 // and each activity sub-type contains a value indicating its type
-export const activityFlattener = () => {
+const activityFlattener = () => {
   const flatActivity = {}
   Object.keys(activity).forEach((type) => {
     Object.keys(activity[type]).forEach((subtype) => {
@@ -26,11 +26,12 @@ export const activityFlattener = () => {
   })
   return flatActivity
 }
+export const flatActivity = activityFlattener()
 
 // returns a flattened version of the location object
 // where the search string (key) of each neighborhood is accessible as an object key
 // and each neighborhood object contains keys for its borough and city
-export const locationFlattener = () => {
+const locationFlattener = () => {
   const flatLocation = {}
   Object.keys(location).forEach((city) => {
     const cityObj = {
@@ -56,6 +57,7 @@ export const locationFlattener = () => {
   })
   return flatLocation
 }
+export const flatLocation = locationFlattener()
 
 // convert poll results into votes array with objects key = name, value = number of votes
 // INPUT pollResponsesArr: [{selections:['french', 'thai']}, {selections:['korean']}, {selections:['korean', 'french', 'thai']}]

@@ -1,3 +1,6 @@
+// SuggestionChoices displays the information for one restaurant in a restaurant suggestions poll
+// and a checkbox to select that restaurant for your response to the poll
+
 import React, {Component} from 'react'
 import {ChoiceModal} from './ChoiceModal'
 
@@ -26,10 +29,10 @@ export class SuggestionChoices extends Component {
   render() {
     const {restaurant} = this.props
 
-    const restaurantPlace = `https://www.google.com/maps/search/?api=1&query=${restaurant.name.replace(
-      / /g,
-      '+'
-    )}`
+    // const restaurantPlace = `https://www.google.com/maps/search/?api=1&query=${restaurant.name.replace(
+    //   / /g,
+    //   '+'
+    // )}`
 
     const isChecked = !!this.props.selectedRestaurants.find(
       (selectedRestaurant) => {
@@ -55,8 +58,10 @@ export class SuggestionChoices extends Component {
           <div className="media">
             <div className="media-content">
               <a
-                href={restaurantPlace}
+                href={restaurant.url}
                 className="cursor has-text-link is-spaced title is-4"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {restaurant.name}
               </a>
@@ -65,6 +70,7 @@ export class SuggestionChoices extends Component {
 
             <div className="buttons">
               <button
+                type="button"
                 className="button is-primary is-light is-small"
                 onClick={this.toggleModal}
               >

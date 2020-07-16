@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchOneEvent} from '../store/events'
-import {locationFlattener} from '../pollOptions/pollUtils'
+import {flatLocation} from '../pollOptions/pollUtils'
 import {Link} from 'react-router-dom'
 
 class EventConfirmation extends Component {
@@ -18,7 +18,7 @@ class EventConfirmation extends Component {
       hour: '2-digit',
       minute: '2-digit',
     })
-    const location = locationFlattener()
+    const location = flatLocation
     console.log('neighborrrrrrr', neighborhood)
     return (
       <section className="section">

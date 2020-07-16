@@ -27,7 +27,7 @@ export default function PieChartData(props) {
   return (
     <div className="">
       <div>
-        <h1 className="title">Current Results: </h1>
+        <h2 className="is-size-4 has-text-weight-semibold">Current Results</h2>
         <Pie
           data={data}
           width={600}
