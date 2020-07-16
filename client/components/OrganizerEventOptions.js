@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {GenerateSuggestionPoll} from './index'
+import {GenerateSuggestionPoll, OrganizerFinalEventForm} from './index'
 
 class OrganizerEventOptions extends Component {
   render() {
+    const {event} = this.props
     return (
       <div>
         <article className="message is-info mt-6">
@@ -12,6 +13,11 @@ class OrganizerEventOptions extends Component {
           </div>
           <div className="message-body">
             <GenerateSuggestionPoll />
+            <OrganizerFinalEventForm
+              polls={this.props.polls}
+              urlKey={event.urlKey}
+              event={this.props.event}
+            />
           </div>
         </article>
         <div className="mt-6"></div>
