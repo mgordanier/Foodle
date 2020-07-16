@@ -62,6 +62,36 @@ const thaiRestaurant3 = {
   website: 'https://topaznoodlebartogo.com/',
 }
 
+const mexicanRestaurant1 = {
+  formatted_phone_number: '(212) 766-0911',
+  name: 'Zona Tribeca Mezcaleria',
+  place_id: ' ChIJMVB9MB5awokR2sTTW6O20k4',
+  rating: 4.2,
+  url: 'https://maps.google.com/?cid=5679802892804146394',
+  vicinity: '353 Greenwich Street, New York',
+  website: 'http://zonatribecany.com/',
+}
+
+const mexicanRestaurant2 = {
+  formatted_phone_number: '(212) 528-3175',
+  name: "Mariachi's",
+  place_id: 'ChIJNXhT1h5awokRyYQooqqVC8U',
+  price_level: 1,
+  rating: 4.3,
+  url: 'https://maps.google.com/?cid=14198606810313163977',
+  vicinity: '156 Chambers Street, New York',
+}
+const mexicanRestaurant3 = {
+  formatted_phone_number: '(212) 920-6270',
+  name: 'Añejo',
+  place_id: 'ChIJf4XPj4pZwokRjFYw3YKWv7Q',
+  price_level: 2,
+  rating: 4.3,
+  url: 'https://maps.google.com/?cid=13024294136179611276',
+  vicinity: '301 Church Street, New York',
+  website: 'http://anejotribeca.com/',
+}
+
 module.exports = {
   thaiRestaurant1,
   thaiRestaurant2,
@@ -69,4 +99,7 @@ module.exports = {
   pizzaRestaurant1,
   pizzaRestaurant2,
   pizzaRestaurant3,
+  mexicanRestaurant1,
+  mexicanRestaurant2,
+  mexicanRestaurant3,
 }

@@ -10,7 +10,8 @@ export class SuggestionChoices extends Component {
     this.toggleModal = this.toggleModal.bind(this)
   }
 
-  toggleModal() {
+  toggleModal(event) {
+    event.stopPropagation()
     this.setState((prev) => {
       const newState = !prev.modalState
       return {modalState: newState}
@@ -26,12 +27,7 @@ export class SuggestionChoices extends Component {
     )}`
 
     return (
-      <div
-        className="card cursor"
-        onClick={() => {
-          this.toggleModal()
-        }}
-      >
+      <div className="card cursor" onClick={this.toggleModal}>
         {/* <div className="card-image">
           <figure className="image is-4by3">
             <img

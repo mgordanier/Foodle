@@ -9,6 +9,9 @@ const {
   pizzaRestaurant1,
   pizzaRestaurant2,
   pizzaRestaurant3,
+  mexicanRestaurant1,
+  mexicanRestaurant2,
+  mexicanRestaurant3,
 } = require('./options')
 
 async function createUsers() {
@@ -20,12 +23,14 @@ async function createUsers() {
   }
   const user3 = {name: 'Yang', email: 'yang@email.com', password: '123'}
   const user4 = {name: 'Lilly', email: 'lilly@email.com', password: '123'}
+  const user5 = {name: 'foodle', email: 'foodle@email.com', password: '123'}
 
   const users = await Promise.all([
     User.create(user1),
     User.create(user2),
     User.create(user3),
     User.create(user4),
+    User.create(user5),
   ])
 
   console.log(`seeded ${users.length} users`)
@@ -33,7 +38,7 @@ async function createUsers() {
 async function createEvents() {
   const event1 = {
     name: 'Girlz Night',
-    time: new Date('2020-07-17 18:00'),
+    time: new Date('2020-07-24 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'thai',
     city: 'new+york',
@@ -42,17 +47,28 @@ async function createEvents() {
   }
   const event2 = {
     name: 'Pizza Night',
-    time: new Date('2020-07-10 18:00'),
+    time: new Date('2020-07-29 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'pizza',
     city: 'new+york',
     neighborhood: 'soho',
     urlKey: 'c70evaiduqimyqd4vzjjl8',
   }
+  const event3 = {
+    name: 'Taco Tuesday',
+    time: new Date('2020-07-07 18:00'),
+    activityType: 'restaurant',
+    activitySubtype: 'mexican',
+    city: 'new+york',
+    neighborhood: 'tribeca',
+    urlKey: 'sdf82ncgn3456nidyigvi2',
+    finalized: true,
+  }
 
   // this order matters
   await Event.create(event1)
   await Event.create(event2)
+  await Event.create(event3)
 
   console.log(`seeded events`)
 }
@@ -62,10 +78,18 @@ async function createUserEvents() {
     UserEvent.create({isOrganizer: true, userId: 1, eventId: 1}),
     UserEvent.create({isOrganizer: false, userId: 2, eventId: 1}),
     UserEvent.create({isOrganizer: false, userId: 3, eventId: 1}),
-    UserEvent.create({isOrganizer: true, userId: 1, eventId: 2}),
-    UserEvent.create({isOrganizer: false, userId: 2, eventId: 2}),
+    UserEvent.create({isOrganizer: false, userId: 4, eventId: 1}),
+    UserEvent.create({isOrganizer: false, userId: 5, eventId: 1}),
+    UserEvent.create({isOrganizer: false, userId: 1, eventId: 2}),
+    UserEvent.create({isOrganizer: true, userId: 2, eventId: 2}),
     UserEvent.create({isOrganizer: false, userId: 3, eventId: 2}),
     UserEvent.create({isOrganizer: false, userId: 4, eventId: 2}),
+    UserEvent.create({isOrganizer: false, userId: 5, eventId: 2}),
+    UserEvent.create({isOrganizer: false, userId: 1, eventId: 3}),
+    UserEvent.create({isOrganizer: true, userId: 2, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 3, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 4, eventId: 3}),
+    UserEvent.create({isOrganizer: false, userId: 5, eventId: 3}),
   ])
 
   console.log(`seeded ${userEvent.length} userEvents`)
@@ -82,10 +106,17 @@ async function createPolls() {
     options: [pizzaRestaurant1, pizzaRestaurant2, pizzaRestaurant3],
     eventId: 2,
   }
+  const poll3 = {
+    name: 'suggestions',
+    options: [mexicanRestaurant1, mexicanRestaurant2, mexicanRestaurant3],
+    eventId: 3,
+  }
 
-  const poll = await Promise.all([Poll.create(poll1), Poll.create(poll2)])
+  await Poll.create(poll1)
+  await Poll.create(poll2)
+  await Poll.create(poll3)
 
-  console.log(`seeded ${poll.length} polls`)
+  console.log(`seeded polls`)
 }
 
 async function createResponses() {
@@ -124,6 +155,31 @@ async function createResponses() {
       selections: [{name: 'None Of These'}],
       pollId: 2,
       userId: 4,
+    }),
+    Response.create({
+      selections: [mexicanRestaurant1, mexicanRestaurant2, mexicanRestaurant3],
+      pollId: 3,
+      userId: 1,
+    }),
+    Response.create({
+      selections: [mexicanRestaurant1, mexicanRestaurant2, mexicanRestaurant3],
+      pollId: 3,
+      userId: 2,
+    }),
+    Response.create({
+      selections: [mexicanRestaurant3],
+      pollId: 3,
+      userId: 3,
+    }),
+    Response.create({
+      selections: [mexicanRestaurant1, mexicanRestaurant3],
+      pollId: 3,
+      userId: 4,
+    }),
+    Response.create({
+      selections: [mexicanRestaurant1],
+      pollId: 3,
+      userId: 5,
     }),
   ])
 

@@ -12,7 +12,7 @@ export const ChoiceModal = (props) => {
 
   return (
     <div className="modal is-active">
-      <div className="modal-background" onClick={closeModal} />
+      <div className="modal-background" />
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">{restaurant.name}</p>
