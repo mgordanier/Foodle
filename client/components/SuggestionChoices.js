@@ -73,10 +73,6 @@ export class SuggestionChoices extends Component {
             </div>
           </div>
 
-          {/* <div className="buttons">
-               <button className="button is-primary is-light is-small" onClick={this.toggleModal}>More details</button>
-            </div> */}
-
           <ChoiceModal
             closeModal={this.toggleModal}
             modalState={this.state.modalState}
