@@ -17599,8 +17599,13 @@ div.tooltip-donut {
   padding: 0.5rem;
   background: #ffffff;
   color: #313639;
-  border: 2px solid #f97068;
+  border: 2px solid #fceade;
   border-radius: 8px;
   pointer-events: none;
   font-size: 1.3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 5fr);
 }

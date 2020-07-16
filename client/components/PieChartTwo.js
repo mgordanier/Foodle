@@ -5,7 +5,7 @@ export const PieChartTwo = () => {
   //data for piechart
   const data = [
     {
-      title: 'korean',
+      title: 'korean korean korean',
       value: 5,
       all: 20,
     },
