@@ -6,7 +6,7 @@ class OrganizerEventOptions extends Component {
   render() {
     return (
       <div>
-        <article className="message is-success mt-6">
+        <article className="message is-info mt-6">
           <div className="message-header">
             <p>Organizer Dashboard</p>
           </div>
