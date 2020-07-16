@@ -4,7 +4,7 @@ import axios from 'axios'
 const GET_EVENTS = 'GET_EVENTS'
 const ADD_EVENT = 'ADD_EVENT'
 const GET_ONE_EVENT = 'GET_ONE_EVENT'
-const FINALIZE_EVENT = 'FINALIZE_EVENT'
+// const FINALIZE_EVENT = 'FINALIZE_EVENT'
 
 //ACTION CREATOR
 const getEvents = (events) => ({
@@ -17,10 +17,10 @@ const addEvent = (event) => ({
   event,
 })
 
-const finalizeEvent = (event) => ({
-  type: FINALIZE_EVENT,
-  event,
-})
+// const finalizeEvent = (event) => ({
+//   type: FINALIZE_EVENT,
+//   event,
+// })
 
 // const getOneEvent = event => ({
 //   type: GET_ONE_EVENT,
@@ -63,13 +63,13 @@ export const createEvent = (event) => {
   }
 }
 
-export const updateEvent = (event, urlKey) => {
+export const updateEvent = (googlePlacesId, urlKey) => {
   return async (dispatch) => {
     try {
-      const updatedEvent = await axios.put(`/api/events/key/${urlKey}`, {
-        event: event,
-      })
-      dispatch(finalizeEvent(updatedEvent))
+      const data = await axios.put(`/api/events/key/${urlKey}`, googlePlacesId)
+      console.log('googlePlacesIdddddd', googlePlacesId)
+      console.log('data', data.config.data)
+      dispatch(addEvent(data))
     } catch (error) {
       console.log('Error with finalizing this event')
     }
@@ -98,6 +98,8 @@ export default function (state = initialState, action) {
         ...state,
         event: action.event,
       }
+    // case FINALIZE_EVENT:
+    //   return action.event
     default:
       return state
   }

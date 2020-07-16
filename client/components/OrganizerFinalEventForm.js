@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import poll from '../store/poll'
 import {updateEvent} from '../store/events'
 
 class OrganizerFinalEventForm extends Component {
@@ -8,16 +7,14 @@ class OrganizerFinalEventForm extends Component {
     super(props)
     this.state = {
       restaurant: '',
-      finalized: false,
-      googlePlacesId: '',
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      finalized: true,
     })
     // if(this.props.polls && this.props.polls.length){
     //     const restoArr=this.props.polls[0].options
@@ -30,11 +27,17 @@ class OrganizerFinalEventForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
+    let updatedEvent = {
+      googlePlacesId: this.state.restaurant,
+      finalized: true,
+    }
+    this.props.updateEvent(this.state.restaurant, this.props.urlKey)
   }
 
   render() {
     const {polls} = this.props
-
+    console.log('this.props', this.props)
     console.log('STATE', this.state)
     return polls && polls.length ? (
       <div className="container mt-6 mb-6 ml-6 has-padding-5">
@@ -43,9 +46,7 @@ class OrganizerFinalEventForm extends Component {
         <div className="select mt-4 mb-4">
           <select name="restaurant" onChange={this.handleChange} required>
             {polls[0].options.map((obj) => (
-              <option key={obj.place_id} id={obj.place_id}>
-                {obj.name}
-              </option>
+              <option key={obj.name}>{obj.name}</option>
             ))}
           </select>
         </div>
@@ -67,12 +68,15 @@ class OrganizerFinalEventForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    event: state.events.event,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateEvent: (event) => dispatch(updateEvent(event)),
+    updateEvent: (googlePlacesId, urlKey) =>
+      dispatch(updateEvent(googlePlacesId, urlKey)),
   }
 }
 

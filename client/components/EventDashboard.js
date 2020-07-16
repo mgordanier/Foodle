@@ -51,7 +51,11 @@ class EventDashboard extends Component {
           </div>
           <SuggestionPoll />
           <div>
-            <OrganizerFinalEventForm polls={this.props.polls} />
+            <OrganizerFinalEventForm
+              polls={this.props.polls}
+              urlKey={urlKey}
+              event={this.props.event}
+            />
           </div>
         </div>
       )

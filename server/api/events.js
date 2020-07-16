@@ -78,18 +78,22 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     if (req.user && isAdmin(req.user)) {
-//       const updatedEvent = await Event.updateEvent(req.params.id, req.body)
-//       res.json(updatedEvent)
-//     } else {
-//       res.status(401).send('Unauthorized to edit events')
-//     }
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+router.put('/key/:urlKey', async (req, res, next) => {
+  try {
+    const event = await Event.findOne({where: {urlKey: req.params.urlKey}})
+    const updatedEvent = await event.update({
+      finalized: true,
+      googlePlacesId: req.body.googlePlacesId,
+    })
+    if (updatedEvent) {
+      res.json(updatedEvent)
+    } else {
+      res.status(400).send('cannot update this event')
+    }
+  } catch (error) {
+    next(error)
+  }
+})
 
 // router.delete('/:id', async (req, res, next) => {
 //   try {
