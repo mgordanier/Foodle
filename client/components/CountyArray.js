@@ -1,5 +1,4 @@
 import React from 'react'
-import {locationFlattener} from '../pollOptions/pollUtils'
 import location from '../pollOptions/location'
 
 export default CountyArray = () => {

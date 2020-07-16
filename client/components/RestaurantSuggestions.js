@@ -44,17 +44,23 @@ class RestaurantSuggestions extends Component {
   }
 
   render() {
-    const {event, poll} = this.props
+    const {event, poll, user} = this.props
+
+    const userHasVoted = poll.responses.some(
+      (response) => response.userId === user.id
+    )
 
     return (
       <div className="container">
-        <h1 className="title">Where do you want to go?</h1>
+        <h2 className="is-size-4 has-text-weight-semibold">
+          {poll && userHasVoted
+            ? 'Want to update your vote?'
+            : 'Where do you want to go?'}
+        </h2>
 
         <div className="content is-medium">
-          Directions: Select up to 3 choices then submit selected votes OR
-          choose no preference
-          {/* <p>Click the Restaurant's name for Google Map</p>
-          <p>Click for more information</p> */}
+          Select up to 3 choices then submit selected votes OR choose no
+          preference
         </div>
 
         <div className="columns">
@@ -108,6 +114,7 @@ class RestaurantSuggestions extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
     event: state.events.event,
     poll: state.poll.allByEvent.find((poll) => poll.name === 'suggestions'),
   }
