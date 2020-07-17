@@ -129,6 +129,18 @@ const Pie = (props) => {
           transform={`translate(${props.outerRadius} ${props.outerRadius})`}
         />
       </svg>
+      {props.data &&
+        props.data.map((data, i) => {
+          return (
+            <p
+              key={i}
+              style={{color: colors(i)}}
+              className="circle-legend--mobile"
+            >
+              <span className="bullet">&#8226;</span> {data.type} ({data.value})
+            </p>
+          )
+        })}
     </div>
   )
 }

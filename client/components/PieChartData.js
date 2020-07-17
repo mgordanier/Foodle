@@ -31,7 +31,7 @@ export default function PieChartData(props) {
           <div className="message-header is-centered">
             <p>Current Results: </p>
           </div>
-          <div className="message-body">
+          <div className="message-body pie-container">
             <Pie
               data={data}
               width={900}

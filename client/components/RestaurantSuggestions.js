@@ -57,7 +57,6 @@ class RestaurantSuggestions extends Component {
             <p>Poll</p>
           </div>
           <div className="message-body">
-            {/* <div className="container"> */}
             <h2 className="is-size-4 has-text-weight-semibold">
               {poll && userHasVoted
                 ? 'Want to update your vote?'
@@ -101,7 +100,7 @@ class RestaurantSuggestions extends Component {
 
               <button
                 type="button"
-                className="button is-warning is-light is-centered is-large"
+                className="button is-warning is-centered is-large"
                 onClick={() =>
                   this.props.addOrUpdateResponse(event.id, poll.id, [
                     {
@@ -113,7 +112,6 @@ class RestaurantSuggestions extends Component {
                 NONE OF THESE
               </button>
             </div>
-            {/* </div> */}
           </div>
         </article>
       </div>

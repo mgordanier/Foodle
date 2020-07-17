@@ -34,6 +34,11 @@ $dark: $turquoise;
   width: 100%;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 5fr);
+}
+
 div.tooltip-donut {
   position: absolute;
   text-align: center;
@@ -44,4 +49,26 @@ div.tooltip-donut {
   border-radius: 8px;
   pointer-events: none;
   font-size: 1.3rem;
+}
+
+.circle-legend--mobile {
+  display: none;
+}
+
+@media (max-width: 530px) {
+  .circle-legend {
+    display: none;
+  }
+
+  .circle-legend--mobile {
+    display: block;
+  }
+}
+
+.bullet {
+  font-size: 24px;
+}
+
+.pie-container {
+  padding-left: 110px;
 }
