@@ -62,6 +62,7 @@ async function createEvents() {
     city: 'new+york',
     neighborhood: 'tribeca',
     urlKey: 'sdf82ncgn3456nidyigvi2',
+    googlePlacesInfo: mexicanRestaurant1,
     finalized: true,
   }
 
