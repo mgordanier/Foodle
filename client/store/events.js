@@ -3,18 +3,12 @@ import axios from 'axios'
 //ACTION TYPE
 const GET_EVENTS = 'GET_EVENTS'
 const GET_ONE_EVENT = 'GET_ONE_EVENT'
-// const FINALIZE_EVENT = 'FINALIZE_EVENT'
 
 //ACTION CREATOR
 const getEvents = (events) => ({
   type: GET_EVENTS,
   events,
 })
-
-// const finalizeEvent = (event) => ({
-//   type: FINALIZE_EVENT,
-//   event,
-// })
 
 const getOneEvent = (event) => ({
   type: GET_ONE_EVENT,
@@ -34,7 +28,6 @@ export const fetchEvents = () => {
   }
 }
 
-//urlKey
 export const fetchOneEvent = (urlKey) => {
   return async (dispatch) => {
     try {
