@@ -47,7 +47,6 @@ class Routes extends Component {
           component={EventConfirmation}
         />
 
-
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

@@ -27,16 +27,6 @@ class EventDashboard extends Component {
     await this.props.fetchPollsByEvent(this.props.event.id)
   }
 
-  // locationString = (string) => {
-  //   let wordsArray = string.split('+')
-  //   let displayName = []
-  //   wordsArray.forEach(function (word) {
-  //     word = word[0].toUpperCase() + word.slice(1)
-  //     displayName.push(word)
-  //   })
-  //   return displayName.join(' ')
-  // }
-
   render() {
     const {event, polls, user} = this.props
     if (!event || !event.id) return null
