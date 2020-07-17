@@ -16,10 +16,10 @@ function Navbar({handleClick, isLoggedIn}) {
   }
 
   return (
-    <nav className="navbar is-primary">
+    <nav className="navbar is-primary nav-padding">
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          <h1 className="is-size-3">Foodle</h1>
+        <Link className="" to="/">
+          <img src="/foodle.png"></img>
         </Link>
 
         <a
