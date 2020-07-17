@@ -23,15 +23,14 @@ const Pie = (props) => {
 
   //when props.data changes, run createPie
   useEffect(() => {
+    //deleting previous legend
+    d3.selectAll('.circle-legend').remove()
+
     const data = createPie(props.data)
     const group = d3.select(ref.current)
 
-    // group.selectAll('g').exit().remove();
-    // group.selectAll('path').exit().remove();
-    // group.selectAll('div').exit().remove();
-    // group.selectAll('.arc').exit().remove();
-    // group.selectAll('.legend').exit().remove();
-    const groupWithData = group.selectAll('g.arc').data(data)
+    const groupWithData = group.selectAll('g').data(data)
+    //deleting entire pie
     groupWithData.exit().remove()
 
     const groupWithUpdate = groupWithData
@@ -41,21 +40,17 @@ const Pie = (props) => {
 
     d3.select('svg').attr('viewBox', `0 0 ${props.width} ${props.height}`)
 
+    // tool tip
     const div = d3
       .select('body')
       .append('div')
       .attr('class', 'tooltip-donut')
       .style('opacity', 0)
 
+    // graph
     const path = groupWithUpdate
       .append('path')
       .merge(groupWithData.select('path.arc'))
-
-    // path.transition()
-    //   .duration(500)
-    //   .attr("fill", function(d, i) { return colors(i); })
-    //   .attr("d", createArc)
-    //   .each(function(d) { this._current = d; })
 
     path
       .attr('class', 'arc')
@@ -124,13 +119,6 @@ const Pie = (props) => {
       .attr('y', '-0.4em')
       .attr('font-weight', 'bold')
     // .text((d) => `${d.data.type} (${d.data.value.toLocaleString()})`)
-
-    //   group.selectAll('g').exit().remove();
-    // group.selectAll('path').exit().remove();
-    // group.selectAll('div').exit().remove();
-    // group.selectAll('.arc').exit().remove();
-    // group.selectAll('.legend').exit().remove();
-    // group.selectAll('text').exit().remove();
   }, [props.data])
 
   return (

@@ -51,62 +51,71 @@ class RestaurantSuggestions extends Component {
     )
 
     return (
-      <div className="container">
-        <h2 className="is-size-4 has-text-weight-semibold">
-          {poll && userHasVoted
-            ? 'Want to update your vote?'
-            : 'Where do you want to go?'}
-        </h2>
+      <div className="mt-6">
+        <article className="message is-warning">
+          <div className="message-header">
+            <p>Poll</p>
+          </div>
+          <div className="message-body">
+            {/* <div className="container"> */}
+            <h2 className="is-size-4 has-text-weight-semibold">
+              {poll && userHasVoted
+                ? 'Want to update your vote?'
+                : 'Where do you want to go?'}
+            </h2>
 
-        <div className="content is-medium">
-          Select up to 3 choices then submit selected votes OR choose no
-          preference
-        </div>
+            <div className="content is-medium">
+              Select up to 3 choices to submit selected votes OR choose no
+              preference
+            </div>
 
-        <div className="columns">
-          {poll
-            ? poll.options.map((restaurant) => {
-                return (
-                  <div
-                    className="column is-one-third"
-                    key={restaurant.place_id}
-                    id={restaurant.place_id}
-                  >
-                    <SuggestionChoices
-                      restaurant={restaurant}
-                      handleCheckboxChange={this.handleCheckboxChange}
-                      selectedRestaurants={this.state.selectedRestaurants}
-                    />
-                  </div>
-                )
-              })
-            : null}
-        </div>
+            <div className="columns">
+              {poll
+                ? poll.options.map((restaurant) => {
+                    return (
+                      <div
+                        className="column is-one-third"
+                        key={restaurant.place_id}
+                        id={restaurant.place_id}
+                      >
+                        <SuggestionChoices
+                          restaurant={restaurant}
+                          handleCheckboxChange={this.handleCheckboxChange}
+                          selectedRestaurants={this.state.selectedRestaurants}
+                        />
+                      </div>
+                    )
+                  })
+                : null}
+            </div>
 
-        <div className="buttons">
-          <button
-            type="button"
-            className="button is-primary is-centered is-large"
-            onClick={() => this.voteRestaurant()}
-            disabled={!this.state.selectedRestaurants.length}
-          >
-            SUBMIT YOUR VOTES
-          </button>
+            <div className="buttons">
+              <button
+                type="button"
+                className="button is-primary is-centered is-large"
+                onClick={() => this.voteRestaurant()}
+                disabled={!this.state.selectedRestaurants.length}
+              >
+                SUBMIT YOUR VOTES
+              </button>
 
-          <button
-            type="button"
-            className="button is-warning is-light is-centered is-large"
-            onClick={() =>
-              this.props.addOrUpdateResponse(event.id, poll.id, [
-                {
-                  name: 'None Of These',
-                },
-              ])
-            }
-          >
-            NONE OF THESE
-          </button>
-        </div>
+              <button
+                type="button"
+                className="button is-warning is-light is-centered is-large"
+                onClick={() =>
+                  this.props.addOrUpdateResponse(event.id, poll.id, [
+                    {
+                      name: 'None Of These',
+                    },
+                  ])
+                }
+              >
+                NONE OF THESE
+              </button>
+            </div>
+            {/* </div> */}
+          </div>
+        </article>
       </div>
     )
   }
