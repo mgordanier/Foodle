@@ -14,18 +14,15 @@ const Event = db.define('event', {
   time: {
     type: Sequelize.DATE,
   },
-  googlePlacesId: {
-    type: Sequelize.STRING,
-    // get() {
-    //   const placesInfo = this.getDataValue('googlePlacesInfo')
-    //   return JSON.parse(placesInfo)
-    // },
-    // set(placesInfo) {
-    //   this.setDataValue(
-    //     'googlePlacesInfo',
-    //     JSON.stringify(placesInfo)
-    //   )
-    // },
+  googlePlacesInfo: {
+    type: Sequelize.TEXT,
+    get() {
+      const placesInfo = this.getDataValue('googlePlacesInfo')
+      return JSON.parse(placesInfo)
+    },
+    set(placesInfo) {
+      this.setDataValue('googlePlacesInfo', JSON.stringify(placesInfo))
+    },
   },
   activitySubtype: {
     type: Sequelize.STRING,
