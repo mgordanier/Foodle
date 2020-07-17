@@ -312,7 +312,7 @@ class CreateEventForm extends React.Component {
           </div>
 
           <button className="button is-info is-centered is-large my-5">
-            Generate Event Poll
+            Create Event
           </button>
         </form>
       </div>

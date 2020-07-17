@@ -17598,6 +17598,13 @@ a.navbar-item.is-active,
   grid-template-columns: repeat(5, 5fr);
 }
 
+@media only screen and (max-width: 800px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 div.tooltip-donut {
   position: absolute;
   text-align: center;
