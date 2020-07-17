@@ -2,7 +2,6 @@ import axios from 'axios'
 
 //ACTION TYPE
 const GET_EVENTS = 'GET_EVENTS'
-const ADD_EVENT = 'ADD_EVENT'
 const GET_ONE_EVENT = 'GET_ONE_EVENT'
 // const FINALIZE_EVENT = 'FINALIZE_EVENT'
 
@@ -12,20 +11,15 @@ const getEvents = (events) => ({
   events,
 })
 
-const addEvent = (event) => ({
-  type: ADD_EVENT,
-  event,
-})
-
 // const finalizeEvent = (event) => ({
 //   type: FINALIZE_EVENT,
 //   event,
 // })
 
-// const getOneEvent = event => ({
-//   type: GET_ONE_EVENT,
-//   event
-// })
+const getOneEvent = (event) => ({
+  type: GET_ONE_EVENT,
+  event,
+})
 
 //THUNK CREATORS
 export const fetchEvents = () => {
@@ -35,6 +29,7 @@ export const fetchEvents = () => {
       dispatch(getEvents(data))
     } catch (error) {
       console.log('Error with fetching events')
+      console.error(error)
     }
   }
 }
@@ -44,9 +39,10 @@ export const fetchOneEvent = (urlKey) => {
   return async (dispatch) => {
     try {
       const {data} = await axios.get(`/api/events/key/${urlKey}`)
-      dispatch(addEvent(data))
+      dispatch(getOneEvent(data))
     } catch (error) {
       console.log('Error with fetching one event')
+      console.error(error)
     }
   }
 }
@@ -56,20 +52,22 @@ export const createEvent = (event) => {
     try {
       console.log('event', event)
       const {data} = await axios.post('/api/events', event)
-      dispatch(addEvent(data))
+      dispatch(getOneEvent(data))
     } catch (error) {
       console.log('Error with creating new event')
+      console.error(error)
     }
   }
 }
 
-export const updateEvent = (updatedEvent, urlKey) => {
+export const updateEvent = (eventUpdates, urlKey) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.put(`/api/events/key/${urlKey}`, updatedEvent)
-      dispatch(addEvent(data))
+      const {data} = await axios.put(`/api/events/key/${urlKey}`, eventUpdates)
+      dispatch(getOneEvent(data))
     } catch (error) {
-      console.log('Error with finalizing this event')
+      console.log('Error updating event')
+      console.error(error)
     }
   }
 }
@@ -87,17 +85,11 @@ export default function (state = initialState, action) {
         ...state,
         events: action.events,
       }
-    case ADD_EVENT:
-      return {
-        event: action.event,
-      }
     case GET_ONE_EVENT:
       return {
         ...state,
         event: action.event,
       }
-    // case FINALIZE_EVENT:
-    //   return action.event
     default:
       return state
   }

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {updateEvent} from '../store/events'
 import {Link} from 'react-router-dom'
 import {withRouter} from 'react-router'
+import restaurants from '../store/restaurants'
 
 class OrganizerFinalEventForm extends Component {
   constructor(props) {
@@ -30,26 +31,31 @@ class OrganizerFinalEventForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    let updatedEvent = {
+    let eventUpdates = {
       googlePlacesId: this.state.restaurant,
       finalized: true,
     }
-    this.props.updateEvent(updatedEvent, this.props.urlKey)
+    console.log(this.props.urlKey)
+    this.props.updateEvent(eventUpdates, this.props.urlKey)
     this.props.history.push(`/event/${this.props.urlKey}/confirmation`)
   }
 
   render() {
-    const {polls, urlKey} = this.props
-    console.log('this.props', this.props)
-    console.log('STATE', this.state)
-    return polls && polls.length ? (
+    const {polls} = this.props
+    if (!polls || !polls.length) return null
+
+    const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
+    suggestionsPoll.options.forEach((restaurant) => {
+      console.log(restaurant)
+    })
+    return (
       <div className="container mt-6 mb-6 ml-6 has-padding-5">
         <h1 className="is-centered"> Make a final decision for your event!</h1>
 
         <div className="select mt-4 mb-4">
           <select name="restaurant" onChange={this.handleChange} required>
-            {polls[0].options.map((obj) => (
-              <option key={obj.name}>{obj.name}</option>
+            {suggestionsPoll.options.map((restaurant) => (
+              <option key={restaurant.name}>{restaurant.name}</option>
             ))}
           </select>
         </div>
@@ -64,8 +70,6 @@ class OrganizerFinalEventForm extends Component {
           </button>
         </div>
       </div>
-    ) : (
-      ''
     )
   }
 }
@@ -78,8 +82,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateEvent: (updatedEvent, urlKey) =>
-      dispatch(updateEvent(updatedEvent, urlKey)),
+    updateEvent: (eventUpdates, urlKey) =>
+      dispatch(updateEvent(eventUpdates, urlKey)),
   }
 }
 
