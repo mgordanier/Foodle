@@ -16,6 +16,7 @@ class EventConfirmation extends Component {
     const {googlePlacesInfo, time} = this.props.event
 
     const place = googlePlacesInfo
+    console.log(place)
 
     let convertedTime = new Date(time)
     const date = convertedTime.toLocaleDateString()

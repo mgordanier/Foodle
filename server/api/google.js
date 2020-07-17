@@ -10,9 +10,6 @@ router.put('/restaurants', async (req, res, next) => {
   try {
     // make google places API call
     const {neighborhood, city, category, eventId} = req.body
-    console.log(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
-    )
     const {data} = await axios.get(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
     )
@@ -45,7 +42,6 @@ router.put('/restaurants', async (req, res, next) => {
       const {data} = await axios.get(
         `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=place_id,name,rating,url,vicinity,website,price_level,formatted_phone_number&key=${key}`
       )
-      console.log('google datails', data)
       options.push(data.result)
     }
     // make a new poll with options (stingified objects of restaurant details)
