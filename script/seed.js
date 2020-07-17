@@ -17,13 +17,14 @@ const {
 async function createUsers() {
   const user1 = {name: 'Mary', email: 'mary@email.com', password: '123'}
   const user2 = {
-    name: 'Jennifer',
-    email: 'jennifer@email.com',
+    name: 'Jamily',
+    email: 'jamily@email.com',
     password: '123',
   }
   const user3 = {name: 'Yang', email: 'yang@email.com', password: '123'}
   const user4 = {name: 'Lilly', email: 'lilly@email.com', password: '123'}
-  const user5 = {name: 'foodle', email: 'foodle@email.com', password: '123'}
+  const user5 = {name: 'jennifer', email: 'jennifer@email.com', password: '123'}
+  const user6 = {name: 'foodle', email: 'foodle@email.com', password: '123'}
 
   const users = await Promise.all([
     User.create(user1),
@@ -31,6 +32,7 @@ async function createUsers() {
     User.create(user3),
     User.create(user4),
     User.create(user5),
+    User.create(user6),
   ])
 
   console.log(`seeded ${users.length} users`)
