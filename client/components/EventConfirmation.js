@@ -44,6 +44,20 @@ class EventConfirmation extends Component {
                 </button>
               </div>
               <div className="buttons">
+                <form className="card py-2 px-2">
+                  <div className="field my-2">
+                    <label className="title is-5">email</label>
+                    <div className="control mt-2">
+                      <input
+                        className="input"
+                        name="name"
+                        type="text"
+                        placeholder="participant's email"
+                        required
+                      />
+                    </div>
+                  </div>
+                </form>
                 <Link to="/home">
                   <button className="button is-link is-large is-fullwidth">
                     Go to your events

@@ -15,6 +15,7 @@ import {
   CreateEventForm,
   EventDashboard,
   EventConfirmation,
+  TESTHOME1,
 } from './components'
 import {me} from './store'
 
@@ -33,6 +34,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Home} />
+        <Route exact path="/test1" component={TESTHOME1} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/piechart" component={PieChartData} />

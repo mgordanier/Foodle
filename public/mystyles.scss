@@ -2,9 +2,42 @@
 @import '../node_modules/bulma/sass/utilities/initial-variables';
 
 $pink: #ffb3b3;
-$purple: #6d5fe7;
-$primary: $purple;
-$info: $turquoise;
+$coral: #ffd3b5;
+
+$primary: $pink;
+
+//THEME1
+$lighgreen2: #a8e6ce;
+$lightgreen1: #dcedc2;
+$coral: #ffd3b5;
+$lightpink: #ffaaa6;
+$darkpink: #ff8c94;
+
+//THEME2
+$darknavy: #355c7d;
+$plum: #6c5b7b;
+$redbean: #c06c84;
+$lipstick: #f67280;
+$coral2: #f8b195;
+
+//THEME3
+$theme3blue: #b5d3e7;
+$beige: #fdf6e3;
+$hotpink: #ff69b4;
+$frenchblue: #0072bb;
+$coralpink: #f88379;
+
+//THEME4
+$beigeagain: #f8dac5;
+$theme4pink: #ea9a96;
+$theme4orange: #e75a48;
+$theme4yellow: #ffb034;
+
+//THEME5
+$theme5blue: #41436a;
+$theme5plum: #984063;
+$theme5pink: #f64668;
+$theme5blue: #fe9677;
 
 .class-test {
   color: $pink;

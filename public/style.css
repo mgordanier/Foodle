@@ -1,7 +1,3 @@
-.class-test {
-  color: #ffb3b3;
-}
-
 /*! bulma.io v0.9.0 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -17596,4 +17592,29 @@ a.navbar-item.is-active,
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 5fr);
+}
+
+.class-test {
+  background-color: #ea9a96;
+  color: whitesmoke;
+}
+
+.button-color {
+  background-color: #fe9677;
+  color: whitesmoke;
+}
+
+.home-image {
+  width: 100%;
+  height: 100%;
+}
+
+.smaller-image {
+  width: 90%;
+  height: 70%;
+}
+
+.darkbluebutton {
+  background-color: #41436a;
+  color: whitesmoke;
 }

@@ -2,28 +2,27 @@
 const nodemailer = require('nodemailer')
 const html = require('html-template-tag')
 
-const address = process.env.EMAIL || require('../../../secrets').email.address
-const password = process.env.PASS || require('../../../secrets').email.password
+// const address = process.env.EMAIL || require('../../../secrets').email.address
+// const password = process.env.PASS || require('../../../secrets').email.password
 
-function Main(to, order) {
+function Main(to, testEvent) {
   const transporter = nodemailer.createTransport({
-    // service: 'Gmail',
-    host: 'smtp.gmail.com',
+    host: 'smtp.live.com',
     port: 587,
     secure: false,
     requireTLS: true,
     auth: {
-      user: address,
-      pass: password,
+      user: 'friedyang122@hotmail.com',
+      pass: 'Palolo0413!',
     },
   })
 
   const mailOptions = {
-    from: address,
-    to: to,
-    subject: 'Sending Email using Node.js',
+    from: '"FOODLE TEAM" <friedyang122@hotmail.com>',
+    to: 'yg2349@gmail.com',
+    subject: 'HELLO FROM FOODLE',
     text: 'That was easy!',
-    html: generateEmail(order),
+    html: generateEmail(testEvent),
   }
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -35,10 +34,10 @@ function Main(to, order) {
   })
 }
 
-const generateEmail = (event) => html`<!DOCTYPE html>
+const generateEmail = (testEvent) => html`<!DOCTYPE html>
   <html>
     <h1>Event Created!</h1>
-    <h2>Your event link is ${event.link}</h2>
+    <h2>Your event is happening at ${testEvent.googlePlacesId}</h2>
 
     <h3>Event Summary</h3>
     <table>
@@ -47,6 +46,10 @@ const generateEmail = (event) => html`<!DOCTYPE html>
       </tr>
     </table>
   </html>`
+
+const testEvent = {
+  googlePlacesId: 'TEST RESTAURANT',
+}
 
 if (module === require.main) {
   Main('yg2349@gmail.com', testEvent)
