@@ -1,15 +1,13 @@
 @charset "utf-8";
 @import '../node_modules/bulma/sass/utilities/initial-variables';
 
-$pink: #ffb3b3;
-$purple: #6d5fe7;
-$primary: $purple;
-// $info: $turquoise;
+// $pink: #ffd6cb;
+$pink: #ffece5;
+$teal: #067a7a;
+$primary: $pink;
+$info: $teal;
 $dark: $turquoise;
-
-.class-test {
-  color: $pink;
-}
+$warning: #fff6cb;
 
 @import '../node_modules/bulma/sass/utilities/functions';
 @import '../node_modules/bulma/sass/utilities/derived-variables.scss';
@@ -75,4 +73,28 @@ div.tooltip-donut {
 
 .bullet {
   font-size: 24px;
+}
+
+.nav-padding {
+  padding: 15px;
+}
+
+.foodle-padding {
+  padding-top: 100px;
+  font-size: 45px;
+}
+
+.text-padding {
+  padding: 100px;
+  font-size: 24px;
+}
+
+.font-family {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 375px) {
+  .pink-image {
+    display: none;
+  }
 }
