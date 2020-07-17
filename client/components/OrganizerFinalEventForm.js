@@ -19,13 +19,6 @@ class OrganizerFinalEventForm extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
-    // if(this.props.polls && this.props.polls.length){
-    //     const restoArr=this.props.polls[0].options
-    //     const restoId= restoArr.map((resto)=>{
-    //         return resto.place_id
-    //     })
-    //     console.log("restoID", restoId)
-    // }
   }
 
   handleSubmit(e) {

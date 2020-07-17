@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store'
+import {authSignup, authLogin} from '../store'
 import {Link} from 'react-router-dom'
 
 /**
@@ -33,12 +33,12 @@ const AuthForm = (props) => {
               <form className="box" onSubmit={handleSubmit} name={name}>
                 {displayName !== 'Login' ? (
                   <div className="field">
-                    <label htmlFor="name" className="label">
+                    <label htmlFor="userName" className="label">
                       Name
                     </label>
                     <div className="control has-icons-left">
                       <input
-                        name="name"
+                        name="userName"
                         type="text"
                         className="input"
                         placeholder="e.g. Sally Smith"
@@ -157,11 +157,20 @@ const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      const name = evt.target.name.value
-      dispatch(auth(name, email, password, formName))
+      if (evt.target.name === 'signup') {
+        const formName = evt.target.name
+        const email = evt.target.email.value
+        const password = evt.target.password.value
+        const userName = evt.target.userName.value
+        dispatch(authSignup(userName, email, password, formName))
+      }
+
+      if (evt.target.name === 'login') {
+        const formName = evt.target.name
+        const email = evt.target.email.value
+        const password = evt.target.password.value
+        dispatch(authLogin(email, password, formName))
+      }
     },
   }
 }
