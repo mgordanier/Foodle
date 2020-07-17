@@ -17618,6 +17618,10 @@ div.tooltip-donut {
   display: none;
 }
 
+.pie-container {
+  padding-left: 100px;
+}
+
 @media (max-width: 530px) {
   .circle-legend {
     display: none;
@@ -17625,12 +17629,11 @@ div.tooltip-donut {
   .circle-legend--mobile {
     display: block;
   }
+  .pie-container {
+    padding-left: 85px;
+  }
 }
 
 .bullet {
   font-size: 24px;
-}
-
-.pie-container {
-  padding-left: 110px;
 }
