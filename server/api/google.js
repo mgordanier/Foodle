@@ -10,7 +10,9 @@ router.put('/restaurants', async (req, res, next) => {
   try {
     // make google places API call
     const {neighborhood, city, category, eventId} = req.body
-    console.log(neighborhood, city, category)
+    console.log(
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
+    )
     const {data} = await axios.get(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
     )
