@@ -12,7 +12,7 @@ class UserDashboard extends React.Component {
           <div>
             <h1 className="title my-6">Create a New Event</h1>
             <Link to="/newevent">
-              <button type="button" className="button is-large">
+              <button type="button" className="button is-large is-primary">
                 Get Started
               </button>
             </Link>
