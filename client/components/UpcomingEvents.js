@@ -22,7 +22,7 @@ class UpcomingEvents extends React.Component {
               </div>
             ))
           ) : (
-            <p>No Upcoming Events</p>
+            <div className="column is-one-third">No Upcoming Events</div>
           )}
         </div>
       </>
