@@ -73,6 +73,8 @@ class GenerateSuggestionPoll extends Component {
                   {displayName}
                 </button>
               )}
+            </div>
+            <div className="columns is-centered">
               <p className="is-warning">
                 Warning: generating new suggestions this will clear the previous
                 poll and votes.

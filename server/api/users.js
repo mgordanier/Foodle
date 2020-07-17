@@ -29,28 +29,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
-  try {
-    const newUser = await User.create(req.body)
-    res.status(201).send(newUser)
-  } catch (error) {
-    next(error)
-  }
-})
-
-// router.post('/responses', async (req, res, next) => {
-//   try {
-//     const pollResponses = await Response.create({
-//       selections: req.body.restaurants,
-//       userId: req.body.userId,
-//       pollId: req.body.pollId,
-//     })
-//     res.json(pollResponses)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
 router.put('/:id', async (req, res, next) => {
   try {
     const [updatedCount, updatedUsers] = await User.update(req.body, {

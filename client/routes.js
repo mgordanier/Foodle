@@ -7,6 +7,8 @@ import {
   Login,
   Signup,
   PieChartData,
+  UserHome,
+  RestaurantSuggestions,
   InputPollForm,
   UserDashboard,
   InviteLink,
@@ -33,6 +35,18 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+
+        <Route path="/inputpollform" component={InputPollForm} />
+        <Route path="/invitelink" component={InviteLink} />
+        <Route path="/suggestions" component={RestaurantSuggestions} />
+        <Route path="/newevent" component={CreateEventForm} />
+        <Route exact path="/event/:urlKey" component={EventDashboard} />
+        <Route
+          exact
+          path="/event/:urlKey/confirmation"
+          component={EventConfirmation}
+        />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
