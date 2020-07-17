@@ -1,15 +1,13 @@
 @charset "utf-8";
 @import '../node_modules/bulma/sass/utilities/initial-variables';
 
-$pink: #ffb3b3;
-$purple: #6d5fe7;
-$primary: $purple;
-// $info: $turquoise;
+// $pink: #ffd6cb;
+$pink: #ffece5;
+$teal: #067a7a;
+$primary: $pink;
+$info: $teal;
 $dark: $turquoise;
-
-.class-test {
-  color: $pink;
-}
+$warning: #fff6cb;
 
 @import '../node_modules/bulma/sass/utilities/functions';
 @import '../node_modules/bulma/sass/utilities/derived-variables.scss';
@@ -39,6 +37,13 @@ $dark: $turquoise;
   grid-template-columns: repeat(5, 5fr);
 }
 
+@media only screen and (max-width: 800px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 div.tooltip-donut {
   position: absolute;
   text-align: center;
@@ -55,6 +60,10 @@ div.tooltip-donut {
   display: none;
 }
 
+.pie-container {
+  padding-left: 100px;
+}
+
 @media (max-width: 530px) {
   .circle-legend {
     display: none;
@@ -63,12 +72,36 @@ div.tooltip-donut {
   .circle-legend--mobile {
     display: block;
   }
+
+  .pie-container {
+    padding-left: 85px;
+  }
 }
 
 .bullet {
   font-size: 24px;
 }
 
-.pie-container {
-  padding-left: 110px;
+.nav-padding {
+  padding: 15px;
+}
+
+.foodle-padding {
+  padding-top: 100px;
+  font-size: 45px;
+}
+
+.text-padding {
+  padding: 100px;
+  font-size: 24px;
+}
+
+.font-family {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 375px) {
+  .pink-image {
+    display: none;
+  }
 }

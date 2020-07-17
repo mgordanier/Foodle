@@ -50,30 +50,38 @@ class EventDashboard extends Component {
       <section className="section">
         <div className="container">
           <h1 className="title">{name}</h1>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Date
-            </span>{' '}
-            {date}
-          </p>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Time
-            </span>{' '}
-            {hour}
-          </p>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Location
-            </span>{' '}
-            near {location}
-          </p>
-          <p className="my-2">
-            <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-              Cuisine
-            </span>{' '}
-            {cuisine}
-          </p>
+
+          <article className="message is-primary">
+            <div className="message-header is-centered">
+              <p>Event Details </p>
+            </div>
+            <div className="message-body">
+              <p className="my-2">
+                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Date
+                </span>{' '}
+                {date}
+              </p>
+              <p className="my-2">
+                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Time
+                </span>{' '}
+                {hour}
+              </p>
+              <p className="my-2">
+                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Location
+                </span>{' '}
+                near {location}
+              </p>
+              <p className="my-2">
+                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                  Cuisine
+                </span>{' '}
+                {cuisine}
+              </p>
+            </div>
+          </article>
 
           <div className="mt-6">
             {polls && somePollsHaveReponses ? (
