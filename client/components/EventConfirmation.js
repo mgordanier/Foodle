@@ -19,7 +19,6 @@ class EventConfirmation extends Component {
       minute: '2-digit',
     })
     const location = flatLocation
-    console.log('neighborrrrrrr', neighborhood)
     return (
       <section className="section">
         <div className="hero-body">

@@ -6,8 +6,6 @@ import {
   Home,
   Login,
   Signup,
-  UserHome,
-  RestaurantSuggestions,
   PieChartData,
   InputPollForm,
   UserDashboard,
@@ -35,26 +33,23 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/piechart" component={PieChartData} />
-        <Route path="/inputpollform" component={InputPollForm} />
-        <Route path="/invitelink" component={InviteLink} />
-        <Route path="/suggestions" component={RestaurantSuggestions} />
-        <Route path="/newevent" component={CreateEventForm} />
-        <Route exact path="/event/:urlKey" component={EventDashboard} />
-        <Route
-          exact
-          path="/event/:urlKey/confirmation"
-          component={EventConfirmation}
-        />
-
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserDashboard} />
-            {/* <Route path="/userdashboard" component={UserDashboard} /> */}
+            <Route path="/piechart" component={PieChartData} />
+            <Route path="/invitelink" component={InviteLink} />
+            <Route path="/newevent" component={CreateEventForm} />
+            <Route exact path="/event/:urlKey" component={EventDashboard} />
+            <Route
+              exact
+              path="/event/:urlKey/confirmation"
+              component={EventConfirmation}
+            />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
+        {/* Displays our Home component as a fallback */}
+        <Route component={Login} />
       </Switch>
     )
   }
