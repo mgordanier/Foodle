@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store'
+import {authSignup, authLogin} from '../store'
 import {Link} from 'react-router-dom'
 
 /**
@@ -33,12 +33,12 @@ const AuthForm = (props) => {
               <form className="box" onSubmit={handleSubmit} name={name}>
                 {displayName !== 'Login' ? (
                   <div className="field">
-                    <label htmlFor="name" className="label">
+                    <label htmlFor="userName" className="label">
                       Name
                     </label>
                     <div className="control has-icons-left">
                       <input
-                        name="name"
+                        name="userName"
                         type="text"
                         className="input"
                         placeholder="e.g. Sally Smith"
@@ -107,9 +107,11 @@ const AuthForm = (props) => {
                 </div>
 
                 <div>
-                  <p className="is-size-7 has-text-centered mt-2">
-                    {altOption} <Link to={altLink}>here.</Link>
-                  </p>
+                  <Link to={altLink}>
+                    <p className="is-size-7 has-text-centered mt-2">
+                      {altOption}
+                    </p>
+                  </Link>
                 </div>
 
                 {error && error.response && <div> {error.response.data} </div>}
@@ -137,7 +139,7 @@ const mapLogin = (state) => {
     displayName: 'Login',
     header: 'Login to your account',
     error: state.user.error,
-    altOption: `New User? Create an account `,
+    altOption: `New User? Create an account`,
     altLink: '/signup',
   }
 }
@@ -148,7 +150,7 @@ const mapSignup = (state) => {
     displayName: 'Sign Up',
     header: 'Sign up for an account',
     error: state.user.error,
-    altOption: `Returning user? Login `,
+    altOption: `Returning user? Login`,
     altLink: '/login',
   }
 }
@@ -157,11 +159,20 @@ const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      const name = evt.target.name.value
-      dispatch(auth(name, email, password, formName))
+      if (evt.target.name === 'signup') {
+        const formName = evt.target.name
+        const email = evt.target.email.value
+        const password = evt.target.password.value
+        const userName = evt.target.userName.value
+        dispatch(authSignup(userName, email, password, formName))
+      }
+
+      if (evt.target.name === 'login') {
+        const formName = evt.target.name
+        const email = evt.target.email.value
+        const password = evt.target.password.value
+        dispatch(authLogin(email, password, formName))
+      }
     },
   }
 }
