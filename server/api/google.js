@@ -10,6 +10,7 @@ router.put('/restaurants', async (req, res, next) => {
   try {
     // make google places API call
     const {neighborhood, city, category, eventId} = req.body
+    console.log(neighborhood, city, category)
     const {data} = await axios.get(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${city}&type=restaurant&key=${key}`
     )
@@ -32,6 +33,7 @@ router.put('/restaurants', async (req, res, next) => {
       await existingSuggestionsPoll.destroy()
     }
 
+    console.log('googleResults', googleResults)
     //slice 3 results from initial Google Places API call and retrieve only placeIds
     let optionIds = googleResults.slice(0, 3)
     // for each placeId, make a google API call for single restaurant details and save a JSON string
@@ -41,6 +43,7 @@ router.put('/restaurants', async (req, res, next) => {
       const {data} = await axios.get(
         `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=place_id,name,rating,url,vicinity,website,price_level,formatted_phone_number&key=${key}`
       )
+      console.log('google datails', data)
       options.push(data.result)
     }
     // make a new poll with options (stingified objects of restaurant details)

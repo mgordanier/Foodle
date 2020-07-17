@@ -22,19 +22,19 @@ class EventCard extends React.Component {
               <p className="title is-4">{this.props.name}</p>
               {this.props.finalized ? (
                 <div>
-                  <p className="has-text-info has-text-weight-semibold">
+                  <p className="has-text-success has-text-weight-semibold">
                     Confirmed
                   </p>
                   <p>
                     Time: {date} {hour}
                   </p>
                   <p>Location: {location}</p>
-                  <p>Restaurant: {this.props.googlePlacesId}</p>
+                  <p>Restaurant: {this.props.googlePlacesInfo.name}</p>
                 </div>
               ) : (
                 <div>
-                  <p className="has-text-danger has-text-weight-semibold">
-                    Voting still in process
+                  <p className="has-text-info has-text-weight-semibold">
+                    Voting in process
                   </p>
                   <p>
                     Time: {date} {hour}
@@ -50,9 +50,9 @@ class EventCard extends React.Component {
             <br />
           </div>
           <footer className="card-footer">
-            <div className="card-footer-item">
+            {/* <div className="card-footer-item">
               {this.props.users[0].userEvent.isOrganizer ? 'Admin' : 'Guest'}
-            </div>
+            </div> */}
             <Link
               className="card-footer-item"
               to={`/event/${this.props.urlKey}`}

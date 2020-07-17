@@ -25,7 +25,7 @@ class OrganizerFinalEventForm extends Component {
     e.preventDefault()
 
     let eventUpdates = {
-      googlePlacesId: this.state.restaurant,
+      googlePlacesInfo: this.state.restaurant,
       finalized: true,
     }
     console.log(this.props.urlKey)

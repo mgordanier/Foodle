@@ -51,11 +51,14 @@ router.get('/key/:urlKey', async (req, res, next) => {
 // Create an event as a user
 router.post('/', async (req, res, next) => {
   try {
+    const initialDueDate = req.body.initialDueDate
+      ? req.body.initialDueDate
+      : null
     const event = await Event.create({
       name: req.body.name,
       neighborhood: req.body.neighborhood,
       time: req.body.time,
-      initialDueDate: req.body.initialDueDate,
+      initialDueDate,
       activitySubtype: req.body.activitySubtype,
       urlKey: req.body.urlKey,
     })
