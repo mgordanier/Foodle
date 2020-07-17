@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -39,6 +40,12 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      <div>
+        <a type="button" className="button is-danger" href="/auth/google">
+          {displayName} With Google
+        </a>
+      </div>
+
       {/* <a href="/auth/google">{displayName} with Google</a> */}
     </div>
   )
@@ -72,9 +79,10 @@ const mapDispatch = (dispatch) => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
+      const name = formName === 'signup' ? evt.target.name.value : null
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(name, email, password, formName))
     },
   }
 }

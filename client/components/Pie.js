@@ -102,7 +102,7 @@ const Pie = (props) => {
       .attr('x', legendRectSize + legendSpacing + 2)
       .attr('y', legendRectSize - legendSpacing + 16)
       .text(function (d) {
-        return `${d.data.type}: ${d.data.value}`
+        return `${d.data.type} (${d.data.value})`
       })
 
     const text = groupWithUpdate
