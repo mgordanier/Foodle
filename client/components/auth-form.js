@@ -97,6 +97,16 @@ const AuthForm = (props) => {
                 </div>
 
                 <div>
+                  <a
+                    type="button"
+                    className="button is-danger is-fullwidth mt-2"
+                    href="/auth/google"
+                  >
+                    {displayName} With Google
+                  </a>
+                </div>
+
+                <div>
                   <p className="is-size-7 has-text-centered mt-2">
                     {altOption} <Link to={altLink}>here.</Link>
                   </p>
@@ -107,6 +117,8 @@ const AuthForm = (props) => {
             </div>
           </div>
         </div>
+
+        {/* <a href="/auth/google">{displayName} with Google</a> */}
       </div>
     </section>
   )

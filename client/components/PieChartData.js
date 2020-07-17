@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import * as d3 from 'd3'
 
 import {Pie} from './index'
@@ -25,16 +25,22 @@ export default function PieChartData(props) {
   const data = tallyVotes(pollResponsesArr)
 
   return (
-    <div className="">
+    <div>
       <div>
-        <h2 className="is-size-4 has-text-weight-semibold">Current Results</h2>
-        <Pie
-          data={data}
-          width={600}
-          height={600}
-          innerRadius={30}
-          outerRadius={225}
-        />
+        <article className="message is-primary">
+          <div className="message-header is-centered">
+            <p>Current Results: </p>
+          </div>
+          <div className="message-body pie-container">
+            <Pie
+              data={data}
+              width={900}
+              height={450}
+              innerRadius={75}
+              outerRadius={225}
+            />
+          </div>
+        </article>
       </div>
     </div>
   )

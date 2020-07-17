@@ -26,8 +26,6 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// get one event
-
 // get one event by urlKey
 router.get('/key/:urlKey', async (req, res, next) => {
   try {
@@ -80,6 +78,7 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+//update one event
 router.put('/key/:urlKey', async (req, res, next) => {
   try {
     const event = await Event.findOne({where: {urlKey: req.params.urlKey}})
