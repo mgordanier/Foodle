@@ -17650,6 +17650,10 @@ div.tooltip-donut {
   font-size: 45px;
 }
 
+.logotype {
+  max-width: 375px;
+}
+
 .text-padding {
   padding: 100px;
   font-size: 24px;
@@ -17659,7 +17663,7 @@ div.tooltip-donut {
   font-family: 'Montserrat', sans-serif;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 770px) {
   .pink-image {
     display: none;
   }

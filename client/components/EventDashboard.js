@@ -29,7 +29,7 @@ class EventDashboard extends Component {
 
   render() {
     const {event, polls, user} = this.props
-    if (!event || !event.id) return null
+    if (!event || !event.id || !polls) return null
 
     let {neighborhood, time, name, activitySubtype} = event
     time = new Date(time)
@@ -84,7 +84,7 @@ class EventDashboard extends Component {
           </article>
 
           <div className="mt-6">
-            {polls && somePollsHaveReponses ? (
+            {somePollsHaveReponses ? (
               <PieChartData polls={this.props.polls} />
             ) : null}
           </div>

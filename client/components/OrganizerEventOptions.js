@@ -4,7 +4,9 @@ import {GenerateSuggestionPoll, OrganizerFinalEventForm} from './index'
 
 class OrganizerEventOptions extends Component {
   render() {
-    const {event} = this.props
+    const {event, polls} = this.props
+    const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
+    console.log(suggestionsPoll)
     return (
       <div>
         <article className="message is-info mt-6">
@@ -13,8 +15,9 @@ class OrganizerEventOptions extends Component {
           </div>
           <div className="message-body">
             <GenerateSuggestionPoll />
+
             <OrganizerFinalEventForm
-              polls={this.props.polls}
+              suggestionsPoll={suggestionsPoll}
               urlKey={event.urlKey}
               event={this.props.event}
             />
