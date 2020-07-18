@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {fetchOneEvent} from '../store/events'
+import {fetchOneEvent, deleteEvent} from '../store/events'
 import {fetchPollsByEvent} from '../store/poll'
 import {
   RestaurantSuggestions,
@@ -90,6 +90,20 @@ class EventDashboard extends Component {
           </div>
           {suggestionsPoll ? <RestaurantSuggestions /> : null}
           {user.id === event.organizerId ? <OrganizerEventOptions /> : null}
+
+          <div>
+            {user.id === event.organizerId ? (
+              <div>
+                <button
+                  type="button"
+                  className="button is-large is-danger"
+                  onClick={() => this.props.deleteEvent(event.id)}
+                >
+                  Delete Event
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </section>
     )
@@ -108,6 +122,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchOneEvent: (urlKey) => dispatch(fetchOneEvent(urlKey)),
     fetchPollsByEvent: (eventId) => dispatch(fetchPollsByEvent(eventId)),
+    deleteEvent: (eventId) => dispatch(deleteEvent(eventId)),
   }
 }
 

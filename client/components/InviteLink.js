@@ -14,7 +14,7 @@ const InviteLink = (props) => {
                 <p>Copy and paste your event link</p>
               </div>
               <Link to={`/event/${urlKey}`}>
-                <div className="message-body">
+                <div className="message-body message-break">
                   {`http://www.foodle.com/event/${urlKey}`}
                 </div>
               </Link>
@@ -27,7 +27,7 @@ const InviteLink = (props) => {
             </section>
 
             <div className="buttons">
-              <button className="button is-link is-large is-fullwidth">
+              <button className="button is-info is-large is-fullwidth">
                 E-mail your friends
               </button>
             </div>
