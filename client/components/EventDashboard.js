@@ -96,7 +96,7 @@ class EventDashboard extends Component {
               <div>
                 <button
                   type="button"
-                  className="button is-large is-info"
+                  className="button is-large is-danger"
                   onClick={() => this.props.deleteEvent(event.id)}
                 >
                   Delete Event
