@@ -76,6 +76,10 @@ div.tooltip-donut {
   .pie-container {
     padding-left: 85px;
   }
+
+  .message-break {
+    overflow-wrap: anywhere;
+  }
 }
 
 .bullet {
@@ -88,7 +92,7 @@ div.tooltip-donut {
 
 .foodle-padding {
   padding-top: 100px;
-  font-size: 45px;
+  font-size: 40px;
 }
 
 .text-padding {
@@ -103,5 +107,9 @@ div.tooltip-donut {
 @media (max-width: 375px) {
   .pink-image {
     display: none;
+  }
+
+  .message-break {
+    overflow-wrap: anywhere;
   }
 }
