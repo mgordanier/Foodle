@@ -90,6 +90,13 @@ class EventDashboard extends Component {
           </div>
           {suggestionsPoll ? <RestaurantSuggestions /> : null}
           {user.id === event.organizerId ? <OrganizerEventOptions /> : null}
+
+          {/* {user.id === event.organizerId ?
+          <div>
+            <button type="button" className="button">
+
+            </button>
+          </div> : null} */}
         </div>
       </section>
     )
