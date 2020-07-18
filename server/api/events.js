@@ -224,6 +224,7 @@ router.get(
 
 router.delete('/:id', async (req, res, next) => {
   try {
+    console.log('ROUTE', req.params.id)
     await Event.destroy({
       where: {
         id: req.params.id,

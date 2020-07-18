@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 //ACTION TYPE
 const GET_EVENTS = 'GET_EVENTS'
@@ -74,8 +75,8 @@ export const updateEvent = (eventUpdates, urlKey) => {
 export const deleteEvent = (eventId) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`api/events/${eventId}`)
-      dispatch(deletedEvent(eventId))
+      await axios.delete(`/api/events/${eventId}`)
+      history.push('/home')
     } catch (error) {
       console.error(error)
     }
@@ -99,11 +100,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         event: action.event,
-      }
-    case DELETE_EVENT:
-      return {
-        ...state,
-        events: state.events.filter((event) => event.id !== action.eventId),
       }
     default:
       return state
