@@ -221,3 +221,31 @@ router.get(
     }
   }
 )
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await Event.destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+    const pollId = await Poll.findOne({
+      where: {
+        eventId: req.params.id,
+      },
+    })
+    if (pollId) {
+      const responses = await Response.findAll({
+        where: {
+          pollId: pollId,
+        },
+      })
+      await responses.destroy()
+    } else {
+      console.log('No Polls associated with event')
+    }
+    res.json(204)
+  } catch (error) {
+    next(error)
+  }
+})

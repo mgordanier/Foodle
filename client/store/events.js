@@ -3,6 +3,7 @@ import axios from 'axios'
 //ACTION TYPE
 const GET_EVENTS = 'GET_EVENTS'
 const GET_ONE_EVENT = 'GET_ONE_EVENT'
+const DELETE_EVENT = 'DELETE_EVENT'
 
 //ACTION CREATOR
 const getEvents = (events) => ({
@@ -13,6 +14,11 @@ const getEvents = (events) => ({
 const getOneEvent = (event) => ({
   type: GET_ONE_EVENT,
   event,
+})
+
+const deletedEvent = (eventId) => ({
+  type: DELETE_EVENT,
+  eventId,
 })
 
 //THUNK CREATORS
@@ -65,6 +71,17 @@ export const updateEvent = (eventUpdates, urlKey) => {
   }
 }
 
+export const deleteEvent = (eventId) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`api/events/${eventId}`)
+      dispatch(deletedEvent(eventId))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 const initialState = {
   event: {},
   events: {},
@@ -82,6 +99,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         event: action.event,
+      }
+    case DELETE_EVENT:
+      return {
+        ...state,
+        events: state.events.filter((event) => event.id !== action.eventId),
       }
     default:
       return state
