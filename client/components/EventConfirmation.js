@@ -27,9 +27,6 @@ class EventConfirmation extends Component {
 
     return (
       <section className="section">
-        {/* <div className="hero-body">
-          <div className="is-centered">
-            <div className="is-half"> */}
         <article className="message is-primary">
           <div className="message-header">
             <h1>Your event is confirmed! </h1>
@@ -47,24 +44,16 @@ class EventConfirmation extends Component {
         <div className="buttons">
           <button
             type="button"
-            className="button is-link is-large is-fullwidth"
+            className="button is-info is-large is-fullwidth"
           >
             E-mail your friends
           </button>
         </div>
         <div className="buttons">
-          <Link to="/home">
-            <button
-              type="button"
-              className="button is-link is-large is-fullwidth"
-            >
-              Go to your events
-            </button>
+          <Link to="/home" className="button is-info is-large is-fullwidth">
+            Go to your events
           </Link>
         </div>
-        {/* </div>
-          </div>
-        </div> */}
       </section>
     )
   }

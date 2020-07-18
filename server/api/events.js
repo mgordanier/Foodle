@@ -6,6 +6,8 @@ module.exports = router
 // get upcoming events for the user
 router.get('/', async (req, res, next) => {
   try {
+    // const user = User.findByPk(req.user.id)
+    // const events = user.getUserEvents({where: {userId: req.user.id}})
     const events = await Event.findAll({
       include: [
         {
@@ -29,15 +31,21 @@ router.get('/', async (req, res, next) => {
 // get one event by urlKey
 router.get('/key/:urlKey', async (req, res, next) => {
   try {
+    //find one event by urlKey
     const event = await Event.findOne({
       where: {
         urlKey: req.params.urlKey,
       },
     })
+    // add organizerId field
     const userEvent = await UserEvent.findOne({
       where: {eventId: event.id, isOrganizer: true},
     })
     event.dataValues.organizerId = userEvent.userId
+    //add all users associate with this event
+    const users = await event.getUsers()
+    event.dataValues.users = users
+
     if (event) {
       res.json(event)
     } else {

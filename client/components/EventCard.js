@@ -4,58 +4,52 @@ import {flatLocation} from '../pollOptions/pollUtils'
 
 class EventCard extends React.Component {
   render() {
-    let time = new Date(this.props.time)
+    let {
+      time,
+      neighborhood,
+      name,
+      finalized,
+      googlePlacesInfo,
+      urlKey,
+    } = this.props
+
+    time = new Date(this.props.time)
     const date = time.toLocaleDateString()
     const hour = time.toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit',
     })
 
-    const neighborhood = this.props.neighborhood
     const location = flatLocation[neighborhood].displayName
 
     return (
       <div className="card">
         <div className="card-content">
-          <div className="media">
-            <div className="media-content">
-              <p className="title is-4">{this.props.name}</p>
-              {this.props.finalized ? (
-                <div>
-                  <p className="has-text-success has-text-weight-semibold">
-                    Confirmed
-                  </p>
-                  <p>
-                    Time: {date} {hour}
-                  </p>
-                  <p>Location: {location}</p>
-                  <p>Restaurant: {this.props.googlePlacesInfo.name}</p>
-                </div>
-              ) : (
-                <div>
-                  <p className="has-text-info has-text-weight-semibold">
-                    Voting in process
-                  </p>
-                  <p>
-                    Time: {date} {hour}
-                  </p>
-                  <p>Location: {location}</p>
-                  <p>Restaurant: TBD</p>
-                </div>
-              )}
-            </div>
+          {finalized ? (
+            <p className="has-text-success  is-size-7 is-pulled-right has-text-weight-semibold">
+              CONFIRMED
+            </p>
+          ) : (
+            <p className="has-text-info  is-size-7 is-pulled-right has-text-weight-semibold">
+              VOTING
+            </p>
+          )}
+          <h3 className="title is-4 ">{name}</h3>
+          <div>
+            <p className="py-1 is-inline has-text-weight-semibold">Time: </p>
+            <p className="py-1 is-inline">
+              {date} {hour}
+            </p>
+            <p className="py-1">Location: {location}</p>
+            <p className="py-1">
+              Restaurant: {finalized ? googlePlacesInfo.name : 'TBD'}
+            </p>
           </div>
-
-          <div className="content">
-            <br />
-          </div>
+          <div className="content"></div>
           <footer className="card-footer">
-            {/* <div className="card-footer-item">
-              {this.props.users[0].userEvent.isOrganizer ? 'Admin' : 'Guest'}
-            </div> */}
             <Link
               className="card-footer-item"
-              to={`/event/${this.props.urlKey}`}
+              to={`/event/${urlKey}${finalized ? '/confirmation' : ''}`}
             >
               Event Details
             </Link>
