@@ -229,15 +229,15 @@ router.delete('/:id', async (req, res, next) => {
         id: req.params.id,
       },
     })
-    const pollId = await Poll.findOne({
+    const poll = await Poll.findOne({
       where: {
         eventId: req.params.id,
       },
     })
-    if (pollId) {
+    if (poll) {
       const responses = await Response.findAll({
         where: {
-          pollId: pollId,
+          pollId: poll.id,
         },
       })
       await responses.destroy()
