@@ -1,4 +1,19 @@
-## Capstone - Indecisive Foodies
+## Foodle
+
+Foodle is a mobile-friendly, accessible web application where you can efficiently coordinate and choose a restaurant with your friends in New York City. An organizer can create the event, share a link with others and have friends vote on a restaurant poll based on location and food preferences. Made specifically for indecisive foodlers!  
+
+## Website
+
+<a href="https://foodle-app.herokuapp.com/">https://foodle-app.herokuapp.com/</a>
+
+## Technical Stack
+
+<li>Front-End: React, Redux, Bulma, Sass</li>
+<li>Back-End: PostgresQL, Express, Sequelize</li>
+<li>Libraries: D3, Socket.io</li>
+<li>Integrations: Google Place API</li>
+
+## Production Links
 
 <li><a href="https://docs.google.com/document/d/1frjUDznQK98S8KVMadUZQ4V6pmdplVRNym7Y1Ra1Qxw/edit?ts=5efb6454">Group Norms</a></li>
 <li><a href="https://docs.google.com/document/d/1IbG8Pr1yEtg3NrumNNOuD0oN2BmqfVOTMGyBHa2Qypg/edit">MVP</a></li>
