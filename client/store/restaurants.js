@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import {fetchPollsByEvent} from './poll'
+import {flatLocation} from '../pollOptions/pollUtils'
 
 //ACTION TYPES
 const LOADING_RESTAURANTS = 'LOADING_RESTAURANTS'
@@ -13,12 +14,14 @@ const toggleLoadingState = () => {
 
 //THUNK CREATORS
 export const fetchRestaurants = (neighborhood, city, category) => {
+  const borough = flatLocation[neighborhood].borough.searchStr
   return async (dispatch, getState) => {
     dispatch(toggleLoadingState())
     try {
       const eventId = getState().events.event.id
       await Axios.put('/api/google/restaurants', {
         neighborhood,
+        borough,
         city,
         category,
         eventId,

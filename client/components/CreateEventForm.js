@@ -166,7 +166,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold "
                 onClick={this.toggleManhattan}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Manhattan
                 </span>
               </h5>
@@ -192,7 +192,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleBrooklyn}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Brooklyn
                 </span>
               </h5>
@@ -218,7 +218,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleQueens}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Queens
                 </span>
               </h5>
@@ -244,7 +244,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleBronx}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Bronx
                 </span>
               </h5>
@@ -270,7 +270,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleStatenIsland}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Staten Island
                 </span>
               </h5>
@@ -313,7 +313,7 @@ class CreateEventForm extends React.Component {
 
           <button
             type="submit"
-            className="button is-info is-centered is-large my-5"
+            className="button is-dark is-centered is-large my-5"
           >
             Create Event
           </button>

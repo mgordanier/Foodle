@@ -6,7 +6,6 @@ class OrganizerEventOptions extends Component {
   render() {
     const {event, polls} = this.props
     const suggestionsPoll = polls.find((poll) => poll.name === 'suggestions')
-    console.log(suggestionsPoll)
     return (
       <div>
         <article className="message is-info mt-6">

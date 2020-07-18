@@ -90,7 +90,7 @@ export default {
     indian: {searchStr: 'indian', displayName: 'Indian'},
     indonesian: {searchStr: 'indonesian', displayName: 'Indonesian'},
     irish: {searchStr: 'irish', displayName: 'Irish'},
-    'italian+food': {searchStr: 'italian+food', displayName: 'Italian'},
+    italian: {searchStr: 'italian', displayName: 'Italian'},
     calabrian: {searchStr: 'calabrian', displayName: 'Calabrian'},
     sardinian: {searchStr: 'sardinian', displayName: 'Sardinian'},
     sicilian: {searchStr: 'sicilian', displayName: 'Sicilian'},

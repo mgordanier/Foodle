@@ -1,7 +1,7 @@
 export default {
-  'new+york': {
+  'new+york+city': {
     displayName: 'New York',
-    searchStr: 'new+york',
+    searchStr: 'new+york+city',
     county: {
       bronx: {
         displayName: 'Bronx',
