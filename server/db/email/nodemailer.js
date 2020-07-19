@@ -37,7 +37,7 @@ function Main(to, testEvent) {
 const generateEmail = (testEvent) => html`<!DOCTYPE html>
   <html>
     <h1>Event Created!</h1>
-    <h2>Your event is happening at ${testEvent.googlePlacesId}</h2>
+    <h2>Your event is happening at ${event.googlePlacesId}</h2>
 
     <h3>Event Summary</h3>
     <table>
