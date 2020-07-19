@@ -40,9 +40,15 @@ class EventCard extends React.Component {
             <p className="py-1 is-inline">
               {date} {hour}
             </p>
-            <p className="py-1">Location: {location}</p>
-            <p className="py-1">
-              Restaurant: {finalized ? googlePlacesInfo.name : 'TBD'}
+            <p className="py-1 is-inline has-text-weight-semibold">
+              Location:{' '}
+            </p>
+            <p className="py-1 is-inline">{location}</p>
+            <p className="py-1 is-inline has-text-weight-semibold">
+              Restaurant:{' '}
+            </p>
+            <p className="py-1 is-inline">
+              {finalized ? googlePlacesInfo.name : 'TBD'}
             </p>
           </div>
           <div className="content"></div>

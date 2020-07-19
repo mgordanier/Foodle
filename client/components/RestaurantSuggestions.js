@@ -5,17 +5,35 @@ import React, {Component} from 'react'
 import {SuggestionChoices} from './SuggestionChoices'
 import {connect} from 'react-redux'
 import {addOrUpdateResponse} from '../store/poll'
+import user from '../store/user'
 
 class RestaurantSuggestions extends Component {
   constructor() {
     super()
     this.state = {
       selectedRestaurants: [],
+      showPoll: true,
+      userHasVoted: false,
     }
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.voteRestaurant = this.voteRestaurant.bind(this)
   }
-
+  componentDidMount() {
+    // run one time, when poll and user are first mapped to props from the redux store
+    const {poll, user} = this.props
+    const userHasVoted = poll.responses.some(
+      (response) => response.userId === user.id
+    )
+    // set local state to show poll only if user has not yet voted
+    this.setState({userHasVoted, showPoll: !userHasVoted})
+  }
+  componentDidUpdate(prevProps) {
+    // run when poll is regenerated
+    if (prevProps.poll.id !== this.props.poll.id) {
+      // set local state to show poll only if user has not yet voted
+      this.setState({showPoll: true})
+    }
+  }
   handleCheckboxChange(restaurant, isChecked) {
     if (isChecked) {
       this.setState((prevState) => ({
@@ -40,64 +58,55 @@ class RestaurantSuggestions extends Component {
       selections
     )
     // WE NEED TO UNCHECK ALL THE CHECK BOXES AFTER SOMEONE VOTES
-    this.setState({selectedRestaurants: []})
+    this.setState({selectedRestaurants: [], showPoll: false})
   }
 
   render() {
     const {event, poll, user} = this.props
-
-    const userHasVoted = poll.responses.some(
-      (response) => response.userId === user.id
-    )
+    const {selectedRestaurants, showPoll, userHasVoted} = this.state
+    console.log('poll', poll)
+    console.log('showPoll', showPoll)
 
     return (
-      <div className="mt-6">
-        <article className="message is-warning">
-          <div className="message-header">
-            <p>Poll</p>
-          </div>
+      <article className="tile is-child message is-warning">
+        <div className="message-header">
+          <p>Your Votes</p>
+        </div>
+        {showPoll && poll && (
           <div className="message-body">
             <h2 className="is-size-4 has-text-weight-semibold">
-              {poll && userHasVoted
-                ? 'Want to update your vote?'
-                : 'Where do you want to go?'}
+              {userHasVoted ? 'Update your vote!' : 'Where do you want to eat?'}
             </h2>
-
-            <div className="content is-medium">
+            <p className="content is-medium">
               Select up to 3 choices to submit selected votes OR choose no
               preference
-            </div>
-
+            </p>
             <div className="columns">
-              {poll
-                ? poll.options.map((restaurant) => {
-                    return (
-                      <div
-                        className="column is-one-third"
-                        key={restaurant.place_id}
-                        id={restaurant.place_id}
-                      >
-                        <SuggestionChoices
-                          restaurant={restaurant}
-                          handleCheckboxChange={this.handleCheckboxChange}
-                          selectedRestaurants={this.state.selectedRestaurants}
-                        />
-                      </div>
-                    )
-                  })
-                : null}
+              {poll.options.map((restaurant) => {
+                return (
+                  <div
+                    className="column is-one-third"
+                    key={restaurant.place_id}
+                    id={restaurant.place_id}
+                  >
+                    <SuggestionChoices
+                      restaurant={restaurant}
+                      handleCheckboxChange={this.handleCheckboxChange}
+                      selectedRestaurants={selectedRestaurants}
+                    />
+                  </div>
+                )
+              })}
             </div>
-
             <div className="buttons">
               <button
                 type="button"
                 className="button is-primary is-centered is-large"
                 onClick={() => this.voteRestaurant()}
-                disabled={!this.state.selectedRestaurants.length}
+                disabled={!selectedRestaurants.length}
               >
                 SUBMIT YOUR VOTES
               </button>
-
               <button
                 type="button"
                 className="button is-warning is-centered is-large"
@@ -113,8 +122,30 @@ class RestaurantSuggestions extends Component {
               </button>
             </div>
           </div>
-        </article>
-      </div>
+        )}
+        {!showPoll && !!poll.responses.length && (
+          <div className="message-body">
+            <h2 className="is-size-4 is-inline has-text-weight-semibold ">
+              You voted for:{' '}
+            </h2>
+            <p className="content is-medium is-inline">
+              {poll.responses
+                .find((response) => response.userId === user.id)
+                .selections.map((selection) => selection.name)
+                .join(', ')}
+            </p>
+            <div className="buttons  container is-centered">
+              <button
+                type="button"
+                className="button is-warning is-centered is-medium mt-4 "
+                onClick={() => this.setState({showPoll: true})}
+              >
+                Change Your Vote
+              </button>
+            </div>
+          </div>
+        )}
+      </article>
     )
   }
 }

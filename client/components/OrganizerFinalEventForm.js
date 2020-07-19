@@ -40,45 +40,48 @@ class OrganizerFinalEventForm extends Component {
 
     const selectedPlaceId = this.state.placeId
     return (
-      <div className="container mt-6 mb-6 ml-6 has-padding-5">
-        <h1 className="is-centered"> Make a final decision for your event!</h1>
+      <article className="tile is-child message is-info">
+        <div className="message-header">Finalize Event</div>
+        <div className="message-body">
+          <h1 className="is-centered">Make a final decision for your event!</h1>
 
-        <div className="select mt-4 mb-4">
-          <select
-            name="placeId"
-            onChange={this.handleChange}
-            defaultValue="display"
-            required
-          >
-            <option value="display" disabled>
-              Pick a Restaurant
-            </option>
-            {suggestionsPoll.options.map((place) => {
-              return (
-                <option key={place.place_id} value={place.place_id}>
-                  {place.name}
-                </option>
-              )
-            })}
-          </select>
-        </div>
-
-        <div className="buttons">
-          {selectedPlaceId === '' ? (
-            <button type="button" className="button is-primary" disabled>
-              Finalize Event
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="button is-primary"
-              onClick={this.handleSubmit}
+          <div className="select mt-4 mb-4">
+            <select
+              name="placeId"
+              onChange={this.handleChange}
+              defaultValue="display"
+              required
             >
-              Finalize Event
-            </button>
-          )}
+              <option value="display" disabled>
+                Pick a Restaurant
+              </option>
+              {suggestionsPoll.options.map((place) => {
+                return (
+                  <option key={place.place_id} value={place.place_id}>
+                    {place.name}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+
+          <div className="buttons">
+            {selectedPlaceId === '' ? (
+              <button type="button" className="button is-primary" disabled>
+                Finalize Event
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="button is-primary"
+                onClick={this.handleSubmit}
+              >
+                Finalize Event
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      </article>
     )
   }
 }

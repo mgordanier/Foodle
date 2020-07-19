@@ -44,13 +44,13 @@ class EventConfirmation extends Component {
         <div className="buttons">
           <button
             type="button"
-            className="button is-info is-large is-fullwidth"
+            className="button is-dark is-large is-fullwidth"
           >
             E-mail your friends
           </button>
         </div>
         <div className="buttons">
-          <Link to="/home" className="button is-info is-large is-fullwidth">
+          <Link to="/home" className="button is-dark is-large is-fullwidth">
             Go to your events
           </Link>
         </div>

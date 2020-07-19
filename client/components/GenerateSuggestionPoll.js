@@ -8,9 +8,6 @@ import {tallyVotes, selectMostVoted} from '../pollOptions/pollUtils'
 class GenerateSuggestionPoll extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   generateButtonClicked: false,
-    // }
 
     this.generateSuggestionsPoll = this.generateSuggestionsPoll.bind(this)
   }
@@ -51,38 +48,48 @@ class GenerateSuggestionPoll extends Component {
       : 'Get Restaurant Suggestions'
 
     return (
-      <div>
-        {user.id === event.organizerId ? (
-          <div>
-            <div className="buttons container is-centered">
-              {loading ? (
-                <button
-                  type="button"
-                  className="button is-info is-centered is-medium mt-4 is-loading"
-                  onClick={this.generateSuggestionsPoll}
-                  disabled
-                >
-                  {displayName}
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="button is-info is-centered is-large mt-4"
-                  onClick={this.generateSuggestionsPoll}
-                >
-                  {displayName}
-                </button>
-              )}
-            </div>
-            <div className="columns is-centered">
-              <p className="is-warning">
-                Warning: generating new suggestions this will clear the previous
-                poll and votes.
+      <article className="tile is-child message is-info">
+        <div className="message-header">
+          <p>Generate New Poll</p>
+        </div>
+        <div className="message-body">
+          {suggestionsPoll ? (
+            <div className="has-text-centered">
+              <p className="pb-2">
+                Don’t like these restaurant options? You can generate new ones!
+              </p>
+              <p>
+                This will clear the current poll and start fresh with new
+                options.
               </p>
             </div>
+          ) : (
+            <div className="has-text-centered">
+              <p>Click to create a poll with restaurant suggestions.</p>
+            </div>
+          )}
+          <div className="buttons container is-centered">
+            {loading ? (
+              <button
+                type="button"
+                className="button is-info is-centered mt-4 is-loading"
+                onClick={this.generateSuggestionsPoll}
+                disabled
+              >
+                {displayName}
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="button is-info is-centered mt-4"
+                onClick={this.generateSuggestionsPoll}
+              >
+                {displayName}
+              </button>
+            )}
           </div>
-        ) : null}
-      </div>
+        </div>
+      </article>
     )
   }
 }

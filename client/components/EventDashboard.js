@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
@@ -6,14 +8,10 @@ import {fetchPollsByEvent} from '../store/poll'
 import {
   RestaurantSuggestions,
   PieChartData,
-  OrganizerEventOptions,
+  EventDetails,
+  OrganizerFinalEventForm,
+  GenerateSuggestionPoll,
 } from './index'
-import {flatActivity, flatLocation} from '../pollOptions/pollUtils'
-
-// if there is a suggestions poll, then we need allRestaurants in the store
-// to be populated with the google API details from the 3 restos in
-// the poll options
-// OR those detail have to be saved inside the poll optionsnp
 
 class EventDashboard extends Component {
   constructor(props) {
@@ -29,17 +27,7 @@ class EventDashboard extends Component {
 
   render() {
     const {event, polls, user} = this.props
-    if (!event || !event.id || !polls) return null
-
-    let {neighborhood, time, name, activitySubtype} = event
-    time = new Date(time)
-    const date = time.toLocaleDateString()
-    const hour = time.toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    })
-    const location = flatLocation[neighborhood].displayName
-    const cuisine = flatActivity[activitySubtype].displayName
+    if (!event || !event.id) return null
 
     const somePollsHaveReponses = polls.some((poll) => poll.responses.length)
     const suggestionsPoll = polls
@@ -49,51 +37,37 @@ class EventDashboard extends Component {
     return (
       <section className="section">
         <div className="container">
-          <h1 className="title">{name}</h1>
-
-          <article className="message is-primary">
-            <div className="message-header is-centered">
-              <p>Event Details </p>
+          <h1 className="title pb-4">{event.name}</h1>
+          {user.id === event.organizerId && suggestionsPoll ? (
+            <div className="tile is-ancestor">
+              <div className="tile is-parent">
+                <EventDetails />
+              </div>
+              <div className="tile is-parent">
+                <OrganizerFinalEventForm
+                  suggestionsPoll={suggestionsPoll}
+                  urlKey={event.urlKey}
+                  event={event}
+                />
+              </div>
             </div>
-            <div className="message-body">
-              <p className="my-2">
-                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-                  Date
-                </span>{' '}
-                {date}
-              </p>
-              <p className="my-2">
-                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-                  Time
-                </span>{' '}
-                {hour}
-              </p>
-              <p className="my-2">
-                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-                  Location
-                </span>{' '}
-                near {location}
-              </p>
-              <p className="my-2">
-                <span className="has-text-weight-semibold has-background-primary has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
-                  Cuisine
-                </span>{' '}
-                {cuisine}
-              </p>
+          ) : (
+            <div className="tile is-ancestor">
+              <div className="tile is-parent is-vertical">
+                <EventDetails />
+              </div>
             </div>
-          </article>
+          )}
 
-          <div className="mt-6">
-            {somePollsHaveReponses ? (
-              <PieChartData polls={this.props.polls} />
-            ) : null}
-          </div>
-          {suggestionsPoll ? <RestaurantSuggestions /> : null}
-          {user.id === event.organizerId ? <OrganizerEventOptions /> : null}
+          <div className="tile is-ancestor">
+            <div className="tile is-parent is-vertical">
+              {somePollsHaveReponses && (
+                <PieChartData polls={this.props.polls} />
+              )}
 
-          <div>
-            {user.id === event.organizerId ? (
-              <div>
+              {suggestionsPoll && <RestaurantSuggestions />}
+              {user.id === event.organizerId && <GenerateSuggestionPoll />}
+              {user.id === event.organizerId && (
                 <button
                   type="button"
                   className="button is-large is-danger"
@@ -101,8 +75,8 @@ class EventDashboard extends Component {
                 >
                   Delete Event
                 </button>
-              </div>
-            ) : null}
+              )}
+            </div>
           </div>
         </div>
       </section>
