@@ -8,6 +8,7 @@ import {
   Signup,
   PieChartData,
   UserHome,
+  AboutFoodle,
   RestaurantSuggestions,
   InputPollForm,
   UserDashboard,
@@ -35,9 +36,9 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-
+        <Route path="/aboutFoodle" component={AboutFoodle} />
         <Route path="/inputpollform" component={InputPollForm} />
-        <Route path="/invitelink" component={InviteLink} />
+        <Route path="/invitelink/:urlKey" component={InviteLink} />
         <Route path="/suggestions" component={RestaurantSuggestions} />
         <Route path="/newevent" component={CreateEventForm} />
         <Route exact path="/event/:urlKey" component={EventDashboard} />

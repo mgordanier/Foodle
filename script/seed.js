@@ -43,7 +43,7 @@ async function createEvents() {
     time: new Date('2020-07-24 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'thai',
-    city: 'new+york',
+    city: 'new+york+city',
     neighborhood: 'midtown',
     urlKey: 'cbug6n45dd7s9o45kzz4i9',
   }
@@ -52,7 +52,7 @@ async function createEvents() {
     time: new Date('2020-07-29 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'pizza',
-    city: 'new+york',
+    city: 'new+york+city',
     neighborhood: 'soho',
     urlKey: 'c70evaiduqimyqd4vzjjl8',
   }
@@ -61,7 +61,7 @@ async function createEvents() {
     time: new Date('2020-07-07 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'mexican',
-    city: 'new+york',
+    city: 'new+york+city',
     neighborhood: 'tribeca',
     urlKey: 'sdf82ncgn3456nidyigvi2',
     googlePlacesInfo: mexicanRestaurant1,

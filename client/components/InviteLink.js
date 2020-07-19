@@ -3,21 +3,21 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 const InviteLink = (props) => {
-  const urlKey = props.event.urlKey
+  const urlKey = props.match.params.urlKey
   return (
     <section className="section">
       <div className="hero-body">
         <div className="columns is-centered">
-          <div className="column is-half">
+          <div className="column ">
             <article className="message is-primary">
               <div className="message-header">
                 <p>Copy and paste your event link</p>
               </div>
-              <Link to={`/event/${urlKey}`}>
-                <div className="message-body">
+              <div className="message-body message-break">
+                <Link to={`/event/${urlKey}`}>
                   {`http://www.foodle.com/event/${urlKey}`}
-                </div>
-              </Link>
+                </Link>
+              </div>
             </article>
 
             <section className="section">
@@ -27,7 +27,7 @@ const InviteLink = (props) => {
             </section>
 
             <div className="buttons">
-              <button className="button is-link is-large is-fullwidth">
+              <button className="button is-info is-large is-fullwidth">
                 E-mail your friends
               </button>
             </div>

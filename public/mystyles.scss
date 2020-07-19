@@ -5,8 +5,7 @@
 $pink: #ffece5;
 $teal: #067a7a;
 $primary: $pink;
-$info: $teal;
-$dark: $turquoise;
+$dark: $teal;
 $warning: #fff6cb;
 
 @import '../node_modules/bulma/sass/utilities/functions';
@@ -44,6 +43,10 @@ $warning: #fff6cb;
   }
 }
 
+.height {
+  height: 100vh;
+}
+
 div.tooltip-donut {
   position: absolute;
   text-align: center;
@@ -64,6 +67,83 @@ div.tooltip-donut {
   padding-left: 100px;
 }
 
+.bullet {
+  font-size: 24px;
+}
+
+.nav-padding {
+  padding: 15px;
+}
+
+.foodle-padding {
+  padding-top: 100px;
+  font-size: 40px;
+}
+
+.logotype {
+  max-width: 375px;
+}
+
+.text-padding {
+  padding: 100px;
+  font-size: 24px;
+}
+
+.font-family {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.message-break {
+  word-wrap: break-word;
+}
+
+.aboutpadding {
+  padding: 25px;
+}
+
+.aboutparagraph {
+  padding-top: 20px;
+}
+
+.aboutmargin {
+  margin-top: 60px;
+}
+
+.linkedin {
+  height: 25px;
+  width: auto;
+  padding-right: 10px;
+}
+
+.linkedinlogo {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.border {
+  border-top: white 2px solid;
+}
+
+.padding-bottom {
+  padding-bottom: 50px;
+}
+
+@media (max-width: 770px) {
+  .pink-image {
+    display: none;
+  }
+
+  .logopadding {
+    padding-top: 16px;
+  }
+
+  .logotype {
+    max-width: 280px;
+    padding-top: 12px;
+  }
+}
+
 @media (max-width: 530px) {
   .circle-legend {
     display: none;
@@ -78,30 +158,17 @@ div.tooltip-donut {
   }
 }
 
-.bullet {
-  font-size: 24px;
+@media (max-width: 1030px) {
+  .bpadding {
+    padding: 40px;
+  }
 }
 
-.nav-padding {
-  padding: 15px;
-}
+.background-hero-image {
+  background: center / cover no-repeat url('/foodlecolorful.png');
+  height: calc(100vh - 100px);
 
-.foodle-padding {
-  padding-top: 100px;
-  font-size: 45px;
-}
-
-.text-padding {
-  padding: 100px;
-  font-size: 24px;
-}
-
-.font-family {
-  font-family: 'Montserrat', sans-serif;
-}
-
-@media (max-width: 375px) {
-  .pink-image {
-    display: none;
+  @media (max-width: 530px) {
+    background-image: none;
   }
 }
