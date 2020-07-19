@@ -50,7 +50,7 @@ class EventConfirmation extends Component {
           </button>
         </div>
         <div className="buttons">
-          <Link to="/home" className="button is-dark is-large is-fullwidth">
+          <Link to="/home" className="button is-warning is-large is-fullwidth">
             Go to your events
           </Link>
         </div>

@@ -40,10 +40,12 @@ class EventCard extends React.Component {
             <p className="py-1 is-inline">
               {date} {hour}
             </p>
+            <p></p>
             <p className="py-1 is-inline has-text-weight-semibold">
               Location:{' '}
             </p>
             <p className="py-1 is-inline">{location}</p>
+            <p></p>
             <p className="py-1 is-inline has-text-weight-semibold">
               Restaurant:{' '}
             </p>

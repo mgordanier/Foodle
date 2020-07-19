@@ -17,6 +17,7 @@ class RestaurantSuggestions extends Component {
     }
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.voteRestaurant = this.voteRestaurant.bind(this)
+    this.voteNoneOfThese = this.voteNoneOfThese.bind(this)
   }
   componentDidMount() {
     // run one time, when poll and user are first mapped to props from the redux store
@@ -59,6 +60,13 @@ class RestaurantSuggestions extends Component {
     )
     // WE NEED TO UNCHECK ALL THE CHECK BOXES AFTER SOMEONE VOTES
     this.setState({selectedRestaurants: [], showPoll: false})
+  }
+
+  voteNoneOfThese() {
+    this.props.addOrUpdateResponse(this.props.event.id, this.props.poll.id, [
+      {name: 'None Of These'},
+    ])
+    this.setState({selectedRestaurants: []})
   }
 
   render() {
@@ -110,13 +118,7 @@ class RestaurantSuggestions extends Component {
               <button
                 type="button"
                 className="button is-warning is-centered is-large"
-                onClick={() =>
-                  this.props.addOrUpdateResponse(event.id, poll.id, [
-                    {
-                      name: 'None Of These',
-                    },
-                  ])
-                }
+                onClick={() => this.voteNoneOfThese()}
               >
                 NONE OF THESE
               </button>

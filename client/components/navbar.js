@@ -24,7 +24,9 @@ function Navbar({handleClick, isLoggedIn}) {
 
         <a
           role="button"
-          className={`navbar-burger burger ${burgerState ? 'is-active' : ''}`}
+          className={`navbar-burger burger bpadding ${
+            burgerState ? 'is-active' : ''
+          }`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-menu"

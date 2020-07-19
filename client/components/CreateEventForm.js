@@ -12,6 +12,7 @@ class CreateEventForm extends React.Component {
       name: '',
       neighborhood: '',
       time: '',
+      date: '',
       activitySubtype: '',
       // initialDueDate: '',
       openManhattan: false,
@@ -65,10 +66,12 @@ class CreateEventForm extends React.Component {
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15)
 
+    const date = new Date(this.state.date + 'T' + this.state.time)
     let newEvent = {
       name: this.state.name,
       neighborhood: this.state.neighborhood,
-      time: this.state.time,
+      time: date,
+      // date: this.state.date,
       activitySubtype: this.state.activitySubtype,
       // initialDueDate: this.state.initialDueDate,
       urlKey: urlKey,
@@ -125,14 +128,13 @@ class CreateEventForm extends React.Component {
               />
             </div>
           </div>
-
-          {/* <div className="field my-6">
-            <label className="title is-5">Poll Due Date</label>
+          <div className="field my-6">
+            <label className="title is-5">Event Date</label>
             <div className="control mt-3">
               <input
                 className="input"
-                name="initialDueDate"
-                type="datetime-local"
+                name="date"
+                type="date"
                 data-display-mode="inline"
                 data-is-range="true"
                 data-close-on-select="false"
@@ -140,15 +142,14 @@ class CreateEventForm extends React.Component {
                 required
               />
             </div>
-          </div> */}
-
+          </div>{' '}
           <div className="field my-6">
-            <label className="title is-5">Event Date & Time</label>
+            <label className="title is-5">Event Time</label>
             <div className="control mt-3">
               <input
                 className="input"
                 name="time"
-                type="datetime-local"
+                type="time"
                 data-display-mode="inline"
                 data-is-range="true"
                 data-close-on-select="false"
@@ -157,7 +158,6 @@ class CreateEventForm extends React.Component {
               />
             </div>
           </div>
-
           <div className="field my-6">
             <label className="title is-5">Pick a Neighborhood</label>
             <div className="control mt-3">
@@ -292,7 +292,6 @@ class CreateEventForm extends React.Component {
               ) : null}
             </div>
           </div>
-
           <div className="field my-6">
             <label className="title is-5">Pick a Category</label>
             <div className="control grid mt-3">
@@ -310,7 +309,6 @@ class CreateEventForm extends React.Component {
               ))}
             </div>
           </div>
-
           <button
             type="submit"
             className="button is-dark is-centered is-large my-5"

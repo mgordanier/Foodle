@@ -17625,21 +17625,6 @@ div.tooltip-donut {
   padding-left: 100px;
 }
 
-@media (max-width: 530px) {
-  .circle-legend {
-    display: none;
-  }
-  .circle-legend--mobile {
-    display: block;
-  }
-  .pie-container {
-    padding-left: 85px;
-  }
-  .message-break {
-    overflow-wrap: anywhere;
-  }
-}
-
 .bullet {
   font-size: 24px;
 }
@@ -17666,11 +17651,37 @@ div.tooltip-donut {
   font-family: 'Montserrat', sans-serif;
 }
 
+.message-break {
+  word-wrap: break-word;
+}
+
 @media (max-width: 770px) {
   .pink-image {
     display: none;
   }
-  .message-break {
-    overflow-wrap: anywhere;
+  .logopadding {
+    padding-top: 16px;
+  }
+  .logotype {
+    max-width: 280px;
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 530px) {
+  .circle-legend {
+    display: none;
+  }
+  .circle-legend--mobile {
+    display: block;
+  }
+  .pie-container {
+    padding-left: 85px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .bpadding {
+    padding: 40px;
   }
 }

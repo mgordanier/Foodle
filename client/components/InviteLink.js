@@ -13,11 +13,11 @@ const InviteLink = (props) => {
               <div className="message-header">
                 <p>Copy and paste your event link</p>
               </div>
-              <Link to={`/event/${urlKey}`}>
-                <div className="message-body message-break">
+              <div className="message-body message-break">
+                <Link to={`/event/${urlKey}`}>
                   {`http://www.foodle.com/event/${urlKey}`}
-                </div>
-              </Link>
+                </Link>
+              </div>
             </article>
 
             <section className="section">

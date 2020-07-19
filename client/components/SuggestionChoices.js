@@ -42,18 +42,6 @@ export class SuggestionChoices extends Component {
 
     return (
       <div className="card cursor">
-        {/* <div className="card-image">
-          <figure className="image is-4by3">
-            <img
-              src="/corgi.jpg"
-              alt="Placeholder image"
-              className="cursor"
-              onClick={() => {
-                this.toggleModal()
-              }}
-            />
-          </figure>
-        </div> */}
         <div className="card-content">
           <div className="media">
             <div className="media-content">
