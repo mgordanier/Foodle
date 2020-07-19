@@ -17605,6 +17605,10 @@ a.navbar-item.is-active,
   }
 }
 
+.height {
+  height: 100vh;
+}
+
 div.tooltip-donut {
   position: absolute;
   text-align: center;
@@ -17655,6 +17659,38 @@ div.tooltip-donut {
   word-wrap: break-word;
 }
 
+.aboutpadding {
+  padding: 25px;
+}
+
+.aboutparagraph {
+  padding-top: 20px;
+}
+
+.aboutmargin {
+  margin-top: 60px;
+}
+
+.linkedin {
+  height: 25px;
+  width: auto;
+  padding-right: 10px;
+}
+
+.linkedinlogo {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.border {
+  border-top: white 2px solid;
+}
+
+.padding-bottom {
+  padding-bottom: 50px;
+}
+
 @media (max-width: 770px) {
   .pink-image {
     display: none;
@@ -17683,5 +17719,15 @@ div.tooltip-donut {
 @media (max-width: 1030px) {
   .bpadding {
     padding: 40px;
+  }
+}
+
+.background-hero-image {
+  background: center/cover no-repeat url('/foodlecolorful.png');
+  height: calc(100vh - 100px);
+}
+@media (max-width: 530px) {
+  .background-hero-image {
+    background-image: none;
   }
 }
