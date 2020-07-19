@@ -38,7 +38,7 @@ class Home extends Component {
         </div>
 
         <div className="column pink-image">
-          <img src="/pinkfoodpartial.png"></img>
+          <img src="/Foodlecolorful.png"></img>
         </div>
       </div>
     )

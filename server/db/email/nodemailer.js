@@ -21,7 +21,7 @@ function Main(to, testEvent) {
     from: '"FOODLE TEAM" <friedyang122@hotmail.com>',
     to: 'yg2349@gmail.com',
     subject: 'HELLO FROM FOODLE',
-    text: 'That was easy!',
+    text: 'Event Confirmed!',
     html: generateEmail(testEvent),
   }
 
@@ -34,7 +34,7 @@ function Main(to, testEvent) {
   })
 }
 
-const generateEmail = (testEvent) => html`<!DOCTYPE html>
+const generateEmail = (event) => html`<!DOCTYPE html>
   <html>
     <h1>Event Created!</h1>
     <h2>Your event is happening at ${event.googlePlacesId}</h2>

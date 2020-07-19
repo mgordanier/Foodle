@@ -40,7 +40,7 @@ class OrganizerFinalEventForm extends Component {
 
     const selectedPlaceId = this.state.placeId
     return (
-      <article className="tile is-child message is-info">
+      <article className="tile is-child message is-dark">
         <div className="message-header">Finalize Event</div>
         <div className="message-body">
           <h1 className="is-centered">Make a final decision for your event!</h1>

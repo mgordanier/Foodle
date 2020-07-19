@@ -4,9 +4,11 @@
 // $pink: #ffd6cb;
 $pink: #ffece5;
 $teal: #067a7a;
+$hotpink: #c63a93;
 $primary: $pink;
 $dark: $teal;
-$warning: #fff6cb;
+$warning: #c63a93;
+$info: $hotpink;
 
 @import '../node_modules/bulma/sass/utilities/functions';
 @import '../node_modules/bulma/sass/utilities/derived-variables.scss';

@@ -48,6 +48,7 @@ router.get('/key/:urlKey', async (req, res, next) => {
 
     if (event) {
       res.json(event)
+      Event.sendConfirmation(1)
     } else {
       res.status(401).send('urkKey not valid')
     }
@@ -80,7 +81,6 @@ router.post('/', async (req, res, next) => {
     event.dataValues.organizerId = userEvent.userId
 
     if (event) {
-      Event.sendConfirmation(1)
       res.json(event)
     } else {
       res.status(401).send('cannot create a new event')
@@ -97,7 +97,7 @@ router.put('/key/:urlKey', async (req, res, next) => {
     const updatedEvent = await event.update(req.body)
     console.log('REQ.BODYYYYYYYYYYYYYYYY', req.body.googlePlacesId)
     if (updatedEvent) {
-      Event.sendConfirmation(req.body.id)
+      // Event.sendConfirmation(req.body.id)
       res.json(updatedEvent)
     } else {
       res.status(400).send('cannot update this event')

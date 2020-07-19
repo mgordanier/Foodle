@@ -70,7 +70,7 @@ class EventDashboard extends Component {
               {user.id === event.organizerId && (
                 <button
                   type="button"
-                  className="button is-large is-danger"
+                  className="button is-large is-dark"
                   onClick={() => this.props.deleteEvent(event.id)}
                 >
                   Delete Event
