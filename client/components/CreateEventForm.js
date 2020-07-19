@@ -12,8 +12,9 @@ class CreateEventForm extends React.Component {
       name: '',
       neighborhood: '',
       time: '',
+      date: '',
       activitySubtype: '',
-      initialDueDate: '',
+      // initialDueDate: '',
       openManhattan: false,
       openBrooklyn: false,
       openQueens: false,
@@ -65,12 +66,14 @@ class CreateEventForm extends React.Component {
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15)
 
+    const date = new Date(this.state.date + 'T' + this.state.time)
     let newEvent = {
       name: this.state.name,
       neighborhood: this.state.neighborhood,
-      time: this.state.time,
+      time: date,
+      // date: this.state.date,
       activitySubtype: this.state.activitySubtype,
-      initialDueDate: this.state.initialDueDate,
+      // initialDueDate: this.state.initialDueDate,
       urlKey: urlKey,
     }
 
@@ -78,7 +81,7 @@ class CreateEventForm extends React.Component {
     console.log('newEvent', newEvent)
 
     this.props.history.push({
-      pathname: `/invitelink`,
+      pathname: `/invitelink/${urlKey}`,
     })
   }
 
@@ -125,14 +128,13 @@ class CreateEventForm extends React.Component {
               />
             </div>
           </div>
-
           <div className="field my-6">
-            <label className="title is-5">Poll Due Date</label>
+            <label className="title is-5">Event Date</label>
             <div className="control mt-3">
               <input
                 className="input"
-                name="initialDueDate"
-                type="datetime-local"
+                name="date"
+                type="date"
                 data-display-mode="inline"
                 data-is-range="true"
                 data-close-on-select="false"
@@ -140,15 +142,14 @@ class CreateEventForm extends React.Component {
                 required
               />
             </div>
-          </div>
-
+          </div>{' '}
           <div className="field my-6">
-            <label className="title is-5">Event Date & Time</label>
+            <label className="title is-5">Event Time</label>
             <div className="control mt-3">
               <input
                 className="input"
                 name="time"
-                type="datetime-local"
+                type="time"
                 data-display-mode="inline"
                 data-is-range="true"
                 data-close-on-select="false"
@@ -157,7 +158,6 @@ class CreateEventForm extends React.Component {
               />
             </div>
           </div>
-
           <div className="field my-6">
             <label className="title is-5">Pick a Neighborhood</label>
             <div className="control mt-3">
@@ -166,7 +166,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold "
                 onClick={this.toggleManhattan}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Manhattan
                 </span>
               </h5>
@@ -192,7 +192,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleBrooklyn}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Brooklyn
                 </span>
               </h5>
@@ -218,7 +218,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleQueens}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Queens
                 </span>
               </h5>
@@ -244,7 +244,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleBronx}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Bronx
                 </span>
               </h5>
@@ -270,7 +270,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleStatenIsland}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Staten Island
                 </span>
               </h5>
@@ -292,7 +292,6 @@ class CreateEventForm extends React.Component {
               ) : null}
             </div>
           </div>
-
           <div className="field my-6">
             <label className="title is-5">Pick a Category</label>
             <div className="control grid mt-3">
@@ -310,8 +309,10 @@ class CreateEventForm extends React.Component {
               ))}
             </div>
           </div>
-
-          <button className="button is-info is-centered is-large my-5">
+          <button
+            type="submit"
+            className="button is-dark is-centered is-large my-5"
+          >
             Create Event
           </button>
         </form>

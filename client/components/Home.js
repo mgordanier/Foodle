@@ -4,20 +4,41 @@ import {Link} from 'react-router-dom'
 class Home extends Component {
   render() {
     return (
-      <div>
-        <img src="/FOODLEHOME4.png" className="home-image" />
-        {/* <h2 className="subtitle">
-            Create and plan an event with friends
-          </h2> */}
-        <div className="hero-content is-centered">
-          <Link to="/home">
-            <button
-              type="button"
-              className="button button-color is-large is-centered ml-12"
-            >
-              Get Started
-            </button>
-          </Link>
+      <div className="columns is-gapless">
+        <div className="column has-background-dark">
+          <div className="container">
+            <div className="column is-centered is-vcentered is-mobile">
+              <div className="column is-narrow has-text-centered">
+                <h1 className="title has-text-primary foodle-padding font-family">
+                  POLLING MADE EASY
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="column is-centered is-vcentered is-mobile">
+              <div className="column is-narrow has-text-centered">
+                <Link to="/home">
+                  <button type="button" className="button is-primary is-large">
+                    Get Started
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="column is-centered is-vcentered is-mobile">
+            <div className="column is-narrow has-text-centered">
+              <h1 className="has-text-primary text-padding font-family">
+                FOR INDECISIVE FOODLERS
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="column pink-image">
+          <img src="/pinkfoodpartial.png"></img>
         </div>
       </div>
     )

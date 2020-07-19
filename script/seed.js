@@ -17,13 +17,14 @@ const {
 async function createUsers() {
   const user1 = {name: 'Mary', email: 'mary@email.com', password: '123'}
   const user2 = {
-    name: 'Jennifer',
-    email: 'jennifer@email.com',
+    name: 'Jamily',
+    email: 'jamily@email.com',
     password: '123',
   }
   const user3 = {name: 'Yang', email: 'yang@email.com', password: '123'}
   const user4 = {name: 'Lilly', email: 'lilly@email.com', password: '123'}
-  const user5 = {name: 'foodle', email: 'foodle@email.com', password: '123'}
+  const user5 = {name: 'jennifer', email: 'jennifer@email.com', password: '123'}
+  const user6 = {name: 'foodle', email: 'foodle@email.com', password: '123'}
 
   const users = await Promise.all([
     User.create(user1),
@@ -31,6 +32,7 @@ async function createUsers() {
     User.create(user3),
     User.create(user4),
     User.create(user5),
+    User.create(user6),
   ])
 
   console.log(`seeded ${users.length} users`)
@@ -41,7 +43,7 @@ async function createEvents() {
     time: new Date('2020-07-24 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'thai',
-    city: 'new+york',
+    city: 'new+york+city',
     neighborhood: 'midtown',
     urlKey: 'cbug6n45dd7s9o45kzz4i9',
   }
@@ -50,7 +52,7 @@ async function createEvents() {
     time: new Date('2020-07-29 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'pizza',
-    city: 'new+york',
+    city: 'new+york+city',
     neighborhood: 'soho',
     urlKey: 'c70evaiduqimyqd4vzjjl8',
   }
@@ -59,7 +61,7 @@ async function createEvents() {
     time: new Date('2020-07-07 18:00'),
     activityType: 'restaurant',
     activitySubtype: 'mexican',
-    city: 'new+york',
+    city: 'new+york+city',
     neighborhood: 'tribeca',
     urlKey: 'sdf82ncgn3456nidyigvi2',
     googlePlacesInfo: mexicanRestaurant1,

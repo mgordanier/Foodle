@@ -6,6 +6,8 @@ module.exports = router
 // get upcoming events for the user
 router.get('/', async (req, res, next) => {
   try {
+    // const user = User.findByPk(req.user.id)
+    // const events = user.getUserEvents({where: {userId: req.user.id}})
     const events = await Event.findAll({
       include: [
         {
@@ -29,15 +31,21 @@ router.get('/', async (req, res, next) => {
 // get one event by urlKey
 router.get('/key/:urlKey', async (req, res, next) => {
   try {
+    //find one event by urlKey
     const event = await Event.findOne({
       where: {
         urlKey: req.params.urlKey,
       },
     })
+    // add organizerId field
     const userEvent = await UserEvent.findOne({
       where: {eventId: event.id, isOrganizer: true},
     })
     event.dataValues.organizerId = userEvent.userId
+    //add all users associate with this event
+    const users = await event.getUsers()
+    event.dataValues.users = users
+
     if (event) {
       res.json(event)
     } else {
@@ -51,11 +59,14 @@ router.get('/key/:urlKey', async (req, res, next) => {
 // Create an event as a user
 router.post('/', async (req, res, next) => {
   try {
+    const initialDueDate = req.body.initialDueDate
+      ? req.body.initialDueDate
+      : null
     const event = await Event.create({
       name: req.body.name,
       neighborhood: req.body.neighborhood,
       time: req.body.time,
-      initialDueDate: req.body.initialDueDate,
+      initialDueDate,
       activitySubtype: req.body.activitySubtype,
       urlKey: req.body.urlKey,
     })
@@ -224,3 +235,32 @@ router.get(
     }
   }
 )
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    console.log('ROUTE', req.params.id)
+    await Event.destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+    const poll = await Poll.findOne({
+      where: {
+        eventId: req.params.id,
+      },
+    })
+    if (poll) {
+      const responses = await Response.findAll({
+        where: {
+          pollId: poll.id,
+        },
+      })
+      await responses.destroy()
+    } else {
+      console.log('No Polls associated with event')
+    }
+    res.json(204)
+  } catch (error) {
+    next(error)
+  }
+})

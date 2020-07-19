@@ -39,7 +39,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
 
         <Route path="/inputpollform" component={InputPollForm} />
-        <Route path="/invitelink" component={InviteLink} />
+        <Route path="/invitelink/:urlKey" component={InviteLink} />
         <Route path="/suggestions" component={RestaurantSuggestions} />
         <Route path="/newevent" component={CreateEventForm} />
         <Route exact path="/event/:urlKey" component={EventDashboard} />

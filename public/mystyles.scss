@@ -1,47 +1,12 @@
 @charset "utf-8";
 @import '../node_modules/bulma/sass/utilities/initial-variables';
 
-$pink: #ffb3b3;
-$coral: #ffd3b5;
-
+// $pink: #ffd6cb;
+$pink: #ffece5;
+$teal: #067a7a;
 $primary: $pink;
-
-//THEME1
-$lighgreen2: #a8e6ce;
-$lightgreen1: #dcedc2;
-$coral: #ffd3b5;
-$lightpink: #ffaaa6;
-$darkpink: #ff8c94;
-
-//THEME2
-$darknavy: #355c7d;
-$plum: #6c5b7b;
-$redbean: #c06c84;
-$lipstick: #f67280;
-$coral2: #f8b195;
-
-//THEME3
-$theme3blue: #b5d3e7;
-$beige: #fdf6e3;
-$hotpink: #ff69b4;
-$frenchblue: #0072bb;
-$coralpink: #f88379;
-
-//THEME4
-$beigeagain: #f8dac5;
-$theme4pink: #ea9a96;
-$theme4orange: #e75a48;
-$theme4yellow: #ffb034;
-
-//THEME5
-$theme5blue: #41436a;
-$theme5plum: #984063;
-$theme5pink: #f64668;
-$theme5blue: #fe9677;
-
-.class-test {
-  color: $pink;
-}
+$dark: $teal;
+$warning: #fff6cb;
 
 @import '../node_modules/bulma/sass/utilities/functions';
 @import '../node_modules/bulma/sass/utilities/derived-variables.scss';
@@ -71,6 +36,13 @@ $theme5blue: #fe9677;
   grid-template-columns: repeat(5, 5fr);
 }
 
+@media only screen and (max-width: 800px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 div.tooltip-donut {
   position: absolute;
   text-align: center;
@@ -87,6 +59,55 @@ div.tooltip-donut {
   display: none;
 }
 
+.pie-container {
+  padding-left: 100px;
+}
+
+.bullet {
+  font-size: 24px;
+}
+
+.nav-padding {
+  padding: 15px;
+}
+
+.foodle-padding {
+  padding-top: 100px;
+  font-size: 40px;
+}
+
+.logotype {
+  max-width: 375px;
+}
+
+.text-padding {
+  padding: 100px;
+  font-size: 24px;
+}
+
+.font-family {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.message-break {
+  word-wrap: break-word;
+}
+
+@media (max-width: 770px) {
+  .pink-image {
+    display: none;
+  }
+
+  .logopadding {
+    padding-top: 16px;
+  }
+
+  .logotype {
+    max-width: 280px;
+    padding-top: 12px;
+  }
+}
+
 @media (max-width: 530px) {
   .circle-legend {
     display: none;
@@ -95,12 +116,14 @@ div.tooltip-donut {
   .circle-legend--mobile {
     display: block;
   }
+
+  .pie-container {
+    padding-left: 85px;
+  }
 }
 
-.bullet {
-  font-size: 24px;
-}
-
-.pie-container {
-  padding-left: 110px;
+@media (max-width: 1030px) {
+  .bpadding {
+    padding: 40px;
+  }
 }

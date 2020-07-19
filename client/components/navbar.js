@@ -16,15 +16,17 @@ function Navbar({handleClick, isLoggedIn}) {
   }
 
   return (
-    <nav className="navbar class-test">
+    <nav className="navbar is-primary nav-padding">
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          <h1 className="is-size-3 class-test">Foodle</h1>
+        <Link to="/">
+          <img className="logotype" src="/foodle.png"></img>
         </Link>
 
         <a
           role="button"
-          className={`navbar-burger burger ${burgerState ? 'is-active' : ''}`}
+          className={`navbar-burger burger bpadding ${
+            burgerState ? 'is-active' : ''
+          }`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-menu"

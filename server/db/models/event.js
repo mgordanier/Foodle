@@ -72,8 +72,17 @@ Event.beforeCreate(async (event) => {
   }
 })
 
+// Event.sendConfirmation = async function (id) {
+//   const event = await Event.findByPk(id)
+//   Main("yg2349@gmail.com", event)
+// }
+
 Event.sendConfirmation = async function (id) {
-  const event = await Event.findByPk(id)
+  const event = await Event.findOne({
+    where: {
+      urlKey: event.urlKey,
+    },
+  })
   Main('yg2349@gmail.com', event)
 }
 module.exports = Event

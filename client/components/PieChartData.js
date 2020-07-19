@@ -25,23 +25,19 @@ export default function PieChartData(props) {
   const data = tallyVotes(pollResponsesArr)
 
   return (
-    <div>
-      <div>
-        <article className="message is-primary">
-          <div className="message-header is-centered">
-            <p>Current Results: </p>
-          </div>
-          <div className="message-body pie-container">
-            <Pie
-              data={data}
-              width={900}
-              height={450}
-              innerRadius={75}
-              outerRadius={225}
-            />
-          </div>
-        </article>
+    <article className="tile is-child message is-primary">
+      <div className="message-header is-centered">
+        <p>Current Results</p>
       </div>
-    </div>
+      <div className="message-body pie-container">
+        <Pie
+          data={data}
+          width={900}
+          height={450}
+          innerRadius={75}
+          outerRadius={225}
+        />
+      </div>
+    </article>
   )
 }
