@@ -24,7 +24,7 @@ export default {
     australian: {searchStr: 'australian', displayName: 'Australian'},
     austrian: {searchStr: 'austrian', displayName: 'Austrian'},
     bangladeshi: {searchStr: 'bangladeshi', displayName: 'Bangladeshi'},
-    bbq: {searchStr: 'bbq', displayName: 'Barbeque'},
+    barbeque: {searchStr: 'barbeque', displayName: 'Barbeque'},
     basque: {searchStr: 'basque', displayName: 'Basque'},
     belgian: {searchStr: 'belgian', displayName: 'Belgian'},
     brasseries: {searchStr: 'brasseries', displayName: 'Brasseries'},

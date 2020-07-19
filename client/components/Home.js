@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <div className="columns is-gapless">
-        <div className="column has-background-info">
+        <div className="column has-background-dark">
           <div className="container">
             <div className="column is-centered is-vcentered is-mobile">
               <div className="column is-narrow has-text-centered">

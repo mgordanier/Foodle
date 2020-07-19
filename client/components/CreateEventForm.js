@@ -13,7 +13,7 @@ class CreateEventForm extends React.Component {
       neighborhood: '',
       time: '',
       activitySubtype: '',
-      initialDueDate: '',
+      // initialDueDate: '',
       openManhattan: false,
       openBrooklyn: false,
       openQueens: false,
@@ -70,7 +70,7 @@ class CreateEventForm extends React.Component {
       neighborhood: this.state.neighborhood,
       time: this.state.time,
       activitySubtype: this.state.activitySubtype,
-      initialDueDate: this.state.initialDueDate,
+      // initialDueDate: this.state.initialDueDate,
       urlKey: urlKey,
     }
 
@@ -78,7 +78,7 @@ class CreateEventForm extends React.Component {
     console.log('newEvent', newEvent)
 
     this.props.history.push({
-      pathname: `/invitelink`,
+      pathname: `/invitelink/${urlKey}`,
     })
   }
 
@@ -126,7 +126,7 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <div className="field my-6">
+          {/* <div className="field my-6">
             <label className="title is-5">Poll Due Date</label>
             <div className="control mt-3">
               <input
@@ -140,7 +140,7 @@ class CreateEventForm extends React.Component {
                 required
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="field my-6">
             <label className="title is-5">Event Date & Time</label>
@@ -166,7 +166,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold "
                 onClick={this.toggleManhattan}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Manhattan
                 </span>
               </h5>
@@ -192,7 +192,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleBrooklyn}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Brooklyn
                 </span>
               </h5>
@@ -218,7 +218,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleQueens}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Queens
                 </span>
               </h5>
@@ -244,7 +244,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleBronx}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Bronx
                 </span>
               </h5>
@@ -270,7 +270,7 @@ class CreateEventForm extends React.Component {
                 className="mt-5 mb-3 has-text-weight-semibold"
                 onClick={this.toggleStatenIsland}
               >
-                <span className="has-text-weight-semibold has-background-info has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
+                <span className="has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3">
                   Staten Island
                 </span>
               </h5>
@@ -311,7 +311,10 @@ class CreateEventForm extends React.Component {
             </div>
           </div>
 
-          <button className="button is-info is-centered is-large my-5">
+          <button
+            type="submit"
+            className="button is-dark is-centered is-large my-5"
+          >
             Create Event
           </button>
         </form>
