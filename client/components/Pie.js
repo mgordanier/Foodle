@@ -15,7 +15,7 @@ const Pie = (props) => {
     .outerRadius(props.outerRadius)
 
   // const colors = d3.scaleOrdinal(d3.schemeSet2)
-  // green, pink, blue, orange
+  // green, blue, pink, orange
   const colors = d3
     .scaleOrdinal()
     .range(['#2EC4B6', '#6FAFEC', '#DD98D6', '#FBAC23'])
@@ -23,8 +23,9 @@ const Pie = (props) => {
 
   //when props.data changes, run createPie
   useEffect(() => {
-    //deleting previous legend
+    //deleting previous legend & tooltip
     d3.selectAll('.circle-legend').remove()
+    d3.selectAll('.tooltip-donut').remove()
 
     const data = createPie(props.data)
     const group = d3.select(ref.current)
@@ -118,7 +119,11 @@ const Pie = (props) => {
       .join('text')
       .attr('y', '-0.4em')
       .attr('font-weight', 'bold')
-    // .text((d) => `${d.data.type} (${d.data.value.toLocaleString()})`)
+
+    return () => {
+      //when componentUnMount, remove any tooltips
+      d3.selectAll('.tooltip-donut').remove()
+    }
   }, [props.data])
 
   return (

@@ -58,7 +58,7 @@ class EventConfirmation extends Component {
       <section className="section">
         <article className="message is-primary">
           <div className="message-header">
-            <h1>Your event is confirmed! </h1>
+            <p>Your event is confirmed! </p>
           </div>
           <div className="message-body">
             <p>

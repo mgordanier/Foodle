@@ -66,7 +66,7 @@ class RestaurantSuggestions extends Component {
     this.props.addOrUpdateResponse(this.props.event.id, this.props.poll.id, [
       {name: 'None Of These'},
     ])
-    this.setState({selectedRestaurants: []})
+    this.setState({selectedRestaurants: [], showPoll: false})
   }
 
   render() {
@@ -85,7 +85,7 @@ class RestaurantSuggestions extends Component {
             <h2 className="is-size-4 has-text-weight-semibold has-text-black">
               {userHasVoted ? 'Update your vote!' : 'Where do you want to eat?'}
             </h2>
-            <p className="content is-medium has-text-black">
+            <p className="has-text-black pt-2 pb-5">
               Select up to 3 choices to submit selected votes OR choose no
               preference
             </p>
@@ -106,7 +106,7 @@ class RestaurantSuggestions extends Component {
                 )
               })}
             </div>
-            <div className="buttons">
+            <div className="buttons pt-1 pb-3">
               <button
                 type="button"
                 className="button is-dark is-centered is-large"
@@ -117,7 +117,7 @@ class RestaurantSuggestions extends Component {
               </button>
               <button
                 type="button"
-                className="button is-danger is-centered is-large"
+                className="button is-success is-centered is-large"
                 onClick={() => this.voteNoneOfThese()}
               >
                 NONE OF THESE
@@ -136,7 +136,7 @@ class RestaurantSuggestions extends Component {
                 .selections.map((selection) => selection.name)
                 .join(', ')}
             </p>
-            <div className="buttons  container is-centered">
+            <div className="buttons pb-2 container is-centered">
               <button
                 type="button"
                 className="button is-success is-centered is-medium mt-4 "

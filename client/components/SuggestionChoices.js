@@ -29,11 +29,6 @@ export class SuggestionChoices extends Component {
   render() {
     const {restaurant} = this.props
 
-    // const restaurantPlace = `https://www.google.com/maps/search/?api=1&query=${restaurant.name.replace(
-    //   / /g,
-    //   '+'
-    // )}`
-
     const isChecked = !!this.props.selectedRestaurants.find(
       (selectedRestaurant) => {
         return selectedRestaurant.place_id === restaurant.place_id
@@ -80,7 +75,7 @@ export class SuggestionChoices extends Component {
             }}
           >
             <input
-              className="is-checkradio is-large is-black"
+              className="is-checkradio is-large is-dark"
               type="checkbox"
               name="selectedRestaurant"
               checked={isChecked}
