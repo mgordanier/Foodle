@@ -80,7 +80,7 @@ export class SuggestionChoices extends Component {
             }}
           >
             <input
-              className="is-checkradio is-large is-black"
+              className="is-checkradio is-large is-dark"
               type="checkbox"
               name="selectedRestaurant"
               checked={isChecked}
