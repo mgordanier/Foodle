@@ -86,8 +86,8 @@ class RestaurantSuggestions extends Component {
               {userHasVoted ? 'Update your vote!' : 'Where do you want to eat?'}
             </h2>
             <p className="has-text-black pt-2 pb-5">
-              Select up to 3 choices to submit selected votes OR choose no
-              preference
+              Select up to 3 choices to submit selected votes OR choose none of
+              these
             </p>
             <div className="columns">
               {poll.options.map((restaurant) => {
