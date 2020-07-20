@@ -26,11 +26,11 @@ class EventCard extends React.Component {
       <div className="card">
         <div className="card-content">
           {finalized ? (
-            <p className="has-text-success  is-size-7 is-pulled-right has-text-weight-semibold">
+            <p className="has-text-info  is-size-7 is-pulled-right has-text-weight-semibold">
               CONFIRMED
             </p>
           ) : (
-            <p className="has-text-info  is-size-7 is-pulled-right has-text-weight-semibold">
+            <p className="has-text-warning  is-size-7 is-pulled-right has-text-weight-semibold">
               VOTING
             </p>
           )}
@@ -56,7 +56,7 @@ class EventCard extends React.Component {
           <div className="content"></div>
           <footer className="card-footer">
             <Link
-              className="card-footer-item"
+              className="card-footer-item is-dark"
               to={`/event/${urlKey}${finalized ? '/confirmation' : ''}`}
             >
               Event Details

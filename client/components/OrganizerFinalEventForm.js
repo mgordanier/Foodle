@@ -40,8 +40,8 @@ class OrganizerFinalEventForm extends Component {
 
     const selectedPlaceId = this.state.placeId
     return (
-      <article className="tile is-child message is-info">
-        <div className="message-header">Finalize Event</div>
+      <article className="tile is-child message is-danger">
+        <div className="message-header is-danger">Finalize Event</div>
         <div className="message-body">
           <h1 className="is-centered">Make a final decision for your event!</h1>
 
@@ -67,13 +67,13 @@ class OrganizerFinalEventForm extends Component {
 
           <div className="buttons">
             {selectedPlaceId === '' ? (
-              <button type="button" className="button is-primary" disabled>
+              <button type="button" className="button is-danger" disabled>
                 Finalize Event
               </button>
             ) : (
               <button
                 type="button"
-                className="button is-primary"
+                className="button is-danger"
                 onClick={this.handleSubmit}
               >
                 Finalize Event

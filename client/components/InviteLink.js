@@ -27,7 +27,7 @@ const InviteLink = (props) => {
             </section>
 
             <div className="buttons">
-              <button className="button is-info is-large is-fullwidth">
+              <button className="button is-dark is-large is-fullwidth">
                 E-mail your friends
               </button>
             </div>

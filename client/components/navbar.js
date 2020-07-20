@@ -49,10 +49,10 @@ function Navbar({handleClick, isLoggedIn}) {
             {/* <Link className="navbar-item" to="/">
               Home
             </Link> */}
-            <Link className="navbar-item" to="/home">
+            <Link className="navbar-item class-test" to="/home">
               My Events
             </Link>
-            <Link className="navbar-item" to="/newevent">
+            <Link className="navbar-item class-test" to="/newevent">
               Create Event
             </Link>
             <Link className="navbar-item" to="/aboutFoodle">
@@ -65,10 +65,10 @@ function Navbar({handleClick, isLoggedIn}) {
         ) : (
           <div className="navbar-end">
             {/* The navbar will show these links before you log in */}
-            <Link className="navbar-item" to="/login">
+            <Link className="navbar-item class-test" to="/login">
               Login
             </Link>
-            <Link className="navbar-item" to="/signup">
+            <Link className="navbar-item class-test" to="/signup">
               Sign Up
             </Link>
             <Link className="navbar-item" to="/aboutFoodle">
