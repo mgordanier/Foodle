@@ -48,6 +48,7 @@ router.get('/key/:urlKey', async (req, res, next) => {
 
     if (event) {
       res.json(event)
+      // Event.sendConfirmation(1)
     } else {
       res.status(401).send('urkKey not valid')
     }
@@ -94,7 +95,9 @@ router.put('/key/:urlKey', async (req, res, next) => {
   try {
     const event = await Event.findOne({where: {urlKey: req.params.urlKey}})
     const updatedEvent = await event.update(req.body)
+    console.log('REQ.BODYYYYYYYYYYYYYYYY', req.body.googlePlacesId)
     if (updatedEvent) {
+      // Event.sendConfirmation(req.body.id)
       res.json(updatedEvent)
     } else {
       res.status(400).send('cannot update this event')

@@ -59,7 +59,7 @@ export class SuggestionChoices extends Component {
             <div className="buttons">
               <button
                 type="button"
-                className="button is-primary is-light is-small"
+                className="button is-danger is-light is-small"
                 onClick={this.toggleModal}
               >
                 More details
@@ -80,7 +80,7 @@ export class SuggestionChoices extends Component {
             }}
           >
             <input
-              className="is-checkradio is-large"
+              className="is-checkradio is-large is-black"
               type="checkbox"
               name="selectedRestaurant"
               checked={isChecked}

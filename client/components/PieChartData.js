@@ -25,7 +25,7 @@ export default function PieChartData(props) {
   const data = tallyVotes(pollResponsesArr)
 
   return (
-    <article className="tile is-child message is-primary">
+    <article className="tile is-child message is-success">
       <div className="message-header is-centered">
         <p>Current Results</p>
       </div>

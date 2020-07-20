@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-// const Main = require('../email/nodemailer')
+// const User = require('./user')
+const Main = require('../email/nodemailer')
 
 const Event = db.define('event', {
   name: {
@@ -72,12 +73,22 @@ Event.beforeCreate(async (event) => {
 })
 
 // Event.sendConfirmation = async function (id) {
-//   const event = await Event.findByPk(id, {
-//     include: {
-//       model: User,
+//   const event = await Event.findByPk(id)
+//   Main('yg2349@gmail.com', event)
+// }
+
+// Event.sendConfirmation = async function (urlKey) {
+//   try {
+
+//   const event = await Event.findOne({
+//     where: {
+//       urlKey: event.urlKey,
 //     },
 //   })
-//   Main(user.email, event)
+//   Main('yg2349@gmail.com', event)
+// } catch (error) {
+//   console.log('can not send event!')
+// }
 // }
 
 module.exports = Event

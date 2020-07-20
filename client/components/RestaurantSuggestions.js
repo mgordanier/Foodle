@@ -76,16 +76,16 @@ class RestaurantSuggestions extends Component {
     console.log('showPoll', showPoll)
 
     return (
-      <article className="tile is-child message is-warning">
+      <article className="tile is-child message is-success">
         <div className="message-header">
           <p>Your Votes</p>
         </div>
         {showPoll && poll && (
           <div className="message-body">
-            <h2 className="is-size-4 has-text-weight-semibold">
+            <h2 className="is-size-4 has-text-weight-semibold has-text-black">
               {userHasVoted ? 'Update your vote!' : 'Where do you want to eat?'}
             </h2>
-            <p className="content is-medium">
+            <p className="content is-medium has-text-black">
               Select up to 3 choices to submit selected votes OR choose no
               preference
             </p>
@@ -109,7 +109,7 @@ class RestaurantSuggestions extends Component {
             <div className="buttons">
               <button
                 type="button"
-                className="button is-primary is-centered is-large"
+                className="button is-dark is-centered is-large"
                 onClick={() => this.voteRestaurant()}
                 disabled={!selectedRestaurants.length}
               >
@@ -117,7 +117,7 @@ class RestaurantSuggestions extends Component {
               </button>
               <button
                 type="button"
-                className="button is-warning is-centered is-large"
+                className="button is-danger is-centered is-large"
                 onClick={() => this.voteNoneOfThese()}
               >
                 NONE OF THESE
@@ -127,10 +127,10 @@ class RestaurantSuggestions extends Component {
         )}
         {!showPoll && !!poll.responses.length && (
           <div className="message-body">
-            <h2 className="is-size-4 is-inline has-text-weight-semibold ">
+            <h2 className="is-size-4 is-inline has-text-weight-semibold has-text-black ">
               You voted for:{' '}
             </h2>
-            <p className="content is-medium is-inline">
+            <p className="content is-medium is-inline has-text-black">
               {poll.responses
                 .find((response) => response.userId === user.id)
                 .selections.map((selection) => selection.name)
@@ -139,7 +139,7 @@ class RestaurantSuggestions extends Component {
             <div className="buttons  container is-centered">
               <button
                 type="button"
-                className="button is-warning is-centered is-medium mt-4 "
+                className="button is-success is-centered is-medium mt-4 "
                 onClick={() => this.setState({showPoll: true})}
               >
                 Change Your Vote

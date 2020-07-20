@@ -16,6 +16,7 @@ import {
   CreateEventForm,
   EventDashboard,
   EventConfirmation,
+  TESTHOME1,
 } from './components'
 import {me} from './store'
 
