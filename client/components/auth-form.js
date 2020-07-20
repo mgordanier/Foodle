@@ -88,18 +88,15 @@ const AuthForm = (props) => {
                 </div>
 
                 <div>
-                  <button
-                    className="button is-success is-fullwidth"
-                    type="submit"
-                  >
-                    {displayName}
+                  <button className="button is-dark is-fullwidth" type="submit">
+                    {displayName} with Email
                   </button>
                 </div>
 
                 <div>
                   <a
                     type="button"
-                    className="button is-danger is-fullwidth mt-2"
+                    className="button is-primary is-fullwidth mt-2"
                     href="/auth/google"
                   >
                     {displayName} With Google
