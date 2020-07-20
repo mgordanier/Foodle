@@ -12,8 +12,8 @@
 //     secure: false,
 //     requireTLS: true,
 //     auth: {
-//       user: 'friedyang122@hotmail.com',
-//       pass: 'Palolo0413!',
+//       user: ,
+//       pass: ,
 //     },
 //   })
 
