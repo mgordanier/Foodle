@@ -72,10 +72,10 @@ Event.beforeCreate(async (event) => {
   }
 })
 
-Event.sendConfirmation = async function (id) {
-  const event = await Event.findByPk(id)
-  Main('yg2349@gmail.com', event)
-}
+// Event.sendConfirmation = async function (id) {
+//   const event = await Event.findByPk(id)
+//   Main('yg2349@gmail.com', event)
+// }
 
 // Event.sendConfirmation = async function (urlKey) {
 //   try {

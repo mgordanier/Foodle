@@ -55,11 +55,10 @@ function Navbar({handleClick, isLoggedIn}) {
             <Link className="navbar-item class-test" to="/newevent">
               Create Event
             </Link>
-            <a
-              className="navbar-item class-test"
-              href="#"
-              onClick={handleClick}
-            >
+            <Link className="navbar-item" to="/aboutFoodle">
+              About
+            </Link>
+            <a className="navbar-item" href="#" onClick={handleClick}>
               Logout
             </a>
           </div>
@@ -71,6 +70,9 @@ function Navbar({handleClick, isLoggedIn}) {
             </Link>
             <Link className="navbar-item class-test" to="/signup">
               Sign Up
+            </Link>
+            <Link className="navbar-item" to="/aboutFoodle">
+              About
             </Link>
           </div>
         )}

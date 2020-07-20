@@ -67,17 +67,18 @@ class EventDashboard extends Component {
 
               {suggestionsPoll && <RestaurantSuggestions />}
               {user.id === event.organizerId && <GenerateSuggestionPoll />}
-              {user.id === event.organizerId && (
-                <button
-                  type="button"
-                  className="button is-large is-dark"
-                  onClick={() => this.props.deleteEvent(event.id)}
-                >
-                  Delete Event
-                </button>
-              )}
             </div>
           </div>
+
+          {user.id === event.organizerId && (
+            <button
+              type="button"
+              className="button is-large is-warning is-pulled-right"
+              onClick={() => this.props.deleteEvent(event.id)}
+            >
+              Delete Event
+            </button>
+          )}
         </div>
       </section>
     )

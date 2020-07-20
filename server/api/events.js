@@ -48,7 +48,7 @@ router.get('/key/:urlKey', async (req, res, next) => {
 
     if (event) {
       res.json(event)
-      Event.sendConfirmation(1)
+      // Event.sendConfirmation(1)
     } else {
       res.status(401).send('urkKey not valid')
     }

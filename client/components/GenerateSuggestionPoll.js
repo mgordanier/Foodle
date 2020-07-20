@@ -48,7 +48,7 @@ class GenerateSuggestionPoll extends Component {
       : 'Get Restaurant Suggestions'
 
     return (
-      <article className="tile is-child message is-primary">
+      <article className="tile is-child message is-danger">
         <div className="message-header">
           <p>Generate New Poll</p>
         </div>
@@ -72,7 +72,7 @@ class GenerateSuggestionPoll extends Component {
             {loading ? (
               <button
                 type="button"
-                className="button is-dark is-centered mt-4 is-loading"
+                className="button is-danger is-centered mt-4 is-loading"
                 onClick={this.generateSuggestionsPoll}
                 disabled
               >
@@ -81,7 +81,7 @@ class GenerateSuggestionPoll extends Component {
             ) : (
               <button
                 type="button"
-                className="button is-dark is-centered mt-4"
+                className="button is-danger is-centered mt-4"
                 onClick={this.generateSuggestionsPoll}
               >
                 {displayName}

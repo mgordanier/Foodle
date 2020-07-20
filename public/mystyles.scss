@@ -1,14 +1,23 @@
 @charset "utf-8";
 @import '../node_modules/bulma/sass/utilities/initial-variables';
 
-// $pink: #ffd6cb;
+$darkpink: #ffd6cb;
+$lightteal: #09a6a6;
+$lesshotpink: #ff88d1;
+$hotpink: #c63a93;
+$mustard: #fac779;
+$pinkpurple: #dd98d6;
+
 $pink: #ffece5;
 $teal: #067a7a;
-$hotpink: #c63a93;
+
 $primary: $pink;
+$danger: #fac779;
+$link: #067a7a;
 $dark: $teal;
 $warning: #c63a93;
-$info: $hotpink;
+$info: #09a6a6;
+$success: #ffd6cb;
 
 @import '../node_modules/bulma/sass/utilities/functions';
 @import '../node_modules/bulma/sass/utilities/derived-variables.scss';
@@ -43,6 +52,10 @@ $info: $hotpink;
     display: flex;
     flex-direction: column;
   }
+}
+
+.height {
+  height: 100vh;
 }
 
 div.tooltip-donut {
@@ -95,6 +108,38 @@ div.tooltip-donut {
   word-wrap: break-word;
 }
 
+.aboutpadding {
+  padding: 25px;
+}
+
+.aboutparagraph {
+  padding-top: 20px;
+}
+
+.aboutmargin {
+  margin-top: 60px;
+}
+
+.linkedin {
+  height: 25px;
+  width: auto;
+  padding-right: 10px;
+}
+
+.linkedinlogo {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.border {
+  border-top: white 2px solid;
+}
+
+.padding-bottom {
+  padding-bottom: 50px;
+}
+
 @media (max-width: 770px) {
   .pink-image {
     display: none;
@@ -128,4 +173,38 @@ div.tooltip-donut {
   .bpadding {
     padding: 40px;
   }
+}
+
+.background-hero-image {
+  background: center / cover no-repeat url('/foodlecolorful.png');
+  height: calc(100vh - 100px);
+
+  @media (max-width: 530px) {
+    background-image: none;
+  }
+}
+
+.message.is-success {
+  background-color: #ffefeb;
+}
+.message.is-success .message-header {
+  background-color: #ffd6cb;
+  color: rgba(0, 0, 0, 0.7);
+}
+.message.is-success .message-body {
+  color: #941f00;
+  background-color: white;
+}
+
+.message.is-danger {
+  background-color: #fef7eb;
+}
+.message.is-danger .message-header {
+  background-color: #fac779;
+  color: rgba(0, 0, 0, 0.7);
+}
+.message.is-danger .message-body {
+  border-color: #fac779;
+  color: #8f5805;
+  background-color: white;
 }

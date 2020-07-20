@@ -20,13 +20,13 @@ const EventDetails = (props) => {
   const cuisine = flatActivity[activitySubtype].displayName
 
   const labelClasses =
-    'has-text-weight-semibold has-background-dark has-text-white px-1 py-1 is-uppercase is-size-7 mr-3'
+    'has-text-weight-semibold has-text-black px-1 py-1 is-uppercase is-size-7 mr-3'
 
   return (
     // <div className="container">
     //   <h1 className="title">{name}</h1>
 
-    <article className="tile is-child message is-primary">
+    <article className="tile is-child message is-success">
       <div className="message-header is-centered">
         <p>Event Details </p>
       </div>

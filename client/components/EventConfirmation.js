@@ -74,7 +74,7 @@ class EventConfirmation extends Component {
         <div className="buttons">
           <button
             type="button"
-            className="button is-dark is-large is-fullwidth"
+            className="button is-link is-large is-fullwidth"
             onClick={this.toggleEmail}
           >
             E-mail your friends
@@ -94,7 +94,7 @@ class EventConfirmation extends Component {
               </div>
               <button
                 type="submit"
-                className="button is-dark is-centered is-large my-5"
+                className="button is-link is-centered is-large my-5"
               >
                 Send Email
               </button>
