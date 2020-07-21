@@ -73,7 +73,7 @@ class EventDashboard extends Component {
           {user.id === event.organizerId && (
             <button
               type="button"
-              className="button is-large is-warning is-pulled-right"
+              className="button is-large is-warning is-pulled-right mt-2 mb-6"
               onClick={() => this.props.deleteEvent(event.id)}
             >
               Delete Event

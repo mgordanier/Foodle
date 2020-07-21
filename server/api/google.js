@@ -31,6 +31,9 @@ router.put('/restaurants', async (req, res, next) => {
       googleResults = googleResults.filter(
         (placeId) => !usedPlaceIds.includes(placeId)
       )
+      // THEN destroy the previous poll AND all it's responses
+      await Response.destroy({where: {pollId: prevSuggestionsPoll.id}})
+      await prevSuggestionsPoll.destroy()
     }
 
     //slice 3 results from initial Google Places API call and retrieve only placeIds
@@ -52,12 +55,6 @@ router.put('/restaurants', async (req, res, next) => {
     })
     // send the new poll
     res.send(poll)
-
-    // if this event has a previous suggestions poll, destroy that poll AND all it's responses
-    if (prevSuggestionsPoll) {
-      await Response.destroy({where: {pollId: prevSuggestionsPoll.id}})
-      await prevSuggestionsPoll.destroy()
-    }
   } catch (err) {
     next(err)
   }
