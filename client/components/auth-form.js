@@ -158,7 +158,7 @@ const mapDispatch = (dispatch) => {
       evt.preventDefault()
       if (evt.target.name === 'signup') {
         const formName = evt.target.name
-        const email = evt.target.email.value
+        const email = evt.target.email.value.toLowerCase()
         const password = evt.target.password.value
         const userName = evt.target.userName.value
         dispatch(authSignup(userName, email, password, formName))
@@ -166,7 +166,7 @@ const mapDispatch = (dispatch) => {
 
       if (evt.target.name === 'login') {
         const formName = evt.target.name
-        const email = evt.target.email.value
+        const email = evt.target.email.value.toLowerCase()
         const password = evt.target.password.value
         dispatch(authLogin(email, password, formName))
       }
