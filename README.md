@@ -2,7 +2,7 @@
 
 Foodle is a mobile-friendly, accessible web application where you can efficiently coordinate and choose a restaurant with your friends in New York City. An organizer can create the event, share a link with others and have friends vote on a restaurant poll based on location and food preferences. A piechart is rendered visually to tally all the responses for that event. Made specifically for indecisive foodlers!
 
-Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</a>
+Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</a>!
 
 ## Website
 
@@ -16,6 +16,13 @@ Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</
 <li>Back-End: PostgresQL, Express, Sequelize</li>
 <li>Libraries: D3, Socket.io</li>
 <li>Integrations: Google Place API</li>
+
+## Contributors 
+
+<li><a href="https://github.com/jenyang929">@jenyang929</a></li>
+<li><a href="https://github.com/mgordanier">@mgordanier</a></li>
+<li><a href="https://github.com/lillyoh">@lillyoh</a></li>
+<li><a href="https://github.com/Palolo0413">@Palolo0413</a></li>
 
 ## Prerequisites
 
