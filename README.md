@@ -19,10 +19,10 @@ Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</
 
 ## Contributors 
 
-<li><a href="https://github.com/jenyang929">@jenyang929</a></li>
-<li><a href="https://github.com/mgordanier">@mgordanier</a></li>
+<li><a href="https://github.com/jenyang929">@jenniferyang</a></li>
+<li><a href="https://github.com/mgordanier">@marygordanier</a></li>
 <li><a href="https://github.com/lillyoh">@lillyoh</a></li>
-<li><a href="https://github.com/Palolo0413">@Palolo0413</a></li>
+<li><a href="https://github.com/Palolo0413">@yanggu</a></li>
 
 ## Prerequisites
 
