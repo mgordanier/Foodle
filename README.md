@@ -2,6 +2,8 @@
 
 Foodle is a mobile-friendly, accessible web application where you can efficiently coordinate and choose a restaurant with your friends in New York City. An organizer can create the event, share a link with others and have friends vote on a restaurant poll based on location and food preferences. A piechart is rendered visually to tally all the responses for that event. Made specifically for indecisive foodlers!
 
+Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</a>
+
 ## Website
 
 <a href="https://foodle-app.herokuapp.com/">https://foodle-app.herokuapp.com/</a>
