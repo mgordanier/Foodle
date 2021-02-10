@@ -30,12 +30,31 @@ If you would like to install locally to try it out or make modifications,
 
 please <strong>Fork</strong> and <strong>Clone</strong> this repository
 
-Create a database called
-
 Then install the dependencies:
 
 ```
 npm install
+```
+
+Create a postgreSQL database:
+
+```
+createdb foodle
+```
+
+Create a file called `secrets.js` in the project root
+
+- This file is listed in `.gitignore` to keep your secret API keys from getting pushed to Github
+- It will only be required in the development environment
+- Its purpose is to attach the environment variables that you will use to run the project locally.
+- You will need to provide your own Google API key (for restaurant suggestions) and details for Google OAuth
+- It might look something like this:
+
+```
+process.env.GOOGLE_API_KEY = 'an API key to access Google Places'
+process.env.GOOGLE_CLIENT_ID = 'hush hush'
+process.env.GOOGLE_CLIENT_SECRET = 'a secret'
+process.env.GOOGLE_CALLBACK = '/auth/google/callback'
 ```
 
 To start your server:
@@ -48,5 +67,4 @@ Then go to <a href="http://localhost:8080">http://localhost:8080/</a> and start 
 
 ## Special Thanks
 
-Special thanks to <a href="https://looka.com/">Looka</a> for the beautiful logo on representing foodle!<br>
 Great boilerplate template used from <a href="https://github.com/FullstackAcademy/boilermaker">Fullstack Academy Boilermaker</a>
