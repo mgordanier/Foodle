@@ -29,7 +29,6 @@ class InputPollForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('submitted')
   }
 
   eventhandler = (data) => {
@@ -46,8 +45,6 @@ class InputPollForm extends Component {
       hour: '2-digit',
       minute: '2-digit',
     })
-
-    console.log('input poll form state', this.state)
 
     return (
       <div className="container">

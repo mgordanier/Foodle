@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 import {flatActivity, flatLocation} from '../pollOptions/pollUtils'
 
 // if there is a suggestions poll, then we need allRestaurants in the store
-// to be populated with the google API details from the 3 restos in
+// to be populated with the google API details from the 3 restaurants in
 // the poll options
-// OR those detail have to be saved inside the poll optionsnp
+// OR those details have to be saved inside the poll options
 
 const EventDetails = (props) => {
   let {neighborhood, time, name, activitySubtype} = props.event

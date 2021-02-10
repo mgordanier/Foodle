@@ -14,8 +14,7 @@ const Pie = (props) => {
     .innerRadius(props.innerRadius)
     .outerRadius(props.outerRadius)
 
-  // const colors = d3.scaleOrdinal(d3.schemeSet2)
-  // green, blue, pink, orange
+  // pie chart color options
   const colors = d3
     .scaleOrdinal()
     .range(['#2EC4B6', '#6FAFEC', '#DD98D6', '#FBAC23'])

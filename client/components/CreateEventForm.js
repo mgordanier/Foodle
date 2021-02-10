@@ -78,7 +78,6 @@ class CreateEventForm extends React.Component {
     }
 
     this.props.createEvent(newEvent)
-    console.log('newEvent', newEvent)
 
     this.props.history.push({
       pathname: `/invitelink/${urlKey}`,

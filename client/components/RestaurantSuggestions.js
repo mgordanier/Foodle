@@ -72,8 +72,6 @@ class RestaurantSuggestions extends Component {
   render() {
     const {event, poll, user} = this.props
     const {selectedRestaurants, showPoll, userHasVoted} = this.state
-    console.log('poll', poll)
-    console.log('showPoll', showPoll)
 
     return (
       <article className="tile is-child message is-success">

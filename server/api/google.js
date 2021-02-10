@@ -13,10 +13,7 @@ router.put('/restaurants', async (req, res, next) => {
     const {data} = await axios.get(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${borough}+${city}&type=restaurant&key=${key}`
     )
-    console.log(
-      'googlesearch',
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${category}+${neighborhood}+${borough}+${city}&type=restaurant&key=${key}`
-    )
+
     let googleResults = data.results.map((el) => el.place_id)
 
     // check if this event has a suggestions poll

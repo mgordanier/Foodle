@@ -95,7 +95,6 @@ router.put('/key/:urlKey', async (req, res, next) => {
   try {
     const event = await Event.findOne({where: {urlKey: req.params.urlKey}})
     const updatedEvent = await event.update(req.body)
-    console.log('REQ.BODYYYYYYYYYYYYYYYY', req.body.googlePlacesId)
     if (updatedEvent) {
       // Event.sendConfirmation(req.body.id)
       res.json(updatedEvent)
@@ -238,7 +237,6 @@ router.get(
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    console.log('ROUTE', req.params.id)
     await Event.destroy({
       where: {
         id: req.params.id,
@@ -256,10 +254,11 @@ router.delete('/:id', async (req, res, next) => {
         },
       })
       await responses.destroy()
+      res.sned(204)
     } else {
       console.log('No Polls associated with event')
+      res.send(404)
     }
-    res.json(204)
   } catch (error) {
     next(error)
   }

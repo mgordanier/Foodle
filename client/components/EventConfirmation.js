@@ -35,7 +35,6 @@ class EventConfirmation extends Component {
       email: this.state.email,
     }
     this.props.fetchOneEvent(this.props.match.params.urlKey)
-    console.log('this.props', this.props)
   }
 
   render() {
@@ -45,7 +44,6 @@ class EventConfirmation extends Component {
     const {googlePlacesInfo, time} = this.props.event
 
     const place = googlePlacesInfo
-    console.log(place)
 
     let convertedTime = new Date(time)
     const date = convertedTime.toLocaleDateString()

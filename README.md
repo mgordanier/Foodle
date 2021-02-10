@@ -17,7 +17,7 @@ Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</
 <li>Libraries: D3, Socket.io</li>
 <li>Integrations: Google Place API</li>
 
-## Contributors 
+## Contributors
 
 <li><a href="https://github.com/jenyang929">@jenniferyang</a></li>
 <li><a href="https://github.com/mgordanier">@marygordanier</a></li>
@@ -26,27 +26,27 @@ Watch our demo <a href="https://www.youtube.com/watch?v=vT_FW_NRI8g&t=1s">here</
 
 ## Prerequisites
 
-If you would like to install locally to try it out or make modifications, 
+If you would like to install locally to try it out or make modifications,
 
 please <strong>Fork</strong> and <strong>Clone</strong> this repository
 
-Then install the dependencies: 
+Create a database called
+
+Then install the dependencies:
 
 ```
 npm install
-``` 
+```
 
-To start your server: 
+To start your server:
 
 ```
 npm run start-dev
 ```
 
-Then go to <a href="http://localhost:8080">http://localhost:8080/</a> and start voting! 
-
+Then go to <a href="http://localhost:8080">http://localhost:8080/</a> and start voting!
 
 ## Special Thanks
 
 Special thanks to <a href="https://looka.com/">Looka</a> for the beautiful logo on representing foodle!<br>
 Great boilerplate template used from <a href="https://github.com/FullstackAcademy/boilermaker">Fullstack Academy Boilermaker</a>
-
