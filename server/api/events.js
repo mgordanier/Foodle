@@ -254,7 +254,7 @@ router.delete('/:id', async (req, res, next) => {
         },
       })
       await responses.destroy()
-      res.sned(204)
+      res.send(204)
     } else {
       console.log('No Polls associated with event')
       res.send(404)
