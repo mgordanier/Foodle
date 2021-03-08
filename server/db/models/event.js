@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-// const User = require('./user')
-const Main = require('../email/nodemailer')
 
 const Event = db.define('event', {
   name: {
