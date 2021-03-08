@@ -29,7 +29,7 @@ export const fetchEvents = () => {
       const {data} = await axios.get('/api/events')
       dispatch(getEvents(data))
     } catch (error) {
-      console.log('Error with fetching events')
+      console.error('Error with fetching events')
       console.error(error)
     }
   }
@@ -41,7 +41,7 @@ export const fetchOneEvent = (urlKey) => {
       const {data} = await axios.get(`/api/events/key/${urlKey}`)
       dispatch(getOneEvent(data))
     } catch (error) {
-      console.log('Error with fetching one event')
+      console.error('Error with fetching one event')
       console.error(error)
     }
   }
@@ -50,11 +50,11 @@ export const fetchOneEvent = (urlKey) => {
 export const createEvent = (event) => {
   return async (dispatch) => {
     try {
-      console.log('event', event)
+      console.error('event', event)
       const {data} = await axios.post('/api/events', event)
       dispatch(getOneEvent(data))
     } catch (error) {
-      console.log('Error with creating new event')
+      console.error('Error with creating new event')
       console.error(error)
     }
   }
@@ -66,7 +66,7 @@ export const updateEvent = (eventUpdates, urlKey) => {
       const {data} = await axios.put(`/api/events/key/${urlKey}`, eventUpdates)
       dispatch(getOneEvent(data))
     } catch (error) {
-      console.log('Error updating event')
+      console.error('Error updating event')
       console.error(error)
     }
   }

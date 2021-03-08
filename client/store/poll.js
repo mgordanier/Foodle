@@ -19,7 +19,7 @@ export const fetchPollsByEvent = (eventId) => {
       const {data} = await axios.get(`/api/events/${eventId}/polls/`)
       dispatch(gotPollsByEvent(data))
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 }
@@ -32,7 +32,7 @@ export const addPoll = (eventId, options) => {
       })
       dispatch(fetchPollsByEvent(eventId))
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 }
@@ -47,7 +47,7 @@ export const addOrUpdateResponse = (eventId, pollId, selections) => {
       )
       dispatch(fetchPollsByEvent(eventId))
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 }

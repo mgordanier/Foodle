@@ -29,7 +29,7 @@ export const fetchRestaurants = (neighborhood, city, category) => {
       dispatch(fetchPollsByEvent(eventId))
       dispatch(toggleLoadingState())
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 }
