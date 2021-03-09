@@ -17,7 +17,7 @@ class FinalizeEventForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange = (evt) => {
+  handleChange(evt) {
     this.setState({
       placeId: evt.target.value,
     })
