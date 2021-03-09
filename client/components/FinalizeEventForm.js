@@ -1,3 +1,7 @@
+// form for event organizer to make final restaurant selection & confirm event
+// on submit, redirects user to event confirmation page with event details
+// note: all class names derive from Bulma CSS framework
+
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updateEvent} from '../store/events'
@@ -7,20 +11,20 @@ class FinalizeEventForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      placeId: '',
+      placeId: 'display',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange = (e) => {
+  handleChange = (evt) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      placeId: evt.target.value,
     })
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
+  handleSubmit(evt) {
+    evt.preventDefault()
 
     const googlePlacesInfo = this.props.suggestionsPoll.options.find(
       (place) => place.place_id === this.state.placeId
@@ -49,7 +53,7 @@ class FinalizeEventForm extends Component {
             <select
               name="placeId"
               onChange={this.handleChange}
-              defaultValue="display"
+              value={selectedPlaceId}
               required
             >
               <option value="display" disabled>
@@ -66,7 +70,7 @@ class FinalizeEventForm extends Component {
           </div>
 
           <div className="buttons">
-            {selectedPlaceId === '' ? (
+            {selectedPlaceId === 'display' ? (
               <button type="button" className="button is-danger" disabled>
                 Finalize Event
               </button>
