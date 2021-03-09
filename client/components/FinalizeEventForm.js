@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {updateEvent} from '../store/events'
 import {withRouter} from 'react-router'
 
-class OrganizerFinalEventForm extends Component {
+class FinalizeEventForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -100,5 +100,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(OrganizerFinalEventForm)
+  connect(mapStateToProps, mapDispatchToProps)(FinalizeEventForm)
 )

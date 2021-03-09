@@ -9,7 +9,7 @@ import {
   RestaurantSuggestions,
   PieChartData,
   EventDetails,
-  OrganizerFinalEventForm,
+  FinalizeEventForm,
   GenerateSuggestionPoll,
 } from './index'
 
@@ -44,7 +44,7 @@ class EventDashboard extends Component {
                 <EventDetails />
               </div>
               <div className="tile is-parent">
-                <OrganizerFinalEventForm
+                <FinalizeEventForm
                   suggestionsPoll={suggestionsPoll}
                   urlKey={event.urlKey}
                   event={event}
